@@ -1,0 +1,14 @@
+{
+    "name": "ramphor/wordland",
+    "description": "The real estate plugin for WordPress",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Puleeno Nguyen",
+            "email": "puleeno@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
