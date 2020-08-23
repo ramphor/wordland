@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8833de0ec8c897b023014147b8dd2e8c",
+    "content-hash": "edcefcc9f0d934033ea1b602b81f4deb",
     "packages": [
         {
             "name": "jankx/asset",
@@ -233,6 +233,42 @@
             "time": "2020-03-23T09:12:05+00:00"
         },
         {
+            "name": "puleeno-ng/paypress",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/puleeno-ng/paypress.git",
+                "reference": "01d301d59e682694a35595fa7341606d84c45264"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/puleeno-ng/paypress/zipball/01d301d59e682694a35595fa7341606d84c45264",
+                "reference": "01d301d59e682694a35595fa7341606d84c45264",
+                "shasum": ""
+            },
+            "require": {
+                "ramphor/facades": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PayPress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Ng.",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "The payment system for WordPress",
+            "time": "2020-08-23T15:51:37+00:00"
+        },
+        {
             "name": "ramphor/facades",
             "version": "dev-master",
             "source": {
@@ -379,14 +415,14 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "jankx/template": 20,
+        "ramphor/facades": 20,
         "ramphor/locations": 20,
         "ramphor/filter-form": 20,
-        "jankx/template": 20,
-        "ramphor/facades": 20
+        "puleeno-ng/paypress": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }
