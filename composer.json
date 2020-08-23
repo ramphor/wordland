@@ -11,7 +11,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "jankx/template": "dev-master",
+        "ramphor/facades": "dev-master",
         "ramphor/locations": "dev-master",
-        "ramphor/logger": "dev-master"
+        "ramphor/filter-form": "dev-master"
     }
 }
