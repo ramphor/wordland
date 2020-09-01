@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edcefcc9f0d934033ea1b602b81f4deb",
+    "content-hash": "111f8a83aa7312584d737751c859a75b",
     "packages": [
         {
             "name": "jankx/asset",
@@ -119,12 +119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "c8a312c841ff780f002229208ba10daaf105eb31"
+                "reference": "b95ade3084bdd5a935da22571ad78c108123badc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/c8a312c841ff780f002229208ba10daaf105eb31",
-                "reference": "c8a312c841ff780f002229208ba10daaf105eb31",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/b95ade3084bdd5a935da22571ad78c108123badc",
+                "reference": "b95ade3084bdd5a935da22571ad78c108123badc",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2020-08-18T00:24:42+00:00"
+            "time": "2020-08-26T15:43:02+00:00"
         },
         {
             "name": "jankx/ui-framework",
@@ -344,20 +344,59 @@
             "time": "2020-08-23T14:58:27+00:00"
         },
         {
+            "name": "ramphor/google-maps",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/google-maps.git",
+                "reference": "bd196a1ce8b593727d86ea3990100065d45c6d41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/google-maps/zipball/bd196a1ce8b593727d86ea3990100065d45c6d41",
+                "reference": "bd196a1ce8b593727d86ea3990100065d45c6d41",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Google Maps component for WordPress themes and plugins",
+            "time": "2020-09-01T04:07:56+00:00"
+        },
+        {
             "name": "ramphor/locations",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/locations.git",
-                "reference": "d88ab46fbe3676fd6e19afe317f59f4948e1b11a"
+                "reference": "2bb13e29d05eb235ffdb507e361143cb1901960b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/locations/zipball/d88ab46fbe3676fd6e19afe317f59f4948e1b11a",
-                "reference": "d88ab46fbe3676fd6e19afe317f59f4948e1b11a",
+                "url": "https://api.github.com/repos/ramphor/locations/zipball/2bb13e29d05eb235ffdb507e361143cb1901960b",
+                "reference": "2bb13e29d05eb235ffdb507e361143cb1901960b",
                 "shasum": ""
             },
+            "require": {
+                "ramphor/logger": "1.0.0"
+            },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Locations\\": "src/"
+                },
+                "files": [
+                    "./initial.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
@@ -369,7 +408,7 @@
                 }
             ],
             "description": "Register locations such as country, state, city, etc for WordPress",
-            "time": "2020-08-04T07:59:19+00:00"
+            "time": "2020-08-24T01:23:33+00:00"
         },
         {
             "name": "ramphor/logger",
@@ -415,11 +454,12 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jankx/template": 20,
         "ramphor/facades": 20,
         "ramphor/locations": 20,
         "ramphor/filter-form": 20,
-        "puleeno-ng/paypress": 20
+        "puleeno-ng/paypress": 20,
+        "ramphor/google-maps": 20,
+        "jankx/template": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
