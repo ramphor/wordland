@@ -1,0 +1,25 @@
+{
+  "name": "wordland",
+  "version": "1.0.0",
+  "description": " The real estate plugin for WordPress: Realty, Property management ",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramphor/wordland.git"
+  },
+  "keywords": [
+    "real",
+    "estate",
+    "realty",
+    "residense"
+  ],
+  "author": "Ramphor Premium <puleeno@gmail.com>",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ramphor/wordland/issues"
+  },
+  "homepage": "https://github.com/ramphor/wordland#readme"
+}

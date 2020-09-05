@@ -2,8 +2,12 @@
 
 class WordLand_Post_Types {
 	public function __construct() {
+		add_action( 'init', array( $this, 'register_post_statuses' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
-	}
+    }
+
+    public function register_post_statuses() {
+    }
 
 	public function register_post_types() {
 		$labels = array(
