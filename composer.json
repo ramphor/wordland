@@ -16,6 +16,7 @@
         "ramphor/filter-form": "dev-master",
         "puleeno-ng/paypress": "dev-master",
         "ramphor/google-maps": "dev-master",
-        "jankx/template": "dev-master"
+        "jankx/template": "dev-master",
+        "ramphor/human-friendly-numbers": "dev-master"
     }
 }

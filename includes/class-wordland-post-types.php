@@ -4,10 +4,11 @@ class WordLand_Post_Types {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_statuses' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
-    }
+		add_action( 'init', array( $this, 'register_taxonomies' ) );
+	}
 
-    public function register_post_statuses() {
-    }
+	public function register_post_statuses() {
+	}
 
 	public function register_post_types() {
 		$labels = array(
@@ -27,6 +28,28 @@ class WordLand_Post_Types {
 				)
 			)
 		);
+	}
+
+	public function register_taxonomies() {
+		$category_labels = array(
+			'name'          => __( 'Categories', 'wordland' ),
+			'singular_name' => __( 'Category', 'wordland' ),
+			'menu_name'     => __( 'Categories', 'wordland' ),
+		);
+
+		register_taxonomy(
+			'property_cat',
+			apply_filters( 'wordland_category_post_types', array( 'property' ) ),
+			apply_filters(
+				'wordland_taxonomy_category_args',
+				array(
+					'labels' => $category_labels,
+					'public' => true,
+				)
+			)
+		);
+
+		do_action( 'wordland_register_taxonomies', $this );
 	}
 }
 

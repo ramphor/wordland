@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "111f8a83aa7312584d737751c859a75b",
+    "content-hash": "38f8080aeea805c878d87f725f3a3d06",
     "packages": [
         {
             "name": "jankx/asset",
@@ -78,12 +78,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "8fb3575984971371d8f5e617722d5f0fb5f130b2"
+                "reference": "4dc004857045c8bcb34bba0dd2519c04f3cc0b76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/8fb3575984971371d8f5e617722d5f0fb5f130b2",
-                "reference": "8fb3575984971371d8f5e617722d5f0fb5f130b2",
+                "url": "https://api.github.com/repos/jankx/template/zipball/4dc004857045c8bcb34bba0dd2519c04f3cc0b76",
+                "reference": "4dc004857045c8bcb34bba0dd2519c04f3cc0b76",
                 "shasum": ""
             },
             "require": {
@@ -95,10 +95,7 @@
             "autoload": {
                 "psr-4": {
                     "Jankx\\Template\\": "src/"
-                },
-                "files": [
-                    "./helpers/template.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -111,7 +108,7 @@
                 }
             ],
             "description": "Jankx template manager usable to load template with support override, caching",
-            "time": "2020-08-15T14:38:34+00:00"
+            "time": "2020-09-04T12:49:36+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -372,6 +369,39 @@
             "time": "2020-09-01T04:07:56+00:00"
         },
         {
+            "name": "ramphor/human-friendly-numbers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/human-friendly-numbers.git",
+                "reference": "2674de61697920efd4f7b939b3c496efcb2683a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/2674de61697920efd4f7b939b3c496efcb2683a5",
+                "reference": "2674de61697920efd4f7b939b3c496efcb2683a5",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\FriendlyNumbers\\": "src/FriendlyNumbers/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Friendly number for human can read easiler.",
+            "time": "2020-09-05T16:06:31+00:00"
+        },
+        {
             "name": "ramphor/locations",
             "version": "dev-master",
             "source": {
@@ -459,7 +489,8 @@
         "ramphor/filter-form": 20,
         "puleeno-ng/paypress": 20,
         "ramphor/google-maps": 20,
-        "jankx/template": 20
+        "jankx/template": 20,
+        "ramphor/human-friendly-numbers": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
