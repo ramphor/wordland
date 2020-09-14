@@ -1,4 +1,6 @@
 <?php
+use WordLand\PostTypes;
+
 class WordLand
 {
     protected static $instance;
@@ -9,5 +11,15 @@ class WordLand
             static::$instance = new static();
         }
         return static::$instance;
+    }
+
+    private function __construct()
+    {
+        $this->initFeatures();
+    }
+
+    public function initFeatures()
+    {
+        new PostTypes();
     }
 }

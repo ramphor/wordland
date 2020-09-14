@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3f90b2fb45b49862333cbb496a8736b",
+    "content-hash": "c01a13ecca0be76dd189bc8c03b0d2b7",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -64,58 +64,20 @@
             "time": "2019-12-27T09:26:40+00:00"
         },
         {
-            "name": "jankx/asset",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jankx/asset.git",
-                "reference": "ba620c8cdec831adc2fafbcdf34afa00f2312fb1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jankx/asset/zipball/ba620c8cdec831adc2fafbcdf34afa00f2312fb1",
-                "reference": "ba620c8cdec831adc2fafbcdf34afa00f2312fb1",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jankx\\Asset\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Puleeno Nguyen",
-                    "email": "puleeno@gmail.com"
-                }
-            ],
-            "description": "Jankx Assets is used to manage CSS, JS, libraries with beautiful syntax",
-            "time": "2020-04-12T10:16:21+00:00"
-        },
-        {
             "name": "jankx/helpers",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "98e5c06724d07de99679d554b499a9cf54e2224a"
+                "reference": "8dae694215c43821eb4a20b648c16271767a167c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/98e5c06724d07de99679d554b499a9cf54e2224a",
-                "reference": "98e5c06724d07de99679d554b499a9cf54e2224a",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/8dae694215c43821eb4a20b648c16271767a167c",
+                "reference": "8dae694215c43821eb4a20b648c16271767a167c",
                 "shasum": ""
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -127,7 +89,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2020-04-14T00:56:23+00:00"
+            "time": "2020-09-12T10:38:00+00:00"
         },
         {
             "name": "jankx/template",
@@ -135,18 +97,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "4dc004857045c8bcb34bba0dd2519c04f3cc0b76"
+                "reference": "14be2a836c3abab2488382b6a93be3ebab4ca8ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/4dc004857045c8bcb34bba0dd2519c04f3cc0b76",
-                "reference": "4dc004857045c8bcb34bba0dd2519c04f3cc0b76",
+                "url": "https://api.github.com/repos/jankx/template/zipball/14be2a836c3abab2488382b6a93be3ebab4ca8ae",
+                "reference": "14be2a836c3abab2488382b6a93be3ebab4ca8ae",
                 "shasum": ""
             },
             "require": {
-                "jankx/asset": "dev-master",
-                "jankx/template-engine": "dev-master",
-                "jankx/ui-framework": "dev-master"
+                "jankx/template-engine": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -165,7 +125,7 @@
                 }
             ],
             "description": "Jankx template manager usable to load template with support override, caching",
-            "time": "2020-09-04T12:49:36+00:00"
+            "time": "2020-09-14T14:01:19+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -173,12 +133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "b95ade3084bdd5a935da22571ad78c108123badc"
+                "reference": "e8f79fc9a64b738bdfd3880b4da4498d6e990897"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/b95ade3084bdd5a935da22571ad78c108123badc",
-                "reference": "b95ade3084bdd5a935da22571ad78c108123badc",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/e8f79fc9a64b738bdfd3880b4da4498d6e990897",
+                "reference": "e8f79fc9a64b738bdfd3880b4da4498d6e990897",
                 "shasum": ""
             },
             "require": {
@@ -201,43 +161,7 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2020-08-26T15:43:02+00:00"
-        },
-        {
-            "name": "jankx/ui-framework",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jankx/ui-framework.git",
-                "reference": "4bba63be1b9afcd06d386e4ee5bb5fae81af77d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jankx/ui-framework/zipball/4bba63be1b9afcd06d386e4ee5bb5fae81af77d9",
-                "reference": "4bba63be1b9afcd06d386e4ee5bb5fae81af77d9",
-                "shasum": ""
-            },
-            "require": {
-                "jankx/template-engine": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jankx\\UI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Puleeno Nguyen",
-                    "email": "puleeno@gmail.com"
-                }
-            ],
-            "description": "Jankx UI framework integrate with popular CSS frameworks",
-            "time": "2020-03-02T00:33:13+00:00"
+            "time": "2020-09-12T14:40:24+00:00"
         },
         {
             "name": "psr/log",
@@ -292,12 +216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/puleeno-ng/paypress.git",
-                "reference": "01d301d59e682694a35595fa7341606d84c45264"
+                "reference": "84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/puleeno-ng/paypress/zipball/01d301d59e682694a35595fa7341606d84c45264",
-                "reference": "01d301d59e682694a35595fa7341606d84c45264",
+                "url": "https://api.github.com/repos/puleeno-ng/paypress/zipball/84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a",
+                "reference": "84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a",
                 "shasum": ""
             },
             "require": {
@@ -320,7 +244,7 @@
                 }
             ],
             "description": "The payment system for WordPress",
-            "time": "2020-08-23T15:51:37+00:00"
+            "time": "2020-09-05T17:35:57+00:00"
         },
         {
             "name": "ramphor/facades",
@@ -403,15 +327,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/google-maps.git",
-                "reference": "bd196a1ce8b593727d86ea3990100065d45c6d41"
+                "reference": "0cc4c32ed64abdf3fbaf0c51bef4e2e8bb5788f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/google-maps/zipball/bd196a1ce8b593727d86ea3990100065d45c6d41",
-                "reference": "bd196a1ce8b593727d86ea3990100065d45c6d41",
+                "url": "https://api.github.com/repos/ramphor/google-maps/zipball/0cc4c32ed64abdf3fbaf0c51bef4e2e8bb5788f4",
+                "reference": "0cc4c32ed64abdf3fbaf0c51bef4e2e8bb5788f4",
                 "shasum": ""
             },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Google\\Maps\\": "src/Maps"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -423,7 +352,7 @@
                 }
             ],
             "description": "Google Maps component for WordPress themes and plugins",
-            "time": "2020-09-01T04:07:56+00:00"
+            "time": "2020-09-03T07:59:21+00:00"
         },
         {
             "name": "ramphor/human-friendly-numbers",
@@ -578,13 +507,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ramphor/facades": 20,
-        "ramphor/locations": 20,
-        "ramphor/filter-form": 20,
-        "puleeno-ng/paypress": 20,
-        "ramphor/google-maps": 20,
         "jankx/template": 20,
+        "puleeno-ng/paypress": 20,
+        "ramphor/facades": 20,
+        "ramphor/filter-form": 20,
+        "ramphor/google-maps": 20,
         "ramphor/human-friendly-numbers": 20,
+        "ramphor/locations": 20,
         "ramphor/user-profile": 20
     },
     "prefer-stable": false,
