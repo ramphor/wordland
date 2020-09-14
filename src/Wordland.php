@@ -8,12 +8,4 @@ class WordLand {
 		}
 		return static::$instance;
 	}
-
-	private function __construct() {
-		$this->includes();
-	}
-
-	protected function includes() {
-		require_once dirname( __FILE__ ) . '/class-wordland-post-types.php';
-	}
 }

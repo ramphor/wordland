@@ -19,5 +19,14 @@
         "ramphor/human-friendly-numbers": "dev-master",
         "ramphor/locations": "dev-master",
         "ramphor/user-profile": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        },
+        "files": [
+            "./src/wordland-functions.php",
+            "./src/WordLand.php"
+        ]
     }
 }

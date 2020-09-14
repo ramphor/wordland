@@ -1,6 +1,7 @@
 <?php
+namespace WordLand;
 
-class WordLand_Post_Types {
+class PostTypes {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_statuses' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
@@ -53,4 +54,3 @@ class WordLand_Post_Types {
 	}
 }
 
-new WordLand_Post_Types();

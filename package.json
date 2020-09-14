@@ -2,7 +2,7 @@
   "name": "wordland",
   "version": "1.0.0",
   "description": " The real estate plugin for WordPress: Realty, Property management ",
-  "main": "src/index.ts",
+  "main": "typescript/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
