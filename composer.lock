@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38f8080aeea805c878d87f725f3a3d06",
+    "content-hash": "f3f90b2fb45b49862333cbb496a8736b",
     "packages": [
+        {
+            "name": "hybridauth/hybridauth",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hybridauth/hybridauth.git",
+                "reference": "020be6991e7ae9f1ffaabae6586245d2a9626273"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/020be6991e7ae9f1ffaabae6586245d2a9626273",
+                "reference": "020be6991e7ae9f1ffaabae6586245d2a9626273",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "~4.8.35"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hybridauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miled",
+                    "email": "hybridauth@gmail.com"
+                }
+            ],
+            "description": "PHP Social Authentication Library",
+            "homepage": "https://hybridauth.github.io",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "api",
+                "authorization",
+                "facebook",
+                "google",
+                "oauth",
+                "social",
+                "twitter"
+            ],
+            "time": "2019-12-27T09:26:40+00:00"
+        },
         {
             "name": "jankx/asset",
             "version": "dev-master",
@@ -478,6 +535,43 @@
             ],
             "description": "Wrap the Monolog library for WordPress themes and plugins",
             "time": "2020-08-23T03:17:05+00:00"
+        },
+        {
+            "name": "ramphor/user-profile",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/user-profile.git",
+                "reference": "661bf574b1c2c8deae69f2021f763e57ecdc4627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/661bf574b1c2c8deae69f2021f763e57ecdc4627",
+                "reference": "661bf574b1c2c8deae69f2021f763e57ecdc4627",
+                "shasum": ""
+            },
+            "require": {
+                "hybridauth/hybridauth": "3.1.1",
+                "jankx/template": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\User\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "User profile core for embed to other plugins or themes",
+            "time": "2020-03-20T00:26:48+00:00"
         }
     ],
     "packages-dev": [],
@@ -490,7 +584,8 @@
         "puleeno-ng/paypress": 20,
         "ramphor/google-maps": 20,
         "jankx/template": 20,
-        "ramphor/human-friendly-numbers": 20
+        "ramphor/human-friendly-numbers": 20,
+        "ramphor/user-profile": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
