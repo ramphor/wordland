@@ -11,8 +11,14 @@
 
 define( 'WORDLAND_PLUGIN_FILE', __FILE__ );
 
-if ( ! class_exists( 'WordLand' ) ) {
-	require_once dirname( WORDLAND_PLUGIN_FILE ) . '/includes/class-wordland.php';
+$composerAutoloader = sprintf( '%s/vendor/autoload.php', dirname( __FILE__ ) );
+if ( file_exists( $composerAutoloader ) ) {
+	require_once $composerAutoloader;
+}
+
+if ( ! class_exists( WordLand::class ) ) {
+	error_log( 'WordLand is not working. The required features are missing.' );
+	return;
 }
 
 if ( ! function_exists( 'wordland' ) ) {

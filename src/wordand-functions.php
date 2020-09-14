@@ -1,4 +1,5 @@
 <?php
 
-function wordland_template() {
+function wordland_template()
+{
 }
