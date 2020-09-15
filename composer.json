@@ -19,7 +19,8 @@
         "ramphor/google-maps": "dev-master",
         "ramphor/human-friendly-numbers": "dev-master",
         "ramphor/locations": "dev-master",
-        "ramphor/user-profile": "dev-master"
+        "ramphor/user-profile": "dev-master",
+        "ramphor/wallery": ">=1.5.0"
     },
     "autoload": {
         "psr-4": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bbb05a25314db4b66efb07c4d0e4d88",
+    "content-hash": "d0cc50aa8c87e89d8c74814ec8d7bb61",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9"
+                "reference": "1a0a654bc0470137701b9ee0bcb33483037c35a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9",
-                "reference": "5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9",
+                "url": "https://api.github.com/repos/jankx/template/zipball/1a0a654bc0470137701b9ee0bcb33483037c35a3",
+                "reference": "1a0a654bc0470137701b9ee0bcb33483037c35a3",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx template manager usable to load template with support override, caching",
-            "time": "2020-09-14T16:50:15+00:00"
+            "time": "2020-09-15T04:09:33+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -534,6 +534,39 @@
             ],
             "description": "User profile core for embed to other plugins or themes",
             "time": "2020-03-20T00:26:48+00:00"
+        },
+        {
+            "name": "ramphor/wallery",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/wallery.git",
+                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/wallery/zipball/c771bde16ad848da8c19adeb669f18eae23376a8",
+                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Wallery\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "WordPress gallery for meta box and frontend post",
+            "time": "2020-09-15T05:14:51+00:00"
         }
     ],
     "packages-dev": [],
