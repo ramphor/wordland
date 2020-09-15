@@ -8,6 +8,7 @@ class PostTypes
         add_action('init', array( $this, 'register_post_statuses' ));
         add_action('init', array( $this, 'register_post_types' ));
         add_action('init', array( $this, 'register_taxonomies' ));
+        add_action('init', array( $this, 'register_tags' ), 50);
     }
 
     public function register_post_statuses()
@@ -51,10 +52,33 @@ class PostTypes
                 array(
                     'labels' => $category_labels,
                     'public' => true,
+                    'hierarchical' => true,
                 )
             )
         );
 
         do_action('wordland_register_taxonomies', $this);
+    }
+
+    public function register_tags() {
+        $tag_labels = array(
+            'name'          => __('Tags', 'wordland'),
+            'singular_name' => __('tag', 'wordland'),
+            'menu_name'     => __('Tags', 'wordland'),
+        );
+
+        register_taxonomy(
+            'property_tag',
+            apply_filters('wordland_tag_post_types', array( 'property' )),
+            apply_filters(
+                'wordland_taxonomy_tag_args',
+                array(
+                    'labels' => $tag_labels,
+                    'public' => true,
+                )
+            )
+        );
+
+        do_action('wordland_register_tags', $this);
     }
 }

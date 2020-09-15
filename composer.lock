@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c01a13ecca0be76dd189bc8c03b0d2b7",
+    "content-hash": "5bbb05a25314db4b66efb07c4d0e4d88",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "14be2a836c3abab2488382b6a93be3ebab4ca8ae"
+                "reference": "5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/14be2a836c3abab2488382b6a93be3ebab4ca8ae",
-                "reference": "14be2a836c3abab2488382b6a93be3ebab4ca8ae",
+                "url": "https://api.github.com/repos/jankx/template/zipball/5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9",
+                "reference": "5bcdcd95d342e0f42eddfdd5eed87e53a573a8e9",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx template manager usable to load template with support override, caching",
-            "time": "2020-09-14T14:01:19+00:00"
+            "time": "2020-09-14T16:50:15+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -284,6 +284,39 @@
             ],
             "description": "Make the Facades for Laravel lovers",
             "time": "2020-08-23T03:20:38+00:00"
+        },
+        {
+            "name": "ramphor/fields",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/fields.git",
+                "reference": "5b886d4d0e5338fb3f21948233ebaf5c62c511a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/fields/zipball/5b886d4d0e5338fb3f21948233ebaf5c62c511a4",
+                "reference": "5b886d4d0e5338fb3f21948233ebaf5c62c511a4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Fields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Jankx Fields is a simple framework used to create meta box, settings, form, etc",
+            "time": "2020-09-15T02:16:23+00:00"
         },
         {
             "name": "ramphor/filter-form",
@@ -510,6 +543,7 @@
         "jankx/template": 20,
         "puleeno-ng/paypress": 20,
         "ramphor/facades": 20,
+        "ramphor/fields": 20,
         "ramphor/filter-form": 20,
         "ramphor/google-maps": 20,
         "ramphor/human-friendly-numbers": 20,
