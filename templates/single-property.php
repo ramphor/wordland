@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+    exit; // Exit if accessed directly
 }
 
 get_header( 'property' );
@@ -19,6 +19,8 @@ get_header( 'property' );
         <?php endwhile; ?>
 
     <?php do_action('wordland_after_main_content'); ?>
+
+    <?php do_action('wordland_sidebar'); ?>
 
 <?php
 get_footer( 'property' );
