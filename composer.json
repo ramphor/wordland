@@ -12,7 +12,6 @@
     "minimum-stability": "dev",
     "require": {
         "jankx/template": "dev-master",
-        "puleeno-ng/paypress": "dev-master",
         "ramphor/facades": "dev-master",
         "ramphor/fields": "dev-master",
         "ramphor/filter-form": "dev-master",
@@ -20,7 +19,9 @@
         "ramphor/human-friendly-numbers": "dev-master",
         "ramphor/locations": "dev-master",
         "ramphor/user-profile": "dev-master",
-        "ramphor/wallery": ">=1.5.0"
+        "ramphor/wallery": ">=1.5.0",
+        "puleeno/schema-org": "dev-master",
+        "puleeno/paypress": "dev-master"
     },
     "autoload": {
         "psr-4": {

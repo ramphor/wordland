@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0cc50aa8c87e89d8c74814ec8d7bb61",
+    "content-hash": "00712bd83e409850391ccbf4f41189b3",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -211,17 +211,17 @@
             "time": "2020-03-23T09:12:05+00:00"
         },
         {
-            "name": "puleeno-ng/paypress",
+            "name": "puleeno/paypress",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/puleeno-ng/paypress.git",
-                "reference": "84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a"
+                "url": "https://github.com/puleeno/paypress.git",
+                "reference": "428599800d9241b33921caafa3e1f4e285cd5c9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/puleeno-ng/paypress/zipball/84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a",
-                "reference": "84a45228b0ea2a736e8ffeddbf3c0e5ba7e4921a",
+                "url": "https://api.github.com/repos/puleeno/paypress/zipball/428599800d9241b33921caafa3e1f4e285cd5c9d",
+                "reference": "428599800d9241b33921caafa3e1f4e285cd5c9d",
                 "shasum": ""
             },
             "require": {
@@ -244,7 +244,35 @@
                 }
             ],
             "description": "The payment system for WordPress",
-            "time": "2020-09-05T17:35:57+00:00"
+            "time": "2020-09-16T03:22:23+00:00"
+        },
+        {
+            "name": "puleeno/schema-org",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/puleeno/schema-org-php.git",
+                "reference": "3f0b9fa46aa5a3c989383a21e2c136d47d4cd2d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/puleeno/schema-org-php/zipball/3f0b9fa46aa5a3c989383a21e2c136d47d4cd2d6",
+                "reference": "3f0b9fa46aa5a3c989383a21e2c136d47d4cd2d6",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Abstracts and Interfaces to implement  Structured Data on https://schema.org/",
+            "time": "2020-01-17T01:12:43+00:00"
         },
         {
             "name": "ramphor/facades",
@@ -574,14 +602,15 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "jankx/template": 20,
-        "puleeno-ng/paypress": 20,
         "ramphor/facades": 20,
         "ramphor/fields": 20,
         "ramphor/filter-form": 20,
         "ramphor/google-maps": 20,
         "ramphor/human-friendly-numbers": 20,
         "ramphor/locations": 20,
-        "ramphor/user-profile": 20
+        "ramphor/user-profile": 20,
+        "puleeno/schema-org": 20,
+        "puleeno/paypress": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
