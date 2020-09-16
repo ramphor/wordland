@@ -3,19 +3,21 @@ namespace WordLand;
 
 class PostTypes
 {
+    public static $propertyPostType = 'public';
+
     public function __construct()
     {
-        add_action('init', array( $this, 'register_post_statuses' ));
-        add_action('init', array( $this, 'register_post_types' ));
-        add_action('init', array( $this, 'register_taxonomies' ));
-        add_action('init', array( $this, 'register_tags' ), 50);
+        add_action('init', array( $this, 'registerPostStatuses' ));
+        add_action('init', array( $this, 'registerPostTypes' ));
+        add_action('init', array( $this, 'registerTaxonomies' ));
+        add_action('init', array( $this, 'registerPropertytags' ), 50);
     }
 
-    public function register_post_statuses()
+    public function registerPostStatuses()
     {
     }
 
-    public function register_post_types()
+    public function registerPostTypes()
     {
         $labels = array(
             'name'         => __('Properties', 'wordland'),
@@ -23,6 +25,7 @@ class PostTypes
             'add_new_item' => __('Add New Property', 'wordland'),
         );
 
+        // Register the main post type of WordLand
         register_post_type(
             'property',
             apply_filters(
@@ -30,20 +33,40 @@ class PostTypes
                 array(
                     'labels'   => $labels,
                     'public'   => true,
-                    'supports' => array( 'title', 'editor' ),
+                    'supports' => array( 'title', 'editor', 'thumbnail' ),
+                    'menu_icon' => 'dashicons-admin-multisite',
                 )
             )
         );
+
+        $labels = array(
+            'name' => __('Amenities', 'wordland'),
+            'plural_name' => __('Amenity', 'wordland')
+        );
+
+        // Register post type Amenities to manage
+        register_post_type(
+            'amenity',
+            apply_filters('wordland_post_type_amenity_args', array(
+                'labels' => $labels,
+                'public' => true,
+                'supports' => array('title', 'editor')
+            ))
+        );
     }
 
-    public function register_taxonomies()
+    public function registerTaxonomies()
     {
+        /**
+         * Property categories
+         *
+         * Use to create type houses, apartments, townhomes
+         */
         $category_labels = array(
             'name'          => __('Categories', 'wordland'),
             'singular_name' => __('Category', 'wordland'),
             'menu_name'     => __('Categories', 'wordland'),
         );
-
         register_taxonomy(
             'property_cat',
             apply_filters('wordland_category_post_types', array( 'property' )),
@@ -57,14 +80,80 @@ class PostTypes
             )
         );
 
+        /**
+         * Listing types
+         *
+         * Set listing type for rent, sale or sold
+         */
+        $listing_type_labels = array(
+            'name' => __('Listing Type', 'wordland'),
+        );
+        register_taxonomy(
+            'listing_type',
+            apply_filters('wordland_listing_type_post_types', array( 'property' )),
+            apply_filters(
+                'wordland_taxonomy_category_args',
+                array(
+                    'labels' => $listing_type_labels,
+                    'public' => true,
+                    'hierarchical' => true,
+                )
+            )
+        );
+
+        /**
+         * Property Visibilities
+         *
+         * Visibilities use to create featured, hot, sold, new properties
+         */
+        $listing_type_labels = array(
+            'name' => __('Visibility', 'wordland'),
+        );
+        register_taxonomy(
+            'property_visibility',
+            apply_filters('wordland_listing_type_post_types', array( 'property' )),
+            apply_filters(
+                'wordland_taxonomy_category_args',
+                array(
+                    'labels' => $listing_type_labels,
+                    'public' => true,
+                    'hierarchical' => true,
+                    // '_builtin' => true,
+                )
+            )
+        );
+
+        /**
+         * Amenity Category
+         *
+         * Set category for amenity to create best UI for end users
+         */
+        $amenity_cat_labels = array(
+            'name' => __('Groups', 'wordland'),
+            'plural_name' => __('Group', 'wordland')
+        );
+        register_taxonomy(
+            'amenity_cat',
+            apply_filters('wordland_amenity_category_post_types', array( 'amenity' )),
+            apply_filters(
+                'wordland_amenity_category_args',
+                array(
+                    'labels' => $amenity_cat_labels,
+                    'public' => true,
+                    'hierarchical' => true,
+                )
+            )
+        );
+
         do_action('wordland_register_taxonomies', $this);
     }
 
-    public function register_tags() {
+    public function registerPropertytags()
+    {
         $tag_labels = array(
-            'name'          => __('Tags', 'wordland'),
-            'singular_name' => __('tag', 'wordland'),
-            'menu_name'     => __('Tags', 'wordland'),
+            'name'          => __('Property Tags', 'wordland'),
+            'singular_name' => __('Property Tag', 'wordland'),
+            'menu_name'     => __('Property Tags', 'wordland'),
         );
 
         register_taxonomy(
@@ -79,6 +168,6 @@ class PostTypes
             )
         );
 
-        do_action('wordland_register_tags', $this);
+        do_action('wordland_register_property_tags', $this);
     }
 }

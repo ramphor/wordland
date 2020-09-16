@@ -3,10 +3,12 @@ namespace WordLand;
 
 use Jankx\Template\Template as TemplateLib;
 
-class Template {
+class Template
+{
     protected static $loader;
 
-    public static function getLoader() {
+    public static function getLoader()
+    {
         if (is_null(static::$loader)) {
             $templateDir = sprintf('%s/templates', dirname(WORDLAND_PLUGIN_FILE));
             static::$loader = TemplateLib::getLoader(
@@ -19,7 +21,8 @@ class Template {
         return static::$loader;
     }
 
-    public static function render() {
+    public static function render()
+    {
         $args = func_get_args();
         return call_user_func_array(
             array(static::getLoader(), 'render'),
