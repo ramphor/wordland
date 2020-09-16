@@ -1,7 +1,6 @@
 <?php
+use WordLand\Admin;
 use WordLand\PostTypes;
-
-use WordLand\Admin\Property\MetaBox\PropertyInformation;
 
 class WordLand
 {
@@ -24,8 +23,7 @@ class WordLand
     {
         new PostTypes();
         if (is_admin()) {
-            $propertyMetabox = new PropertyInformation();
-            add_action('add_meta_boxes', array($propertyMetabox, 'registerMetaboxes'));
+            new Admin();
         }
     }
 }
