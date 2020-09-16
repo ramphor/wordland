@@ -11,3 +11,9 @@ function wordland_template($templates, $data = array(), $context = null, $echo =
         $echo
     );
 }
+
+
+function is_property()
+{
+    return is_singular('property');
+}

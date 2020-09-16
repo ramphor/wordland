@@ -1,6 +1,9 @@
 <?php
 namespace WordLand;
 
+use WordLand\Renderer\PropertyPage;
+use WordLand\Builder\RendererBuilder;
+
 class TemplateLoader
 {
     protected $isThemeSupport = false;
@@ -10,9 +13,10 @@ class TemplateLoader
         if (get_theme_support('wordland')) {
             $this->isThemeSupport = true;
         }
-        // if ($this->isThemeSupport) {
-        if (true) {
+        if ($this->isThemeSupport) {
             add_filter('template_include', array($this, 'loadCustomTemplate'));
+        } else {
+            add_action('template_redirect', array($this, 'renderPropertyContentForUnsupportThemes'));
         }
     }
 
@@ -76,5 +80,34 @@ class TemplateLoader
         }
 
         return $template;
+    }
+
+    public function renderPropertyContentForUnsupportThemes()
+    {
+        if (is_property()) {
+            $this->unsupportedPageSingleProperty();
+        }
+    }
+
+    public function unsupportedPageSingleProperty()
+    {
+        add_filter('the_content', array($this, 'renderPropertyContent'));
+    }
+
+    public function renderPropertyContent($content)
+    {
+        if (!is_property()) {
+            return $content;
+        }
+
+        $builder = new RendererBuilder(new PropertyPage());
+        $builder->build(array(
+            'property_id' => get_the_ID(),
+            'show_title' => false
+        ));
+        $renderer = $builder->getRenderer();
+
+        // Render the output content
+        return $renderer->get_content();
     }
 }
