@@ -50,7 +50,8 @@ class PostTypes
             apply_filters('wordland_post_type_amenity_args', array(
                 'labels' => $labels,
                 'public' => true,
-                'supports' => array('title', 'editor')
+                'supports' => array('title', 'editor', 'thumbnail'),
+                '_builtin' => true, // This post type use to manage amenity for property only
             ))
         );
     }
@@ -118,7 +119,29 @@ class PostTypes
                     'labels' => $listing_type_labels,
                     'public' => true,
                     'hierarchical' => true,
-                    // '_builtin' => true,
+                )
+            )
+        );
+
+        /**
+         * Amenity Taxonomy
+         *
+         * Set category for amenity to create best UI for end users
+         */
+        $amenity_cat_labels = array(
+            'name' => __('Amenities', 'wordland'),
+            'plural_name' => __('Amenity', 'wordland')
+        );
+        register_taxonomy(
+            'property_amenity',
+            apply_filters('wordland_amenity_category_post_types', array( 'property' )),
+            apply_filters(
+                'wordland_property_amenity_args',
+                array(
+                    'labels' => $amenity_cat_labels,
+                    'public' => false,
+                    'hierarchical' => true,
+                    '_builtin' => true, // The instead of this taxonomy is post type `amenity`
                 )
             )
         );
