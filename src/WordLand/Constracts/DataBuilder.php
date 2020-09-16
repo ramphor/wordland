@@ -1,6 +1,6 @@
 <?php
-use WordLand;
+namespace WordLand\Constracts;
 
-interface PropertyBuilder
+interface DataBuilder
 {
 }
