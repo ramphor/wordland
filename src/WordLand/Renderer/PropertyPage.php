@@ -2,6 +2,8 @@
 namespace WordLand\Renderer;
 
 use WordLand\Abstracts\Renderer;
+use WordLand\Manager\PropertyBuilderManager;
+use WordLand\Template;
 
 class PropertyPage extends Renderer
 {
@@ -17,9 +19,16 @@ class PropertyPage extends Renderer
 
     public function get_content()
     {
-        $property = get_post($this->propertyId);
-        if (!$property || $property->post_type !== 'property') {
+        $propertyPost = get_post($this->propertyId);
+        if (!$propertyPost || $propertyPost->post_type !== 'property') {
             return;
         }
+        $propertyBuilder = PropertyBuilderManager::getBuilder($propertyPost);
+        $propertyBuilder->build();
+        $property = $propertyBuilder->getProperty();
+
+        return Template::render('content/single-property', array(
+            'property' => $property,
+        ), 'wordland_single_property', false);
     }
 }
