@@ -1,7 +1,7 @@
 <?php
-use WordLand\Admin;
 use WordLand\PostTypes;
 use WordLand\TemplateLoader;
+use WordLand\Admin\Admin;
 
 class WordLand
 {
