@@ -1,5 +1,5 @@
 <?php
-namespace WordLand;
+namespace WordLand\Admin;
 
 use WordLand\Admin\Property\MetaBox\PropertyInformation;
 
