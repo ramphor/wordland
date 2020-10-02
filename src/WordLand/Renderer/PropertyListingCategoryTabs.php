@@ -1,5 +1,9 @@
 <?php
-namespace WordLand\Renderer;
+namespace Jankx\Ecommerce\Base\Modules;
 
-class CategoryPropertiesTabs {
+use WordLand\Abstracts\Renderer;
+use WordLand\Template;
+
+class PropertyListingCategoryTabs implements Renderer
+{
 }

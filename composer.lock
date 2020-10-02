@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "8dae694215c43821eb4a20b648c16271767a167c"
+                "reference": "554ac3b2e556b44927cfcebba85190fe63d8aa59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/8dae694215c43821eb4a20b648c16271767a167c",
-                "reference": "8dae694215c43821eb4a20b648c16271767a167c",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/554ac3b2e556b44927cfcebba85190fe63d8aa59",
+                "reference": "554ac3b2e556b44927cfcebba85190fe63d8aa59",
                 "shasum": ""
             },
             "type": "library",
@@ -89,7 +89,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2020-09-12T10:38:00+00:00"
+            "time": "2020-09-22T20:03:39+00:00"
         },
         {
             "name": "jankx/template",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "1a0a654bc0470137701b9ee0bcb33483037c35a3"
+                "reference": "344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/1a0a654bc0470137701b9ee0bcb33483037c35a3",
-                "reference": "1a0a654bc0470137701b9ee0bcb33483037c35a3",
+                "url": "https://api.github.com/repos/jankx/template/zipball/344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e",
+                "reference": "344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e",
                 "shasum": ""
             },
             "require": {
@@ -124,8 +124,8 @@
                     "email": "puleeno@gmail.com"
                 }
             ],
-            "description": "Jankx template manager usable to load template with support override, caching",
-            "time": "2020-09-15T04:09:33+00:00"
+            "description": "Jankx Template is used to load the template support override, caching.",
+            "time": "2020-09-24T00:24:32+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -133,12 +133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "e8f79fc9a64b738bdfd3880b4da4498d6e990897"
+                "reference": "33ac45314098b554c8acdab4cb5d74aa1a752210"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/e8f79fc9a64b738bdfd3880b4da4498d6e990897",
-                "reference": "e8f79fc9a64b738bdfd3880b4da4498d6e990897",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/33ac45314098b554c8acdab4cb5d74aa1a752210",
+                "reference": "33ac45314098b554c8acdab4cb5d74aa1a752210",
                 "shasum": ""
             },
             "require": {
@@ -161,7 +161,7 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2020-09-12T14:40:24+00:00"
+            "time": "2020-09-30T08:43:06+00:00"
         },
         {
             "name": "psr/log",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/dd738d0b4491f32725492cf345f6b501f5922fec",
+                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec",
                 "shasum": ""
             },
             "require": {
@@ -198,7 +198,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -208,7 +208,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2020-09-18T06:44:51+00:00"
         },
         {
             "name": "puleeno/paypress",
