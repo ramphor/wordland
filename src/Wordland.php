@@ -2,6 +2,7 @@
 use WordLand\PostTypes;
 use WordLand\TemplateLoader;
 use WordLand\Admin\Admin;
+use WordLand\DataLoader;
 
 class WordLand
 {
@@ -69,6 +70,9 @@ class WordLand
         if (is_admin()) {
             new Admin();
         }
+
+        // Setup WordLand data
+        DataLoader::getInstance();
     }
 
     public function plugin_path()

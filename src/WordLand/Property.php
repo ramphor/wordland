@@ -5,16 +5,16 @@ use WordLand\Abstracts\Data;
 
 class Property extends Data
 {
-    protected $name;
-    protected $metas;
+    public $ID;
+    public $name;
+    public $metas = array();
 
-    public function __set($key, $name)
+    public function setMeta($key, $value)
     {
-        $this->metas[$key] = $name;
+        $this->metas[$key] = $value;
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
+    public function getMeta($key, $value) {
+        return $this->metas[$key] = $value;
     }
 }
