@@ -23,12 +23,9 @@ class PropertyPage extends Renderer
         if (!$propertyPost || $propertyPost->post_type !== 'property') {
             return;
         }
-        $propertyBuilder = PropertyBuilderManager::getBuilder($propertyPost);
-        $propertyBuilder->build();
-        $property = $propertyBuilder->getProperty();
 
         return Template::render('content/single-property', array(
-            'property' => $property,
+            'property' => $GLOBALS['property'],
         ), 'wordland_single_property', false);
     }
 }
