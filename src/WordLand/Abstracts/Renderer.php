@@ -10,7 +10,7 @@ abstract class Renderer implements RendererConstract
     protected $query;
     protected $title;
 
-    public function __construct($query)
+    public function __construct($query = null)
     {
         if (is_a($query, Query::class)) {
             $this->query = $query;
