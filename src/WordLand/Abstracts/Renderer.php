@@ -7,6 +7,7 @@ abstract class Renderer implements RendererConstract
 {
     protected $props = array();
     protected $metas = array();
+    protected $title;
 
     public function __toString()
     {
@@ -20,6 +21,11 @@ abstract class Renderer implements RendererConstract
         } else {
             error_log(sprintf('The meta %s already exists. It is skipped', $metaKey));
         }
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 
     public function setProps($props)

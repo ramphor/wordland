@@ -1,5 +1,6 @@
 <?php
 use WordLand\PostTypes;
+use WordLand\Locations;
 use WordLand\TemplateLoader;
 use WordLand\Admin\Admin;
 use WordLand\DataLoader;
@@ -68,6 +69,8 @@ class WordLand
     public function initFeatures()
     {
         new PostTypes();
+        new Locations();
+
         if ($this->is_request('frontend')) {
             $templateLoader = new TemplateLoader();
 

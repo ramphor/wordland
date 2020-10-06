@@ -8,7 +8,6 @@ use WordLand\Constracts\Query;
 class PropertyListingCategoryTabs extends Renderer
 {
     protected $wordlandQuery;
-    protected $title;
 
     public function setQuery($wordlandQuery)
     {
@@ -16,11 +15,6 @@ class PropertyListingCategoryTabs extends Renderer
             return;
         }
         $this->wordlandQuery = $wordlandQuery;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
     }
 
     public function get_content()
