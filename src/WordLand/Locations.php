@@ -6,14 +6,17 @@
  */
 namespace WordLand;
 
-class Locations {
+class Locations
+{
     private $levels = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', array($this, 'registerLocationTaxonomies'));
     }
 
-    public function registerLocationTaxonomies() {
+    public function registerLocationTaxonomies()
+    {
         $labels = array(
             'name' => __('Cities', 'wordland'),
             'plural_name' => __('City', 'wordland'),

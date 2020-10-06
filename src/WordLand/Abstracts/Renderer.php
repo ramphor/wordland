@@ -7,7 +7,15 @@ abstract class Renderer implements RendererConstract
 {
     protected $props = array();
     protected $metas = array();
+    protected $query;
     protected $title;
+
+    public function __construct($query)
+    {
+        if (is_a($query, Query::class)) {
+            $this->query = $query;
+        }
+    }
 
     public function __toString()
     {

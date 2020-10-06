@@ -35,7 +35,7 @@ class Scripts
     public function registerScripts()
     {
         $deps = array();
-        if(!get_theme_support('render_js_template')) {
+        if (!get_theme_support('render_js_template')) {
             wp_register_script('blueimp-tmpl', $this->asset_url('vendor/JavaScript-Templates/tmpl.js'), array(), '3.19.0', false);
             array_push($deps, 'blueimp-tmpl');
         }
@@ -43,7 +43,8 @@ class Scripts
         wp_enqueue_script(static::HANDLER_NAME);
     }
 
-    public function registerStyles() {
+    public function registerStyles()
+    {
         wp_register_style(static::HANDLER_NAME, $this->asset_url('css/wordland.css'), array(), WordLand::$version);
         wp_enqueue_style(static::HANDLER_NAME);
     }

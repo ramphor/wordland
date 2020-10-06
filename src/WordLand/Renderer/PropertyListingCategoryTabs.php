@@ -7,16 +7,6 @@ use WordLand\Constracts\Query;
 
 class PropertyListingCategoryTabs extends Renderer
 {
-    protected $wordlandQuery;
-
-    public function setQuery($wordlandQuery)
-    {
-        if (!is_a($wordlandQuery, Query::class)) {
-            return;
-        }
-        $this->wordlandQuery = $wordlandQuery;
-    }
-
     public function get_content()
     {
         return Template::render(
