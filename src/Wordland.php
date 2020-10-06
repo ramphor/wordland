@@ -3,10 +3,14 @@ use WordLand\PostTypes;
 use WordLand\TemplateLoader;
 use WordLand\Admin\Admin;
 use WordLand\DataLoader;
+use WordLand\RestManager;
+use WordLand\Scripts;
+use WordLand\Compatibles;
 
 class WordLand
 {
     protected static $instance;
+    public static $version;
 
     public static function instance()
     {
@@ -33,6 +37,9 @@ class WordLand
 
     private function defineConstants()
     {
+        $data = get_file_data(WORDLAND_PLUGIN_FILE, array('version' => 'Version'));
+        static::$version = isset($data['version']) ? $data['version'] : null;
+
         $this->define('WORDLAND_ABSPATH', dirname(WORDLAND_PLUGIN_FILE));
         $this->define('WORDLAND_TEMPLATE_DEBUG_MODE', false);
     }
@@ -73,6 +80,9 @@ class WordLand
 
         // Setup WordLand data
         DataLoader::getInstance();
+        RestManager::getInstance();
+        Scripts::getInstance();
+        Compatibles::getInstance();
     }
 
     public function plugin_path()

@@ -18,7 +18,8 @@ function is_property()
     return is_singular('property');
 }
 
-function is_wordland() {
+function is_wordland()
+{
     if (is_singular('property')) {
         return true;
     }

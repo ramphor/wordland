@@ -5,6 +5,7 @@ use WordLand\Constracts\Renderer as RendererConstract;
 
 abstract class Renderer implements RendererConstract
 {
+    protected $props = array();
     protected $metas = array();
 
     public function __toString()
@@ -18,6 +19,13 @@ abstract class Renderer implements RendererConstract
             $this->metas[$metaKey] = $metaValue;
         } else {
             error_log(sprintf('The meta %s already exists. It is skipped', $metaKey));
+        }
+    }
+
+    public function setProps($props)
+    {
+        if (is_array($props)) {
+            $this->props = $props;
         }
     }
 }

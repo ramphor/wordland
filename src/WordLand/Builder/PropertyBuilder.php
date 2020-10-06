@@ -10,22 +10,26 @@ class PropertyBuilder extends DataBuilder
     protected $property;
     protected $originalPost;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->reset();
     }
 
-    public function reset() {
+    public function reset()
+    {
         $this->property = new Property();
     }
 
-public function setPost($post) {
-        if (!is_a($post, WP_Post::class)){
+    public function setPost($post)
+    {
+        if (!is_a($post, WP_Post::class)) {
             return;
         }
         $this->originalPost = $post;
     }
 
-    public function buildBaseData() {
+    public function buildBaseData()
+    {
         if (is_null($this->originalPost)) {
             return;
         }
@@ -36,7 +40,8 @@ public function setPost($post) {
         );
     }
 
-    public function build() {
+    public function build()
+    {
         $this->buildBaseData();
     }
 

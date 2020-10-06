@@ -14,7 +14,8 @@ class Property extends Data
         $this->metas[$key] = $value;
     }
 
-    public function getMeta($key, $value) {
+    public function getMeta($key, $value)
+    {
         return $this->metas[$key] = $value;
     }
 }

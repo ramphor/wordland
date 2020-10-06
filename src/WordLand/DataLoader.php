@@ -4,21 +4,25 @@ namespace WordLand;
 use WordLand\Manager\PropertyBuilderManager;
 use WordLand\Property;
 
-class DataLoader {
+class DataLoader
+{
     private static $instance;
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(static::$instance)) {
             static::$instance = new static();
         }
         return static::$instance;
     }
 
-    private function __construct() {
+    private function __construct()
+    {
         add_action('the_post', array($this, 'buildPropertyFromPost'));
     }
 
-    public function buildPropertyFromPost($post) {
+    public function buildPropertyFromPost($post)
+    {
         if ($post->post_type !== 'property') {
             return;
         }
@@ -40,7 +44,8 @@ class DataLoader {
         );
     }
 
-    public function buildPropertyFromId($propertyID) {
+    public function buildPropertyFromId($propertyID)
+    {
         $post = get_post($propertyID);
         return $this->buildPropertyFromPost($post);
     }
