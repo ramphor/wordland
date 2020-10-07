@@ -19,8 +19,8 @@ class Scripts
 
     private function __construct()
     {
-        add_action('wp_enqueue_scripts', array($this, 'registerScripts'));
-        add_action('wp_enqueue_scripts', array($this, 'registerStyles'));
+        add_action('wp_enqueue_scripts', array($this, 'registerScripts'), 40);
+        add_action('wp_enqueue_scripts', array($this, 'registerStyles'), 40);
     }
 
     protected function asset_url($path = '')
@@ -45,6 +45,11 @@ class Scripts
 
     public function registerStyles()
     {
+        global $wp_styles;
+
+        if (isset($wp_styles->registered['animate.css'])) {
+            wp_enqueue_style('animate.css');
+        }
         wp_register_style(static::HANDLER_NAME, $this->asset_url('css/wordland.css'), array(), WordLand::$version);
         wp_enqueue_style(static::HANDLER_NAME);
     }

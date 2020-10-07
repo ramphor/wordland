@@ -18,4 +18,8 @@ class Property extends Data
     {
         return $this->metas[$key] = $value;
     }
+
+    public function is_visible() {
+        return true;
+    }
 }

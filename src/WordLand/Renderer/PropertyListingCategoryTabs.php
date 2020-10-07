@@ -37,6 +37,7 @@ class PropertyListingCategoryTabs extends Renderer
             'term' => $this->categoryTerms[0],
             'limit' => $this->props['limit'],
         ));
+
         return $query->getWordPressQuery();
     }
 

@@ -62,13 +62,17 @@ class WordLand
     public function includes()
     {
         if ($this->is_request('frontend')) {
-            require_once dirname(__FILE__) . '/wordland-template-loader.php';
+            $this->include_frontend();
         }
 
         $helpers_file = realpath(dirname(__FILE__) . '/../vendor/jankx/helpers/src/helpers.php');
         if (!function_exists('array_get') && file_exists($helpers_file)) {
             require_once $helpers_file;
         }
+    }
+
+    public function include_frontend() {
+        require_once dirname(__FILE__) . '/wordland-template-loader.php';
     }
 
     public function initFeatures()
