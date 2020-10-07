@@ -66,12 +66,13 @@ class PropertyListingCategoryTabs extends Renderer
         $this->getCategoryTerms();
 
         return Template::render(
-            'category/property-listing',
+            'widget/property-listing-category-tabs',
             array(
                 'header' => $this->renderHeader(),
                 'tabs' => $this->generateTabs(),
                 'wp_query' => $this->query(),
                 't' => Template::class,
+                'style' => array_get($this->props, 'layout_style', 'card')
             ),
             'wordland_category_property_listing',
             false

@@ -37,10 +37,23 @@ abstract class Renderer implements RendererConstract
         $this->title = $title;
     }
 
+    public function setProp($prop, $value) {
+        if (is_string($prop)) {
+            $this->props[$prop] = $value;
+        }
+    }
+
     public function setProps($props)
     {
         if (is_array($props)) {
             $this->props = $props;
         }
+    }
+
+    protected function getHeaderContent() {
+        if (!$this->title) {
+            return;
+        }
+        return Template::render('common/header_text', array('text' => $this->title), null, false);
     }
 }

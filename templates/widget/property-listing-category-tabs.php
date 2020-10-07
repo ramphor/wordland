@@ -9,7 +9,15 @@
 
             <?php while($wp_query->have_posts()): ?>
                 <?php $wp_query->the_post(); ?>
-                <?php $t::render('content/property', array('property' => $GLOBALS['property'])); ?>
+                <?php
+                $t::render(
+                    'content/property',
+                    array(
+                        'property' => $GLOBALS['property'],
+                        'style' => $style,
+                    )
+                );
+                ?>
             <?php endwhile; ?>
 
             <?php do_action('wordland_end_loop'); ?>

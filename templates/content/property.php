@@ -3,6 +3,7 @@
 if ( empty( $property ) || ! $property->is_visible() ) {
 	return;
 }
+var_dump($style);
 ?>
 <li <?php post_class('wordland-property'); ?>>
 
