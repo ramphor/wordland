@@ -1,0 +1,1 @@
+<h3 class="wordland-header-text"><?php echo $text; ?></h3>
