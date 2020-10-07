@@ -4,7 +4,7 @@ use WordLand\Locations;
 use WordLand\TemplateLoader;
 use WordLand\Admin\Admin;
 use WordLand\DataLoader;
-use WordLand\RestManager;
+use WordLand\AjaxRequestManager;
 use WordLand\Scripts;
 use WordLand\Compatibles;
 
@@ -93,7 +93,7 @@ class WordLand
 
         // Setup WordLand data
         DataLoader::getInstance();
-        RestManager::getInstance();
+        AjaxRequestManager::getInstance();
         Scripts::getInstance();
         Compatibles::getInstance();
     }

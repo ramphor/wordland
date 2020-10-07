@@ -1,7 +1,7 @@
 <?php
 namespace WordLand;
 
-class RestManager
+class AjaxRequestManager
 {
     protected static $instance;
 
