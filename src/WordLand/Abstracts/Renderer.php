@@ -1,6 +1,7 @@
 <?php
 namespace WordLand\Abstracts;
 
+use WordLand\Constracts\Query;
 use WordLand\Constracts\Renderer as RendererConstract;
 
 abstract class Renderer implements RendererConstract
