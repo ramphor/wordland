@@ -1,4 +1,4 @@
-<div class="wordland-property-counter">
+<div class="wordland-property-counter" style="height: <?php echo $height; ?>px;">
     <div class="header">
         <a href="<?php echo get_term_link($term); ?>" tite="<?php echo $header; ?>"><?php echo $header; ?></a>
     </div>

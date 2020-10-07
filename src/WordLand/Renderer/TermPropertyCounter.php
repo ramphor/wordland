@@ -24,9 +24,9 @@ class TermPropertyCounter extends Renderer
         Template::render('widget/term-property-counter', array(
             'header' => !$this->title ? $term->name : $this->title,
             'description' => $description,
-            'image_bg' => 'https://wpresidence.b-cdn.net/wp-content/uploads/2020/08/city9.jpg',
             'count' => sprintf(__('%d listing', 'wordland'), $term->count),
             'term' => $term,
+            'height' => array_get($this->props, 'item_height', 350)
         ));
     }
 }
