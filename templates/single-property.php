@@ -1,15 +1,14 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-get_header( 'property' );
+get_header('property');
 ?>
 
     <?php do_action('wordland_before_main_content'); ?>
 
-        <?php while (have_posts()): ?>
-
+        <?php while (have_posts()) : ?>
             <?php the_post(); ?>
 
             <?php wordland_template('content/single-property', array(
@@ -23,6 +22,6 @@ get_header( 'property' );
     <?php do_action('wordland_sidebar'); ?>
 
 <?php
-get_footer( 'property' );
+get_footer('property');
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
