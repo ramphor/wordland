@@ -1,5 +1,6 @@
 <?php
 use WordLand\Template;
+use Wordland\PostTypes;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -22,11 +23,16 @@ function is_wordland()
 {
     if (is_singular('property')) {
         return true;
+    } elseif (is_tax()) {
+        $queried_object = get_queried_object();
+        $wordland_taxonomies = get_object_taxonomies(PostTypes::PROPERTY_POST_TYPE);
+        return in_array($queried_object->taxonomy, $wordland_taxonomies);
     }
     return false;
 }
 
-function wordland_post_thumbnail($size = 'wordland_thumbnail') {
+function wordland_post_thumbnail($size = 'wordland_thumbnail')
+{
     $callable = apply_filters('wordland_post_thubmnail_callable', null);
     if (is_callable($callable)) {
         return call_user_func_array($callable, func_get_args());
