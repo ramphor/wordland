@@ -71,7 +71,8 @@ class WordLand
         }
     }
 
-    public function include_frontend() {
+    public function include_frontend()
+    {
         require_once dirname(__FILE__) . '/wordland-template-loader.php';
     }
 
