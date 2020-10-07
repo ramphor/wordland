@@ -3,10 +3,11 @@
 if ( empty( $property ) || ! $property->is_visible() ) {
 	return;
 }
-var_dump($style);
 ?>
-<li <?php post_class('wordland-property'); ?>>
-
+<li <?php post_class(array(
+    'wordland-property',
+    sprintf('%s-style', $style)
+)); ?>>
     <?php do_action( 'wordland_before_loop_property' ); ?>
 
     <?php do_action( 'wordland_before_loop_property_name' ); ?>

@@ -37,7 +37,8 @@ abstract class Renderer implements RendererConstract
         $this->title = $title;
     }
 
-    public function setProp($prop, $value) {
+    public function setProp($prop, $value)
+    {
         if (is_string($prop)) {
             $this->props[$prop] = $value;
         }
@@ -50,7 +51,8 @@ abstract class Renderer implements RendererConstract
         }
     }
 
-    protected function getHeaderContent() {
+    protected function getHeaderContent()
+    {
         if (!$this->title) {
             return;
         }
