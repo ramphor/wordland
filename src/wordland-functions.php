@@ -26,6 +26,8 @@ function is_wordland()
     } elseif (is_tax()) {
         $queried_object = get_queried_object();
         $wordland_taxonomies = get_object_taxonomies(PostTypes::PROPERTY_POST_TYPE);
+        $wordland_taxonomies = apply_filters('wordland_taxonomies', $wordland_taxonomies);
+
         return in_array($queried_object->taxonomy, $wordland_taxonomies);
     }
     return false;
