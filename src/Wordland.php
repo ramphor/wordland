@@ -7,6 +7,7 @@ use WordLand\DataLoader;
 use WordLand\AjaxRequestManager;
 use WordLand\Scripts;
 use WordLand\Compatibles;
+use WordLand\Installer;
 
 class WordLand
 {
@@ -96,6 +97,12 @@ class WordLand
         AjaxRequestManager::getInstance();
         Scripts::getInstance();
         Compatibles::getInstance();
+
+        $installer = Installer::getInstance();
+        register_activation_hook(
+            WORDLAND_PLUGIN_FILE,
+            array($installer, 'install')
+        );
     }
 
     public function plugin_path()
