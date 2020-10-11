@@ -35,15 +35,18 @@ class AjaxRequestManager
         return $query->getWordPressQuery();
     }
 
-    public function filterMarkersSelectFields( $fields, &$query ) {
+    public function filterMarkersSelectFields($fields, &$query)
+    {
         return $fields;
     }
 
-    public function filterPropertiesSelectFields( $fields, &$query ) {
+    public function filterPropertiesSelectFields($fields, &$query)
+    {
         $fields;
     }
 
-    public function postsWhere($clauses, &$query) {
+    public function postsWhere($clauses, &$query)
+    {
         return $clauses;
     }
 

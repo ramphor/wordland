@@ -40,3 +40,21 @@ function wordland_post_thumbnail($size = 'wordland_thumbnail')
         return call_user_func_array($callable, func_get_args());
     }
 }
+
+function wordland_get_map_center_location()
+{
+    $geolocation = array();
+
+    return apply_filters(
+        'wordland_map_center_geolocation',
+        $geolocation
+    );
+}
+
+function wordland_get_map_zoom()
+{
+    return apply_filters('wordland_get_map_zoom', array(
+        'single_property' => get_option('wordland_single_property_map_zoom', 14),
+        'marker_list' => get_option('wordland_single_property_map_zoom', 10)
+    ));
+}
