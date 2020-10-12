@@ -24,7 +24,7 @@ class Installer
         $engine = 'MyISAM';
 
         $tables = array(
-            'worland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
+            'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `property_id` BIGINT NOT NULL ,
                 `location` POINT NOT NULL ,
                 `price` BIGINT NOT NULL DEFAULT 0,
@@ -34,7 +34,7 @@ class Installer
                 `bathrooms` BIGINT NOT NULL DEFAULT 0,
                 `created_at` TIMESTAMP NOT NULL ,
                 PRIMARY KEY (`ID`)',
-            'worland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
+            'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `term_id` BIGINT NOT NULL ,
                 `location` MULTIPOLYGON NOT NULL ,
                 `created_at` TIMESTAMP NOT NULL ,

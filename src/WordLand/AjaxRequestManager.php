@@ -64,6 +64,7 @@ class AjaxRequestManager
     {
         add_action('wp_ajax_wordland_filter_properties', array($this, 'filterProperties'));
         add_action('wp_ajax_wordland_get_map_markers', array($this, 'getMapMarkers'));
+        add_action('wp_ajax_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
     }
 
     public function filterQueriesFromGetVariable()
