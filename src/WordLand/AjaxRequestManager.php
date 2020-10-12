@@ -63,8 +63,11 @@ class AjaxRequestManager
     private function __construct()
     {
         add_action('wp_ajax_wordland_filter_properties', array($this, 'filterProperties'));
+        add_action('wp_ajax_nopriv_wordland_filter_properties', array($this, 'filterProperties'));
         add_action('wp_ajax_wordland_get_map_markers', array($this, 'getMapMarkers'));
+        add_action('wp_ajax_nopriv_wordland_get_map_markers', array($this, 'getMapMarkers'));
         add_action('wp_ajax_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
+        add_action('wp_ajax_nopriv_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
     }
 
     public function filterQueriesFromGetVariable()
