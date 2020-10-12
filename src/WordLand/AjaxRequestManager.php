@@ -104,7 +104,7 @@ class AjaxRequestManager
     {
         global $wpdb;
 
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title";
+        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_date, {$wpdb->posts}.post_type";
         $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
         $fields .= ', w.price';
@@ -221,6 +221,7 @@ class AjaxRequestManager
                     get_post_thumbnail_id($wp_query->current_post->ID),
                     'medium'
                 );
+                $properties[$wp_query->current_post]['url'] = get_permalink($wp_query->post);
             }
         }
 
