@@ -6,7 +6,6 @@ use WordLand\Query\PropertyQuery;
 class AjaxRequestManager
 {
     protected static $instance;
-
     protected static $defaultMappingFields = array(
         'ID' => array(
             'source' => 'ID',
@@ -48,7 +47,6 @@ class AjaxRequestManager
             'default' => 0
         )
     );
-
     protected static $markerMappingFields;
     protected static $properyMappingFields;
 
@@ -74,8 +72,12 @@ class AjaxRequestManager
     {
     }
 
-    public function filterQueries()
+    public function filterQueries($systemArgs = array())
     {
+        // Parse from user data, actions
+        $parsedArgs = array();
+
+        return wp_parse_args($systemArgs, $parsedArgs);
     }
 
     protected function buildQuery($args = array())
@@ -201,16 +203,12 @@ class AjaxRequestManager
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         add_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
 
-
         $current_page = 1;
         $items_per_page = 40;
-        $wp_query = $this->buildQuery(array_merge(
-            $this->filterQueries(),
-            array(
-                'page' => $current_page,
-                'posts_per_page' => $items_per_page,
-            )
-        ));
+        $wp_query = $this->buildQuery($this->filterQueries(array(
+            'page' => $current_page,
+            'posts_per_page' => 2,
+        )));
         $properties = array();
         if ($wp_query->have_posts()) {
             while ($wp_query->have_posts()) {
@@ -225,17 +223,22 @@ class AjaxRequestManager
             }
         }
 
-
         remove_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
+
+        $total_items = $wp_query->found_posts;
+        $items_per_page = array_get($wp_query->query_vars, 'posts_per_page', 5);
+        $current_page = array_get($wp_query->query_vars, 'paged', 1);
+        $current_page = $current_page > 0 ? $current_page : 1;
 
         wp_send_json_success(array(
             'properties' => $properties,
             'current_page' => $current_page,
             'items_per_page' => $items_per_page,
-            'total_items' => 0,
-            'total_page' => 0,
+            'total_items' => $total_items,
+            'found_items' => $wp_query->post_count,
+            'total_page' => ceil($total_items/$items_per_page),
         ));
     }
 

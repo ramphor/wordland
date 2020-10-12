@@ -43,6 +43,13 @@ class PropertyQuery extends BaseQuery
         if (isset($rawArgs['term'])) {
             $this->filter_term($rawArgs['term'], $args);
         }
+        if (isset($rawArgs['posts_per_page'])) {
+            $args['posts_per_page'] = $rawArgs['posts_per_page'];
+        }
+        if (isset($rawArgs['limit'])) {
+            $args['posts_per_page'] = $rawArgs['limit'];
+        }
+
         return wp_parse_args($args, array(
             'post_type' => 'property',
         ));
