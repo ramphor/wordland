@@ -211,7 +211,12 @@ class AjaxRequestManager
         if ($wp_query->have_posts()) {
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
-                $properties[] = $this->filterData($wp_query->post, static::$properyMappingFields);
+                $post = $wp_query->current_post;
+                $properties[$wp_query->current_post] = $this->filterData($wp_query->post, static::$properyMappingFields);
+                $properties[$wp_query->current_post]['thumbnail_url'] = wp_get_attachment_image_url(
+                    get_post_thumbnail_id($wp_query->current_post->ID),
+                    'medium'
+                );
             }
         }
 
