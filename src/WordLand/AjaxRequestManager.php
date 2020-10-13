@@ -66,6 +66,8 @@ class AjaxRequestManager
         add_action('wp_ajax_nopriv_wordland_get_map_markers', array($this, 'getMapMarkers'));
         add_action('wp_ajax_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
         add_action('wp_ajax_nopriv_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
+        add_action('wp_ajax_wordland_get_property', array($this, 'getProperty'));
+        add_action('wp_ajax_nopriv_wordland_get_property', array($this, 'getProperty'));
     }
 
     public function filterQueriesFromGetVariable()
@@ -269,5 +271,11 @@ class AjaxRequestManager
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
         wp_send_json_success($markers);
+    }
+
+    public function getProperty() {
+        if (!isset($_REQUEST['property_id'])) {
+            return wp_send_json_error(__('The property ID is invalid to get data', 'wordland'));
+        }
     }
 }
