@@ -5,7 +5,7 @@ use WordLand;
 
 class Scripts
 {
-    public const HANDLER_NAME = 'wordland';
+    const HANDLER_NAME = 'wordland';
 
     protected static $instance;
 

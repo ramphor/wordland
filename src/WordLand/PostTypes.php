@@ -3,9 +3,9 @@ namespace WordLand;
 
 class PostTypes
 {
-    public const PROPERTY_POST_TYPE = 'property';
-    public const PROPERTY_LOCATION_CITY_TAX = 'wordland_city';
-    public const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
+    const PROPERTY_POST_TYPE = 'property';
+    const PROPERTY_LOCATION_CITY_TAX = 'wordland_city';
+    const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
 
     public function __construct()
     {

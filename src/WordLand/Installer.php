@@ -49,7 +49,7 @@ class Installer
                 $sql_syntax,
                 $engine,
                 $wpdb->charset,
-                $wpdb->collate,
+                $wpdb->collate
             );
             $wpdb->query($sql);
         }
