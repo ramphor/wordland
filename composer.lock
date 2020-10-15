@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00712bd83e409850391ccbf4f41189b3",
+    "content-hash": "90e5e6a72aa4e27897b30019b6e35e1a",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -527,6 +527,39 @@
             "time": "2020-08-23T03:17:05+00:00"
         },
         {
+            "name": "ramphor/post-views",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/post-views.git",
+                "reference": "444b67f0b9204884df3cf85ddec9b35c58f5a215"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/post-views/zipball/444b67f0b9204884df3cf85ddec9b35c58f5a215",
+                "reference": "444b67f0b9204884df3cf85ddec9b35c58f5a215",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\PostViews\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Ramphor Premium",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Track visited posts and user view posts",
+            "time": "2020-03-29T17:08:25+00:00"
+        },
+        {
             "name": "ramphor/user-profile",
             "version": "dev-master",
             "source": {
@@ -610,10 +643,12 @@
         "ramphor/locations": 20,
         "ramphor/user-profile": 20,
         "puleeno/schema-org": 20,
-        "puleeno/paypress": 20
+        "puleeno/paypress": 20,
+        "ramphor/post-views": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
