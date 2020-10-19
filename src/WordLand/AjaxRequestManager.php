@@ -215,13 +215,14 @@ class AjaxRequestManager
         if ($wp_query->have_posts()) {
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
-                $post = $wp_query->current_post;
-                $properties[$wp_query->current_post] = $this->filterData($wp_query->post, static::$properyMappingFields);
-                $properties[$wp_query->current_post]['thumbnail_url'] = wp_get_attachment_image_url(
-                    get_post_thumbnail_id($wp_query->current_post->ID),
+                $post = $wp_query->post;
+                $currentIndex = $wp_query->current_post;
+                $properties[$currentIndex] = $this->filterData($post, static::$properyMappingFields);
+                $properties[$currentIndex]['thumbnail_url'] = wp_get_attachment_image_url(
+                    get_post_thumbnail_id($post->ID),
                     'medium'
                 );
-                $properties[$wp_query->current_post]['url'] = get_permalink($wp_query->post);
+                $properties[$currentIndex]['url'] = get_permalink($wp_query->post);
             }
         }
 
