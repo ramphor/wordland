@@ -1,6 +1,8 @@
 <?php
 namespace WordLand;
 
+use Ramphor\User\Profile as UserProfile;
+
 class Installer
 {
     protected static $instance;
@@ -16,6 +18,10 @@ class Installer
     public function install()
     {
         $this->setupDatabase();
+
+        // Create user profile data table
+        $userProfile = UserProfile::getInstance();
+        $userProfile->db->create_table();
     }
 
     public function setupDatabase()

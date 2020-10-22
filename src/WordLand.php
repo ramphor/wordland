@@ -8,6 +8,7 @@ use WordLand\AjaxRequestManager;
 use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
+use Ramphor\User\Profile as UserProfile;
 
 class WordLand
 {
@@ -103,6 +104,10 @@ class WordLand
             WORDLAND_PLUGIN_FILE,
             array($installer, 'install')
         );
+
+        if (class_exists(UserProfile::class)) {
+            UserProfile::getInstance();
+        }
     }
 
     public function plugin_path()
@@ -112,6 +117,9 @@ class WordLand
 
     public function template_path()
     {
-        return apply_filters('wordland_template_path', 'wordland/');
+        return apply_filters(
+            'wordland_template_path',
+            'wordland/'
+        );
     }
 }
