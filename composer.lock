@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "554ac3b2e556b44927cfcebba85190fe63d8aa59"
+                "reference": "3ca5aa983562c1a24a46c9b4d9c65477a045af7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/554ac3b2e556b44927cfcebba85190fe63d8aa59",
-                "reference": "554ac3b2e556b44927cfcebba85190fe63d8aa59",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/3ca5aa983562c1a24a46c9b4d9c65477a045af7b",
+                "reference": "3ca5aa983562c1a24a46c9b4d9c65477a045af7b",
                 "shasum": ""
             },
             "type": "library",
@@ -89,7 +89,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2020-09-22T20:03:39+00:00"
+            "time": "2020-10-20T19:53:48+00:00"
         },
         {
             "name": "jankx/template",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e"
+                "reference": "85661e94c70cfb8d75e9cf8a32c160e46c6daea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e",
-                "reference": "344dc6a161aa2c2f9b8cf006927480d1bb8e7c2e",
+                "url": "https://api.github.com/repos/jankx/template/zipball/85661e94c70cfb8d75e9cf8a32c160e46c6daea6",
+                "reference": "85661e94c70cfb8d75e9cf8a32c160e46c6daea6",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2020-09-24T00:24:32+00:00"
+            "time": "2020-10-22T02:33:03+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -532,18 +532,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/plugin-core.git",
-                "reference": "3f62d692a9f395d43cfef4302160dfe8b7d28690"
+                "reference": "fd1f719cb25ef2e32b240ed0bb45973f698276a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/plugin-core/zipball/3f62d692a9f395d43cfef4302160dfe8b7d28690",
-                "reference": "3f62d692a9f395d43cfef4302160dfe8b7d28690",
+                "url": "https://api.github.com/repos/ramphor/plugin-core/zipball/fd1f719cb25ef2e32b240ed0bb45973f698276a6",
+                "reference": "fd1f719cb25ef2e32b240ed0bb45973f698276a6",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Ramphor\\Plugin\\": "src/"
+                    "Ramphor\\Core\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -557,7 +557,7 @@
                 }
             ],
             "description": "The core of plugins are developed by The Ramphor Premium",
-            "time": "2020-10-23T04:32:56+00:00"
+            "time": "2020-10-23T08:29:06+00:00"
         },
         {
             "name": "ramphor/post-views",
@@ -598,17 +598,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "661bf574b1c2c8deae69f2021f763e57ecdc4627"
+                "reference": "767e852ee065232d845cc38bbdd01438561e3582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/661bf574b1c2c8deae69f2021f763e57ecdc4627",
-                "reference": "661bf574b1c2c8deae69f2021f763e57ecdc4627",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/767e852ee065232d845cc38bbdd01438561e3582",
+                "reference": "767e852ee065232d845cc38bbdd01438561e3582",
                 "shasum": ""
             },
             "require": {
                 "hybridauth/hybridauth": "3.1.1",
-                "jankx/template": "dev-master"
+                "jankx/template": "dev-master",
+                "ramphor/plugin-core": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -627,7 +628,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2020-03-20T00:26:48+00:00"
+            "time": "2020-10-23T08:10:55+00:00"
         },
         {
             "name": "ramphor/wallery",
