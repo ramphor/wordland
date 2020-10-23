@@ -274,7 +274,8 @@ class AjaxRequestManager
         wp_send_json_success($markers);
     }
 
-    public function getProperty() {
+    public function getProperty()
+    {
         if (!isset($_REQUEST['property_id'])) {
             return wp_send_json_error(__('The property ID is invalid to get data', 'wordland'));
         }
