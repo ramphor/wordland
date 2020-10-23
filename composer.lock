@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90e5e6a72aa4e27897b30019b6e35e1a",
+    "content-hash": "b9dd0b611be062a0667de2f6908f09d1",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -527,6 +527,39 @@
             "time": "2020-08-23T03:17:05+00:00"
         },
         {
+            "name": "ramphor/plugin-core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/plugin-core.git",
+                "reference": "3f62d692a9f395d43cfef4302160dfe8b7d28690"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/plugin-core/zipball/3f62d692a9f395d43cfef4302160dfe8b7d28690",
+                "reference": "3f62d692a9f395d43cfef4302160dfe8b7d28690",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Plugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "The core of plugins are developed by The Ramphor Premium",
+            "time": "2020-10-23T04:32:56+00:00"
+        },
+        {
             "name": "ramphor/post-views",
             "version": "dev-master",
             "source": {
@@ -644,7 +677,8 @@
         "ramphor/user-profile": 20,
         "puleeno/schema-org": 20,
         "puleeno/paypress": 20,
-        "ramphor/post-views": 20
+        "ramphor/post-views": 20,
+        "ramphor/plugin-core": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

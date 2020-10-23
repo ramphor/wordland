@@ -22,7 +22,8 @@
         "ramphor/wallery": ">=1.5.0",
         "puleeno/schema-org": "dev-master",
         "puleeno/paypress": "dev-master",
-        "ramphor/post-views": "dev-master"
+        "ramphor/post-views": "dev-master",
+        "ramphor/plugin-core": "dev-master"
     },
     "autoload": {
         "psr-4": {
