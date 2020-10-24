@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "85661e94c70cfb8d75e9cf8a32c160e46c6daea6"
+                "reference": "680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/85661e94c70cfb8d75e9cf8a32c160e46c6daea6",
-                "reference": "85661e94c70cfb8d75e9cf8a32c160e46c6daea6",
+                "url": "https://api.github.com/repos/jankx/template/zipball/680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1",
+                "reference": "680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2020-10-22T02:33:03+00:00"
+            "time": "2020-10-23T20:58:35+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -421,18 +421,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "2674de61697920efd4f7b939b3c496efcb2683a5"
+                "reference": "95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/2674de61697920efd4f7b939b3c496efcb2683a5",
-                "reference": "2674de61697920efd4f7b939b3c496efcb2683a5",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e",
+                "reference": "95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Ramphor\\FriendlyNumbers\\": "src/FriendlyNumbers/"
+                    "Ramphor\\FriendlyNumbers\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -446,7 +446,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2020-09-05T16:06:31+00:00"
+            "time": "2020-10-24T04:58:49+00:00"
         },
         {
             "name": "ramphor/locations",
@@ -532,12 +532,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/plugin-core.git",
-                "reference": "fd1f719cb25ef2e32b240ed0bb45973f698276a6"
+                "reference": "491e63cf684dbdb0249ab08b0944ea573280a506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/plugin-core/zipball/fd1f719cb25ef2e32b240ed0bb45973f698276a6",
-                "reference": "fd1f719cb25ef2e32b240ed0bb45973f698276a6",
+                "url": "https://api.github.com/repos/ramphor/plugin-core/zipball/491e63cf684dbdb0249ab08b0944ea573280a506",
+                "reference": "491e63cf684dbdb0249ab08b0944ea573280a506",
                 "shasum": ""
             },
             "type": "library",
@@ -557,7 +557,7 @@
                 }
             ],
             "description": "The core of plugins are developed by The Ramphor Premium",
-            "time": "2020-10-23T08:29:06+00:00"
+            "time": "2020-10-23T12:24:14+00:00"
         },
         {
             "name": "ramphor/post-views",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "767e852ee065232d845cc38bbdd01438561e3582"
+                "reference": "559ea9736e356e36b352ee9c754020878f47c5c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/767e852ee065232d845cc38bbdd01438561e3582",
-                "reference": "767e852ee065232d845cc38bbdd01438561e3582",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/559ea9736e356e36b352ee9c754020878f47c5c0",
+                "reference": "559ea9736e356e36b352ee9c754020878f47c5c0",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2020-10-23T08:10:55+00:00"
+            "time": "2020-10-23T18:07:28+00:00"
         },
         {
             "name": "ramphor/wallery",
