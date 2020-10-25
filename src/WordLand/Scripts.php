@@ -47,10 +47,11 @@ class Scripts
     {
         global $wp_styles;
 
-        if (isset($wp_styles->registered['animate.css'])) {
-            wp_enqueue_style('animate.css');
+        $deps = array();
+        if (isset($wp_styles->registered['hover'])) {
+            array_push($deps, 'hover');
         }
-        wp_register_style(static::HANDLER_NAME, $this->asset_url('css/wordland.css'), array(), WordLand::$version);
+        wp_register_style(static::HANDLER_NAME, $this->asset_url('css/wordland.css'), $deps, WordLand::$version);
         wp_enqueue_style(static::HANDLER_NAME);
     }
 }

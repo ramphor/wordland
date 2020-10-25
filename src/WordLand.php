@@ -8,7 +8,11 @@ use WordLand\AjaxRequestManager;
 use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
+use WordLand\Cache;
+use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
+use Ramphor\FriendlyNumbers\Parser;
+use Ramphor\FriendlyNumbers\Locale;
 
 class WordLand
 {
@@ -106,8 +110,18 @@ class WordLand
         );
 
         if (class_exists(UserProfile::class)) {
-            UserProfile::getInstance();
+            $userTemplatesDir = sprintf('%s/templates/', WORDLAND_ABSPATH);
+            $profileTemplateLoader = Template::getLoader(
+                $userTemplatesDir,
+                apply_filters('wordland_user_profile_template_directory', 'wordland/user'),
+                'wordpress'
+            );
+            $userProfile = UserProfile::getInstance();
+            $userProfile->registerTemplate('wordland', $profileTemplateLoader);
         }
+
+        // Unit locale for number parser
+        Parser::init(new Locale(get_locale()));
     }
 
     public function plugin_path()

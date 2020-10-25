@@ -1,4 +1,6 @@
 <?php
+use WordLand\Cache;
+
 /******************************************
  ** Create property loop layout
  ******************************************/
@@ -45,3 +47,57 @@ function wordand_render_property_thumbnail_image()
     ));
 }
 add_action('wordland_before_loop_property_name', 'wordand_render_property_thumbnail_image');
+
+
+function wordland_render_property_metas()
+{
+    $supported_metas = Cache::getPropertyMetas();
+    if (empty($supported_metas)) {
+        return;
+    }
+
+    global $property;
+
+    wordland_template('loop/meta-open-wrapper', array());
+    foreach ($supported_metas as $meta => $label) {
+        wordland_template("loop/meta/{$meta}", array(
+            'meta_value' => $property->getMeta($meta),
+            'label' => $label
+        ));
+    }
+    wordland_template('loop/meta-close-wrapper', array());
+}
+add_action('wordland_after_loop_property_name', 'wordland_render_property_metas');
+
+
+function wordland_render_property_footer_items()
+{
+    $footerItems = Cache::getPropertyFooterItems();
+    if (empty($footerItems)) {
+        return;
+    }
+    wordland_template('loop/footer-open-wrapper', array());
+    foreach ($footerItems as $key => $args) {
+        wordland_template('loop/footer/' . $key, array(
+            'args' => $args,
+        ));
+    }
+    wordland_template('loop/footer-close-wrapper', array());
+}
+add_action('wordland_after_loop_property', 'wordland_render_property_footer_items');
+
+function wordland_property_user_action_share($label)
+{
+    wordland_template('loop/footer/share', array(
+        'label' => $label,
+    ));
+}
+add_action('wordland_property_user_action_share', 'wordland_property_user_action_share');
+
+function wordland_property_user_action_favorite($label)
+{
+    wordland_template('loop/footer/favorite', array(
+        'label' => $label,
+    ));
+}
+add_action('wordland_property_user_action_favorite', 'wordland_property_user_action_favorite');

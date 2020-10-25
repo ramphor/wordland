@@ -6,6 +6,7 @@ use Jankx\Template\Template as TemplateLib;
 class Template
 {
     protected static $loader;
+    protected static $userProfileLoader;
 
     public static function getLoader()
     {
