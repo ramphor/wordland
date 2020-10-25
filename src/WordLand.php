@@ -110,14 +110,17 @@ class WordLand
         );
 
         if (class_exists(UserProfile::class)) {
-            $userTemplatesDir = sprintf('%s/templates/', WORDLAND_ABSPATH);
+            $userTemplatesDir = sprintf('%s/templates/user', WORDLAND_ABSPATH);
             $profileTemplateLoader = Template::getLoader(
                 $userTemplatesDir,
                 apply_filters('wordland_user_profile_template_directory', 'wordland/user'),
                 'wordpress'
             );
             $userProfile = UserProfile::getInstance();
-            $userProfile->registerTemplate('wordland', $profileTemplateLoader);
+            $userProfile->registerTemplate(
+                'wordland',
+                $profileTemplateLoader
+            );
         }
 
         // Unit locale for number parser

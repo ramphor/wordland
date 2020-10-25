@@ -22,14 +22,14 @@ class Cache
     {
         if (is_null(static::$propertyFooterItems)) {
             static::$propertyFooterItems = apply_filters('wordland_property_cache_footer_items', array(
+                'user_info' => array(
+                    'type' => 'agent', // Support agent, user, develop, company, brand,
+                    'default_image' => ''
+                ),
                 'user_actions' => array(
                     'share' => __('Share', 'wordland'),
                     'favorite' => __('Favorite', 'wordland'),
                     'compare' => __('Compare', 'wordland')
-                ),
-                'user_info' => array(
-                    'type' => 'agent', // Support agent, user, develop, company, brand,
-                    'default_image' => ''
                 ),
                 'metas' => array(),
             ));
