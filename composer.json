@@ -27,11 +27,11 @@
     },
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "": "includes/"
         },
         "files": [
-            "./src/wordland-functions.php",
-            "./src/WordLand.php"
+            "./includes/wordland-functions.php",
+            "./includes/WordLand.php"
         ]
     }
 }
