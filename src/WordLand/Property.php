@@ -14,6 +14,7 @@ class Property extends Data
     public $unitPrice;
     public $size;
 
+    protected $style;
 
     public $metas = array(
         'clean_price' => null,
@@ -100,5 +101,15 @@ class Property extends Data
             array_get($parsed, 'value', 0),
             array_get($parsed, 'unit', $this->getSizeUnit())
         );
+    }
+
+    public function setStyle($style)
+    {
+        $this->style = $style;
+    }
+
+    public function getStyle()
+    {
+        return $this->style;
     }
 }

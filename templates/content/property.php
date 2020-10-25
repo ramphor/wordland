@@ -2,6 +2,7 @@
 // Ensure visibility.
 if (empty($property) || ! $property->is_visible()) {
     return;
+    $property->setStyle($style);
 }
 ?>
 <li <?php post_class(array(
