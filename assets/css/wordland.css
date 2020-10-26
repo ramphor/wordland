@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Qikicons Real Estate';
+    src: local('Qikicons Real Estate'), local('QikiconsRealEstate'),
+        url('../fonts/QikiconsRealEstate.woff2') format('woff2'),
+        url('../fonts/QikiconsRealEstate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.wordland-tabs {
+    display: flex;
+    width: 100%;
+}
+
+.wordland-list {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.wordland-property {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.wordland-property .property-thumbnail {
+    overflow: hidden;
+    height: 190px;
+}
+
+.wordland-property .property-thumbnail a {
+    display: block;
+    height: 100%;
+}
+
+.wordland-property .property-thumbnail img {
+    object-fit: cover;
+    height: 100%;
+    width: auto;
+}
+
+.wordland-property .property-metas {
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.wordland-property .property-metas > li{
+    padding: 5px;
+}
+
+.wordland-property .property-metas .goto-detail {
+    flex: 1;
+    text-align: right;
+}
+
+.wordland-property .property-footer {
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.property-footer >div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.property-footer .user-info {
+    display: flex;
+}
+
+.property-footer .user-info .user-image {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.property-footer .user-actions {
+    flex: 1;
+    text-align: right;
+}
+
+.wordland-tabs .tab a, .wordland-tabs .tab span {
+    display: block;
+    padding: 5px 20px
+}
+
+.wordland-list .wordland-property .other-features {
+    padding: 20px;
+}
+
+@media(min-width: 768px) {
+    .wordland-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .wordland-list.columns-2 .wordland-property {
+        width: 50%;
+    }
+
+    .wordland-list.columns-4 .wordland-property {
+        width: 50%;
+    }
+
+    .wordland-list .wordland-property.horizontal-card-style .propery-inner {
+        display: flex;
+    }
+    .wordland-list .wordland-property.horizontal-card-style .featured-block {
+        flex: 2;
+    }
+    .wordland-list .wordland-property.horizontal-card-style .other-features {
+        flex: 3;
+    }
+}
+
+@media(min-width: 992px) {
+    .wordland-list.columns-2 .wordland-property {
+        width: 50%;
+    }
+
+    .wordland-list.columns-4 .wordland-property {
+        width: 25%;
+    }
+}

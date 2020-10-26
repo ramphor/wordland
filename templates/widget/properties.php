@@ -1,8 +1,15 @@
 <div class="wordland-property-listing">
     <?php echo $header; ?>
 
-    <?php if ($wp_query->have_posts()) : ?>
-        <?php do_action('wordland_before_loop'); ?>
+    <?php if ($wp_query->have_posts()) :
+        if (!isset($columns)) {
+            $columns = $style === 'horizontal-card' ? 2 : 4;
+        }
+    ?>
+        <?php do_action('wordland_before_loop', array(
+            'style' => $style,
+            'columns' => $columns
+        )); ?>
 
         <?php while ($wp_query->have_posts()) : ?>
             <?php $wp_query->the_post(); ?>

@@ -13,13 +13,19 @@
         display: flex;
         flex-wrap: wrap;
     }
-    .wordland-list.columns-4 .property {
+    .wordland-list.columns-2 .wordland-property {
+        width: 50%;
+    }
+    .wordland-list.columns-4 .wordland-property {
         width: 50%;
     }
 }
 
 @media(min-width: 992px) {
-    .wordland-list.columns-4 .property {
+    .wordland-list.columns-2 .wordland-property {
+        width: 50%;
+    }
+    .wordland-list.columns-4 .wordland-property {
         width: 25%;
     }
 }

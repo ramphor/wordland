@@ -1,9 +1,6 @@
-<div class="property_agent_wrapper">
-	<div class="property_agent_image">
-		<img src="https://wpresidence.b-cdn.net/wp-content/uploads/2017/11/profile-9-120x120.jpg" alt="">
+<div class="user-info">
+	<div class="user-image">
+		<?php echo get_avatar($user->ID, 32) ?>
 	</div>
-	<div class="property_agent_image_sign">
-		<i class="far fa-user-circle"></i>
-	</div>
-	<a href="https://wpresidence.net/agents/jess-lee/" tabindex="-1">Jess Lee</a>
+	<?php echo get_the_author_posts_link(); ?>
 </div>

@@ -9,13 +9,15 @@ if (empty($property) || ! $property->is_visible()) {
     'wordland-property',
     sprintf('%s-style', $style)
 )); ?>>
-    <?php do_action('wordland_before_loop_property'); ?>
+    <div class="propery-inner">
+    	<?php do_action('wordland_before_loop_property'); ?>
 
-    <?php do_action('wordland_before_loop_property_name'); ?>
+	    <?php do_action('wordland_before_loop_property_name'); ?>
 
-    <?php do_action('wordland_loop_property_name'); ?>
+	    <?php do_action('wordland_loop_property_name'); ?>
 
-    <?php do_action('wordland_after_loop_property_name'); ?>
+	    <?php do_action('wordland_after_loop_property_name'); ?>
 
-    <?php do_action('wordland_after_loop_property'); ?>
+	    <?php do_action('wordland_after_loop_property'); ?>
+    </div>
 </li>

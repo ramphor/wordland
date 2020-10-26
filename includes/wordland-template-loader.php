@@ -4,9 +4,12 @@ use WordLand\Cache;
 /******************************************
  ** Create property loop layout
  ******************************************/
-function wordland_before_loop_wrapper_open()
+function wordland_before_loop_wrapper_open($args = array())
 {
-    $columns = apply_filters('wordland_property_list_columns', 4);
+    $args = wp_parse_args($args, array(
+        'columns' => 4,
+    ));
+    $columns = apply_filters('wordland_property_list_columns', $args['columns']);
     $loop_wrap_attributes = array(
         'class' => apply_filters('wordland_loop_wrapper_classes', array(
             'wordland-list',
@@ -29,6 +32,32 @@ add_action('wordland_end_loop', 'wordland_end_loop_wrapper_close');
 /******************************************
  ** Create property loop item content
  ******************************************/
+// Start layout
+function wordland_open_property_featured_block() {
+    ?>
+    <div class="featured-block">
+    <?php
+}
+add_action('wordland_before_loop_property', 'wordland_open_property_featured_block', 5);
+
+function wordland_close_property_featured_block() {
+    echo '</div>';
+}
+add_action('wordland_before_loop_property_name', 'wordland_close_property_featured_block', 15);
+
+
+function wordland_open_property_other_features() {
+    ?>
+    <div class="other-features">
+    <?php
+}
+add_action('wordland_before_loop_property_name', 'wordland_open_property_other_features', 20);
+
+function wordland_close_property_other_features() {
+    echo '</div>';
+}
+add_action('wordland_after_loop_property', 'wordland_close_property_other_features', 35);
+// End layout
 
 function wordland_render_property_name()
 {
@@ -78,9 +107,20 @@ function wordland_render_property_footer_items()
     }
     wordland_template('loop/footer-open-wrapper', array());
     foreach ($footerItems as $key => $args) {
-        wordland_template('loop/footer/' . $key, array(
+        $data = array(
             'args' => $args,
-        ));
+        );
+        if ($key === 'user_info') {
+            $data['user'] = get_user_by( 'ID', get_the_author_meta('ID') );
+            if (is_a($data['user'], \WP_User::class)) {
+                // Remove secure user infos
+                unset(
+                    $data['user']->data->user_pass,
+                    $data['user']->data->user_email
+                );
+            }
+        }
+        wordland_template('loop/footer/' . $key, $data);
     }
     wordland_template('loop/footer-close-wrapper', array());
 }
@@ -93,6 +133,7 @@ function wordland_property_user_action_share($label)
     ));
 }
 add_action('wordland_property_user_action_share', 'wordland_property_user_action_share');
+
 
 function wordland_property_user_action_favorite($label)
 {
