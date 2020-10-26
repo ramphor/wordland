@@ -77,6 +77,17 @@ function wordand_render_property_thumbnail_image()
 }
 add_action('wordland_before_loop_property_name', 'wordand_render_property_thumbnail_image');
 
+function wordland_render_property_description() {
+    global $property;
+    if (!apply_filters('wordland_loop_property_show_description', $property->getStyle() === 'horizontal-card')) {
+        return;
+    }
+
+    wordland_template('loop/property-desc', array(
+        'description' => $property->description,
+    ));
+}
+add_action('wordland_after_loop_property_name', 'wordland_render_property_description');
 
 function wordland_render_property_metas()
 {

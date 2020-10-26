@@ -38,6 +38,7 @@ class PropertyBuilder extends DataBuilder
             'the_title',
             $this->originalPost->post_title
         );
+        $this->property->description = get_the_excerpt($this->originalPost);
     }
 
     public function build()

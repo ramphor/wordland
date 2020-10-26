@@ -72,6 +72,11 @@
     display: flex;
 }
 
+.wordland-property .other-features .desc {
+    line-height: 20px;
+    margin-top: 5px;
+}
+
 .property-footer .user-info .user-image {
     height: 32px;
     width: 32px;
