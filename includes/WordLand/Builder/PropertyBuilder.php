@@ -9,6 +9,7 @@ class PropertyBuilder extends DataBuilder
 {
     protected $property;
     protected $originalPost;
+    protected $isBuildContent;
 
     public function __construct()
     {
@@ -39,6 +40,12 @@ class PropertyBuilder extends DataBuilder
             $this->originalPost->post_title
         );
         $this->property->description = get_the_excerpt($this->originalPost);
+        if ($this->isBuildContent) {
+            $this->property->content = apply_filters(
+                'the_content',
+                $this->originalPost->post_content
+            );
+        }
     }
 
     public function build()

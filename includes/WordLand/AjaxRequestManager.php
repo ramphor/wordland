@@ -272,27 +272,29 @@ class AjaxRequestManager
 
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
+
         wp_send_json_success($markers);
     }
 
     public function getProperty()
     {
-		$payload = json_decode(file_get_contents('php://input'), true);
+        $payload = json_decode(file_get_contents('php://input'), true);
 
         if (!isset($payload['property_id'])) {
             return wp_send_json_error(__('The property ID is invalid to get data', 'wordland'));
         }
 
-		$property_id = $payload['property_id'];
-		$post = get_post($property_id);
-		if (!$post) {
-			return wp_send_json_error(array(
-				'message' => sprintf(__('The property #%d is not exists', 'wordland'), $property_id),
-			));
-		}
+        $property_id = $payload['property_id'];
+        $post = get_post($property_id);
+        if (!$post) {
+            return wp_send_json_error(array(
+                'message' => sprintf(__('The property #%d is not exists', 'wordland'), $property_id),
+            ));
+        }
 
-		$builder = PropertyBuilderManager::getBuilder();
+        $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);
+        $builder->enableGetContent();
         $builder->build();
 
         return wp_send_json_success($builder->getProperty());

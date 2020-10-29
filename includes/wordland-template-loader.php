@@ -33,27 +33,31 @@ add_action('wordland_end_loop', 'wordland_end_loop_wrapper_close');
  ** Create property loop item content
  ******************************************/
 // Start layout
-function wordland_open_property_featured_block() {
+function wordland_open_property_featured_block()
+{
     ?>
     <div class="featured-block">
     <?php
 }
 add_action('wordland_before_loop_property', 'wordland_open_property_featured_block', 5);
 
-function wordland_close_property_featured_block() {
+function wordland_close_property_featured_block()
+{
     echo '</div>';
 }
 add_action('wordland_before_loop_property_name', 'wordland_close_property_featured_block', 15);
 
 
-function wordland_open_property_other_features() {
+function wordland_open_property_other_features()
+{
     ?>
     <div class="other-features">
     <?php
 }
 add_action('wordland_before_loop_property_name', 'wordland_open_property_other_features', 20);
 
-function wordland_close_property_other_features() {
+function wordland_close_property_other_features()
+{
     echo '</div>';
 }
 add_action('wordland_after_loop_property', 'wordland_close_property_other_features', 35);
@@ -77,7 +81,8 @@ function wordand_render_property_thumbnail_image()
 }
 add_action('wordland_before_loop_property_name', 'wordand_render_property_thumbnail_image');
 
-function wordland_render_property_description() {
+function wordland_render_property_description()
+{
     global $property;
     if (!apply_filters('wordland_loop_property_show_description', $property->getStyle() === 'horizontal-card')) {
         return;
@@ -122,7 +127,7 @@ function wordland_render_property_footer_items()
             'args' => $args,
         );
         if ($key === 'user_info') {
-            $data['user'] = get_user_by( 'ID', get_the_author_meta('ID') );
+            $data['user'] = get_user_by('ID', get_the_author_meta('ID'));
             if (is_a($data['user'], \WP_User::class)) {
                 // Remove secure user infos
                 unset(

@@ -11,6 +11,7 @@ class Property extends Data
     public $ID;
     public $name;
     public $description;
+    public $content;
     public $price;
     public $unitPrice;
     public $size;
