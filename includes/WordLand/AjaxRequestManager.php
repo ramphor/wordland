@@ -2,6 +2,7 @@
 namespace WordLand;
 
 use WordLand\Query\PropertyQuery;
+use WordLand\Manager\PropertyBuilderManager;
 
 class AjaxRequestManager
 {
@@ -276,8 +277,24 @@ class AjaxRequestManager
 
     public function getProperty()
     {
-        if (!isset($_REQUEST['property_id'])) {
+		$payload = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($payload['property_id'])) {
             return wp_send_json_error(__('The property ID is invalid to get data', 'wordland'));
         }
+
+		$property_id = $payload['property_id'];
+		$post = get_post($property_id);
+		if (!$post) {
+			return wp_send_json_error(array(
+				'message' => sprintf(__('The property #%d is not exists', 'wordland'), $property_id),
+			));
+		}
+
+		$builder = PropertyBuilderManager::getBuilder();
+        $builder->setPost($post);
+        $builder->build();
+
+        return wp_send_json_success($builder->getProperty());
     }
 }
