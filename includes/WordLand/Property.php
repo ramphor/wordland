@@ -12,9 +12,10 @@ class Property extends Data
     public $name;
     public $description;
     public $content;
-    public $price;
-    public $unitPrice;
-    public $size;
+    public $price = 0;
+    public $unitPrice = 0;
+    public $size = 0;
+    public $images = array();
 
     protected $style;
 
