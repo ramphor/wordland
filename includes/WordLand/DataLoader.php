@@ -32,6 +32,9 @@ class DataLoader
             return;
         }
         $builder = PropertyBuilderManager::getBuilder();
+
+        var_dump($builder);
+        die;
         $builder->setPost($post);
         $builder->build();
 

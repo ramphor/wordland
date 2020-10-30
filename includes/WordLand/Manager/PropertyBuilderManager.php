@@ -2,11 +2,11 @@
 namespace WordLand\Manager;
 
 use WordLand\Builder\PropertyBuilder;
-use WordLand\Constracts\DataBuilder;
+use WordLand\Constracts\PropertyBuilder as PropertyBuilderConstract;
 
 class PropertyBuilderManager
 {
-    protected static $propertyBuilder = PropertyBuilder::class;
+    protected static $propertyBuilder;
 
     public static function getBuilder($post = null)
     {
@@ -15,8 +15,10 @@ class PropertyBuilderManager
         }
         $builderClass = apply_filters('wordland_get_property_builder', PropertyBuilder::class, $post);
         $builder = new $builderClass($post);
-        if (is_a($builder, DataBuilder::class)) {
+        if (is_a($builder, PropertyBuilderConstract::class)) {
             static::$propertyBuilder = $builder;
+        } else {
+            static::$propertyBuilder = new PropertyBuilder($post);
         }
         return static::$propertyBuilder;
     }

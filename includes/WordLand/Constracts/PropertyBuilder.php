@@ -1,9 +1,9 @@
 <?php
 namespace WordLand\Constracts;
 
-interface DataBuilder
+interface PropertyBuilder
 {
-    public function build();
-
     public function setPost($post);
+
+    public function loadImages();
 }
