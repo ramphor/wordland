@@ -33,6 +33,7 @@ class DataLoader
         }
         $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);
+        $builder->buildContent();
         $builder->build();
 
         $property = $builder->getProperty();
