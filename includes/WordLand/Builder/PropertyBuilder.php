@@ -9,7 +9,6 @@ class PropertyBuilder extends DataBuilder
 {
     protected $property;
     protected $originalPost;
-    protected $isBuildContent;
 
     public function __construct()
     {
@@ -40,17 +39,20 @@ class PropertyBuilder extends DataBuilder
             $this->originalPost->post_title
         );
         $this->property->description = get_the_excerpt($this->originalPost);
-        if ($this->isBuildContent) {
-            $this->property->content = apply_filters(
-                'the_content',
-                $this->originalPost->post_content
-            );
-        }
     }
 
+    // The alias of buildBaseData
     public function build()
     {
         $this->buildBaseData();
+    }
+
+    public function buildContent()
+    {
+        $this->property->content = apply_filters(
+            'the_content',
+            $this->originalPost->post_content
+        );
     }
 
     public function getProperty()
@@ -58,6 +60,6 @@ class PropertyBuilder extends DataBuilder
         if (!$this->property->ID) {
             return;
         }
-        return $this->property;
+        return apply_filters_ref_array('wordland_builder_get_property', array(&$this->property, $this));
     }
 }

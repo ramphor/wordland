@@ -294,8 +294,8 @@ class AjaxRequestManager
 
         $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);
-        $builder->enableGetContent();
         $builder->build();
+        $builder->buildContent();
 
         return wp_send_json_success($builder->getProperty());
     }

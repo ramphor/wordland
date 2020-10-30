@@ -6,8 +6,7 @@ use WordLand\Constracts\DataBuilder;
 
 class PropertyBuilderManager
 {
-    protected static $propertyBuilder;
-
+    protected static $propertyBuilder = PropertyBuilder::class;
 
     public static function getBuilder($post = null)
     {

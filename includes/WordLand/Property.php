@@ -12,10 +12,23 @@ class Property extends Data
     public $name;
     public $description;
     public $content;
+    public $address;
     public $price = 0;
     public $unitPrice = 0;
     public $size = 0;
     public $images = array();
+
+    public $category = null;
+    public $categories = array();
+    public $type = null;
+    public $types = array();
+
+    /**
+     * The property location
+     *
+     * @var \WordLand\GeoLocation
+     */
+    public $geolocation = null;
 
     protected $style;
 
