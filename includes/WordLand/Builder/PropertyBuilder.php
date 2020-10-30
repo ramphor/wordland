@@ -20,12 +20,4 @@ class PropertyBuilder extends PropertyBuilderAbstract
     public function loadImages()
     {
     }
-
-    public function getProperty()
-    {
-        if (!$this->property->ID) {
-            return;
-        }
-        return apply_filters_ref_array('wordland_builder_get_property', array(&$this->property, $this));
-    }
 }

@@ -6,9 +6,15 @@ use WordLand\Property;
 
 abstract class PropertyBuilderAbstract implements PropertyBuilder
 {
-    public function __construct()
+    protected $property;
+    protected $originalPost;
+
+    public function __construct($post = null)
     {
         $this->reset();
+        if ($post) {
+            $this->setPost($post);
+        }
     }
 
     public function reset()
@@ -18,9 +24,11 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
     public function setPost($post)
     {
-        if (!is_a($post, WP_Post::class)) {
+
+        if (!is_a($post, \WP_Post::class)) {
             return;
         }
+
         $this->originalPost = $post;
     }
 
@@ -42,5 +50,13 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
     public function build()
     {
         $this->buildBaseData();
+    }
+
+    public function getProperty()
+    {
+        if (!$this->property->ID) {
+            return;
+        }
+        return apply_filters_ref_array('wordland_builder_get_property', array(&$this->property, $this));
     }
 }

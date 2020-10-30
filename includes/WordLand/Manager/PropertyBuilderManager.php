@@ -11,7 +11,7 @@ class PropertyBuilderManager
     public static function getBuilder($post = null)
     {
         if (is_null($post)) {
-            $post = $GLOBALS['post'];
+            global $post;
         }
         $builderClass = apply_filters('wordland_get_property_builder', PropertyBuilder::class, $post);
         $builder = new $builderClass($post);
