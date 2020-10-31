@@ -6,4 +6,6 @@ interface PropertyBuilder
     public function setPost($post);
 
     public function loadImages();
+
+    public function getGeoLocation();
 }

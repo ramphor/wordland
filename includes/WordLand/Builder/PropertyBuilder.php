@@ -20,4 +20,8 @@ class PropertyBuilder extends PropertyBuilderAbstract
     public function loadImages()
     {
     }
+
+    public function getGeoLocation()
+    {
+    }
 }

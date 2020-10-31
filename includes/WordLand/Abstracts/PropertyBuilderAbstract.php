@@ -57,6 +57,11 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if (!$this->property->ID) {
             return;
         }
-        return apply_filters_ref_array('wordland_builder_get_property', array(&$this->property, $this));
+
+        return apply_filters(
+            'wordland_builder_get_property',
+            $this->property,
+            $this
+        );
     }
 }
