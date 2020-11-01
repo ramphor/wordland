@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9dd0b611be062a0667de2f6908f09d1",
+    "content-hash": "b8abd881d81f0598084adc6fccb42e42",
     "packages": [
         {
             "name": "hybridauth/hybridauth",
@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1"
+                "reference": "f0c43ba5f01548252850dbb309cf4e08624a140d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1",
-                "reference": "680b12b2bcd6b0fc0a0a5e9e259652ffa17b84b1",
+                "url": "https://api.github.com/repos/jankx/template/zipball/f0c43ba5f01548252850dbb309cf4e08624a140d",
+                "reference": "f0c43ba5f01548252850dbb309cf4e08624a140d",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2020-10-23T20:58:35+00:00"
+            "time": "2020-10-25T13:16:06+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -421,12 +421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e"
+                "reference": "166010be42dd7884b6a9a0b7e3ee1bfd66469c19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e",
-                "reference": "95d6c4c9a71e44d699ad90ff0e5ddef50fd2086e",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/166010be42dd7884b6a9a0b7e3ee1bfd66469c19",
+                "reference": "166010be42dd7884b6a9a0b7e3ee1bfd66469c19",
                 "shasum": ""
             },
             "type": "library",
@@ -446,7 +446,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2020-10-24T04:58:49+00:00"
+            "time": "2020-10-25T02:51:43+00:00"
         },
         {
             "name": "ramphor/locations",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "559ea9736e356e36b352ee9c754020878f47c5c0"
+                "reference": "6311ba6a8d26c6c1969a731f68adab35312c9e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/559ea9736e356e36b352ee9c754020878f47c5c0",
-                "reference": "559ea9736e356e36b352ee9c754020878f47c5c0",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/6311ba6a8d26c6c1969a731f68adab35312c9e19",
+                "reference": "6311ba6a8d26c6c1969a731f68adab35312c9e19",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2020-10-23T18:07:28+00:00"
+            "time": "2020-10-25T09:16:41+00:00"
         },
         {
             "name": "ramphor/wallery",
@@ -662,6 +662,39 @@
             ],
             "description": "WordPress gallery for meta box and frontend post",
             "time": "2020-09-15T05:14:51+00:00"
+        },
+        {
+            "name": "ramphor/wordpress-posts-collection",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/wordpress-posts-collection.git",
+                "reference": "a6fb889fe96482f353f91d505ce5dbdae95e89d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/a6fb889fe96482f353f91d505ce5dbdae95e89d7",
+                "reference": "a6fb889fe96482f353f91d505ce5dbdae95e89d7",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Create posts and post types collection for WordPress",
+            "time": "2020-11-01T13:20:17+00:00"
         }
     ],
     "packages-dev": [],
@@ -679,7 +712,8 @@
         "puleeno/schema-org": 20,
         "puleeno/paypress": 20,
         "ramphor/post-views": 20,
-        "ramphor/plugin-core": 20
+        "ramphor/plugin-core": 20,
+        "ramphor/wordpress-posts-collection": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
