@@ -49,6 +49,9 @@ class PropertyQuery extends BaseQuery
         if (isset($rawArgs['limit'])) {
             $args['posts_per_page'] = $rawArgs['limit'];
         }
+        if (isset($rawArgs['page'])) {
+            $args['paged'] = $rawArgs['page'];
+        }
 
         return wp_parse_args($args, array(
             'post_type' => 'property',

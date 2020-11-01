@@ -195,6 +195,13 @@ class AjaxRequestManager
      */
     public function filterProperties()
     {
+        $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
+        if (is_array($request)) {
+            $request = array_merge($request, $_REQUEST);
+        } else {
+            $request = $_REQUEST;
+        }
+
         if (is_null(static::$markerMappingFields)) {
             static::$properyMappingFields = apply_filters(
                 'wordland_setup_filter_properties_mapping_fields',
@@ -206,7 +213,7 @@ class AjaxRequestManager
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         add_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
 
-        $current_page = 1;
+        $current_page = isset($request['page']) && $request['page'] > 0 ? (int) $request['page'] : 1;
         $items_per_page = 40;
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'page' => $current_page,
