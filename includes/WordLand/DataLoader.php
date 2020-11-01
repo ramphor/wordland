@@ -3,6 +3,7 @@ namespace WordLand;
 
 use WordLand\Manager\PropertyBuilderManager;
 use WordLand\Property;
+use WordLand\GeoLocation;
 
 class DataLoader
 {
@@ -19,6 +20,7 @@ class DataLoader
     private function __construct()
     {
         add_action('the_post', array($this, 'buildPropertyFromPost'));
+        add_action('the_post', array($this, 'setupSingleProperty'), 15, 2);
     }
 
     public function buildPropertyFromPost($post)
@@ -49,5 +51,37 @@ class DataLoader
     {
         $post = get_post($propertyID);
         return $this->buildPropertyFromPost($post);
+    }
+
+    // Create property data for single property page
+    public function setupSingleProperty($post, $query)
+    {
+        if ($query->is_single()
+            && in_array(
+                $post->post_type,
+                apply_filters('wordland_property_types', array('property'))
+            )
+        ) {
+            global $property, $wpdb;
+            $sql = $wpdb->prepare(
+                "SELECT wpro.ID, wpro.property_id, wpro.price, wpro.bedrooms, wpro.bathrooms,
+                    wpro.unit_price, wpro.size, ST_X(wpro.location) as latitude, ST_Y(wpro.location) as longitude
+                FROM {$wpdb->prefix}wordland_properties wpro
+                WHERE property_id=%d LIMIT 1",
+                $post->ID,
+            );
+            $propertyData = $wpdb->get_row($sql);
+            if ($propertyData && is_a($property, Property::class)) {
+                $property->price = $propertyData->price;
+                $property->unitPrice = $propertyData->unit_price;
+                $property->size = $propertyData->size;
+                $property->bathrooms = $propertyData->bathrooms;
+                $property->bedrooms = $propertyData->bedrooms;
+
+                if (is_numeric($propertyData->latitude) || is_numeric($propertyData->longitude)) {
+                    $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
+                }
+            }
+        }
     }
 }

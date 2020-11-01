@@ -16,6 +16,8 @@ class Property extends Data
     public $price = 0;
     public $unitPrice = 0;
     public $size = 0;
+    public $bathroom = 0;
+    public $bedrooms = 0;
     public $images = array();
 
     public $category = null;
