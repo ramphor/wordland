@@ -67,7 +67,7 @@ class DataLoader
         }
     }
 
-    public static function createPropertyCustomData($propertyID, $property)
+    public static function createPropertyCustomData($propertyID, &$property)
     {
         // When $proprety is not \WordLand\Property does't do any actions
         if (!is_a($property, Property::class)) {
@@ -94,5 +94,7 @@ class DataLoader
                 $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
             }
         }
+
+        return $property;
     }
 }
