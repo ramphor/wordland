@@ -62,25 +62,36 @@ class DataLoader
                 apply_filters('wordland_property_types', array('property'))
             )
         ) {
-            global $property, $wpdb;
-            $sql = $wpdb->prepare(
-                "SELECT wpro.ID, wpro.property_id, wpro.price, wpro.bedrooms, wpro.bathrooms,
-                    wpro.unit_price, wpro.size, ST_X(wpro.location) as latitude, ST_Y(wpro.location) as longitude
-                FROM {$wpdb->prefix}wordland_properties wpro
-                WHERE property_id=%d LIMIT 1",
-                $post->ID,
-            );
-            $propertyData = $wpdb->get_row($sql);
-            if ($propertyData && is_a($property, Property::class)) {
-                $property->price = $propertyData->price;
-                $property->unitPrice = $propertyData->unit_price;
-                $property->size = $propertyData->size;
-                $property->bathrooms = $propertyData->bathrooms;
-                $property->bedrooms = $propertyData->bedrooms;
+            global $property;
+            static::createPropertyCustomData($post->ID, $property);
+        }
+    }
 
-                if (is_numeric($propertyData->latitude) || is_numeric($propertyData->longitude)) {
-                    $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
-                }
+    public static function createPropertyCustomData($propertyID, $property)
+    {
+        // When $proprety is not \WordLand\Property does't do any actions
+        if (!is_a($property, Property::class)) {
+            return;
+        }
+
+        global $wpdb;
+        $sql = $wpdb->prepare(
+            "SELECT wpro.ID, wpro.property_id, wpro.price, wpro.bedrooms, wpro.bathrooms,
+                wpro.unit_price, wpro.size, ST_X(wpro.location) as latitude, ST_Y(wpro.location) as longitude
+            FROM {$wpdb->prefix}wordland_properties wpro
+            WHERE property_id=%d LIMIT 1",
+            $propertyID,
+        );
+        $propertyData = $wpdb->get_row($sql);
+        if ($propertyData) {
+            $property->price = $propertyData->price;
+            $property->unitPrice = $propertyData->unit_price;
+            $property->size = $propertyData->size;
+            $property->bathrooms = $propertyData->bathrooms;
+            $property->bedrooms = $propertyData->bedrooms;
+
+            if (is_numeric($propertyData->latitude) || is_numeric($propertyData->longitude)) {
+                $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
             }
         }
     }
