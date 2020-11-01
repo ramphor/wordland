@@ -19,6 +19,14 @@ class PostTypes
     {
     }
 
+    public static function get() {
+        return apply_filters(
+            'wordland_property_types', array(
+                static::PROPERTY_POST_TYPE
+            )
+        );
+    }
+
     public function registerPostTypes()
     {
         $labels = array(
@@ -93,7 +101,8 @@ class PostTypes
         );
         register_taxonomy(
             'listing_type',
-            apply_filters('wordland_listing_type_post_types', array( static::PROPERTY_POST_TYPE )),
+            apply_filters('wordland_list
+            ing_type_post_types', array( static::PROPERTY_POST_TYPE )),
             apply_filters(
                 'wordland_taxonomy_category_args',
                 array(
