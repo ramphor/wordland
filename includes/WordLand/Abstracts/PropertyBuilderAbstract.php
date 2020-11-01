@@ -38,7 +38,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if (is_null($this->originalPost)) {
             return;
         }
-        $this->property->ID = $this->originalPost->ID;
+        $this->property->ID = (int)$this->originalPost->ID;
         $this->property->name = apply_filters(
             'the_title',
             $this->originalPost->post_title

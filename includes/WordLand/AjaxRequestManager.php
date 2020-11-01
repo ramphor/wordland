@@ -269,9 +269,16 @@ class AjaxRequestManager
         $wp_query = $this->buildQuery($this->filterQueries());
         $markers = array();
         if ($wp_query->have_posts()) {
+            $index = 0;
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
-                $markers[] = $this->filterData($wp_query->post, static::$markerMappingFields);
+                $markers[$index] = $this->filterData($wp_query->post, static::$markerMappingFields);
+                $markers[$index]['thumbnail_url'] = wp_get_attachment_image_url(
+                    get_post_thumbnail_id($wp_query->post),
+                    'thumbnail',
+                );
+
+                $index += 1;
             }
         }
 

@@ -1,12 +1,13 @@
 <?php
 namespace WordLand;
 
+use JsonSerializable;
 use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Scale;
 use Ramphor\FriendlyNumbers\Locale;
 
-class Property extends Data
+class Property extends Data implements JsonSerializable
 {
     public $ID;
     public $name;
@@ -129,5 +130,29 @@ class Property extends Data
     public function getStyle()
     {
         return $this->style;
+    }
+
+    public function jsonSerialize()
+    {
+        $data = array(
+            'ID' => $this->ID,
+            'name' => $this->name,
+            'description' => $this->description,
+            'content' => $this->content,
+            'address' => $this->address,
+            'price' => $this->price,
+            'unit_price' => $this->unitPrice,
+            'size' => $this->size,
+            'bathroom' => $this->bathroom,
+            'bedrooms' => $this->bedrooms,
+            'images' => $this->images,
+            'category' => $this->category,
+            'categories' => $this->categories,
+            'type' => $this->type,
+            'types' => $this->types,
+            'geolocation' => $this->geolocation,
+        );
+
+        return apply_filters('wordland_property_supported_json_fields', $data, $this);
     }
 }

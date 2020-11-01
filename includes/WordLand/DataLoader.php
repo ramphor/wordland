@@ -84,11 +84,11 @@ class DataLoader
         );
         $propertyData = $wpdb->get_row($sql);
         if ($propertyData) {
-            $property->price = $propertyData->price;
-            $property->unitPrice = $propertyData->unit_price;
-            $property->size = $propertyData->size;
-            $property->bathrooms = $propertyData->bathrooms;
-            $property->bedrooms = $propertyData->bedrooms;
+            $property->price = floatval($propertyData->price);
+            $property->unitPrice = floatval($propertyData->unit_price);
+            $property->size = floatval($propertyData->size);
+            $property->bathrooms = intval($propertyData->bathrooms);
+            $property->bedrooms = intval($propertyData->bedrooms);
 
             if (is_numeric($propertyData->latitude) || is_numeric($propertyData->longitude)) {
                 $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
