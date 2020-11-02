@@ -95,7 +95,7 @@ class Property extends Data implements JsonSerializable
         $parsed = $clean_price->toArray();
         return sprintf(
             '<span class="val">%s</span><span class="unit">%s</span>',
-            array_get($parsed, 'value', 0),
+            Parser::parseString(array_get($parsed, 'value', 0)),
             array_get($parsed, 'unit', $this->getCurrency())
         );
     }
