@@ -266,7 +266,9 @@ class AjaxRequestManager
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
 
         add_filter('posts_fields', array(__CLASS__, 'filterMarkersSelectFields'), 10, 2);
-        $wp_query = $this->buildQuery($this->filterQueries());
+        $wp_query = $this->buildQuery($this->filterQueries(array(
+            'posts_per_page' => 5000,
+        )));
         $markers = array();
         if ($wp_query->have_posts()) {
             $index = 0;
