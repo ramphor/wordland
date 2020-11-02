@@ -421,12 +421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "166010be42dd7884b6a9a0b7e3ee1bfd66469c19"
+                "reference": "07cffd498ee1651f24cb361d2bb81f82c7e4e9db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/166010be42dd7884b6a9a0b7e3ee1bfd66469c19",
-                "reference": "166010be42dd7884b6a9a0b7e3ee1bfd66469c19",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/07cffd498ee1651f24cb361d2bb81f82c7e4e9db",
+                "reference": "07cffd498ee1651f24cb361d2bb81f82c7e4e9db",
                 "shasum": ""
             },
             "type": "library",
@@ -446,7 +446,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2020-10-25T02:51:43+00:00"
+            "time": "2020-11-02T02:06:08+00:00"
         },
         {
             "name": "ramphor/locations",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "6311ba6a8d26c6c1969a731f68adab35312c9e19"
+                "reference": "81c4fc491c89db868b3c088a392b84ba01cde83e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/6311ba6a8d26c6c1969a731f68adab35312c9e19",
-                "reference": "6311ba6a8d26c6c1969a731f68adab35312c9e19",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/81c4fc491c89db868b3c088a392b84ba01cde83e",
+                "reference": "81c4fc491c89db868b3c088a392b84ba01cde83e",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2020-10-25T09:16:41+00:00"
+            "time": "2020-11-01T22:05:49+00:00"
         },
         {
             "name": "ramphor/wallery",
