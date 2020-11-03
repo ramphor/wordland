@@ -217,7 +217,7 @@ class AjaxRequestManager
         $items_per_page = 40;
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'page' => $current_page,
-            'posts_per_page' => 2,
+            'posts_per_page' => 40,
         )));
         $properties = array();
         if ($wp_query->have_posts()) {
