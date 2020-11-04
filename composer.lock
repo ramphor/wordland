@@ -97,12 +97,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "f0c43ba5f01548252850dbb309cf4e08624a140d"
+                "reference": "2a55177f2a045ef6a1cfe1eb6f3b043881a24b8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/f0c43ba5f01548252850dbb309cf4e08624a140d",
-                "reference": "f0c43ba5f01548252850dbb309cf4e08624a140d",
+                "url": "https://api.github.com/repos/jankx/template/zipball/2a55177f2a045ef6a1cfe1eb6f3b043881a24b8e",
+                "reference": "2a55177f2a045ef6a1cfe1eb6f3b043881a24b8e",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2020-10-25T13:16:06+00:00"
+            "time": "2020-11-04T06:31:33+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "81c4fc491c89db868b3c088a392b84ba01cde83e"
+                "reference": "814d11d55ff14ea0d69fbc3d1cf639107474107f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/81c4fc491c89db868b3c088a392b84ba01cde83e",
-                "reference": "81c4fc491c89db868b3c088a392b84ba01cde83e",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/814d11d55ff14ea0d69fbc3d1cf639107474107f",
+                "reference": "814d11d55ff14ea0d69fbc3d1cf639107474107f",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2020-11-01T22:05:49+00:00"
+            "time": "2020-11-02T02:43:32+00:00"
         },
         {
             "name": "ramphor/wallery",
