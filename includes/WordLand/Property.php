@@ -93,19 +93,20 @@ class Property extends Data implements JsonSerializable
             return '';
         }
         $parsed = $clean_price->toArray();
+
         return sprintf(
-            '<span class="val">%s</span><span class="unit">%s</span>',
+            '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
-            array_get($parsed, 'unit', $this->getCurrency())
+            array_get($parsed, 'prefix', $this->getCurrency())
         );
     }
 
     public function makeCleanSizeHtml()
     {
         if (is_null($this->metas['clean_size'])) {
-            $this->metas['clean_size'] = new Parser($this->price, new Scale(array(
+            $this->metas['clean_size'] = new Parser($this->size, new Scale(array(
                 'scale' => 'metric',
-                'unit' => $this->getCurrency()
+                'unit' => 'm2'
             )), new Locale(get_locale()));
         }
 
@@ -116,9 +117,9 @@ class Property extends Data implements JsonSerializable
         $parsed = $clean_size->toArray();
 
         return sprintf(
-            '<span class="val">%s</span><span class="unit">%s</span>',
+            '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
-            array_get($parsed, 'unit', $this->getSizeUnit())
+            array_get($parsed, 'prefix', $this->getSizeUnit())
         );
     }
 

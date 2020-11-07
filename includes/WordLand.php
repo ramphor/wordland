@@ -122,9 +122,6 @@ class WordLand
                 $profileTemplateLoader
             );
         }
-
-        // Unit locale for number parser
-        Parser::init(new Locale(get_locale()));
     }
 
     public function plugin_path()
