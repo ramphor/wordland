@@ -19,8 +19,46 @@ class DataLoader
 
     private function __construct()
     {
+        if (!defined('DOING_AJAX')) {
+            add_filter('posts_join', array($this, 'joinPropertiesTable'), 10, 2);
+            add_filter('posts_fields', array($this, 'chooseFields'), 10, 2);
+        }
+
         add_action('the_post', array($this, 'buildPropertyFromPost'));
         add_action('the_post', array($this, 'setupSingleProperty'), 15, 2);
+    }
+
+    protected function checkPostType($postTypes) {
+        $allowedPostTypes = PostTypes::get();
+        if (is_string($postTypes)) {
+            return in_array($postTypes, $allowedPostTypes);
+        }
+        foreach($postTypes as $postType) {
+            if (in_array($postType, $allowedPostTypes)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function joinPropertiesTable($join, $query) {
+        if (!$this->checkPostType($query->query_vars['post_type'])) {
+            return $join;
+        }
+        global $wpdb;
+        $join .= " LEFT JOIN {$wpdb->prefix}wordland_properties wlp ON {$wpdb->posts}.ID=wlp.property_id";
+
+        return $join;
+    }
+
+    public function chooseFields($fields, $query) {
+        if (!$this->checkPostType($query->query_vars['post_type'])) {
+            return $fields;
+        }
+        $fields .= ', wlp.property_id, wlp.price, wlp.bedrooms, wlp.bathrooms, wlp.unit_price, wlp.size, wlp.created_at';
+        $fields .= ', ST_X(wlp.location) as latitude, ST_Y(wlp.location) as longitude';
+
+        return $fields;
     }
 
     public function buildPropertyFromPost($post)
@@ -51,50 +89,5 @@ class DataLoader
     {
         $post = get_post($propertyID);
         return $this->buildPropertyFromPost($post);
-    }
-
-    // Create property data for single property page
-    public function setupSingleProperty($post, $query)
-    {
-        if ($query->is_single()
-            && in_array(
-                $post->post_type,
-                apply_filters('wordland_property_types', array('property'))
-            )
-        ) {
-            global $property;
-            static::createPropertyCustomData($post->ID, $property);
-        }
-    }
-
-    public static function createPropertyCustomData($propertyID, &$property)
-    {
-        // When $proprety is not \WordLand\Property does't do any actions
-        if (!is_a($property, Property::class)) {
-            return;
-        }
-
-        global $wpdb;
-        $sql = $wpdb->prepare(
-            "SELECT wpro.ID, wpro.property_id, wpro.price, wpro.bedrooms, wpro.bathrooms,
-                wpro.unit_price, wpro.size, ST_X(wpro.location) as latitude, ST_Y(wpro.location) as longitude
-            FROM {$wpdb->prefix}wordland_properties wpro
-            WHERE property_id=%d LIMIT 1",
-            $propertyID,
-        );
-        $propertyData = $wpdb->get_row($sql);
-        if ($propertyData) {
-            $property->price = floatval($propertyData->price);
-            $property->unitPrice = floatval($propertyData->unit_price);
-            $property->size = floatval($propertyData->size);
-            $property->bathrooms = intval($propertyData->bathrooms);
-            $property->bedrooms = intval($propertyData->bedrooms);
-
-            if (is_numeric($propertyData->latitude) || is_numeric($propertyData->longitude)) {
-                $property->geolocation = new GeoLocation($propertyData->latitude, $propertyData->longitude);
-            }
-        }
-
-        return $property;
     }
 }
