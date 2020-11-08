@@ -24,8 +24,6 @@ class PropertyPage extends Renderer
             return;
         }
 
-        return Template::render('content/single-property', array(
-            'property' => $GLOBALS['property'],
-        ), 'wordland_single_property', false);
+        return Template::render('content/single-property', array(), 'wordland_single_property', false);
     }
 }
