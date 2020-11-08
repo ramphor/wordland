@@ -421,12 +421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "4c3b68edf8fd842e82bf93afbe840895b27f6342"
+                "reference": "a2a40542a5dcf953e798df2eb21c0e85c1f48d23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/4c3b68edf8fd842e82bf93afbe840895b27f6342",
-                "reference": "4c3b68edf8fd842e82bf93afbe840895b27f6342",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/a2a40542a5dcf953e798df2eb21c0e85c1f48d23",
+                "reference": "a2a40542a5dcf953e798df2eb21c0e85c1f48d23",
                 "shasum": ""
             },
             "type": "library",
@@ -446,7 +446,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2020-11-07T11:31:43+00:00"
+            "time": "2020-11-08T04:48:53+00:00"
         },
         {
             "name": "ramphor/locations",
