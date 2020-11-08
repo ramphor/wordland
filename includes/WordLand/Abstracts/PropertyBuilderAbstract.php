@@ -3,6 +3,7 @@ namespace WordLand\Abstracts;
 
 use WordLand\Constracts\PropertyBuilder;
 use WordLand\Property;
+use WordLand\GeoLocation;
 
 abstract class PropertyBuilderAbstract implements PropertyBuilder
 {
@@ -46,10 +47,27 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         $this->property->description = get_the_excerpt($this->originalPost);
     }
 
+    public function buildWordLandData() {
+        if (isset($this->originalPost->property_id)) {
+            $this->property->price = floatval($this->originalPost->price);
+            $this->property->unit_price = floatval($this->originalPost->unit_price);
+            $this->property->size = intval($this->originalPost->size);
+            $this->property->bedrooms = intval($this->originalPost->bedrooms);
+            $this->property->bathrooms = intval($this->originalPost->bathrooms);
+            if (isset($this->originalPost->latitude) && $this->originalPost->latitude) {
+                $this->property->geolocation = new GeoLocation(
+                    floatval($this->originalPost->latitude),
+                    floatval($this->originalPost->longitude)
+                );
+            }
+        }
+    }
+
     // The alias of buildBaseData
     public function build()
     {
         $this->buildBaseData();
+        $this->buildWordLandData();
     }
 
     public function getProperty()
