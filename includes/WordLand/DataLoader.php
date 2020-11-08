@@ -25,7 +25,6 @@ class DataLoader
         }
 
         add_action('the_post', array($this, 'buildPropertyFromPost'));
-        add_action('the_post', array($this, 'setupSingleProperty'), 15, 2);
     }
 
     protected function checkPostType($postTypes) {
