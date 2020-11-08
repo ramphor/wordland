@@ -80,7 +80,7 @@ class PostTypes
         );
         register_taxonomy(
             'property_cat',
-            apply_filters('wordland_category_post_types', array( static::PROPERTY_POST_TYPE )),
+            static::get(),
             apply_filters(
                 'wordland_taxonomy_category_args',
                 array(
@@ -101,8 +101,7 @@ class PostTypes
         );
         register_taxonomy(
             'listing_type',
-            apply_filters('wordland_list
-            ing_type_post_types', array( static::PROPERTY_POST_TYPE )),
+            static::get(),
             apply_filters(
                 'wordland_taxonomy_category_args',
                 array(
@@ -123,7 +122,7 @@ class PostTypes
         );
         register_taxonomy(
             'property_visibility',
-            apply_filters('wordland_listing_type_post_types', array( static::PROPERTY_POST_TYPE )),
+            static::get(),
             apply_filters(
                 'wordland_taxonomy_category_args',
                 array(
@@ -145,7 +144,7 @@ class PostTypes
         );
         register_taxonomy(
             'property_amenity',
-            apply_filters('wordland_amenity_category_post_types', array( static::PROPERTY_POST_TYPE )),
+            static::get(),
             apply_filters(
                 'wordland_property_amenity_args',
                 array(
@@ -192,7 +191,7 @@ class PostTypes
 
         register_taxonomy(
             'property_tag',
-            apply_filters('wordland_tag_post_types', array( static::PROPERTY_POST_TYPE )),
+            static::get(),
             apply_filters(
                 'wordland_taxonomy_tag_args',
                 array(
