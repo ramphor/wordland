@@ -25,11 +25,13 @@ class Scripts
         add_action('init', array($this, 'init'));
     }
 
-    public function init() {
+    public function init()
+    {
         add_action('ramphor_collection_global_variables', array($this, 'ramphor_collection_user_not_logged_in'));
     }
 
-    public function ramphor_collection_user_not_logged_in($global_variables) {
+    public function ramphor_collection_user_not_logged_in($global_variables)
+    {
         $global_variables['user_not_loggedin_callback'] = 'wordland_show_login_modal';
 
         return $global_variables;

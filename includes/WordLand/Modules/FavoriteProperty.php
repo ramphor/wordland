@@ -21,10 +21,12 @@ class FavoriteProperty extends ModuleAbstract
         $this->setup_ajax();
     }
 
-    public function setup_ajax() {
+    public function setup_ajax()
+    {
         add_action('wp_ajax_wordland_favorite_property', array($this, 'favoriteProperty'));
     }
 
-    public function favoriteProperty() {
+    public function favoriteProperty()
+    {
     }
 }
