@@ -28,6 +28,7 @@ class Scripts
     public function init()
     {
         add_action('ramphor_collection_global_variables', array($this, 'ramphor_collection_user_not_logged_in'));
+        add_filter('ramphor_collection_script_is_dep', '__return_true');
     }
 
     public function ramphor_collection_user_not_logged_in($global_variables)
