@@ -27,12 +27,13 @@ class DataLoader
         add_action('the_post', array($this, 'buildPropertyFromPost'));
     }
 
-    protected function checkPostType($postTypes) {
+    protected function checkPostType($postTypes)
+    {
         $allowedPostTypes = PostTypes::get();
         if (is_string($postTypes)) {
             return in_array($postTypes, $allowedPostTypes);
         }
-        foreach($postTypes as $postType) {
+        foreach ($postTypes as $postType) {
             if (in_array($postType, $allowedPostTypes)) {
                 return true;
             }
@@ -40,7 +41,8 @@ class DataLoader
         return false;
     }
 
-    public function joinPropertiesTable($join, $query) {
+    public function joinPropertiesTable($join, $query)
+    {
         if (!$this->checkPostType($query->query_vars['post_type'])) {
             return $join;
         }
@@ -50,7 +52,8 @@ class DataLoader
         return $join;
     }
 
-    public function chooseFields($fields, $query) {
+    public function chooseFields($fields, $query)
+    {
         if (!$this->checkPostType($query->query_vars['post_type'])) {
             return $fields;
         }

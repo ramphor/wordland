@@ -19,9 +19,11 @@ class PostTypes
     {
     }
 
-    public static function get() {
+    public static function get()
+    {
         return apply_filters(
-            'wordland_property_types', array(
+            'wordland_property_types',
+            array(
                 static::PROPERTY_POST_TYPE
             )
         );

@@ -47,7 +47,8 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         $this->property->description = get_the_excerpt($this->originalPost);
     }
 
-    public function buildWordLandData() {
+    public function buildWordLandData()
+    {
         if (isset($this->originalPost->property_id)) {
             $this->property->price = floatval($this->originalPost->price);
             $this->property->unit_price = floatval($this->originalPost->unit_price);
