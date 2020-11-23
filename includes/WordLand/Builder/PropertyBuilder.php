@@ -37,6 +37,7 @@ class PropertyBuilder extends PropertyBuilderAbstract
     {
     }
 
-    public function buildLocations() {
+    public function buildLocations()
+    {
     }
 }

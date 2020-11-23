@@ -21,6 +21,21 @@ class Scripts
     {
         add_action('wp_enqueue_scripts', array($this, 'registerScripts'), 40);
         add_action('wp_enqueue_scripts', array($this, 'registerStyles'), 40);
+
+        add_action('init', array($this, 'init'));
+    }
+
+    public function init()
+    {
+        add_action('ramphor_collection_global_variables', array($this, 'ramphor_collection_user_not_logged_in'));
+        add_filter('ramphor_collection_script_is_dep', '__return_true');
+    }
+
+    public function ramphor_collection_user_not_logged_in($global_variables)
+    {
+        $global_variables['user_not_loggedin_callback'] = 'wordland_show_login_modal';
+
+        return $global_variables;
     }
 
     protected function asset_url($path = '')
@@ -34,7 +49,9 @@ class Scripts
 
     public function registerScripts()
     {
-        $deps = array();
+        $deps = array(
+            'ramphor-collection',
+        );
         if (!get_theme_support('render_js_template')) {
             wp_register_script('blueimp-tmpl', $this->asset_url('vendor/JavaScript-Templates/tmpl.js'), array(), '3.19.0', false);
             array_push($deps, 'blueimp-tmpl');

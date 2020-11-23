@@ -9,10 +9,13 @@ use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
 use WordLand\Cache;
+use WordLand\ModuleManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Locale;
+use Ramphor\Collection\CollectionManager;
+use Ramphor\Collection\DB;
 
 class WordLand
 {
@@ -32,6 +35,7 @@ class WordLand
         $this->defineConstants();
         $this->includes();
         $this->initFeatures();
+        $this->loadModules();
     }
 
     private function define($name, $value)
@@ -102,11 +106,16 @@ class WordLand
         AjaxRequestManager::getInstance();
         Scripts::getInstance();
         Compatibles::getInstance();
+        CollectionManager::getInstance();
 
         $installer = Installer::getInstance();
         register_activation_hook(
             WORDLAND_PLUGIN_FILE,
             array($installer, 'install')
+        );
+        register_activation_hook(
+            WORDLAND_PLUGIN_FILE,
+            array(DB::class, 'setup')
         );
 
         if (class_exists(UserProfile::class)) {
@@ -135,5 +144,11 @@ class WordLand
             'wordland_template_path',
             'wordland/'
         );
+    }
+
+    public function loadModules()
+    {
+        $moduleManager = new ModuleManager();
+        $moduleManager->load_modules();
     }
 }
