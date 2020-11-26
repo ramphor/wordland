@@ -24,7 +24,8 @@
         "puleeno/paypress": "dev-master",
         "ramphor/post-views": "dev-master",
         "ramphor/plugin-core": "dev-master",
-        "ramphor/wordpress-posts-collection": "dev-master"
+        "ramphor/wordpress-posts-collection": "dev-master",
+        "geoip2/geoip2": "~2.0"
     },
     "autoload": {
         "psr-4": {
