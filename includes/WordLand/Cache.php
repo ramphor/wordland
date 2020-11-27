@@ -5,6 +5,7 @@ class Cache
 {
     protected static $propertyMetas;
     protected static $propertyFooterItems;
+    protected static $viewedHistories = array();
 
     public static function getPropertyMetas()
     {
@@ -35,5 +36,13 @@ class Cache
             ));
         }
         return static::$propertyFooterItems;
+    }
+
+    public static function addViewed($post_id)
+    {
+    }
+
+    public static function getViewed($post_id)
+    {
     }
 }
