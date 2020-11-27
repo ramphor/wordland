@@ -17,6 +17,7 @@ use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Locale;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
+use Ramphor\PostViews\Counter as PostViewCounter;
 
 class WordLand
 {
@@ -135,6 +136,11 @@ class WordLand
                 $profileTemplateLoader
             );
         }
+        add_action('init', array($this, 'init'));
+    }
+
+    public function init() {
+        $counter = new PostViewCounter(PostTypes::get(), true);
     }
 
     public function plugin_path()
