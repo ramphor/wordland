@@ -10,6 +10,7 @@ use WordLand\Compatibles;
 use WordLand\Installer;
 use WordLand\Cache;
 use WordLand\ModuleManager;
+use WordLand\Manager\CronManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
 use Ramphor\FriendlyNumbers\Parser;
@@ -21,6 +22,8 @@ class WordLand
 {
     protected static $instance;
     public static $version;
+
+    public $location;
 
     public static function instance()
     {
@@ -89,7 +92,7 @@ class WordLand
     public function initFeatures()
     {
         new PostTypes();
-        new Locations();
+        $this->location = new Locations();
 
         if ($this->is_request('frontend')) {
             $templateLoader = new TemplateLoader();
@@ -107,6 +110,7 @@ class WordLand
         Scripts::getInstance();
         Compatibles::getInstance();
         CollectionManager::getInstance();
+        CronManager::getInstance();
 
         $installer = Installer::getInstance();
         register_activation_hook(

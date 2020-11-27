@@ -1,6 +1,6 @@
 <?php
 use WordLand\Template;
-use Wordland\PostTypes;
+use WordLand\PostTypes;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -41,13 +41,20 @@ function wordland_post_thumbnail($size = 'wordland_thumbnail')
     }
 }
 
-function wordland_get_map_center_location()
+function wordland_get_current_location()
 {
-    $geolocation = array();
+    $location = WordLand::instance()->location;
+    if (is_null($location->current_location)) {
+        $location->detect_location();
+    }
+    return $location->get_current_location();
+}
 
+function wordland_default_coordinates()
+{
     return apply_filters(
         'wordland_map_center_geolocation',
-        $geolocation
+        null
     );
 }
 
@@ -71,10 +78,18 @@ function wordland_get_real_ip_address()
         'REMOTE_ADDR'
     ));
 
-    foreach($$ip_headers as $ip_header) {
+    foreach ($$ip_headers as $ip_header) {
         if (!empty($_SERVER[$ip_header])) {
             return $_SERVER[$ip_header];
         }
     }
     return '127.0.0.1';
+}
+
+function wordland_get_maxmind_license_key()
+{
+    if (defined('MAXMIND_API_KEY')) {
+        return constant('MAXMIND_API_KEY');
+    }
+    return get_option('maxmind_api_key');
 }
