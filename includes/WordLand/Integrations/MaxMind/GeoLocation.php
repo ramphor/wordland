@@ -37,7 +37,9 @@ class GeoLocation
     {
         $db_path = $this->database_service->get_database_path();
         if (!file_exists($db_path)) {
-            return array();
+            return array(
+                'has_coordinates' => false,
+            );
         }
 
         $reader = new Reader($db_path);
@@ -55,11 +57,14 @@ class GeoLocation
         }
         $record = $reader->city($ip);
         if (is_null($record->city->name)) {
-            return array();
+            return array(
+                'has_coordinates' => false,
+            );
         }
 
         return array(
             'city' => $record->city->name,
+            'has_coordinates' => true,
             'coordinates' => array(
                 'lat' => $record->location->latitude,
                 'lng' => $record->location->longitude
