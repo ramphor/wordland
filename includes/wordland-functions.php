@@ -58,11 +58,11 @@ function wordland_default_coordinates()
     );
 }
 
-function wordland_get_map_zoom()
+function wordland_get_map_zoom($has_coordinates)
 {
     return apply_filters('wordland_get_map_zoom', array(
         'single_property' => get_option('wordland_single_property_map_zoom', 14),
-        'marker_list' => get_option('wordland_single_property_map_zoom', 6)
+        'marker_list' => get_option('wordland_single_property_map_zoom', $has_coordinates ? 9 : 6)
     ));
 }
 
