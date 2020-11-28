@@ -27,6 +27,7 @@ class WordLand
     public static $version;
 
     public $location;
+    public $viewCounter;
 
     public static function instance()
     {
@@ -146,9 +147,9 @@ class WordLand
         $userHandler->setUserIP(wordland_get_real_ip_address());
         $userHandler->setExpireTime(1 * 24 * 60 * 60); // 1 day
 
-        $counter = new PostViewCounter(PostTypes::get());
-        $counter->addHandle($userHandler);
-        $counter->count();
+        $this->viewCounter = new PostViewCounter(PostTypes::get());
+        $this->viewCounter->addHandle($userHandler);
+        $this->viewCounter->count();
     }
 
     public function plugin_path()
