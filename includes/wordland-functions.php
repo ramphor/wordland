@@ -78,7 +78,7 @@ function wordland_get_real_ip_address()
         'REMOTE_ADDR'
     ));
 
-    foreach ($$ip_headers as $ip_header) {
+    foreach ($ip_headers as $ip_header) {
         if (!empty($_SERVER[$ip_header])) {
             return $_SERVER[$ip_header];
         }
