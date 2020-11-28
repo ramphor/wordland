@@ -274,11 +274,14 @@ class AjaxRequestManager
             $index = 0;
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
-                $markers[$index] = $this->filterData($wp_query->post, static::$markerMappingFields);
+                $property = $wp_query->post;
+
+                $markers[$index] = $this->filterData($property, static::$markerMappingFields);
                 $markers[$index]['thumbnail_url'] = wp_get_attachment_image_url(
-                    get_post_thumbnail_id($wp_query->post),
+                    get_post_thumbnail_id($property),
                     'thumbnail',
                 );
+                $markers[$index]['is_visited'] = wordland_check_property_is_viewed($property->ID);
 
                 $index += 1;
             }
