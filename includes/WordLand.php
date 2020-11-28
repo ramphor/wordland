@@ -140,7 +140,8 @@ class WordLand
     }
 
     public function init() {
-        $counter = new PostViewCounter(PostTypes::get(), true);
+        $counter = new PostViewCounter(PostTypes::get());
+        $counter->count();
     }
 
     public function plugin_path()
