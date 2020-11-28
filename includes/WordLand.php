@@ -18,6 +18,8 @@ use Ramphor\FriendlyNumbers\Locale;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
 use Ramphor\PostViews\Counter as PostViewCounter;
+use Ramphor\PostViews\Handlers\UserHandler;
+use Ramphor\PostViews\Handlers\CookieHandler;
 
 class WordLand
 {
@@ -140,7 +142,12 @@ class WordLand
     }
 
     public function init() {
+        $userHandler = new UserHandler(true, true);
+        $cookieHandler = new CookieHandler();
+
         $counter = new PostViewCounter(PostTypes::get());
+        $counter->addHandle($userHandler);
+        $counter->addHandle($cookieHandler);
         $counter->count();
     }
 
