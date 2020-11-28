@@ -143,11 +143,11 @@ class WordLand
 
     public function init() {
         $userHandler = new UserHandler(true, true);
-        $cookieHandler = new CookieHandler();
+        $userHandler->setUserIP(wordland_get_real_ip_address());
+        $userHandler->setExpireTime(1 * 24 * 60 * 60); // 1 day
 
         $counter = new PostViewCounter(PostTypes::get());
         $counter->addHandle($userHandler);
-        $counter->addHandle($cookieHandler);
         $counter->count();
     }
 
