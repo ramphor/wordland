@@ -157,6 +157,7 @@ class WordLand
         $userHandler->setExpireTime(1 * 24 * 60 * 60); // 1 day
 
         $cookieHandler = new CookieHandler();
+        $cookieHandler->setExpireTime(30 * 24 * 60 * 60); // 30 days
 
         $this->viewCounter = new PostViewCounter(PostTypes::get());
         $this->viewCounter->addHandle($cookieHandler);
