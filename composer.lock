@@ -799,12 +799,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/post-views.git",
-                "reference": "444b67f0b9204884df3cf85ddec9b35c58f5a215"
+                "reference": "0bff982b8bf4052e6b8d262ecc80dc8aae0e349d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/post-views/zipball/444b67f0b9204884df3cf85ddec9b35c58f5a215",
-                "reference": "444b67f0b9204884df3cf85ddec9b35c58f5a215",
+                "url": "https://api.github.com/repos/ramphor/post-views/zipball/0bff982b8bf4052e6b8d262ecc80dc8aae0e349d",
+                "reference": "0bff982b8bf4052e6b8d262ecc80dc8aae0e349d",
                 "shasum": ""
             },
             "type": "library",
@@ -824,7 +824,7 @@
                 }
             ],
             "description": "Track visited posts and user view posts",
-            "time": "2020-03-29T17:08:25+00:00"
+            "time": "2020-11-29T09:40:51+00:00"
         },
         {
             "name": "ramphor/user-profile",
@@ -903,12 +903,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "9c066df960371054fdf9d0882a253ef69cd67da0"
+                "reference": "7f56cc142d6362b8e3ce34df55324c79933f81bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/9c066df960371054fdf9d0882a253ef69cd67da0",
-                "reference": "9c066df960371054fdf9d0882a253ef69cd67da0",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/7f56cc142d6362b8e3ce34df55324c79933f81bb",
+                "reference": "7f56cc142d6362b8e3ce34df55324c79933f81bb",
                 "shasum": ""
             },
             "require": {
@@ -931,7 +931,7 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
-            "time": "2020-11-23T15:40:12+00:00"
+            "time": "2020-11-29T04:33:09+00:00"
         }
     ],
     "packages-dev": [],
