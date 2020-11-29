@@ -2,6 +2,7 @@
 namespace WordLand;
 
 use Ramphor\User\Profile as UserProfile;
+use Ramphor\PostViews\Setup;
 
 class Installer
 {
@@ -22,6 +23,9 @@ class Installer
         // Create user profile data table
         $userProfile = UserProfile::getInstance();
         $userProfile->db->create_table();
+
+        $postview = new Setup();
+        $postview->createTables();
     }
 
     public function setupDatabase()

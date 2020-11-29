@@ -1,6 +1,7 @@
 <?php
 use WordLand\Template;
 use WordLand\PostTypes;
+use WordLand\Cache;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -78,7 +79,7 @@ function wordland_get_real_ip_address()
         'REMOTE_ADDR'
     ));
 
-    foreach ($$ip_headers as $ip_header) {
+    foreach ($ip_headers as $ip_header) {
         if (!empty($_SERVER[$ip_header])) {
             return $_SERVER[$ip_header];
         }
@@ -92,4 +93,18 @@ function wordland_get_maxmind_license_key()
         return constant('MAXMIND_API_KEY');
     }
     return get_option('maxmind_api_key');
+}
+
+function wordland_check_property_is_viewed($property_id)
+{
+    if (Cache::checkViewed($property_id)) {
+        return Cache::getViewed($property_id);
+    }
+
+    $counter   = WordLand::instance()->viewCounter;
+    $is_viewed = $counter->isViewed($property_id);
+
+    Cache::addViewed($property_id, $is_viewed);
+
+    return $is_viewed;
 }

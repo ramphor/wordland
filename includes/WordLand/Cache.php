@@ -6,6 +6,7 @@ class Cache
     protected static $propertyMetas;
     protected static $propertyFooterItems;
     protected static $viewedHistories = array();
+    protected static $collectionPosts = array();
 
     public static function getPropertyMetas()
     {
@@ -38,11 +39,21 @@ class Cache
         return static::$propertyFooterItems;
     }
 
-    public static function addViewed($post_id)
+    public static function checkViewed($post_id)
     {
+        return isset(static::$viewedHistories[$post_id]);
+    }
+
+    public static function addViewed($post_id, $viewed = true)
+    {
+        static::$viewedHistories[$post_id] = $viewed;
     }
 
     public static function getViewed($post_id)
     {
+        if (static::checkViewed($post_id)) {
+            return static::$viewedHistories[$post_id];
+        }
+        return false;
     }
 }

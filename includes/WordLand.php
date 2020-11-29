@@ -17,6 +17,9 @@ use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Locale;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
+use Ramphor\PostViews\Counter as PostViewCounter;
+use Ramphor\PostViews\Handlers\UserHandler;
+use Ramphor\PostViews\Handlers\CookieHandler;
 
 class WordLand
 {
@@ -24,6 +27,7 @@ class WordLand
     public static $version;
 
     public $location;
+    public $viewCounter;
 
     public static function instance()
     {
@@ -135,6 +139,40 @@ class WordLand
                 $profileTemplateLoader
             );
         }
+        add_action('init', array($this, 'init'));
+    }
+
+    public function init()
+    {
+        add_action(
+            'ramphor_post_views_view_the_post',
+            array($this, 'create_cache_view_post'),
+            10,
+            2
+        );
+
+        $userHandler = new UserHandler(true);
+        $userHandler->setRemoteIP(wordland_get_real_ip_address());
+        $userHandler->setUserId(get_current_user_id());
+        $userHandler->setExpireTime(1 * 24 * 60 * 60); // 1 day
+
+        $cookieHandler = new CookieHandler();
+        $cookieHandler->setExpireTime(30 * 24 * 60 * 60); // 30 days
+
+        $this->viewCounter = new PostViewCounter(PostTypes::get());
+        $this->viewCounter->addHandle($cookieHandler);
+        $this->viewCounter->addHandle($userHandler);
+
+        $this->viewCounter->count();
+    }
+
+    public function create_cache_view_post($post_id, $post_types)
+    {
+        $post = get_post($post_id);
+        if (is_null($post) || !in_array($post->post_type, $post_types)) {
+            return;
+        }
+        Cache::addViewed($post_id, true);
     }
 
     public function plugin_path()
