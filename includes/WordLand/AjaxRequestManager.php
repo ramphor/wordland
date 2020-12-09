@@ -93,7 +93,7 @@ class AjaxRequestManager
     {
         global $wpdb;
 
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title";
+        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_date";
         $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
         $fields .= ', w.price';
@@ -282,6 +282,12 @@ class AjaxRequestManager
                     'thumbnail',
                 );
                 $markers[$index]['is_visited'] = wordland_check_property_is_viewed($property->ID);
+
+                // Added hook to custom property
+                do_action_ref_array('wordland_build_map_marker_property', array(
+                    &$markers[$index],
+                    $property
+                ));
 
                 $index += 1;
             }
