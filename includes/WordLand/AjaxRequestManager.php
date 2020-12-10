@@ -78,8 +78,10 @@ class AjaxRequestManager
     public function filterQueries($systemArgs = array())
     {
         // Parse from user data, actions
-        $parsedArgs = array();
-
+        $parsedArgs = apply_filters(
+            'wordland_default_ajax_query_args',
+            array()
+        );
         return wp_parse_args($systemArgs, $parsedArgs);
     }
 
