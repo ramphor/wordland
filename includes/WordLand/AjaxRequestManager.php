@@ -38,12 +38,12 @@ class AjaxRequestManager
             'default' => 0
         ),
         'unit_price' => array(
-            'source' => 'price',
+            'source' => 'unit_price',
             'type' => 'decimal',
             'default' => 0
         ),
         'size' => array(
-            'source' => 'bathrooms',
+            'source' => 'size',
             'type' => 'float',
             'default' => 0
         )
@@ -225,6 +225,8 @@ class AjaxRequestManager
                 $wp_query->the_post();
                 $post = $wp_query->post;
                 $currentIndex = $wp_query->current_post;
+                var_dump(static::$properyMappingFields);
+                die;
                 $properties[$currentIndex] = $this->filterData($post, static::$properyMappingFields);
                 $properties[$currentIndex]['thumbnail_url'] = wp_get_attachment_image_url(
                     get_post_thumbnail_id($post->ID),
@@ -292,6 +294,7 @@ class AjaxRequestManager
 
                 $index += 1;
             }
+            // die;
         }
 
         remove_filter('posts_fields', array(__CLASS__, 'filterMarkersSelectFields'), 10, 2);
