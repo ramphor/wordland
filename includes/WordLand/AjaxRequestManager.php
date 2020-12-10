@@ -93,7 +93,7 @@ class AjaxRequestManager
     {
         global $wpdb;
 
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_date";
+        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_date, {$wpdb->posts}.post_author";
         $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
         $fields .= ', w.price';
@@ -109,7 +109,7 @@ class AjaxRequestManager
     {
         global $wpdb;
 
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type";
+        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author";
         $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
         $fields .= ', w.price';
