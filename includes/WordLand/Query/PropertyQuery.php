@@ -48,20 +48,20 @@ class PropertyQuery extends BaseQuery
         }
         if (isset($rawArgs['posts_per_page'])) {
             $args['posts_per_page'] = $rawArgs['posts_per_page'];
-            $clean_args[] = &$args['posts_per_page'];
+            $clean_args[] = &$rawArgs['posts_per_page'];
         }
         if (isset($rawArgs['limit'])) {
             $args['posts_per_page'] = $rawArgs['limit'];
-            $clean_args[] = &$args['limit'];
+            $clean_args[] = &$rawArgs['limit'];
         }
         if (isset($rawArgs['page'])) {
             $args['paged'] = $rawArgs['page'];
-            $clean_args[] = &$args['page'];
+            $clean_args[] = &$rawArgs['page'];
         }
         // Freeup memory
         call_user_func_array('unset', $clean_args);
 
-        if (isset($rawArgs['post_type'])) {
+        if (!isset($rawArgs['post_type'])) {
             $rawArgs['post_type'] = 'property';
         }
 
