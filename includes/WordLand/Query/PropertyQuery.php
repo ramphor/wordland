@@ -40,22 +40,33 @@ class PropertyQuery extends BaseQuery
     public function buildArgs($rawArgs)
     {
         $args = array();
+
         if (isset($rawArgs['term'])) {
             $this->filter_term($rawArgs['term'], $args);
+            unset($rawArgs['term']);
         }
         if (isset($rawArgs['posts_per_page'])) {
             $args['posts_per_page'] = $rawArgs['posts_per_page'];
+            unset($rawArgs['posts_per_page']);
         }
         if (isset($rawArgs['limit'])) {
             $args['posts_per_page'] = $rawArgs['limit'];
+            unset($rawArgs['limit']);
         }
         if (isset($rawArgs['page'])) {
             $args['paged'] = $rawArgs['page'];
+            unset($rawArgs['page']);
         }
 
-        return wp_parse_args($args, array(
-            'post_type' => 'property',
-        ));
+        if (!isset($rawArgs['post_type'])) {
+            $rawArgs['post_type'] = 'property';
+        }
+
+        return apply_filters(
+            'wordland_build_property_query_args',
+            wp_parse_args($args, $rawArgs),
+            $this
+        );
     }
 
     public function getWordPressQuery()
