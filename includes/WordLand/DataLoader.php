@@ -77,6 +77,9 @@ class DataLoader
         $builder->setPost($post);
         $builder->buildContent();
         $builder->build();
+        $builder->getPropertyVisibilities();
+
+        do_action('wordland_dataloader_before_get_property', $builder, $post);
 
         $property = $builder->getProperty();
 

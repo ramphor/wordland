@@ -69,6 +69,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
     {
         $this->buildBaseData();
         $this->buildWordLandData();
+        $this->getPrimaryAgent();
     }
 
     public function getProperty()

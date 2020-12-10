@@ -16,4 +16,6 @@ interface PropertyBuilder
     public function buildTags();
 
     public function buildLocations();
+
+    public function getPrimaryAgent();
 }
