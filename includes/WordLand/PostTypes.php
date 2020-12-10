@@ -18,7 +18,6 @@ class PostTypes
 
     public function registerPostStatuses()
     {
-
     }
 
     public static function get()
