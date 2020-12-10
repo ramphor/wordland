@@ -41,7 +41,7 @@ class Property extends Data implements JsonSerializable
      */
     public $primaryAgent = null;
 
-    protected $style;
+    public $style = null;
 
     public $metas = array(
         'clean_price' => null,

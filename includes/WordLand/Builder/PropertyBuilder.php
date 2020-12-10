@@ -4,6 +4,7 @@ namespace WordLand\Builder;
 use WP_Post;
 use WordLand\Abstracts\PropertyBuilderAbstract;
 use WordLand\PostTypes;
+use WordLand\Agent;
 
 class PropertyBuilder extends PropertyBuilderAbstract
 {
@@ -44,6 +45,18 @@ class PropertyBuilder extends PropertyBuilderAbstract
 
     public function getPrimaryAgent()
     {
+        $owner = get_userdata($this->originalPost->post_author);
+        unset($owner->user_pass);
+
+        // Create primary agent
+        $agent = new Agent($owner->display_name);
+
+        $this->property->primaryAgent = apply_filters(
+            'wordland_primary_agent',
+            $agent,
+            $owner,
+            $this->property
+        );
     }
 
     public function getPropertyVisibilities()
