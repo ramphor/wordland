@@ -2,6 +2,8 @@
 namespace WordLand;
 
 use JsonSerializable;
+use ReflectionObject;
+use ReflectionProperty;
 use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Scale;
@@ -21,10 +23,9 @@ class Property extends Data implements JsonSerializable
     public $bedrooms = 0;
     public $images = array();
 
-    public $category = null;
     public $categories = array();
-    public $type = null;
     public $types = array();
+    public $visibilities = array();
 
     /**
      * The property location
@@ -33,10 +34,18 @@ class Property extends Data implements JsonSerializable
      */
     public $geolocation = null;
 
+    /**
+     * Property agent
+     *
+     * @var \WordLand\Agent;
+     */
+    public $primaryAgent = null;
+
     protected $style;
 
     public $metas = array(
         'clean_price' => null,
+        'clean_unit_price' => null,
         'clean_size' => null,
         'goto_detail' => null,
     );
@@ -158,24 +167,14 @@ class Property extends Data implements JsonSerializable
 
     public function jsonSerialize()
     {
-        $data = array(
-            'ID' => $this->ID,
-            'name' => $this->name,
-            'description' => $this->description,
-            'content' => $this->content,
-            'address' => $this->address,
-            'price' => $this->price,
-            'unit_price' => $this->unitPrice,
-            'size' => $this->size,
-            'bathroom' => $this->bathroom,
-            'bedrooms' => $this->bedrooms,
-            'images' => $this->images,
-            'category' => $this->category,
-            'categories' => $this->categories,
-            'type' => $this->type,
-            'types' => $this->types,
-            'geolocation' => $this->geolocation,
-        );
+        $data        = array();
+        $propertyRef = new ReflectionObject($this);
+        $properties  = $propertyRef->getProperties(ReflectionProperty::IS_PUBLIC);
+
+        foreach ($properties as $property) {
+            $propertyName          = $property->name;
+            $data[$property->name] = $this->$propertyName;
+        }
 
         return apply_filters('wordland_property_supported_json_fields', $data, $this);
     }
