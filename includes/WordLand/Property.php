@@ -101,6 +101,29 @@ class Property extends Data implements JsonSerializable
         );
     }
 
+    public function makeCleanUnitPriceHtml()
+    {
+        if (is_null($this->metas['clean_unit_price'])) {
+            $this->metas['clean_unit_price'] = new Parser($this->unit_price, new Scale(array(
+                'scale' => 'currency',
+                'unit' => $this->getCurrency()
+            )), new Locale(get_locale()));
+        }
+
+
+        $clean_unit_price = array_get($this->metas, 'clean_unit_price', null);
+        if (!$clean_unit_price) {
+            return '';
+        }
+        $parsed = $clean_unit_price->toArray();
+
+        return sprintf(
+            '<span class="val">%s</span> <span class="unit">%s</span>',
+            array_get($parsed, 'value', 0),
+            array_get($parsed, 'prefix', $this->getCurrency())
+        );
+    }
+
     public function makeCleanSizeHtml()
     {
         if (is_null($this->metas['clean_size'])) {
