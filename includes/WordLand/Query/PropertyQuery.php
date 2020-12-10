@@ -40,26 +40,23 @@ class PropertyQuery extends BaseQuery
     public function buildArgs($rawArgs)
     {
         $args = array();
-        $clean_args = array();
 
         if (isset($rawArgs['term'])) {
             $this->filter_term($rawArgs['term'], $args);
-            $clean_args[] = &$rawArgs['term'];
+            unset($rawArgs['term']);
         }
         if (isset($rawArgs['posts_per_page'])) {
             $args['posts_per_page'] = $rawArgs['posts_per_page'];
-            $clean_args[] = &$rawArgs['posts_per_page'];
+            unset($rawArgs['posts_per_page']);
         }
         if (isset($rawArgs['limit'])) {
             $args['posts_per_page'] = $rawArgs['limit'];
-            $clean_args[] = &$rawArgs['limit'];
+            unset($rawArgs['limit']);
         }
         if (isset($rawArgs['page'])) {
             $args['paged'] = $rawArgs['page'];
-            $clean_args[] = &$rawArgs['page'];
+            unset($rawArgs['page']);
         }
-        // Freeup memory
-        call_user_func_array('unset', $clean_args);
 
         if (!isset($rawArgs['post_type'])) {
             $rawArgs['post_type'] = 'property';
