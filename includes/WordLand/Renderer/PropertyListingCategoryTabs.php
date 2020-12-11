@@ -33,10 +33,13 @@ class PropertyListingCategoryTabs extends Renderer
 
     public function query()
     {
-        $query = new PropertyQuery(array(
-            'term' => $this->categoryTerms[0],
+        $args = array(
             'limit' => $this->props['limit'],
-        ));
+        );
+        if (!empty($this->categoryTerms)) {
+            $args['term'] = $this->categoryTerms[0];
+        }
+        $query = new PropertyQuery($args);
 
         return $query->getWordPressQuery();
     }
