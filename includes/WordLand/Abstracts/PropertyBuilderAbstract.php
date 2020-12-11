@@ -18,6 +18,12 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         }
     }
 
+    public function __get($name) {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+    }
+
     public function reset()
     {
         $this->property = new Property();
@@ -25,7 +31,6 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
     public function setPost($post)
     {
-
         if (!is_a($post, \WP_Post::class)) {
             return;
         }
@@ -39,22 +44,24 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if (is_null($this->originalPost)) {
             return;
         }
-        $this->property->ID = (int)$this->originalPost->ID;
+        $this->property->ID   = (int)$this->originalPost->ID;
         $this->property->name = apply_filters(
             'the_title',
             $this->originalPost->post_title
         );
+
         $this->property->description = get_the_excerpt($this->originalPost);
     }
 
     public function buildWordLandData()
     {
         if (isset($this->originalPost->property_id)) {
-            $this->property->price = floatval($this->originalPost->price);
+            $this->property->price      = floatval($this->originalPost->price);
             $this->property->unit_price = floatval($this->originalPost->unit_price);
-            $this->property->size = intval($this->originalPost->size);
-            $this->property->bedrooms = intval($this->originalPost->bedrooms);
-            $this->property->bathrooms = intval($this->originalPost->bathrooms);
+            $this->property->size       = intval($this->originalPost->size);
+            $this->property->bedrooms   = intval($this->originalPost->bedrooms);
+            $this->property->bathrooms  = intval($this->originalPost->bathrooms);
+
             if (isset($this->originalPost->latitude) && $this->originalPost->latitude) {
                 $this->property->geolocation = new GeoLocation(
                     floatval($this->originalPost->latitude),
@@ -72,16 +79,19 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         $this->getPrimaryAgent();
     }
 
-    public function getProperty()
+    public function getProperty($scope = 'global')
     {
         if (!$this->property->ID) {
             return;
         }
 
-        return apply_filters(
+        return apply_filters_ref_array(
             'wordland_builder_get_property',
-            $this->property,
-            $this
+            array(
+                &$this->property,
+                $this,
+                $scope
+            )
         );
     }
 }
