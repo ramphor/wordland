@@ -328,6 +328,6 @@ class AjaxRequestManager
         $builder->build();
         $builder->buildContent();
 
-        return wp_send_json_success($builder->getProperty());
+        return wp_send_json_success($builder->getProperty('single'));
     }
 }
