@@ -16,6 +16,7 @@ class Property extends Data implements JsonSerializable
     public $description;
     public $content;
     public $address;
+    public $createdAt;
     public $price = 0;
     public $unitPrice = 0;
     public $size = 0;
@@ -176,7 +177,7 @@ class Property extends Data implements JsonSerializable
 
         foreach ($properties as $property) {
             $propertyName = $property->name;
-            $key = preg_replace_callback('/([a-z0-9])([A-Z])/', function($matches){
+            $key = preg_replace_callback('/([a-z0-9])([A-Z])/', function ($matches) {
                 return sprintf('%s_%s', $matches[1], $matches[2]);
             }, $propertyName);
             if ($key !== 'ID') {
