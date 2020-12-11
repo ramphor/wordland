@@ -1,3 +1,3 @@
 <div class="desc">
-	<?php echo $description; ?>
+    <?php echo $description; ?>
 </div>

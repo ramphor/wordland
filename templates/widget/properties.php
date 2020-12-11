@@ -5,7 +5,7 @@
         if (!isset($columns)) {
             $columns = $style === 'horizontal-card' ? 2 : 4;
         }
-    ?>
+        ?>
         <?php do_action('wordland_before_loop', array(
             'style' => $style,
             'columns' => $columns
