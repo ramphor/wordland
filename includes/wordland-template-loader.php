@@ -158,3 +158,20 @@ function wordland_property_user_action_favorite($label)
     ));
 }
 add_action('wordland_property_user_action_favorite', 'wordland_property_user_action_favorite');
+
+
+function wordland_render_property_date_diff()
+{
+    global $property;
+    if ($property->createdAt) {
+        $date_diff = human_time_diff($property->createdAt);
+        if (empty($date_diff)) {
+            return;
+        }
+        wordland_template('loop/date', array(
+            'date' => $property->createdAt,
+            'date_diff' => $date_diff,
+        ));
+    }
+}
+add_action('wordland_before_loop_property', 'wordland_render_property_date_diff');

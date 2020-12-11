@@ -52,6 +52,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         );
 
         $this->property->description = get_the_excerpt($this->originalPost);
+        $this->property->createdAt = strtotime($this->originalPost->post_date);
     }
 
     public function buildWordLandData()
