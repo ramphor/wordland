@@ -18,7 +18,8 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         }
     }
 
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, $name)) {
             return $this->$name;
         }
