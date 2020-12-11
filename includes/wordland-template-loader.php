@@ -84,7 +84,7 @@ add_action('wordland_before_loop_property_name', 'wordand_render_property_thumbn
 function wordland_render_property_description()
 {
     global $property;
-    if (!apply_filters('wordland_loop_property_show_description', $property->getStyle() === 'horizontal-card')) {
+    if (!apply_filters('wordland_loop_property_show_description', $property->getListStyle() === 'horizontal-card')) {
         return;
     }
 

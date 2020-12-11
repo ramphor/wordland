@@ -287,6 +287,7 @@ class AjaxRequestManager
                 );
                 $markers[$index]['is_visited'] = wordland_check_property_is_viewed($property->ID);
                 $markers[$index]['url'] = get_permalink($property);
+                $markers[$index]['marker_style'] = 'circle';
 
                 // Added hook to custom property
                 do_action_ref_array('wordland_build_map_marker_property', array(
@@ -328,6 +329,8 @@ class AjaxRequestManager
         $builder->build();
         $builder->buildContent();
 
-        return wp_send_json_success($builder->getProperty('single'));
+        $property = $builder->getProperty('single');
+
+        return wp_send_json_success($property);
     }
 }

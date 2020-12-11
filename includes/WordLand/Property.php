@@ -41,7 +41,9 @@ class Property extends Data implements JsonSerializable
      */
     public $primaryAgent = null;
 
-    public $style = null;
+    public $markerStyle = 'circle';
+
+    public $listStyle;
 
     public $metas = array(
         'clean_price' => null,
@@ -49,6 +51,7 @@ class Property extends Data implements JsonSerializable
         'clean_size' => null,
         'goto_detail' => null,
     );
+
 
     public function setMeta($key, $value)
     {
@@ -155,25 +158,31 @@ class Property extends Data implements JsonSerializable
         );
     }
 
-    public function setStyle($style)
+    public function setListStyle($style)
     {
-        $this->style = $style;
+        $this->listStyle = $style;
     }
 
-    public function getStyle()
+    public function getListStyle()
     {
-        return $this->style;
+        return $this->listStyle;
     }
 
     public function jsonSerialize()
     {
         $data        = array();
         $propertyRef = new ReflectionObject($this);
-        $properties  = $propertyRef->getProperties(ReflectionProperty::IS_PUBLIC);
+        $properties  = $propertyRef->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);
 
         foreach ($properties as $property) {
-            $propertyName          = $property->name;
-            $data[$property->name] = $this->$propertyName;
+            $propertyName = $property->name;
+            $key = preg_replace_callback('/([a-z0-9])([A-Z])/', function($matches){
+                return sprintf('%s_%s', $matches[1], $matches[2]);
+            }, $propertyName);
+            if ($key !== 'ID') {
+                $key = strtolower($key);
+            }
+            $data[$key] = $this->$propertyName;
         }
 
         return apply_filters('wordland_property_supported_json_fields', $data, $this);
