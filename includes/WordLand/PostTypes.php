@@ -7,6 +7,7 @@ class PostTypes
     const PROPERTY_LOCATION_CITY_TAX = 'wordland_city';
     const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
     const PROPERTY_VISIBILITY = 'property_visibility';
+    const PROPERTY_LISTING_TYPE = 'listing_type';
 
     public function __construct()
     {
@@ -103,7 +104,7 @@ class PostTypes
             'name' => __('Listing Type', 'wordland'),
         );
         register_taxonomy(
-            'listing_type',
+            static::PROPERTY_LISTING_TYPE,
             static::get(),
             apply_filters(
                 'wordland_taxonomy_category_args',
