@@ -211,6 +211,8 @@ class AjaxRequestManager
             );
         }
 
+        do_action('wordland_before_request_ajax_get_map_properties', $this);
+
         add_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         add_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
@@ -241,6 +243,8 @@ class AjaxRequestManager
         remove_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
+
+        do_action('wordland_after_request_ajax_get_map_properties', $this);
 
         $total_items = $wp_query->found_posts;
         $items_per_page = array_get($wp_query->query_vars, 'posts_per_page', 5);
