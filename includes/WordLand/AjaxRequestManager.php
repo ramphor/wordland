@@ -229,8 +229,6 @@ class AjaxRequestManager
                 $wp_query->the_post();
                 $post = $wp_query->post;
                 $currentIndex = $wp_query->current_post;
-                var_dump(static::$properyMappingFields);
-                die;
                 $properties[$currentIndex] = $this->filterData($post, static::$properyMappingFields);
                 $properties[$currentIndex]['thumbnail_url'] = wp_get_attachment_image_url(
                     get_post_thumbnail_id($post->ID),
