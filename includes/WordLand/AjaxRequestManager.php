@@ -51,6 +51,8 @@ class AjaxRequestManager
     protected static $markerMappingFields;
     protected static $properyMappingFields;
 
+    protected $whereCondition = '';
+
     public static function getInstance()
     {
         if (is_null(static::$instance)) {
@@ -87,7 +89,13 @@ class AjaxRequestManager
 
     protected function buildQuery($args = array(), $request = null)
     {
+        if (is_array($request)) {
+            if (isset($request['unit_price'])) {
+
+            }
+        }
         $query = new PropertyQuery($args);
+
         return $query->getWordPressQuery();
     }
 
@@ -197,6 +205,8 @@ class AjaxRequestManager
      */
     public function filterProperties()
     {
+        // Reset where condition
+        $this->whereCondition = '';
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {
             $request = array_merge($request, $_REQUEST);
@@ -261,6 +271,8 @@ class AjaxRequestManager
 
     public function getMapMarkers()
     {
+        // Reset where condition
+        $this->whereCondition = '';
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {
             $request = array_merge($request, $_REQUEST);
