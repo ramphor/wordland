@@ -85,7 +85,7 @@ class AjaxRequestManager
         return wp_parse_args($systemArgs, $parsedArgs);
     }
 
-    protected function buildQuery($args = array())
+    protected function buildQuery($args = array(), $request = null)
     {
         $query = new PropertyQuery($args);
         return $query->getWordPressQuery();
@@ -222,7 +222,7 @@ class AjaxRequestManager
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'page' => $current_page,
             'posts_per_page' => 40,
-        )));
+        )), $request);
         $properties = array();
         if ($wp_query->have_posts()) {
             while ($wp_query->have_posts()) {
@@ -261,6 +261,13 @@ class AjaxRequestManager
 
     public function getMapMarkers()
     {
+        $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
+        if (is_array($request)) {
+            $request = array_merge($request, $_REQUEST);
+        } else {
+            $request = $_REQUEST;
+        }
+
         if (is_null(static::$markerMappingFields)) {
             static::$markerMappingFields = apply_filters(
                 'wordland_setup_filter_markers_mapping_fields',
@@ -276,7 +283,7 @@ class AjaxRequestManager
         add_filter('posts_fields', array(__CLASS__, 'filterMarkersSelectFields'), 10, 2);
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'posts_per_page' => 1000,
-        )));
+        )), $request);
         $markers = array();
         if ($wp_query->have_posts()) {
             $index = 0;
