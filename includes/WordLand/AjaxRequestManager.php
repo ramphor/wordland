@@ -51,7 +51,7 @@ class AjaxRequestManager
     protected static $markerMappingFields;
     protected static $properyMappingFields;
 
-    protected $whereCondition = '';
+    protected static $whereCondition = array();
 
     public static function getInstance()
     {
@@ -87,11 +87,65 @@ class AjaxRequestManager
         return wp_parse_args($systemArgs, $parsedArgs);
     }
 
+    /**
+     * return array(
+     *   from: number,
+     *   to: number,
+     *   between: boolean
+     * )
+     */
+    public function parsePrice($price) {
+        $ret = array(
+            'from' => 0,
+            'to' => null,
+            'between' => false
+        );
+
+        if (isset($price['from'])) {
+            if (isset($price['from']['value'])) {
+                $ret['from'] = $price['from']['value'];
+            }
+        }
+        if (isset($price['to'])) {
+            if (isset($price['to']['value'])) {
+                $ret['to'] = $price['to']['value'];
+            }
+        }
+
+        if (!$ret['from'] && !$ret['to']) {
+            return false;
+        }
+
+        $ret['between'] = $ret['from'] && $ret['to'];
+
+        return $ret;
+    }
+
     protected function buildQuery($args = array(), $request = null)
     {
         if (is_array($request)) {
+            global $wpdb;
             if (isset($request['unit_price'])) {
-
+                $unit_price = $this->parsePrice($request['unit_price']);
+                if ($unit_price) {
+                    // column_name BETWEEN value1 AND value2
+                    if (array_get($unit_price, 'between')) {
+                        array_push(
+                            static::$whereCondition,
+                            $wpdb->prepare("w.unit_price BETWEEN %f AND %f", $unit_price['from'], $unit_price['to'])
+                        );
+                    } elseif (empty($unit_price['to'])) {
+                        array_push(
+                            static::$whereCondition,
+                            $wpdb->prepare("w.unit_price >= %f", $unit_price['from'])
+                        );
+                    } else {
+                        array_push(
+                            static::$whereCondition,
+                            $wpdb->prepare("w.unit_price <= %f", $unit_price['to'])
+                        );
+                    }
+                }
             }
         }
         $query = new PropertyQuery($args);
@@ -144,6 +198,14 @@ class AjaxRequestManager
 
     public static function postsWhere($where, $query)
     {
+        if (!empty(static::$whereCondition)) {
+            $condition = implode(' AND', static::$whereCondition);
+            if ($where) {
+                $where .= ' AND ' . $condition;
+            } else {
+                $where = $condition;
+            }
+        }
         return $where;
     }
 
@@ -206,7 +268,7 @@ class AjaxRequestManager
     public function filterProperties()
     {
         // Reset where condition
-        $this->whereCondition = '';
+        static::$whereCondition = array();
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {
             $request = array_merge($request, $_REQUEST);
@@ -272,7 +334,7 @@ class AjaxRequestManager
     public function getMapMarkers()
     {
         // Reset where condition
-        $this->whereCondition = '';
+        static::$whereCondition = array();
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {
             $request = array_merge($request, $_REQUEST);
