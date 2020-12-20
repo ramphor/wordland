@@ -88,53 +88,25 @@ class AjaxRequestManager
         return wp_parse_args($systemArgs, $parsedArgs);
     }
 
-    /**
-     * return array(
-     *   from: number,
-     *   to: number,
-     *   between: boolean
-     * )
-     */
-    public function parsePrice($price) {
-        $ret = array(
-            'from' => 0,
-            'to' => null,
-            'between' => false
-        );
-
-        if (isset($price['from'])) {
-            if (isset($price['from']['value'])) {
-                $ret['from'] = $price['from']['value'];
-            }
-        }
-        if (isset($price['to'])) {
-            if (isset($price['to']['value'])) {
-                $ret['to'] = $price['to']['value'];
-            }
-        }
-
-        if (!$ret['from'] && !$ret['to']) {
-            return false;
-        }
-
-        $ret['between'] = $ret['from'] && $ret['to'];
-
-        return $ret;
-    }
-
     protected function buildQuery($args = array(), $request = null)
     {
         if (is_array($request)) {
             if (isset($request['unit_price'])) {
-                $unit_price = $this->parsePrice($request['unit_price']);
+                $unit_price = FilterHelper::parsePrice($request['unit_price']);
                 if ($unit_price) {
                     array_push(static::$whereCondition, FilterHelper::filterPrice($unit_price, true));
                 }
             }
             if (isset($request['price'])) {
-                $price = $this->parsePrice($request['price']);
+                $price = FilterHelper::parsePrice($request['price']);
                 if ($price) {
                     array_push(static::$whereCondition, FilterHelper::filterPrice($price, false));
+                }
+            }
+            if (isset($request['size'])) {
+                $size = FilterHelper::parseSize($request['size']);
+                if ($size) {
+                    array_push(static::$whereCondition, FilterHelper::filterSize($size));
                 }
             }
         }
