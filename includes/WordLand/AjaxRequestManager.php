@@ -3,6 +3,7 @@ namespace WordLand;
 
 use WordLand\Query\PropertyQuery;
 use WordLand\Manager\PropertyBuilderManager;
+use WordLand\Query\FilterHelper;
 
 class AjaxRequestManager
 {
@@ -124,27 +125,16 @@ class AjaxRequestManager
     protected function buildQuery($args = array(), $request = null)
     {
         if (is_array($request)) {
-            global $wpdb;
             if (isset($request['unit_price'])) {
                 $unit_price = $this->parsePrice($request['unit_price']);
                 if ($unit_price) {
-                    // column_name BETWEEN value1 AND value2
-                    if (array_get($unit_price, 'between')) {
-                        array_push(
-                            static::$whereCondition,
-                            $wpdb->prepare("w.unit_price BETWEEN %f AND %f", $unit_price['from'], $unit_price['to'])
-                        );
-                    } elseif (empty($unit_price['to'])) {
-                        array_push(
-                            static::$whereCondition,
-                            $wpdb->prepare("w.unit_price >= %f", $unit_price['from'])
-                        );
-                    } else {
-                        array_push(
-                            static::$whereCondition,
-                            $wpdb->prepare("w.unit_price <= %f", $unit_price['to'])
-                        );
-                    }
+                    array_push(static::$whereCondition, FilterHelper::filterPrice($unit_price, true));
+                }
+            }
+            if (isset($request['price'])) {
+                $price = $this->parsePrice($request['price']);
+                if ($price) {
+                    array_push(static::$whereCondition, FilterHelper::filterPrice($price, false));
                 }
             }
         }
