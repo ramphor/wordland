@@ -104,7 +104,7 @@ class DataLoader
         ));
         $listingTypes = array();
         foreach ($terms as $term) {
-            $listingTypes[$term->term_id] = array(
+            $listingTypes[] = array(
                 'id' => $term->term_id,
                 'name' => $term->name,
                 'slug' => $term->slug
