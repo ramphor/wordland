@@ -110,6 +110,14 @@ class AjaxRequestManager
                 }
             }
         }
+
+        if (isset($request['listing_type'])) {
+            $listing_type = FilterHelper::parseListingType($request['listing_type']);
+            if ($listing_type) {
+                $args['tax_query'][] = $listing_type;
+            }
+        }
+
         $query = new PropertyQuery($args);
 
         return $query->getWordPressQuery();

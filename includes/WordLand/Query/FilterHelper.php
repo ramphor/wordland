@@ -1,6 +1,8 @@
 <?php
 namespace WordLand\Query;
 
+use WordLand\PostTypes;
+
 class FilterHelper
 {
     /**
@@ -99,5 +101,17 @@ class FilterHelper
         } else {
             return$wpdb->prepare("w.size <= %f", $price['to']);
         }
+    }
+
+    public static function parseListingType($listingType)
+    {
+        if (isset($listingType['id'])) {
+            return array(
+                'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
+                'field' => 'term_id',
+                'terms' => intval($listingType['id'])
+            );
+        }
+        return false;
     }
 }
