@@ -106,7 +106,8 @@ class DataLoader
         foreach ($terms as $term) {
             $listingTypes[$term->term_id] = array(
                 'id' => $term->term_id,
-                'name' => $term->name
+                'name' => $term->name,
+                'slug' => $term->slug
             );
         }
 
