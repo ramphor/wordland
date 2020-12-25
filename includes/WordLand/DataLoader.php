@@ -107,7 +107,8 @@ class DataLoader
             $listingTypes[] = array(
                 'id' => $term->term_id,
                 'name' => $term->name,
-                'slug' => $term->slug
+                'slug' => $term->slug,
+                'taxonomy' => $term->taxonomy
             );
         }
 
