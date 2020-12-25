@@ -107,7 +107,7 @@ class FilterHelper
     {
         if (isset($listingType['id'])) {
             return array(
-                'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
+                'taxonomy' => isset($listingType['taxonomy']) ? $listingType['taxonomy'] : PostTypes::PROPERTY_LISTING_TYPE,
                 'field' => 'term_id',
                 'terms' => intval($listingType['id'])
             );
