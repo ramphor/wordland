@@ -73,6 +73,28 @@ class PostTypes
     public function registerTaxonomies()
     {
         /**
+         * Listing types
+         *
+         * Set listing type for rent, sale or sold
+         */
+        $listing_type_labels = array(
+            'name' => __('Listing Type', 'wordland'),
+        );
+        register_taxonomy(
+            static::PROPERTY_LISTING_TYPE,
+            static::get(),
+            apply_filters(
+                'wordland_taxonomy_category_args',
+                array(
+                    'labels' => $listing_type_labels,
+                    'public' => true,
+                    'hierarchical' => true,
+                )
+            )
+        );
+
+
+        /**
          * Property categories
          *
          * Use to create type houses, apartments, townhomes
@@ -89,27 +111,6 @@ class PostTypes
                 'wordland_taxonomy_category_args',
                 array(
                     'labels' => $category_labels,
-                    'public' => true,
-                    'hierarchical' => true,
-                )
-            )
-        );
-
-        /**
-         * Listing types
-         *
-         * Set listing type for rent, sale or sold
-         */
-        $listing_type_labels = array(
-            'name' => __('Listing Type', 'wordland'),
-        );
-        register_taxonomy(
-            static::PROPERTY_LISTING_TYPE,
-            static::get(),
-            apply_filters(
-                'wordland_taxonomy_category_args',
-                array(
-                    'labels' => $listing_type_labels,
                     'public' => true,
                     'hierarchical' => true,
                 )

@@ -69,19 +69,76 @@ class Locations
 
     public function registerLocationTaxonomies()
     {
+        if (apply_filters('wordland_enable_area_level_4', false)) {
+            $labels = array(
+                'name' => __('Countries', 'wordland'),
+                'plural_name' => __('Country', 'wordland'),
+            );
+            register_taxonomy(
+                'country',
+                PostTypes::get(),
+                apply_filters('wordland_taxonomy_country_args', array(
+                    'labels' => $labels,
+                    'public' => true,
+                ))
+            );
+        }
+
         $labels = array(
-            'name' => __('Cities', 'wordland'),
-            'plural_name' => __('City', 'wordland'),
+            'name' => __('Areas Level 1', 'wordland'),
+            'plural_name' => __('Area Level 1', 'wordland'),
         );
 
         register_taxonomy(
-            'location_first_level',
-            PostTypes::PROPERTY_POST_TYPE,
-            apply_filters('wordland_taxonomy_location_first_level_args', array(
+            'administrative_area_level_1',
+            PostTypes::get(),
+            apply_filters('wordland_taxonomy_administrative_area_level_1_args', array(
                 'labels' => $labels,
                 'public' => true,
             ))
         );
+
+        $labels = array(
+            'name' => __('Areas Level 2', 'wordland'),
+            'plural_name' => __('Area Level 2', 'wordland'),
+        );
+        register_taxonomy(
+            'administrative_area_level_2',
+            PostTypes::get(),
+            apply_filters('wordland_taxonomy_administrative_area_level_2_args', array(
+                'labels' => $labels,
+                'public' => true,
+            ))
+        );
+
+        $labels = array(
+            'name' => __('Areas Level 3', 'wordland'),
+            'plural_name' => __('Area Level 3', 'wordland'),
+        );
+        register_taxonomy(
+            'administrative_area_level_3',
+            PostTypes::get(),
+            apply_filters('wordland_taxonomy_administrative_area_level_3_args', array(
+                'labels' => $labels,
+                'public' => true,
+
+            ))
+        );
+
+        if (apply_filters('wordland_enable_area_level_4', false)) {
+            $labels = array(
+                'name' => __('Areas Level 4', 'wordland'),
+                'plural_name' => __('Area Level 4', 'wordland'),
+            );
+            register_taxonomy(
+                'administrative_area_level_4',
+                PostTypes::get(),
+                apply_filters('wordland_taxonomy_administrative_area_level_4_args', array(
+                    'labels' => $labels,
+                    'public' => true,
+                ))
+            );
+        }
     }
 
     public function get_maxmind_location()
