@@ -95,4 +95,21 @@ class DataLoader
         $post = get_post($propertyID);
         return $this->buildPropertyFromPost($post);
     }
+
+    public static function getListingTypes()
+    {
+        $terms = get_terms(array(
+            'hide_empty' => false,
+            'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE
+        ));
+        $listingTypes = array();
+        foreach ($terms as $term) {
+            $listingTypes[$term->term_id] = array(
+                'id' => $term->term_id,
+                'name' => $term->name
+            );
+        }
+
+        return apply_filters('wordland_dataloader_get_listing_types', $listingTypes);
+    }
 }
