@@ -114,4 +114,27 @@ class FilterHelper
         }
         return false;
     }
+
+    public static function parseBedsroom($bedsroom)
+    {
+        if (empty($bedsroom['room'])) {
+            return false;
+        }
+        global $wpdb;
+
+        $exactly = isset($bedsroom['exactly']) ? boolval($bedsroom['exactly']): false;
+        if ($exactly) {
+            return $wpdb->prepare(" AND w.bedrooms = %d", $bedsroom['room']);
+        }
+        return $wpdb->prepare(" AND w.bedrooms >= %d", $bedsroom['room']);
+    }
+
+    public static function parseBathsroom($bathroom)
+    {
+        if (empty($bathroom['room'])) {
+            return false;
+        }
+        global $wpdb;
+        return $wpdb->prepare(" AND w.bathrooms >= %d", $bathroom['room']);
+    }
 }

@@ -54,6 +54,8 @@ class AjaxRequestManager
 
     protected static $whereCondition = array();
 
+    protected static $request;
+
     public static function getInstance()
     {
         if (is_null(static::$instance)) {
@@ -176,6 +178,20 @@ class AjaxRequestManager
                 $where = $condition;
             }
         }
+
+        if (isset(static::$request['bedsroom'])) {
+            $bedroom_query = FilterHelper::parseBedsroom(static::$request['bedsroom']);
+            if (!empty($bedroom_query)) {
+                $where .= $bedroom_query;
+            }
+        }
+        if (isset(static::$request['bathsroom'])) {
+            $bathsroom_query = FilterHelper::parseBathsroom(static::$request['bathsroom']);
+            if (!empty($bathsroom_query)) {
+                $where .= $bathsroom_query;
+            }
+        }
+
         return $where;
     }
 
@@ -245,6 +261,7 @@ class AjaxRequestManager
         } else {
             $request = $_REQUEST;
         }
+        static::$request = $request;
 
         if (is_null(static::$markerMappingFields)) {
             static::$properyMappingFields = apply_filters(
@@ -311,6 +328,7 @@ class AjaxRequestManager
         } else {
             $request = $_REQUEST;
         }
+        static::$request = $request;
 
         if (is_null(static::$markerMappingFields)) {
             static::$markerMappingFields = apply_filters(
