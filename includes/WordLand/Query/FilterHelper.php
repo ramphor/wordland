@@ -137,4 +137,24 @@ class FilterHelper
         global $wpdb;
         return $wpdb->prepare(" AND w.bathrooms >= %d", $bathroom['room']);
     }
+
+    public static function parseMapBounds($map_bounds)
+    {
+        if (empty($map_bounds['north_east']) || empty($map_bounds['south_west'])) {
+            return false;
+        }
+        global $wpdb;
+
+        $north = array_get($map_bounds, 'lat');
+        $east  = array_get($map_bounds, 'lng');
+        $south = array_get($map_bounds, 'lat');
+        $west  = array_get($map_bounds, 'lng');
+
+        return $wpdb->prepare(" AND ST_Contains(
+            ST_PolygonFromText('POLYGON(
+                ({$north} {$west}, {$north} {$east}, {$south} {$east}, {$south} {$west}, {$north} {$west})
+            )'),
+            w.location
+        )");
+    }
 }
