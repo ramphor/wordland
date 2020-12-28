@@ -140,13 +140,13 @@ class FilterHelper
 
     public static function parseMapBounds($map_bounds)
     {
-        if (empty($map_bounds['north_east']) || empty($map_bounds['south_west'])) {
+        if (empty($map_bounds['bounds']) || empty($map_bounds['bounds']['north_east']) || empty($map_bounds['bounds']['south_west'])) {
             return false;
         }
         global $wpdb;
 
-        $north_east = $map_bounds['north_east'];
-        $south_west = $map_bounds['south_west'];
+        $north_east = $map_bounds['bounds']['north_east'];
+        $south_west = $map_bounds['bounds']['south_west'];
 
         $north = array_get($north_east, 'lat');
         $east  = array_get($north_east, 'lng');
