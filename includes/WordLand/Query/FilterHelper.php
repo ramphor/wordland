@@ -145,16 +145,19 @@ class FilterHelper
         }
         global $wpdb;
 
-        $north = array_get($map_bounds, 'lat');
-        $east  = array_get($map_bounds, 'lng');
-        $south = array_get($map_bounds, 'lat');
-        $west  = array_get($map_bounds, 'lng');
+        $north_east = $map_bounds['north_east'];
+        $south_west = $map_bounds['south_west'];
 
-        return $wpdb->prepare(" AND ST_Contains(
+        $north = array_get($north_east, 'lat');
+        $east  = array_get($north_east, 'lng');
+        $south = array_get($south_west, 'lat');
+        $west  = array_get($south_west, 'lng');
+
+        return " AND ST_Contains(
             ST_PolygonFromText('POLYGON(
                 ({$north} {$west}, {$north} {$east}, {$south} {$east}, {$south} {$west}, {$north} {$west})
             )'),
             w.location
-        )");
+        )";
     }
 }
