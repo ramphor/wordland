@@ -63,5 +63,8 @@ class Installer
             );
             $wpdb->query($sql);
         }
+
+        // Disable ONLY_FULL_GROUP_BY to group property by locations
+        $wpdb->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
     }
 }
