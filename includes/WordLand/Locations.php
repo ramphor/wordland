@@ -69,7 +69,7 @@ class Locations
 
     public function registerLocationTaxonomies()
     {
-        if (apply_filters('wordland_enable_area_level_4', false)) {
+        if (apply_filters('wordland_enable_country_taxonomy', false)) {
             $labels = array(
                 'name' => __('Countries', 'wordland'),
                 'plural_name' => __('Country', 'wordland'),
