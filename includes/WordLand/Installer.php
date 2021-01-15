@@ -46,7 +46,7 @@ class Installer
                 PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `term_id` BIGINT NOT NULL ,
-                `location` MULTIPOLYGON NOT NULL ,
+                `location` GEOMETRY NOT NULL ,
                 `created_at` TIMESTAMP NOT NULL ,
             PRIMARY KEY (`ID`)',
         );
