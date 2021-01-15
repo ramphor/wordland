@@ -74,6 +74,9 @@ class AjaxRequestManager
         add_action('wp_ajax_nopriv_wordland_get_map_boundaries', array($this, 'getMapBoundaries'));
         add_action('wp_ajax_wordland_get_property', array($this, 'getProperty'));
         add_action('wp_ajax_nopriv_wordland_get_property', array($this, 'getProperty'));
+
+        add_action('wp_ajax_wordland_get_location_geodata', array($this, 'getLocationGeoData'));
+        add_action('wp_ajax_nopriv_wordland_get_location_geodata', array($this, 'getLocationGeoData'));
     }
 
     public function filterQueriesFromGetVariable()
@@ -414,5 +417,9 @@ class AjaxRequestManager
         $property = $builder->getProperty('single');
 
         return wp_send_json_success($property);
+    }
+
+    public function getLocationGeoData()
+    {
     }
 }

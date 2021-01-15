@@ -108,3 +108,20 @@ function wordland_check_property_is_viewed($property_id)
 
     return $is_viewed;
 }
+
+function wordland_get_term_from_geo_location($point)
+{
+    if (empty($point)) {
+        return false;
+    }
+    global $wpdb;
+    $lat = array_get($point, 'lat');
+    $lng = array_get($point, 'lng');
+    $sql = $wpdb->prepare(
+        "SELECT l.term_id from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
+        'administrative_area_level_1'
+    );
+    $term_id = $wpdb->get_var($sql);
+
+    return intval($term_id);
+}
