@@ -191,6 +191,8 @@ class WordLand
     public function loadModules()
     {
         $moduleManager = new ModuleManager();
-        $moduleManager->load_modules();
+
+        // Load module via action hook `plugins_loaded`
+        add_action( 'plugins_loaded', array($moduleManager, 'load_modules' ) );
     }
 }
