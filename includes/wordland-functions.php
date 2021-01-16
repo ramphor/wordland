@@ -118,10 +118,10 @@ function wordland_get_term_from_geo_location($point)
     $lat = array_get($point, 'lat');
     $lng = array_get($point, 'lng');
     $sql = $wpdb->prepare(
-        "SELECT l.term_id from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
+        "SELECT l.term_id, AsWKB(l.location) as kml from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
         'administrative_area_level_1'
     );
-    $term_id = $wpdb->get_var($sql);
+    $term_location = $wpdb->get_row($sql);
 
-    return intval($term_id);
+    return $term_location;
 }
