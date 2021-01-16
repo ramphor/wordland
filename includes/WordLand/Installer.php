@@ -47,6 +47,7 @@ class Installer
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `term_id` BIGINT NOT NULL ,
                 `location` GEOMETRY NOT NULL ,
+                `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
                 `created_at` TIMESTAMP NOT NULL ,
             PRIMARY KEY (`ID`)',
         );
