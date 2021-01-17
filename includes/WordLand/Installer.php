@@ -36,7 +36,8 @@ class Installer
         $tables = array(
             'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `property_id` BIGINT NOT NULL ,
-                `location` POINT NOT NULL ,
+                `location` POINT NULL,
+                `address` TEXT NULL,
                 `price` BIGINT NOT NULL DEFAULT 0,
                 `unit_price` BIGINT NOT NULL DEFAULT 0,
                 `size` BIGINT NOT NULL DEFAULT 0,
@@ -46,8 +47,10 @@ class Installer
                 PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `term_id` BIGINT NOT NULL ,
+                `full_name` VARCHAR(255),
                 `location` GEOMETRY NOT NULL ,
                 `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
+                `zip_code` VARCHAR(10),
                 `created_at` TIMESTAMP NOT NULL ,
             PRIMARY KEY (`ID`)',
         );
