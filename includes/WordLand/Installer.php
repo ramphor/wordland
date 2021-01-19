@@ -47,10 +47,10 @@ class Installer
                 PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
                 `term_id` BIGINT NOT NULL ,
-                `full_name` VARCHAR(255),
+                `location_name` VARCHAR(255) DEFAULT \'\' COMMENT \'Location name with prefix is parent location\',
                 `location` GEOMETRY NOT NULL ,
                 `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
-                `zip_code` VARCHAR(10),
+                `zip_code` VARCHAR(10) NULL,
                 `created_at` TIMESTAMP NOT NULL ,
             PRIMARY KEY (`ID`)',
         );
