@@ -125,3 +125,15 @@ function wordland_get_term_from_geo_location($point)
 
     return $term_location;
 }
+
+function wordland_get_term_from_geo_name($name)
+{
+    global $wpdb;
+    $sql = "SELECT l.term_id, AsWKB(l.location) as kml
+        FROM {$wpdb->prefix}wordland_locations l
+        WHERE
+            `geo_eng_name` LIKE '%" . $wpdb->escape($name) . "'";
+    $term_location = $wpdb->get_row($sql);
+
+    return $term_location;
+}
