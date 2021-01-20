@@ -20,12 +20,14 @@ class QueryLocation extends ModuleAbstract
         return static::MODULE_NAME;
     }
 
-    public function init() {
+    public function init()
+    {
         add_action('wp_ajax_wordland_search_location', array($this, 'queryLocations'));
         add_action('wp_ajax_nopriv_wordland_search_location', array($this, 'queryLocations'));
     }
 
-    public function queryLocations() {
+    public function queryLocations()
+    {
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {
             $request = array_merge($request, $_REQUEST);

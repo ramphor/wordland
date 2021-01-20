@@ -1,8 +1,10 @@
 <?php
 namespace WordLand\Query;
 
-class LocationQuery {
-    public function query_location_by_keyword($keyword) {
+class LocationQuery
+{
+    public function query_location_by_keyword($keyword)
+    {
         $locations = array();
 
         return apply_filters(
