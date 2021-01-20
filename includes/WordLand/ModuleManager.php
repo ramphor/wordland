@@ -3,6 +3,7 @@ namespace WordLand;
 
 use WordLand\Constracts\Module;
 use WordLand\Modules\FavoriteProperty;
+use WordLand\Modules\Ajax\QueryLocation;
 
 class ModuleManager
 {
@@ -18,6 +19,7 @@ class ModuleManager
     {
         $modules = array(
             FavoriteProperty::class,
+            QueryLocation::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
