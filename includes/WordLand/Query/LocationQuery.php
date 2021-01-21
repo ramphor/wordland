@@ -12,13 +12,13 @@ class LocationQuery
         ));
 
 
-        $sql = "SELECT term_id, location_name, zip_code FROM {$wpdb->prefix}wordland_locations WHERE";
+        $sql = "SELECT DISTINCT term_id, location_name, zip_code FROM {$wpdb->prefix}wordland_locations WHERE";
         foreach($columns as $column => $operator) {
             $sql .= sprintf(
                 ' `%s` %s \'%s\' OR ',
                 $column,
                 $operator,
-                esc_sql(strtolower($operator) == 'like' ? '%' . $keyword . '%' : $keyword)
+                strtolower($operator) == 'like' ? '%' . $wpdb->prepare($keyword) . '%' : $wpdb->prepare($keyword)
             );
         }
         $sql = rtrim($sql, ' OR ');
@@ -38,7 +38,7 @@ class LocationQuery
     protected function query($keyword) {
         global $wpdb;
 
-        $sql     = $this->create_query_sql($keyword);
+        $sql = $this->create_query_sql($keyword);
 
         // All locations in database
         return $wpdb->get_results($sql);
@@ -49,6 +49,7 @@ class LocationQuery
         $locations = array();
 
         $query_results = $this->query($keyword);
+
         foreach($query_results as $query_result) {
             $locations[$query_result->term_id] = array(
                 'term_id' => intval($query_result->term_id),
