@@ -28,6 +28,9 @@ class QueryLocation extends ModuleAbstract
 
         add_action('wp_ajax_wordland_get_location', array($this, 'getLocation'));
         add_action('wp_ajax_nopriv_wordland_get_location', array($this, 'getLocation'));
+
+        add_action('wp_ajax_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
+        add_action('wp_ajax_nopriv_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
     }
 
     public function queryLocations()
@@ -67,6 +70,54 @@ class QueryLocation extends ModuleAbstract
 
         $query = new LocationQuery();
         $location = $query->query_location($term_id);
+        if ($location !== false) {
+            $result = array(
+                'name' => $location->location_name,
+                'term_id' => $term_id
+            );
+
+            if (!empty($location->location)) {
+                $geom = geoPHP::load($location->location, 'ewkb');
+
+                if ($geom) {
+                    $result['geojson_border'] = array(
+                        'type' => 'Feature',
+                        'geometry' => json_decode($geom->out('json'))
+                    );
+                    $centroid = $geom->getCentroid();
+                    $result['center_location'] = array(
+                        'lat' => $centroid->getX(),
+                        'lng' => $centroid->getY(),
+                    );
+                }
+            }
+
+            return wp_send_json_success($result);
+        }
+
+        return wp_send_json_error(
+            sprintf(__('The error is ocurr when query location', 'wordland'))
+        );
+    }
+
+    public function getLocationFromGeoLocation()
+    {
+        $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
+        if (is_array($request)) {
+            $request = array_merge($request, $_REQUEST);
+        } else {
+            $request = $_REQUEST;
+        }
+        static::$request = $request;
+
+        $lat = array_get(static::$request, 'lat');
+        $lng = array_get(static::$request, 'lng');
+
+        $location = wordland_get_term_from_geo_location(array(
+            'lat' => $lat,
+            'lng' => $lng,
+        ));
+
         if ($location !== false) {
             $result = array(
                 'name' => $location->location_name,
