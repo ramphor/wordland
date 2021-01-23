@@ -95,11 +95,11 @@ class FilterHelper
         global $wpdb;
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
-            return $wpdb->prepare("w.size BETWEEN %f AND %f", $price['from'], $price['to']);
+            return $wpdb->prepare(" w.size BETWEEN %f AND %f", $price['from'], $price['to']);
         } elseif (empty($price['to'])) {
-            return $wpdb->prepare("w.size >= %f", $price['from']);
+            return $wpdb->prepare(" w.size >= %f", $price['from']);
         } else {
-            return$wpdb->prepare("w.size <= %f", $price['to']);
+            return$wpdb->prepare(" w.size <= %f", $price['to']);
         }
     }
 
