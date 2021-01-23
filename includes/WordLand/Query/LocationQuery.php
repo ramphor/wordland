@@ -9,6 +9,7 @@ class LocationQuery
         $columns = apply_filters('wordland_query_location_where_columns', array(
             'location_name' => 'LIKE',
             'ascii_name' => 'LIKE',
+            'clean_name' => 'LIKE',
             'zip_code' => '='
         ));
 
