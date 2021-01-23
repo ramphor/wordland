@@ -52,6 +52,7 @@ class Installer
                 `location` GEOMETRY NULL,
                 `center_point` POINT NULL,
                 `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
+                `clean_name` VARCHAR(255) NULL COMMENT \'Use to improve query from location name\'
                 `zip_code` VARCHAR(10) NULL,
                 `created_at` TIMESTAMP NOT NULL ,
             PRIMARY KEY (`ID`)',
