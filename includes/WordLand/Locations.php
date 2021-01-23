@@ -96,7 +96,7 @@ class Locations
             apply_filters('wordland_taxonomy_administrative_area_level_1_args', array(
                 'labels' => $labels,
                 'public' => true,
-                'hierarchical' => true,
+                'hierarchical' => $enabled_country,
             ))
         );
 
@@ -110,7 +110,7 @@ class Locations
             apply_filters('wordland_taxonomy_administrative_area_level_2_args', array(
                 'labels' => $labels,
                 'public' => true,
-                'hierarchical' => $enabled_country,
+                'hierarchical' => true,
             ))
         );
 
