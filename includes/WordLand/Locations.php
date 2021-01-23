@@ -69,7 +69,8 @@ class Locations
 
     public function registerLocationTaxonomies()
     {
-        if (apply_filters('wordland_enable_country_taxonomy', false)) {
+        $enabled_country = apply_filters('wordland_enable_country_taxonomy', false);
+        if ($enabled_country) {
             $labels = array(
                 'name' => __('Countries', 'wordland'),
                 'plural_name' => __('Country', 'wordland'),
@@ -95,6 +96,7 @@ class Locations
             apply_filters('wordland_taxonomy_administrative_area_level_1_args', array(
                 'labels' => $labels,
                 'public' => true,
+                'hierarchical' => true,
             ))
         );
 
@@ -108,6 +110,7 @@ class Locations
             apply_filters('wordland_taxonomy_administrative_area_level_2_args', array(
                 'labels' => $labels,
                 'public' => true,
+                'hierarchical' => $enabled_country,
             ))
         );
 
@@ -121,7 +124,7 @@ class Locations
             apply_filters('wordland_taxonomy_administrative_area_level_3_args', array(
                 'labels' => $labels,
                 'public' => true,
-
+                'hierarchical' => true,
             ))
         );
 
@@ -136,6 +139,7 @@ class Locations
                 apply_filters('wordland_taxonomy_administrative_area_level_4_args', array(
                     'labels' => $labels,
                     'public' => true,
+                    'hierarchical' => true,
                 ))
             );
         }
