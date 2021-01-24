@@ -44,7 +44,7 @@ class GeoLocation
 
         $reader = new Reader($db_path);
         $ip = wordland_get_real_ip_address();
-        // $ip = '58.186.51.52'; // IPv4
+        $ip = '58.186.51.52'; // IPv4
         // $ip = '2402:800:61ae:fb0f:dd43:cf99:4a7c:5abf'; // IPv6
 
         // Check IP is localhost

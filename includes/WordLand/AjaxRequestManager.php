@@ -123,6 +123,13 @@ class AjaxRequestManager
             }
         }
 
+        if (isset($request['location'])) {
+            $listing_type = FilterHelper::parseLocation($request['location']);
+            if ($listing_type) {
+                $args['tax_query'][] = $listing_type;
+            }
+        }
+
         $query = new PropertyQuery($args);
 
         return $query->getWordPressQuery();

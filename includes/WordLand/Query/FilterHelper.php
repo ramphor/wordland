@@ -160,4 +160,17 @@ class FilterHelper
             w.location
         )";
     }
+
+    public static function parseLocation($location)
+    {
+        if (isset($location['term_id']) && ($term = get_term($location['term_id']))) {
+            return array(
+                'taxonomy' => $term->taxonomy,
+                'field' => 'term_id',
+                'terms' => $term->term_id,
+                'include_children' => true,
+                'operator' => 'IN'
+            );
+        }
+    }
 }
