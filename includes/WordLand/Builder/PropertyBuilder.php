@@ -46,10 +46,14 @@ class PropertyBuilder extends PropertyBuilderAbstract
     public function getPrimaryAgent()
     {
         $owner = get_userdata($this->originalPost->post_author);
-        unset($owner->user_pass);
 
-        // Create primary agent
-        $agent = new Agent($owner->display_name);
+        if ($owner) {
+            unset($owner->user_pass);
+            // Create primary agent
+            $agent = new Agent($owner->display_name);
+        } else {
+            $agent = new Agent(__('Guest'));
+        }
 
         $this->property->primaryAgent = apply_filters(
             'wordland_primary_agent',
