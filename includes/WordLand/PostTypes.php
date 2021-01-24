@@ -89,6 +89,7 @@ class PostTypes
                     'labels' => $listing_type_labels,
                     'public' => true,
                     'hierarchical' => true,
+                    'show_admin_column' => true,
                 )
             )
         );
@@ -113,6 +114,7 @@ class PostTypes
                     'labels' => $category_labels,
                     'public' => true,
                     'hierarchical' => true,
+                    'show_admin_column' => true,
                 )
             )
         );
@@ -134,6 +136,7 @@ class PostTypes
                     'labels' => $listing_type_labels,
                     'public' => true,
                     'hierarchical' => true,
+                    'show_admin_column' => true,
                 )
             )
         );
