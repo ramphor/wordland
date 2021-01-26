@@ -20,7 +20,7 @@ class LocationQuery
                 ' `%s` %s \'%s\' OR ',
                 $column,
                 $operator,
-                strtolower($operator) == 'like' ? '%' . $wpdb->prepare($keyword) . '%' : $wpdb->prepare($keyword)
+                strtolower($operator) == 'like' ? '%' . $wpdb->_real_escape($keyword) . '%' : $wpdb->_real_escape($keyword)
             );
         }
         $sql = rtrim($sql, ' OR ');
@@ -71,7 +71,7 @@ class LocationQuery
     {
         global $wpdb;
         $sql = $wpdb->prepare(
-            "SELECT location_name, AsWKB(location) as location FROM {$wpdb->prefix}wordland_locations WHERE term_id=%d",
+            "SELECTlocation_name, AsWKB(location) as location FROM {$wpdb->prefix}wordland_locations WHERE term_id=%d",
             $term_id
         );
 
