@@ -47,7 +47,7 @@ class DataLoader
             return $join;
         }
         global $wpdb;
-        $join .= " LEFT JOIN {$wpdb->prefix}wordland_properties wlp ON {$wpdb->posts}.ID=wlp.property_id";
+        $join .= " INNER JOIN {$wpdb->prefix}wordland_properties wlp ON {$wpdb->posts}.ID=wlp.property_id";
 
         return $join;
     }
