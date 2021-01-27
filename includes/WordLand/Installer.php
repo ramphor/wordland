@@ -34,8 +34,8 @@ class Installer
         $engine = 'MyISAM';
 
         $tables = array(
-            'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
-                `property_id` BIGINT NOT NULL ,
+            'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `property_id` BIGINT NOT NULL,
                 `location` POINT NULL,
                 `address` TEXT NULL,
                 `price` BIGINT NOT NULL DEFAULT 0,
@@ -43,10 +43,10 @@ class Installer
                 `size` BIGINT NOT NULL DEFAULT 0,
                 `bedrooms` BIGINT NOT NULL DEFAULT 0,
                 `bathrooms` BIGINT NOT NULL DEFAULT 0,
-                `created_at` TIMESTAMP NOT NULL ,
+                `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)',
-            'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT ,
-                `term_id` BIGINT NOT NULL ,
+            'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `term_id` BIGINT NOT NULL,
                 `location_name` VARCHAR(255) DEFAULT \'\' COMMENT \'Location name with prefix is parent location\',
                 `ascii_name` VARCHAR(255) DEFAULT \'\' COMMENT \'The clean location name use for multi purpose\',
                 `location` GEOMETRY NULL,
@@ -54,8 +54,17 @@ class Installer
                 `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
                 `clean_name` VARCHAR(255) NULL COMMENT \'Use to improve query from location name\'
                 `zip_code` VARCHAR(10) NULL,
-                `created_at` TIMESTAMP NOT NULL ,
+                `created_at` TIMESTAMP NOT NULL,
             PRIMARY KEY (`ID`)',
+            'wordland_search_histories' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `keyword_text` VARCHAR(255),
+                `type_type` VARCHAR(255) DEFAULT \'general\',
+                `reference_object` BIGINT NOT NULL DEFAULT 0,
+                `reference_type` VARCHAR(255) NULL,
+                `user_id`  BIGINT NOT NULL DEFAULT 0,
+                `ip` VARCHAR(255) DEFAULT \'\' COMMENT \'IP of the user searching property\',
+                `created_at` TIMESTAMP NOT NULL,
+            PRIMARY KEY (`ID`)'
         );
 
         foreach ($tables as $table_name => $sql_syntax) {
