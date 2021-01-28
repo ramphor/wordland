@@ -31,6 +31,8 @@ class QueryLocation extends ModuleAbstract
 
         add_action('wp_ajax_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
         add_action('wp_ajax_nopriv_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
+
+        add_filter('wordland_reactjs_global_data', array($this, 'registerNewEndpoints'));
     }
 
     public function queryLocations()
@@ -146,5 +148,10 @@ class QueryLocation extends ModuleAbstract
         return wp_send_json_error(
             sprintf(__('The error is ocurr when query location', 'wordland'))
         );
+    }
+
+    public function registerNewEndpoints($globalData) {
+        $globalData['endpoints']['get_geolocation_url'] = admin_url('admin-ajax.php?action=wordland_get_location');
+        return $globalData;
     }
 }
