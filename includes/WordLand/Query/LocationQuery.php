@@ -71,7 +71,7 @@ class LocationQuery
     {
         global $wpdb;
         $sql = $wpdb->prepare(
-            "SELECTlocation_name, AsWKB(location) as location FROM {$wpdb->prefix}wordland_locations WHERE term_id=%d",
+            "SELECT location_name, AsWKB(location) as location FROM {$wpdb->prefix}wordland_locations WHERE term_id=%d",
             $term_id
         );
 
