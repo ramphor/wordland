@@ -88,8 +88,8 @@ class QueryLocation extends ModuleAbstract
                     );
                     $centroid = $geom->getCentroid();
                     $result['center_location'] = array(
-                        'lat' => $centroid->getX(),
-                        'lng' => $centroid->getY(),
+                        'lat' => $centroid->getY(),
+                        'lng' => $centroid->getX(),
                     );
                 }
             }
@@ -136,8 +136,8 @@ class QueryLocation extends ModuleAbstract
                     );
                     $centroid = $geom->getCentroid();
                     $result['center_location'] = array(
-                        'lat' => $centroid->getX(),
-                        'lng' => $centroid->getY(),
+                        'lng' => $centroid->getX(),
+                        'lat' => $centroid->getY(),
                     );
                 }
             }
