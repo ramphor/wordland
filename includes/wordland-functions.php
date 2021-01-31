@@ -60,12 +60,15 @@ function wordland_default_coordinates()
     );
 }
 
-function wordland_get_map_zoom($has_coordinates)
+function wordland_get_map_zoom($has_coordinates, $option_name = 'default_listing_properties')
 {
-    return apply_filters('wordland_get_map_zoom', array(
+    $default_marker_list_zoom = is_numeric($has_coordinates) ? $has_coordinates : 10;
+    $marker_list_zoom = get_option("wordland_{$option_name}_map_zoom", $has_coordinates ? $default_marker_list_zoom : 6);
+    $zoom_options = array(
         'single_property' => get_option('wordland_single_property_map_zoom', 14),
-        'marker_list' => get_option('wordland_single_property_map_zoom', $has_coordinates ? 10 : 6)
-    ));
+        'marker_list' => $marker_list_zoom
+    );
+    return apply_filters('wordland_get_map_zoom', $zoom_options);
 }
 
 function wordland_get_real_ip_address()
