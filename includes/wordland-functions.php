@@ -2,6 +2,7 @@
 use WordLand\Template;
 use WordLand\PostTypes;
 use WordLand\Cache;
+use WordLand\Query\LocationQuery;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -137,3 +138,11 @@ function wordland_get_term_from_geo_name($name)
 
     return $term_location;
 }
+
+
+function wordland_get_location_from_term($term_id)
+{
+    $location_query = new LocationQuery();
+    return $location_query->query_location($term_id);
+}
+
