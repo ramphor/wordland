@@ -18,7 +18,7 @@ class Property extends Data implements JsonSerializable
     public $address;
     public $createdAt;
     public $price = 0;
-    public $unitPrice = 0;
+    public $unit_price = 0;
     public $size = 0;
     public $bathroom = 0;
     public $bedrooms = 0;
