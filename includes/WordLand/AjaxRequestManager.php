@@ -311,6 +311,12 @@ class AjaxRequestManager
                     'medium'
                 );
                 $properties[$currentIndex]['url'] = get_permalink($wp_query->post);
+
+                // Added hook to custom property
+                do_action_ref_array('wordland_build_map_marker_property', array(
+                    &$properties[$currentIndex],
+                    $wp_query->post
+                ));
             }
         }
 
