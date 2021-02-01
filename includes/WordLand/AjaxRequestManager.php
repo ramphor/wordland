@@ -408,14 +408,17 @@ class AjaxRequestManager
 
     public function getProperty()
     {
-        $payload = json_decode(file_get_contents('php://input'), true);
-
-        if (!isset($payload['property_id'])) {
-            return wp_send_json_error(__('The property ID is invalid to get data', 'wordland'));
+        $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
+        if (is_array($request)) {
+            $request = array_merge($request, $_REQUEST);
+        } else {
+            $request = $_REQUEST;
         }
+        static::$request = $request;
 
-        $property_id = $payload['property_id'];
-        $post = get_post($property_id);
+        $property_id = static::$request['property_id'];
+        $post        = get_post($property_id);
+
         if (!$post) {
             return wp_send_json_error(array(
                 'message' => sprintf(__('The property #%d is not exists', 'wordland'), $property_id),
