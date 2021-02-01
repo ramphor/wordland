@@ -154,14 +154,15 @@ class Locations
         return $this->maxmind_geolocation;
     }
 
-    protected function check_is_wordland_query($taxonomies) {
+    protected function check_is_wordland_query($taxonomies)
+    {
         $wordland_taxonomies = array(
             'administrative_area_level_1',
             'administrative_area_level_2',
             'administrative_area_level_3',
             'administrative_area_level_4'
         );
-        foreach($taxonomies as $taxonomy) {
+        foreach ($taxonomies as $taxonomy) {
             if (in_array($taxonomy, $wordland_taxonomies)) {
                 return true;
             }
@@ -169,32 +170,34 @@ class Locations
         return false;
     }
 
-    public function createLocationRelationship($query) {
+    public function createLocationRelationship($query)
+    {
         $query_vars = &$query->query_vars;
         if ($this->is_wordland_custom_query) {
             $this->is_wordland_custom_query = null;
-            remove_filter( 'option_administrative_area_level_2_children', $this->filter_opts );
-            remove_filter( 'option_administrative_area_level_3_children', $this->filter_opts );
+            remove_filter('option_administrative_area_level_2_children', $this->filter_opts);
+            remove_filter('option_administrative_area_level_3_children', $this->filter_opts);
         }
 
         if ($query_vars['parent'] > 0 && $this->check_is_wordland_query($query->query_vars['taxonomy'])) {
             $this->is_wordland_custom_query = true;
-            $this->filter_opts = function( $option_value ) use ( $query_vars ) {
+            $this->filter_opts = function ($option_value) use ($query_vars) {
                 $option_value[ $query_vars['parent'] ] = true;
                 return $option_value;
             };
-            add_filter( 'option_administrative_area_level_2_children', $this->filter_opts );
-            add_filter( 'option_administrative_area_level_3_children', $this->filter_opts );
+            add_filter('option_administrative_area_level_2_children', $this->filter_opts);
+            add_filter('option_administrative_area_level_3_children', $this->filter_opts);
         }
 
         return $query;
     }
 
-    public function removeLocationRelationship($terms) {
+    public function removeLocationRelationship($terms)
+    {
 
         $this->is_wordland_custom_query = null;
-        remove_filter( 'option_administrative_area_level_2_children', $this->filter_opts );
-        remove_filter( 'option_administrative_area_level_3_children', $this->filter_opts );
+        remove_filter('option_administrative_area_level_2_children', $this->filter_opts);
+        remove_filter('option_administrative_area_level_3_children', $this->filter_opts);
 
         return $terms;
     }

@@ -150,7 +150,8 @@ class QueryLocation extends ModuleAbstract
         );
     }
 
-    public function registerNewEndpoints($globalData) {
+    public function registerNewEndpoints($globalData)
+    {
         $globalData['endpoints']['get_geolocation_url'] = admin_url('admin-ajax.php?action=wordland_get_location');
         return $globalData;
     }
