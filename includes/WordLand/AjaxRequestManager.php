@@ -155,7 +155,7 @@ class AjaxRequestManager
     {
         global $wpdb;
 
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author";
+        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author, {$wpdb->posts}.post_date";
         $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
         $fields .= ', w.price';
@@ -406,6 +406,16 @@ class AjaxRequestManager
         wp_send_json_success($markers);
     }
 
+    protected function set_meta_for_property($post) {
+        $metas = PropertyQuery::get_property_metas_from_ID($post->ID);
+        if (empty($metas)) {
+            return;
+        }
+        foreach($metas as $key => $val) {
+            $post->$key = $val;
+        }
+    }
+
     public function getProperty()
     {
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
@@ -424,6 +434,8 @@ class AjaxRequestManager
                 'message' => sprintf(__('The property #%d is not exists', 'wordland'), $property_id),
             ));
         }
+
+        $this->set_meta_for_property($post);
 
         $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);

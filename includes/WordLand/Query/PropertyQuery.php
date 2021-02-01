@@ -80,4 +80,19 @@ class PropertyQuery extends BaseQuery
 
         return $wordpressQuery;
     }
+
+    public static function get_property_metas_from_ID($property_id) {
+        global $wpdb;
+        $fields .= 'ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
+        $fields .= ', w.property_id';
+        $fields .= ', w.price';
+        $fields .= ', w.bedrooms';
+        $fields .= ', w.bathrooms';
+        $fields .= ', w.unit_price';
+        $fields .= ', w.size';
+
+        return $wpdb->get_row(
+            $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties w WHERE property_id=%d LIMIT 1", $property_id)
+        );
+    }
 }
