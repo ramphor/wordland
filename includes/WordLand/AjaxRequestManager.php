@@ -406,12 +406,13 @@ class AjaxRequestManager
         wp_send_json_success($markers);
     }
 
-    protected function set_meta_for_property($post) {
+    protected function set_meta_for_property($post)
+    {
         $metas = PropertyQuery::get_property_metas_from_ID($post->ID);
         if (empty($metas)) {
             return;
         }
-        foreach($metas as $key => $val) {
+        foreach ($metas as $key => $val) {
             $post->$key = $val;
         }
     }
@@ -442,7 +443,7 @@ class AjaxRequestManager
         $builder->build();
         $builder->buildContent();
 
-        $property = $builder->getProperty('single');
+        $property = apply_filters('wordland_ajax_get_property', $builder->getProperty('single'), $post);
 
         return wp_send_json_success($property);
     }
