@@ -81,7 +81,8 @@ class PropertyQuery extends BaseQuery
         return $wordpressQuery;
     }
 
-    public static function get_property_metas_from_ID($property_id) {
+    public static function get_property_metas_from_ID($property_id)
+    {
         global $wpdb;
         $fields .= 'ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
         $fields .= ', w.property_id';
