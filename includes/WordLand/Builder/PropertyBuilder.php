@@ -55,7 +55,7 @@ class PropertyBuilder extends PropertyBuilderAbstract
             $agent = new Agent(__('Guest'));
         }
 
-        $this->property->primaryAgent = apply_filters(
+        $this->property->primary_agent = apply_filters(
             'wordland_primary_agent',
             $agent,
             $owner,

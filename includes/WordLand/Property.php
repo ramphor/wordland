@@ -40,9 +40,9 @@ class Property extends Data implements JsonSerializable
      *
      * @var \WordLand\Agent;
      */
-    public $primaryAgent = null;
+    public $primary_agent = null;
 
-    public $markerStyle = 'circle';
+    public $marker_style = 'circle';
 
     public $listStyle;
 
@@ -53,6 +53,16 @@ class Property extends Data implements JsonSerializable
         'goto_detail' => null,
     );
 
+    protected static $meta_fields = array(
+        'property_id',
+        'location',
+        'address',
+        'price',
+        'bedrooms',
+        'bathrooms',
+        'unit_price',
+        'size',
+    );
 
     public function setMeta($key, $value)
     {
@@ -176,6 +186,9 @@ class Property extends Data implements JsonSerializable
         $properties  = $propertyRef->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);
 
         foreach ($properties as $property) {
+            if ($property->isStatic()) {
+                continue;
+            }
             $propertyName = $property->name;
             $key = preg_replace_callback('/([a-z0-9])([A-Z])/', function ($matches) {
                 return sprintf('%s_%s', $matches[1], $matches[2]);
@@ -185,7 +198,10 @@ class Property extends Data implements JsonSerializable
             }
             $data[$key] = $this->$propertyName;
         }
-
         return apply_filters('wordland_property_supported_json_fields', $data, $this);
+    }
+
+    public static function get_meta_fields() {
+        return static::$meta_fields;
     }
 }

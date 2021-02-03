@@ -3,6 +3,7 @@ use WordLand\Template;
 use WordLand\PostTypes;
 use WordLand\Cache;
 use WordLand\Query\LocationQuery;
+use WordLand\Query\PropertyQuery;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -149,3 +150,6 @@ function wordland_get_location_from_term($term_id)
     return $location_query->query_location($term_id);
 }
 
+function wordland_get_same_location_properties_by_property_id($property_id) {
+    return PropertyQuery::get_sample_location_properties($property_id);
+}

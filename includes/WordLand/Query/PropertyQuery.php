@@ -5,6 +5,7 @@ use WP_Query;
 use WP_Term;
 use WordLand\PostTypes;
 use WordLand\Abstracts\BaseQuery;
+use WordLand\Property;
 
 class PropertyQuery extends BaseQuery
 {
@@ -95,5 +96,47 @@ class PropertyQuery extends BaseQuery
         return $wpdb->get_row(
             $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties w WHERE property_id=%d LIMIT 1", $property_id)
         );
+    }
+
+    protected static function get_posts_fields($prefix = null) {
+        $post_fields = apply_filters('wordland_get_posts_fields', array(
+            'post_date',
+            'post_title',
+            'post_type',
+        ));
+        if ($prefix) {
+            $post_fields = array_map(function($field) use ($prefix) {
+                return sprintf('%s.%s', $prefix, $field);
+            }, $post_fields);
+        }
+
+        return implode(', ', $post_fields);
+    }
+
+    protected static function get_property_fields($prefix = null) {
+        $property_fields = apply_filters('wordland_get_property_fields', Property::get_meta_fields());
+        if ($prefix) {
+            $property_fields = array_map(function($field) use ($prefix) {
+                return sprintf('%s.%s', $prefix, $field);
+            }, $property_fields);
+        }
+        return implode(', ', $property_fields);
+    }
+
+    public static function get_sample_location_properties($property_id) {
+        global $wpdb;
+        $post_fields = static::get_posts_fields('p');
+        $property_fields = static::get_property_fields('wlp');
+        $sql = $wpdb->prepare("SELECT {$post_fields}, {$property_fields}
+            FROM {$wpdb->posts} p
+                INNER JOIN {$wpdb->prefix}wordland_properties wlp
+                    ON p.ID=wlp.property_id
+            WHERE wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)
+                AND p.post_status='publish'
+            LIMIT 1",
+            $property_id
+        );
+
+        return $wpdb->get_results($sql);
     }
 }
