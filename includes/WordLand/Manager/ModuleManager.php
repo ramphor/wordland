@@ -1,5 +1,5 @@
 <?php
-namespace WordLand;
+namespace WordLand\Manager;
 
 use WordLand\Constracts\Module;
 use WordLand\Modules\FavoriteProperty;

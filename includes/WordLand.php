@@ -9,7 +9,7 @@ use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
 use WordLand\Cache;
-use WordLand\ModuleManager;
+use WordLand\Manager\ModuleManager;
 use WordLand\Manager\CronManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
