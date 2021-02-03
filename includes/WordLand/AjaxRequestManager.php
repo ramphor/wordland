@@ -443,7 +443,9 @@ class AjaxRequestManager
         $builder->build();
         $builder->buildContent();
 
-        $property = apply_filters('wordland_ajax_get_property', $builder->getProperty('single'), $post);
+        $property = $builder->getProperty('single');
+
+        do_action_ref_array('wordland_ajax_get_property', array(&$property, $post));
 
         return wp_send_json_success($property);
     }
