@@ -27,6 +27,7 @@ class Property extends Data implements JsonSerializable
     public $categories = array();
     public $types = array();
     public $visibilities = array();
+    public $sameLocationProperties = array();
 
     /**
      * The property location
@@ -201,7 +202,17 @@ class Property extends Data implements JsonSerializable
         return apply_filters('wordland_property_supported_json_fields', $data, $this);
     }
 
-    public static function get_meta_fields() {
+    public static function get_meta_fields()
+    {
         return static::$meta_fields;
+    }
+
+    public function setSameLocationProperties($sameLocationProperties)
+    {
+        if (!is_array($sameLocationProperties)) {
+            $this->sameLocationProperties = array();
+            return;
+        }
+        $this->sameLocationProperties = $sameLocationProperties;
     }
 }

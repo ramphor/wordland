@@ -31,6 +31,11 @@ class GeoLocation implements JsonSerializable
         }
     }
 
+    public function toArray()
+    {
+        return $this->jsonSerialize();
+    }
+
     public function jsonSerialize()
     {
         return array(
