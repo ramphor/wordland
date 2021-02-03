@@ -98,14 +98,15 @@ class PropertyQuery extends BaseQuery
         );
     }
 
-    protected static function get_posts_fields($prefix = null) {
+    protected static function get_posts_fields($prefix = null)
+    {
         $post_fields = apply_filters('wordland_get_posts_fields', array(
             'post_date',
             'post_title',
             'post_type',
         ));
         if ($prefix) {
-            $post_fields = array_map(function($field) use ($prefix) {
+            $post_fields = array_map(function ($field) use ($prefix) {
                 return sprintf('%s.%s', $prefix, $field);
             }, $post_fields);
         }
@@ -113,21 +114,24 @@ class PropertyQuery extends BaseQuery
         return implode(', ', $post_fields);
     }
 
-    protected static function get_property_fields($prefix = null) {
+    protected static function get_property_fields($prefix = null)
+    {
         $property_fields = apply_filters('wordland_get_property_fields', Property::get_meta_fields());
         if ($prefix) {
-            $property_fields = array_map(function($field) use ($prefix) {
+            $property_fields = array_map(function ($field) use ($prefix) {
                 return sprintf('%s.%s', $prefix, $field);
             }, $property_fields);
         }
         return implode(', ', $property_fields);
     }
 
-    public static function get_sample_location_properties($property_id) {
+    public static function get_sample_location_properties($property_id)
+    {
         global $wpdb;
         $post_fields = static::get_posts_fields('p');
         $property_fields = static::get_property_fields('wlp');
-        $sql = $wpdb->prepare("SELECT {$post_fields}, {$property_fields}
+        $sql = $wpdb->prepare(
+            "SELECT {$post_fields}, {$property_fields}
             FROM {$wpdb->posts} p
                 INNER JOIN {$wpdb->prefix}wordland_properties wlp
                     ON p.ID=wlp.property_id
