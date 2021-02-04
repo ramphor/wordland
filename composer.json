@@ -26,7 +26,8 @@
         "ramphor/plugin-core": "dev-master",
         "ramphor/wordpress-posts-collection": "dev-master",
         "geoip2/geoip2": "~2.0",
-        "phayes/geophp": "dev-master"
+        "phayes/geophp": "dev-master",
+        "ramphor/optimize-database": "dev-master"
     },
     "autoload": {
         "psr-4": {

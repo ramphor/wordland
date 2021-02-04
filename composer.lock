@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1cdb43a92b6e7404d06a9400f5c6fe5",
+    "content-hash": "376766239ce532894a78423a5f9adfd9",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -797,6 +797,39 @@
             "time": "2020-08-23T03:17:05+00:00"
         },
         {
+            "name": "ramphor/optimize-database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/optimize-database.git",
+                "reference": "7f426ae8ca8f4bb40ab8f9009d5e295b9c2fefe7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/optimize-database/zipball/7f426ae8ca8f4bb40ab8f9009d5e295b9c2fefe7",
+                "reference": "7f426ae8ca8f4bb40ab8f9009d5e295b9c2fefe7",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ramphor\\DB\\Optimizer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Optimize database for WordPress",
+            "time": "2021-02-04T02:57:27+00:00"
+        },
+        {
             "name": "ramphor/plugin-core",
             "version": "dev-master",
             "source": {
@@ -987,7 +1020,8 @@
         "ramphor/post-views": 20,
         "ramphor/plugin-core": 20,
         "ramphor/wordpress-posts-collection": 20,
-        "phayes/geophp": 20
+        "phayes/geophp": 20,
+        "ramphor/optimize-database": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
