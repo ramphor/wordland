@@ -151,9 +151,23 @@ function wordland_get_location_from_term($term_id)
 }
 
 function wordland_get_same_location_properties_by_property_id($property_id) {
-    $propertyQuery = new PropertyQuery(array());
+    $args = array();
+    $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
+        'fields' => 'ids'
+    ));
+    if (count($listing_types) > 0) {
+        $args['tax_query'][] = array(
+            'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
+            'field' => 'term_id',
+            'terms' => $listing_types,
+            'operator' => 'IN',
+            'hide_empty' => true,
+        );
+    }
+
+    $propertyQuery = new PropertyQuery($args);
     $propertyQuery->get_sample_location_properties($property_id);
-    $wp_query = $propertyQuery->getWordPressQuery();
+    $wp_query = $propertyQuery->getWordPressQuery(true);
 
     return $wp_query->posts;
 }
