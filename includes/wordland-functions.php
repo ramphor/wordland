@@ -114,7 +114,7 @@ function wordland_check_property_is_viewed($property_id)
     return $is_viewed;
 }
 
-function wordland_get_term_from_geo_location($point)
+function wordland_get_term_from_geo_location($point, $location_level = 1)
 {
     if (empty($point)) {
         return false;
@@ -124,7 +124,7 @@ function wordland_get_term_from_geo_location($point)
     $lng = array_get($point, 'lng');
     $sql = $wpdb->prepare(
         "SELECT l.term_id, location_name, AsWKB(l.location) as kml from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
-        apply_filters('wordland_find_geo_administrative_area_level', 'administrative_area_level_1')
+        apply_filters('wordland_find_geo_administrative_area_level', sprintf('administrative_area_level_%d', $location_level))
     );
     $term_location = $wpdb->get_row($sql);
 
