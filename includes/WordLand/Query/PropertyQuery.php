@@ -13,6 +13,8 @@ class PropertyQuery extends BaseQuery
     protected $rawArgs;
     protected $args;
 
+    protected static $customHooks = array();
+
     public function __construct($args)
     {
         $this->rawArgs = $args;
@@ -70,6 +72,35 @@ class PropertyQuery extends BaseQuery
         );
     }
 
+    protected static function logCustomHook($hookName, $callable, $is_action = true, $priority = 10)
+    {
+        $customhook = array(
+            'hook_name' => $hookName,
+            'callable'  => $callable,
+            'priority'  => $priority,
+            'type'      => $is_action ? 'action' : 'filter',
+        );
+
+        if (!in_array($customhook, static::$customHooks)) {
+            array_push(static::$customHooks, $customhook);
+        }
+    }
+
+    protected static function removeCustomHooks()
+    {
+        if (empty(static::$customHooks)) {
+            return;
+        }
+        foreach (static::$customHooks as $index => $customhook) {
+            if ($customhook['type'] === 'action') {
+                remove_action($customhook['hook_name'], $customhook['callable'], $customhook['priority']);
+            } else {
+                remove_filter($customhook['hook_name'], $customhook['callable'], $customhook['priority']);
+            }
+            unset(static::$customHooks[$index]);
+        }
+    }
+
     public function getWordPressQuery()
     {
         do_action_ref_array('wordland_before_get_query', array(&$this->args, $this->rawArgs));
@@ -79,13 +110,15 @@ class PropertyQuery extends BaseQuery
         ));
         do_action_ref_array('wordland_after_get_query', array(&$this->args, $this->rawArgs));
 
+        $this->removeCustomHooks();
+
         return $wordpressQuery;
     }
 
-    public static function get_property_metas_from_ID($property_id)
+    public static function get_property_metas_from_ID($property_id, $prefix = 'wlp')
     {
         global $wpdb;
-        $fields = 'ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
+        $fields = sprintf('ST_X(%s.location) as latitude, ST_Y(%s.location) as longitude', $prefix);
         $fields .= ', w.property_id';
         $fields .= ', w.price';
         $fields .= ', w.bedrooms';
@@ -98,49 +131,37 @@ class PropertyQuery extends BaseQuery
         );
     }
 
-    protected static function get_posts_fields($prefix = null)
-    {
-        $post_fields = apply_filters('wordland_get_posts_fields', array(
-            'post_date',
-            'post_title',
-            'post_type',
-        ));
-        if ($prefix) {
-            $post_fields = array_map(function ($field) use ($prefix) {
-                return sprintf('%s.%s', $prefix, $field);
-            }, $post_fields);
-        }
-
-        return implode(', ', $post_fields);
-    }
-
     protected static function get_property_fields($prefix = null)
     {
+        $prefix          = $prefix ? sprintf('.%s', $prefix) : '';
         $property_fields = apply_filters('wordland_get_property_fields', Property::get_meta_fields());
-        if ($prefix) {
-            $property_fields = array_map(function ($field) use ($prefix) {
-                return sprintf('%s.%s', $prefix, $field);
-            }, $property_fields);
-        }
+        $property_fields = array_map(function ($field) use ($prefix) {
+            return sprintf($field, $prefix);
+        }, $property_fields);
         return implode(', ', $property_fields);
     }
 
-    public static function get_sample_location_properties($property_id)
+    public function get_property_content_fields()
     {
-        global $wpdb;
-        $post_fields = static::get_posts_fields('p');
-        $property_fields = static::get_property_fields('wlp');
-        $sql = $wpdb->prepare(
-            "SELECT {$post_fields}, {$property_fields}
-            FROM {$wpdb->posts} p
-                INNER JOIN {$wpdb->prefix}wordland_properties wlp
-                    ON p.ID=wlp.property_id
-            WHERE wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)
-                AND p.post_status='publish'
-            LIMIT 1",
-            $property_id
-        );
+        $callable = function ($fields) {
+            if (!in_array('post_content', $fields)) {
+                array_push($fields, 'post_content');
+            }
+            return $fields;
+        };
+        add_filter('wordland_get_posts_fields', $callable);
+        $this->logCustomHook('posts_fields', $callable, false);
+    }
 
-        return $wpdb->get_results($sql);
+    public function get_sample_location_properties($property_id)
+    {
+        $callable = function ($where, $query) {
+            if (array_element_in_array($query->post_type, PostTypes::get())) {
+                $where .= ' wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)';
+            }
+            return $where;
+        };
+        add_filter('posts_where', $callable, 15, 2);
+        $this->logCustomHook('posts_where', $callable, false, 15);
     }
 }

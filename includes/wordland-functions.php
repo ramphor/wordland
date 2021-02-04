@@ -151,5 +151,9 @@ function wordland_get_location_from_term($term_id)
 }
 
 function wordland_get_same_location_properties_by_property_id($property_id) {
-    return PropertyQuery::get_sample_location_properties($property_id);
+    $propertyQuery = new PropertyQuery(array());
+    $propertyQuery->get_sample_location_properties($property_id);
+    $wp_query = $propertyQuery->getWordPressQuery();
+
+    return $wp_query->posts;
 }

@@ -138,7 +138,7 @@ class FilterHelper
         return $wpdb->prepare(" AND w.bathrooms >= %d", $bathroom['room']);
     }
 
-    public static function parseMapBounds($map_bounds)
+    public static function parseMapBounds($map_bounds, $prefix = 'wlp')
     {
         if (empty($map_bounds['bounds']) || empty($map_bounds['bounds']['north_east']) || empty($map_bounds['bounds']['south_west'])) {
             return false;
@@ -157,7 +157,7 @@ class FilterHelper
             ST_PolygonFromText('POLYGON(
                 ({$north} {$west}, {$north} {$east}, {$south} {$east}, {$south} {$west}, {$north} {$west})
             )'),
-            w.location
+            {$prefix}.location
         )";
     }
 

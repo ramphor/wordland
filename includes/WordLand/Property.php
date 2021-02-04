@@ -55,14 +55,13 @@ class Property extends Data implements JsonSerializable
     );
 
     protected static $meta_fields = array(
-        'property_id',
-        'location',
-        'address',
-        'price',
-        'bedrooms',
-        'bathrooms',
-        'unit_price',
-        'size',
+        '%sproperty_id',
+        '%saddress',
+        '%sprice',
+        '%sbedrooms',
+        '%sbathrooms',
+        '%sunit_price',
+        '%ssize',
     );
 
     public function setMeta($key, $value)
@@ -202,9 +201,23 @@ class Property extends Data implements JsonSerializable
         return apply_filters('wordland_property_supported_json_fields', $data, $this);
     }
 
-    public static function get_meta_fields()
+    public static function get_meta_fields($prefix = null, $get_location = false, $get_lat_lng = true)
     {
-        return static::$meta_fields;
+        $meta_fields = static::$meta_fields;
+        if ($get_location) {
+            array_push($meta_fields, '%slocation');
+        }
+        if ($get_lat_lng) {
+            array_push($meta_fields, 'ST_X(%slocation) as latitude');
+            array_push($meta_fields, 'ST_Y(%slocation) as longitude');
+        }
+
+        $prefix      = $prefix ? sprintf('%s.', $prefix) : '';
+        $meta_fields = array_map(function ($field) use ($prefix) {
+            return sprintf($field, $prefix);
+        }, $meta_fields);
+
+        return implode(', ', $meta_fields);
     }
 
     public function setSameLocationProperties($sameLocationProperties)

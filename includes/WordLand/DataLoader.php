@@ -19,11 +19,8 @@ class DataLoader
 
     private function __construct()
     {
-        if (!defined('DOING_AJAX')) {
-            add_filter('posts_join', array($this, 'joinPropertiesTable'), 10, 2);
-            add_filter('posts_fields', array($this, 'chooseFields'), 10, 2);
-        }
-
+        add_filter('posts_join', array($this, 'joinPropertiesTable'), 10, 2);
+        add_filter('posts_fields', array($this, 'chooseFields'), 10, 2);
         add_action('the_post', array($this, 'buildPropertyFromPost'));
     }
 
@@ -57,10 +54,12 @@ class DataLoader
         if (!$this->checkPostType($query->query_vars['post_type'])) {
             return $fields;
         }
-        $fields .= ', wlp.property_id, wlp.price, wlp.bedrooms, wlp.bathrooms, wlp.unit_price, wlp.size, wlp.created_at';
-        $fields .= ', ST_X(wlp.location) as latitude, ST_Y(wlp.location) as longitude';
+        global $wpdb;
 
-        return $fields;
+        $post_fields     = static::get_posts_fields($wpdb->posts);
+        $property_fields = Property::get_meta_fields('wlp');
+
+        return trim(sprintf('%s, %s', $post_fields, $property_fields), ', ');
     }
 
     public function buildPropertyFromPost($post)
@@ -94,6 +93,26 @@ class DataLoader
     {
         $post = get_post($propertyID);
         return $this->buildPropertyFromPost($post);
+    }
+
+    protected static function get_posts_fields($prefix = null)
+    {
+        $post_fields = apply_filters('wordland_get_posts_fields', array(
+            'ID',
+            'post_name',
+            'post_title',
+            'post_type',
+            'post_excerpt',
+            'post_date',
+            'post_author'
+        ));
+        if ($prefix) {
+            $post_fields = array_map(function ($field) use ($prefix) {
+                return sprintf('%s.%s', $prefix, $field);
+            }, $post_fields);
+        }
+
+        return implode(', ', $post_fields);
     }
 
     public static function getListingTypes()

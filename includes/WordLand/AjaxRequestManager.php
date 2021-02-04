@@ -135,49 +135,6 @@ class AjaxRequestManager
         return $query->getWordPressQuery();
     }
 
-    public static function filterMarkersSelectFields($fields, $query)
-    {
-        global $wpdb;
-
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_date, {$wpdb->posts}.post_author";
-        $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
-        $fields .= ', w.property_id';
-        $fields .= ', w.price';
-        $fields .= ', w.bedrooms';
-        $fields .= ', w.bathrooms';
-        $fields .= ', w.unit_price';
-        $fields .= ', w.size';
-
-        return apply_filters('wordland_filter_markers_fields', $fields);
-    }
-
-    public static function filterPropertiesSelectFields($fields, $query)
-    {
-        global $wpdb;
-
-        $fields = "{$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_name, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author, {$wpdb->posts}.post_date";
-        $fields .= ', ST_X(w.location) as latitude, ST_Y(w.location) as longitude';
-        $fields .= ', w.property_id';
-        $fields .= ', w.price';
-        $fields .= ', w.bedrooms';
-        $fields .= ', w.bathrooms';
-        $fields .= ', w.unit_price';
-        $fields .= ', w.size';
-
-        return apply_filters('wordland_filter_properties_fields', $fields);
-    }
-
-    public static function postsJoin($join, $query)
-    {
-        global $wpdb;
-        $join .= sprintf(
-            "RIGHT JOIN %swordland_properties w ON {$wpdb->posts}.ID=w.property_ID",
-            $wpdb->prefix
-        );
-
-        return $join;
-    }
-
     public static function postsWhere($where, $query)
     {
         if (!empty(static::$whereCondition)) {
@@ -289,9 +246,7 @@ class AjaxRequestManager
 
         do_action('wordland_before_request_ajax_get_map_properties', $this);
 
-        add_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
-        add_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
 
         $current_page = isset($request['page']) && $request['page'] > 0 ? (int) $request['page'] : 1;
         $items_per_page = 40;
@@ -320,9 +275,7 @@ class AjaxRequestManager
             }
         }
 
-        remove_filter('posts_fields', array(__CLASS__, 'filterPropertiesSelectFields'), 10, 2);
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
-        remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
 
         do_action('wordland_after_request_ajax_get_map_properties', $this);
 
@@ -362,10 +315,7 @@ class AjaxRequestManager
 
         do_action('wordland_before_request_ajax_get_map_markers', $this);
 
-        add_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
-
-        add_filter('posts_fields', array(__CLASS__, 'filterMarkersSelectFields'), 10, 2);
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'posts_per_page' => 500,
         )), $request);
@@ -396,10 +346,7 @@ class AjaxRequestManager
             // die;
         }
 
-        remove_filter('posts_fields', array(__CLASS__, 'filterMarkersSelectFields'), 10, 2);
-
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
-        remove_filter('posts_join', array(__CLASS__, 'postsJoin'), 10, 2);
 
         do_action('wordland_after_request_ajax_get_map_markers', $this);
 
