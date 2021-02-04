@@ -192,12 +192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "6190ed549e58c5e3db437eeaa488a001792c20f3"
+                "reference": "e3d0de232c4bfcb69e85e1ffafc286ece482eccc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/6190ed549e58c5e3db437eeaa488a001792c20f3",
-                "reference": "6190ed549e58c5e3db437eeaa488a001792c20f3",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/e3d0de232c4bfcb69e85e1ffafc286ece482eccc",
+                "reference": "e3d0de232c4bfcb69e85e1ffafc286ece482eccc",
                 "shasum": ""
             },
             "type": "library",
@@ -217,7 +217,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2020-11-23T15:49:00+00:00"
+            "time": "2021-02-04T05:28:23+00:00"
         },
         {
             "name": "jankx/template",
@@ -225,12 +225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "197f51c8893c8340d1e9e20aaa44fe7d2f626c88"
+                "reference": "5147a87ed34617316d15880dbf00035cfad46283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/197f51c8893c8340d1e9e20aaa44fe7d2f626c88",
-                "reference": "197f51c8893c8340d1e9e20aaa44fe7d2f626c88",
+                "url": "https://api.github.com/repos/jankx/template/zipball/5147a87ed34617316d15880dbf00035cfad46283",
+                "reference": "5147a87ed34617316d15880dbf00035cfad46283",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2020-11-06T02:09:02+00:00"
+            "time": "2021-01-28T02:33:57+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -261,12 +261,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "33ac45314098b554c8acdab4cb5d74aa1a752210"
+                "reference": "d8a4def1fc18a54aa13ca29734b45519ab8b5eef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/33ac45314098b554c8acdab4cb5d74aa1a752210",
-                "reference": "33ac45314098b554c8acdab4cb5d74aa1a752210",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/d8a4def1fc18a54aa13ca29734b45519ab8b5eef",
+                "reference": "d8a4def1fc18a54aa13ca29734b45519ab8b5eef",
                 "shasum": ""
             },
             "require": {
@@ -289,30 +289,30 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2020-09-30T08:43:06+00:00"
+            "time": "2020-12-31T15:42:16+00:00"
         },
         {
             "name": "maxmind-db/reader",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maxmind/MaxMind-DB-Reader-php.git",
-                "reference": "b566d429ac9aec10594b0935be8ff38302f8d5c8"
+                "reference": "9ee9ba9ee287b119e9f5a8e8dbfea0b49647cec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maxmind/MaxMind-DB-Reader-php/zipball/b566d429ac9aec10594b0935be8ff38302f8d5c8",
-                "reference": "b566d429ac9aec10594b0935be8ff38302f8d5c8",
+                "url": "https://api.github.com/repos/maxmind/MaxMind-DB-Reader-php/zipball/9ee9ba9ee287b119e9f5a8e8dbfea0b49647cec4",
+                "reference": "9ee9ba9ee287b119e9f5a8e8dbfea0b49647cec4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
             },
             "conflict": {
-                "ext-maxminddb": "<1.8.0,>=2.0.0"
+                "ext-maxminddb": "<1.9.0,>=2.0.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "2.*",
+                "friendsofphp/php-cs-fixer": "*",
                 "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpcov": ">=6.0.0",
                 "phpunit/phpunit": ">=8.0.0,<10.0.0",
@@ -349,7 +349,7 @@
                 "geolocation",
                 "maxmind"
             ],
-            "time": "2020-10-01T17:30:21+00:00"
+            "time": "2021-01-07T21:15:29+00:00"
         },
         {
             "name": "maxmind/web-service-common",
@@ -691,12 +691,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "e8496457366ae9feff802c78648e416de073c2c9"
+                "reference": "4050101b369b5144ee536cfb6f8167ad1c3ffd69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/e8496457366ae9feff802c78648e416de073c2c9",
-                "reference": "e8496457366ae9feff802c78648e416de073c2c9",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/4050101b369b5144ee536cfb6f8167ad1c3ffd69",
+                "reference": "4050101b369b5144ee536cfb6f8167ad1c3ffd69",
                 "shasum": ""
             },
             "type": "library",
@@ -716,7 +716,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2020-12-10T09:12:27+00:00"
+            "time": "2021-02-03T03:19:10+00:00"
         },
         {
             "name": "ramphor/locations",
@@ -868,19 +868,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/post-views.git",
-                "reference": "0bff982b8bf4052e6b8d262ecc80dc8aae0e349d"
+                "reference": "3f8e228e5a4f686ba12c5d76774a0a9455c99a4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/post-views/zipball/0bff982b8bf4052e6b8d262ecc80dc8aae0e349d",
-                "reference": "0bff982b8bf4052e6b8d262ecc80dc8aae0e349d",
+                "url": "https://api.github.com/repos/ramphor/post-views/zipball/3f8e228e5a4f686ba12c5d76774a0a9455c99a4d",
+                "reference": "3f8e228e5a4f686ba12c5d76774a0a9455c99a4d",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Ramphor\\PostViews\\": "src/"
-                }
+                },
+                "files": [
+                    "./functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -893,7 +896,7 @@
                 }
             ],
             "description": "Track visited posts and user view posts",
-            "time": "2020-11-29T09:40:51+00:00"
+            "time": "2020-12-31T05:55:26+00:00"
         },
         {
             "name": "ramphor/user-profile",
@@ -972,12 +975,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "7f56cc142d6362b8e3ce34df55324c79933f81bb"
+                "reference": "5de79d10e91d54bc39965e32c8b83bd35fdd10fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/7f56cc142d6362b8e3ce34df55324c79933f81bb",
-                "reference": "7f56cc142d6362b8e3ce34df55324c79933f81bb",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/5de79d10e91d54bc39965e32c8b83bd35fdd10fb",
+                "reference": "5de79d10e91d54bc39965e32c8b83bd35fdd10fb",
                 "shasum": ""
             },
             "require": {
@@ -1000,7 +1003,7 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
-            "time": "2020-11-29T04:33:09+00:00"
+            "time": "2020-12-30T21:02:31+00:00"
         }
     ],
     "packages-dev": [],
