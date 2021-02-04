@@ -166,8 +166,15 @@ function wordland_get_same_location_properties_by_property_id($property_id) {
     }
 
     $propertyQuery = new PropertyQuery($args);
+    $wp_query      = $propertyQuery->getWordPressQuery();
     $propertyQuery->get_sample_location_properties($property_id);
-    $wp_query = $propertyQuery->getWordPressQuery(true);
 
-    return $wp_query->posts;
+    $sameLocationProperties = array();
+    while($wp_query->have_posts()) {
+        $wp_query->the_post();
+        global $property;
+        $sameLocationProperties[$wp_query->current_post] = $property;
+    }
+
+    return $sameLocationProperties;
 }
