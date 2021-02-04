@@ -4,6 +4,7 @@ namespace WordLand;
 class PostTypes
 {
     const PROPERTY_POST_TYPE = 'property';
+    const PROPERTY_CATEGORY_TAX = 'property_cat';
     const PROPERTY_LOCATION_CITY_TAX = 'wordland_city';
     const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
     const PROPERTY_VISIBILITY = 'property_visibility';
@@ -106,7 +107,7 @@ class PostTypes
             'menu_name'     => __('Categories', 'wordland'),
         );
         register_taxonomy(
-            'property_cat',
+            static::PROPERTY_CATEGORY_TAX,
             static::get(),
             apply_filters(
                 'wordland_taxonomy_category_args',
