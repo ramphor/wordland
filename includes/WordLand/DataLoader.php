@@ -102,7 +102,6 @@ class DataLoader
             'post_name',
             'post_title',
             'post_type',
-            'post_excerpt',
             'post_date',
             'post_author'
         ));

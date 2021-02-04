@@ -148,7 +148,19 @@ class PropertyQuery extends BaseQuery
             return $fields;
         };
         add_filter('wordland_get_posts_fields', $callable);
-        $this->logCustomHook('posts_fields', $callable, false);
+        $this->logCustomHook('wordland_get_posts_fields', $callable, false);
+    }
+
+    public function get_property_description_field()
+    {
+        $callable = function ($fields) {
+            if (!in_array('post_excerpt', $fields)) {
+                array_push($fields, 'post_excerpt');
+            }
+            return $fields;
+        };
+        add_filter('wordland_get_posts_fields', $callable);
+        $this->logCustomHook('wordland_get_posts_fields', $callable, false);
     }
 
     public function get_sample_location_properties($property_id)
