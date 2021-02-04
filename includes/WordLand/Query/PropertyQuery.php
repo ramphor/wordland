@@ -118,16 +118,16 @@ class PropertyQuery extends BaseQuery
     public static function get_property_metas_from_ID($property_id, $prefix = 'wlp')
     {
         global $wpdb;
-        $fields = sprintf('ST_X(%s.location) as latitude, ST_Y(%s.location) as longitude', $prefix);
-        $fields .= ', w.property_id';
-        $fields .= ', w.price';
-        $fields .= ', w.bedrooms';
-        $fields .= ', w.bathrooms';
-        $fields .= ', w.unit_price';
-        $fields .= ', w.size';
+        $fields = sprintf('ST_X(%1$s.location) as latitude, ST_Y(%1$s.location) as longitude', $prefix);
+        $fields .= ', wlp.property_id';
+        $fields .= ', wlp.price';
+        $fields .= ', wlp.bedrooms';
+        $fields .= ', wlp.bathrooms';
+        $fields .= ', wlp.unit_price';
+        $fields .= ', wlp.size';
 
         return $wpdb->get_row(
-            $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties w WHERE property_id=%d LIMIT 1", $property_id)
+            $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties wlp WHERE property_id=%d LIMIT 1", $property_id)
         );
     }
 
