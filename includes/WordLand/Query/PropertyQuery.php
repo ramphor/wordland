@@ -12,13 +12,15 @@ class PropertyQuery extends BaseQuery
     protected $wordpressQuery;
     protected $rawArgs;
     protected $args;
+    protected $taxonomy_queries = array();
 
     protected static $customHooks = array();
 
-    public function __construct($args)
+    public function __construct($args = array())
     {
-        $this->rawArgs = $args;
-        $this->args = $this->buildArgs($args);
+        $this->rawArgs          = $args;
+        $this->args             = $this->buildArgs($args);
+        $this->taxonomy_queries = isset($args['tax_query']) ? $args['tax_query'] : array();
     }
 
     protected function filter_term($term, &$args)
@@ -28,16 +30,12 @@ class PropertyQuery extends BaseQuery
             return;
         }
 
-        $taxonomy_queries = isset($args['tax_query']) ? $args['tax_query'] : array();
-
-        $taxonomy_queries[] = array(
+        $this->taxonomy_queries[] = array(
             'taxonomy' => $term->taxonomy,
             'terms' => $term->term_id,
             'field' => 'term_id',
             'operator' => 'IN'
         );
-
-        $args['tax_query'] = $taxonomy_queries;
     }
 
     public function buildArgs($rawArgs)
@@ -48,10 +46,7 @@ class PropertyQuery extends BaseQuery
             $this->filter_term($rawArgs['term'], $args);
             unset($rawArgs['term']);
         }
-        if (isset($rawArgs['posts_per_page'])) {
-            $args['posts_per_page'] = $rawArgs['posts_per_page'];
-            unset($rawArgs['posts_per_page']);
-        }
+
         if (isset($rawArgs['limit'])) {
             $args['posts_per_page'] = $rawArgs['limit'];
             unset($rawArgs['limit']);
@@ -103,6 +98,9 @@ class PropertyQuery extends BaseQuery
 
     public function getWordPressQuery()
     {
+        $this->args = array_merge($this->args, array(
+            'tax_query' => $this->taxonomy_queries,
+        ));
         do_action_ref_array('wordland_before_get_query', array(&$this->args, $this->rawArgs));
         $wordpressQuery = new WP_Query(apply_filters(
             'wordland_property_query_args',
