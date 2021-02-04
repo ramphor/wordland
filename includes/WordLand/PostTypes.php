@@ -3,12 +3,12 @@ namespace WordLand;
 
 class PostTypes
 {
-    const PROPERTY_POST_TYPE = 'property';
-    const PROPERTY_CATEGORY_TAX = 'property_cat';
-    const PROPERTY_LOCATION_CITY_TAX = 'wordland_city';
+    const PROPERTY_POST_TYPE           = 'property';
+    const PROPERTY_CATEGORY_TAX        = 'property_cat';
+    const PROPERTY_LOCATION_CITY_TAX   = 'wordland_city';
     const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
-    const PROPERTY_VISIBILITY = 'property_visibility';
-    const PROPERTY_LISTING_TYPE = 'listing_type';
+    const PROPERTY_VISIBILITY          = 'property_visibility';
+    const PROPERTY_LISTING_TYPE        = 'listing_type';
 
     public function __construct()
     {
