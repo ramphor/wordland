@@ -78,7 +78,7 @@ INNER JOIN wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
         $fields .= ", COUNT({$wpdb->posts}.ID) as same_location_items";
         // $fields .= ', t.slug as listing_type';
 
-        return sprintf('%s %s', 'DISTINCT', $fields);
+        return $fields;
     }
 
     public function add_same_location_fields($fields)
