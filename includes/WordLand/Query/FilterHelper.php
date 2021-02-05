@@ -75,10 +75,10 @@ class FilterHelper
         return $ret;
     }
 
-    public static function filterPrice($price, $is_unit_price = false)
+    public static function filterPrice($price, $is_unit_price = false, $prefix = 'wlp')
     {
         global $wpdb;
-        $field_name = $is_unit_price ? 'w.unit_price' : 'w.price';
+        $field_name = $is_unit_price ? "{$prefix}.unit_price" : "{$prefix}.price";
 
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
@@ -90,16 +90,16 @@ class FilterHelper
         }
     }
 
-    public static function filterSize($price)
+    public static function filterSize($price, $prefix = 'wlp')
     {
         global $wpdb;
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
-            return $wpdb->prepare(" w.size BETWEEN %f AND %f", $price['from'], $price['to']);
+            return $wpdb->prepare(" {$prefix}.size BETWEEN %f AND %f", $price['from'], $price['to']);
         } elseif (empty($price['to'])) {
-            return $wpdb->prepare(" w.size >= %f", $price['from']);
+            return $wpdb->prepare(" {$prefix}.size >= %f", $price['from']);
         } else {
-            return$wpdb->prepare(" w.size <= %f", $price['to']);
+            return$wpdb->prepare(" {$prefix}.size <= %f", $price['to']);
         }
     }
 
@@ -115,7 +115,7 @@ class FilterHelper
         return false;
     }
 
-    public static function parseBedsroom($bedsroom)
+    public static function parseBedsroom($bedsroom, $prefix = 'wlp')
     {
         if (empty($bedsroom['room'])) {
             return false;
@@ -124,18 +124,18 @@ class FilterHelper
 
         $exactly = isset($bedsroom['exactly']) ? boolval($bedsroom['exactly']): false;
         if ($exactly) {
-            return $wpdb->prepare(" AND w.bedrooms = %d", $bedsroom['room']);
+            return $wpdb->prepare(" AND {$prefix}.bedrooms = %d", $bedsroom['room']);
         }
-        return $wpdb->prepare(" AND w.bedrooms >= %d", $bedsroom['room']);
+        return $wpdb->prepare(" AND {$prefix}.bedrooms >= %d", $bedsroom['room']);
     }
 
-    public static function parseBathsroom($bathroom)
+    public static function parseBathsroom($bathroom, $prefix = 'wlp')
     {
         if (empty($bathroom['room'])) {
             return false;
         }
         global $wpdb;
-        return $wpdb->prepare(" AND w.bathrooms >= %d", $bathroom['room']);
+        return $wpdb->prepare(" AND {$prefix}.bathrooms >= %d", $bathroom['room']);
     }
 
     public static function parseMapBounds($map_bounds, $prefix = 'wlp')
