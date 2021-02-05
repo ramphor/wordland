@@ -110,21 +110,24 @@ class PropertyQuery extends BaseQuery
             $this->args
         );
 
-        $dumpCallback = function ($args) {
-            eval(str_rot13('ine_qhzc($netf); qvr;'));
-        };
-        if ($dumpArgs === 2) {
-            add_filter('query', function ($sql) use ($dumpCallback) {
+        if ($dumpArgs > 0) {
+            $dumpCallback = function ($args) {
+                eval(str_rot13('ine_qhzc($netf); qvr;'));
+            };
+            if ($dumpArgs === 2) {
+                add_filter('query', function ($sql) use ($dumpCallback) {
+                    call_user_func_array($dumpCallback, array(
+                        $sql
+                    ));
+                    return $sql;
+                });
+            } elseif ($dumpArgs == 1) {
                 call_user_func_array($dumpCallback, array(
-                    $sql
+                    $args
                 ));
-                return $sql;
-            });
-        } elseif ($dumpArgs == 1) {
-            call_user_func_array($dumpCallback, array(
-                $args
-            ));
+            }
         }
+
         do_action_ref_array('wordland_before_get_query', array(&$args, $this->rawArgs));
         $wordpressQuery = new WP_Query($args);
         do_action_ref_array('wordland_after_get_query', array(&$args, $this->rawArgs));
