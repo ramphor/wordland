@@ -42,11 +42,16 @@ class QueryManager extends ManagerAbstract
 
     public function joinTables($join, $query)
     {
-        $rule =  " INNER JOIN wp_term_relationships tr ON tr.object_id = wp_posts.ID
-INNER JOIN wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
+        global $wpdb;
+        $rule =  " INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID
+INNER JOIN wp_term_taxonomy tt ON {$wpdb->term_relationships}.term_taxonomy_id = tt.term_taxonomy_id";
         // $rule.= ' INNER JOIN wp_terms t ON t.term_id = tt.term_id';
 
         $join = empty($join) ? $rule : $join . $rule;
+
+        if (strpos($join, 'LEFT JOIN wp_term_relationships') !== 0) {
+            $join = str_replace('LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id)', '', $join);
+        }
 
         return $join;
     }
