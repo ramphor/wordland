@@ -151,7 +151,9 @@ function wordland_get_location_from_term($term_id)
 }
 
 function wordland_get_same_location_properties_by_property_id($property_id) {
-    $args = array();
+    $args = array(
+        'post__not_in' => array( $property_id ),
+    );
     $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
         'fields' => 'ids'
     ));
