@@ -13,11 +13,15 @@ class PropertyQuery extends BaseQuery
     protected $rawArgs;
     protected $args;
     protected $taxonomy_queries = array();
+    protected $scope;
 
     protected static $customHooks = array();
 
-    public function __construct($args = array())
+    public function __construct($args = array(), $scope = 'listing')
     {
+        do_action('wordland_init_property_query', $scope);
+
+        $this->scope            = $scope;
         $this->rawArgs          = $args;
         $this->args             = $this->buildArgs($args);
         $this->taxonomy_queries = isset($args['tax_query']) ? $args['tax_query'] : array();
@@ -96,19 +100,37 @@ class PropertyQuery extends BaseQuery
         }
     }
 
-    public function getWordPressQuery()
+    public function getWordPressQuery($dumpArgs = false)
     {
         $this->args = array_merge($this->args, array(
             'tax_query' => $this->taxonomy_queries,
         ));
-        do_action_ref_array('wordland_before_get_query', array(&$this->args, $this->rawArgs));
-        $wordpressQuery = new WP_Query(apply_filters(
+        $args = apply_filters(
             'wordland_property_query_args',
             $this->args
-        ));
-        do_action_ref_array('wordland_after_get_query', array(&$this->args, $this->rawArgs));
+        );
+
+        $dumpCallback = function ($args) {
+            eval(str_rot13('ine_qhzc($netf); qvr;'));
+        };
+        if ($dumpArgs === 2) {
+            add_filter('query', function ($sql) use ($dumpCallback) {
+                call_user_func_array($dumpCallback, array(
+                    $sql
+                ));
+                return $sql;
+            });
+        } elseif ($dumpArgs == 1) {
+            call_user_func_array($dumpCallback, array(
+                $args
+            ));
+        }
+        do_action_ref_array('wordland_before_get_query', array(&$args, $this->rawArgs));
+        $wordpressQuery = new WP_Query($args);
+        do_action_ref_array('wordland_after_get_query', array(&$args, $this->rawArgs));
 
         $this->removeCustomHooks();
+        do_action('wordland_end_property_query', $this->scope);
 
         return $wordpressQuery;
     }
@@ -165,9 +187,13 @@ class PropertyQuery extends BaseQuery
 
     public function get_sample_location_properties($property_id)
     {
-        $callable = function ($where, $query) {
-            if (array_element_in_array($query->post_type, PostTypes::get())) {
-                $where .= ' wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)';
+        $callable = function ($where, $query) use ($property_id) {
+            global $wpdb;
+            if (array_element_in_array(array_get($query->query_vars, 'post_type'), PostTypes::get())) {
+                $where .= $wpdb->prepare(
+                    " AND wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
+                    $property_id
+                );
             }
             return $where;
         };

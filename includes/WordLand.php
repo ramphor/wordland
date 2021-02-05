@@ -11,6 +11,7 @@ use WordLand\Installer;
 use WordLand\Cache;
 use WordLand\Manager\ModuleManager;
 use WordLand\Manager\CronManager;
+use WordLand\Manager\QueryManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
 use Ramphor\FriendlyNumbers\Parser;
@@ -113,6 +114,7 @@ class WordLand
         AjaxRequestManager::getInstance();
         Scripts::getInstance();
         Compatibles::getInstance();
+        QueryManager::getInstance();
         CollectionManager::getInstance();
         CronManager::getInstance();
 
