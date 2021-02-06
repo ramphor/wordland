@@ -150,7 +150,15 @@ function wordland_get_location_from_term($term_id)
     return $location_query->query_location($term_id);
 }
 
-function wordland_get_same_location_properties_by_property_id($property_id, $listing_types = null, $select_total = false) {
+function wordland_get_same_location_properties_by_property_id($property_id, $args = array(), $select_total = false)
+{
+    $args = wp_parse_args($args, array(
+        'listing_types' => null,
+        'exclude_current' => true
+    ));
+    $listing_types   = array_get($args, 'listing_types');
+    $exclude_current = array_get($args, 'exclude_current');
+
     if (is_null($listing_types)) {
         $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
             'fields' => 'ids'
@@ -161,8 +169,10 @@ function wordland_get_same_location_properties_by_property_id($property_id, $lis
         $listing_types = array();
     }
 
-    $args = array();
-    if (!$select_total) {
+    $args = array(
+        'posts_per_page' => -1,
+    );
+    if ($exclude_current) {
         $args['post__not_in'] = array( $property_id );
     }
 
@@ -188,7 +198,7 @@ function wordland_get_same_location_properties_by_property_id($property_id, $lis
     }
     $sameLocationProperties = array();
 
-    while($wp_query->have_posts()) {
+    while ($wp_query->have_posts()) {
         $wp_query->the_post();
         global $property;
         $sameLocationProperties[$wp_query->current_post] = $property;
