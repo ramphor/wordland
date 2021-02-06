@@ -4,6 +4,7 @@ namespace WordLand;
 use WordLand\Manager\PropertyBuilderManager;
 use WordLand\Property;
 use WordLand\GeoLocation;
+use WordLand\PostTypes;
 
 class DataLoader
 {
@@ -64,7 +65,7 @@ class DataLoader
 
     public function buildPropertyFromPost($post)
     {
-        if ($post->post_type !== 'property') {
+        if (!in_array($post->post_type, PostTypes::get())) {
             return;
         }
         global $property;
@@ -72,6 +73,7 @@ class DataLoader
         if ($queried_object  === $post && (is_a($property, Property::class) && $property->ID === $post->ID)) {
             return;
         }
+
         $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);
         $builder->buildContent();

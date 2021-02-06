@@ -213,7 +213,11 @@ class PropertyQuery extends BaseQuery
         $joinCallable = function ($join, $query) {
             global $wpdb;
             if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
-                $join = str_replace('LEFT JOIN {$wpdb->term_relationships} ON (wp_posts.ID = {$wpdb->term_relationships}.object_id)', '', $join);
+                $join = str_replace(
+                    "LEFT JOIN {$wpdb->term_relationships} ON (wp_posts.ID = {$wpdb->term_relationships}.object_id)",
+                    "INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID",
+                    $join
+                );
             }
             return $join;
         };
