@@ -150,13 +150,17 @@ function wordland_get_location_from_term($term_id)
     return $location_query->query_location($term_id);
 }
 
-function wordland_get_same_location_properties_by_property_id($property_id) {
+function wordland_get_same_location_properties_by_property_id($property_id, $listing_types = null) {
     $args = array(
         'post__not_in' => array( $property_id ),
     );
-    $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
-        'fields' => 'ids'
-    ));
+    if (is_null($listing_types)) {
+        $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
+            'fields' => 'ids'
+        ));
+    } else {
+        $listing_types = array_filter((array)$listing_types);
+    }
     if (count($listing_types) > 0) {
         $args['tax_query'][] = array(
             'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
