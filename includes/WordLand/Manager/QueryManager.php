@@ -21,7 +21,6 @@ class QueryManager extends ManagerAbstract
     public function registerCustomQueries($scope)
     {
         add_filter('posts_join', array($this, 'joinTables'), 15, 2);
-        add_filter('posts_where', array($this, 'whereConditions'), 15, 2);
         add_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
 
         if ($scope === 'listing') {
@@ -32,7 +31,6 @@ class QueryManager extends ManagerAbstract
     public function removeCustomQueries($scope)
     {
         remove_filter('posts_join', array($this, 'joinTables'), 15, 2);
-        remove_filter('posts_where', array($this, 'whereConditions'), 15, 2);
         remove_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
 
         if ($scope === 'listing') {
@@ -43,28 +41,22 @@ class QueryManager extends ManagerAbstract
     public function joinTables($join, $query)
     {
         global $wpdb;
-        $rule =  " INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID
-INNER JOIN wp_term_taxonomy tt ON {$wpdb->term_relationships}.term_taxonomy_id = tt.term_taxonomy_id";
-        // $rule.= ' INNER JOIN wp_terms t ON t.term_id = tt.term_id';
 
-        $join = empty($join) ? $rule : $join . $rule;
-
-        if (strpos($join, 'LEFT JOIN wp_term_relationships') !== 0) {
-            $join = str_replace('LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id)', '', $join);
+        if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
+            $rule =  " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
+        } else {
+            $rule  =  " INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID";
+            $rule .= " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
         }
 
+        $join = empty($join) ? $rule : $join . $rule;
         return $join;
-    }
-
-    public function whereConditions($where, $query)
-    {
-        global $wpdb;
-        $where .= $wpdb->prepare(" AND tt.taxonomy=%s", 'listing_type');
-        return $where;
     }
 
     public function groupByPropertyLocation($groupby, $query, $prefix = 'wlp')
     {
+        global $wpdb;
+
         if ($groupby != '') {
             $groupby .= ", {$prefix}.location";
         } else {
@@ -73,7 +65,7 @@ INNER JOIN wp_term_taxonomy tt ON {$wpdb->term_relationships}.term_taxonomy_id =
         if (strpos($groupby, 'wp_posts.ID,') !== false) {
             $groupby = preg_replace('/wp_posts\.ID\,\n?/', '', $groupby);
         }
-        $groupby .= ', tt.taxonomy';
+        $groupby .= ", {$wpdb->term_taxonomy}.taxonomy";
         return $groupby;
     }
 
@@ -81,7 +73,6 @@ INNER JOIN wp_term_taxonomy tt ON {$wpdb->term_relationships}.term_taxonomy_id =
     {
         global $wpdb;
         $fields .= ", COUNT({$wpdb->posts}.ID) as same_location_items";
-        // $fields .= ', t.slug as listing_type';
 
         return $fields;
     }

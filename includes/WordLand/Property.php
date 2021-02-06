@@ -228,4 +228,9 @@ class Property extends Data implements JsonSerializable
         }
         $this->sameLocationProperties = $sameLocationProperties;
     }
+
+    public function setSameLocationItems($numberOfItems)
+    {
+        $this->sameLocationItems = intval($numberOfItems);
+    }
 }
