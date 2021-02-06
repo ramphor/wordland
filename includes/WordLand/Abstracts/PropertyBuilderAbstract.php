@@ -4,6 +4,7 @@ namespace WordLand\Abstracts;
 use WordLand\Constracts\PropertyBuilder;
 use WordLand\Property;
 use WordLand\GeoLocation;
+use WordLand\PostTypes;
 
 abstract class PropertyBuilderAbstract implements PropertyBuilder
 {
@@ -53,6 +54,19 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
         $this->property->description = get_the_excerpt($this->originalPost);
         $this->property->createdAt = strtotime($this->originalPost->post_date);
+
+        $listing_type = wp_get_post_terms($this->originalPost->ID, PostTypes::PROPERTY_LISTING_TYPE, array(
+            'number' => 1
+        ));
+
+
+        if (count($listing_type)) {
+            $this->property->listingType = array(
+                'id' => $listing_type[0]->term_id,
+                'name' => $listing_type[0]->name
+            );
+            unset($listing_type);
+        }
     }
 
     public function buildWordLandData()

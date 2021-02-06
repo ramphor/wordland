@@ -27,6 +27,7 @@ class Property extends Data implements JsonSerializable
     public $categories = array();
     public $types = array();
     public $visibilities = array();
+    public $listingType = array();
 
     /**
      * The property location
