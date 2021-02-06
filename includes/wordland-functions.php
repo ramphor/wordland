@@ -159,7 +159,6 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
     ));
     $listing_types   = array_get($args, 'listing_types');
     $exclude_current = array_get($args, 'exclude_current');
-
     if (is_null($listing_types)) {
         $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
             'fields' => 'ids'
@@ -188,7 +187,7 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
     }
 
     $propertyQuery = new PropertyQuery($args, 'detail');
-    $propertyQuery->get_sample_location_properties($property_id);
+    $propertyQuery->get_sample_location_properties($property_id, count($listing_types) > 0);
     if ($select_total) {
         $propertyQuery->select_total_rows();
     }

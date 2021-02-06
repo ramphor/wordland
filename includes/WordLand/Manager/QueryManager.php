@@ -21,9 +21,9 @@ class QueryManager extends ManagerAbstract
     public function registerCustomQueries($scope)
     {
         add_filter('posts_join', array($this, 'joinTables'), 15, 2);
-        add_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
 
         if ($scope === 'listing') {
+            add_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
             add_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
     }
@@ -31,9 +31,9 @@ class QueryManager extends ManagerAbstract
     public function removeCustomQueries($scope)
     {
         remove_filter('posts_join', array($this, 'joinTables'), 15, 2);
-        remove_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
 
         if ($scope === 'listing') {
+            remove_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
             remove_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
     }
@@ -42,14 +42,16 @@ class QueryManager extends ManagerAbstract
     {
         global $wpdb;
 
-        if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
-            $rule =  " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
-        } else {
-            $rule  =  " INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID";
-            $rule .= " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
-        }
+        if (count($query->query_vars['tax_query']) > 0) {
+            if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
+                $rule =  " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
+            } else {
+                $rule  =  " INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID";
+                $rule .= " INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id";
+            }
 
-        $join = empty($join) ? $rule : $join . $rule;
+            $join = empty($join) ? $rule : $join . $rule;
+        }
         return $join;
     }
 

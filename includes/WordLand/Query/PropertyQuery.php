@@ -193,29 +193,27 @@ class PropertyQuery extends BaseQuery
         $this->logCustomHook('wordland_get_posts_fields', $callable, false);
     }
 
-    public function get_sample_location_properties($property_id)
+    public function get_sample_location_properties($property_id, $has_listing_type = false)
     {
-        $callable = function ($where, $query) use ($property_id) {
+        $callable = function ($where, $query) use ($property_id, $has_listing_type) {
             global $wpdb;
             if (array_element_in_array(array_get($query->query_vars, 'post_type'), PostTypes::get())) {
                 $where .= $wpdb->prepare(
                     " AND wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
                     $property_id
                 );
-                $where .= $wpdb->prepare(" AND {$wpdb->term_taxonomy}.taxonomy=%s", 'listing_type');
             }
             return $where;
         };
         add_filter('posts_where', $callable, 15, 2);
         $this->logCustomHook('posts_where', $callable, false, 15);
 
-
-        $joinCallable = function ($join, $query) {
+        $joinCallable = function ($join, $query) use ($has_listing_type) {
             global $wpdb;
             if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
                 $join = str_replace(
-                    "LEFT JOIN {$wpdb->term_relationships} ON (wp_posts.ID = {$wpdb->term_relationships}.object_id)",
-                    "INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = wp_posts.ID",
+                    "LEFT JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)",
+                    "INNER JOIN {$wpdb->term_relationships} ON {$wpdb->term_relationships}.object_id = {$wpdb->posts}.ID",
                     $join
                 );
             }
