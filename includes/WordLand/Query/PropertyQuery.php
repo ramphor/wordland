@@ -202,11 +202,23 @@ class PropertyQuery extends BaseQuery
                     " AND wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
                     $property_id
                 );
+                $where .= $wpdb->prepare(" AND {$wpdb->term_taxonomy}.taxonomy=%s", 'listing_type');
             }
             return $where;
         };
         add_filter('posts_where', $callable, 15, 2);
         $this->logCustomHook('posts_where', $callable, false, 15);
+
+
+        $joinCallable = function ($join, $query) {
+            global $wpdb;
+            if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
+                $join = str_replace('LEFT JOIN {$wpdb->term_relationships} ON (wp_posts.ID = {$wpdb->term_relationships}.object_id)', '', $join);
+            }
+            return $join;
+        };
+        add_filter('posts_join', $joinCallable, 20, 2);
+        $this->logCustomHook('posts_join', $joinCallable, false, 20);
     }
 
     public function select_total_rows()

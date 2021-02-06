@@ -194,8 +194,8 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
 
     $wp_query = $propertyQuery->getWordPressQuery();
     if ($select_total) {
-        if ($wordpressQuery->post_count && isset($wordpressQuery->post->total_rows)) {
-            return intval(intval($wordpressQuery->post->total_rows));
+        if ($wp_query->post_count && isset($wp_query->post->total_rows)) {
+            return intval(intval($wp_query->post->total_rows));
         }
         return 0;
     }
