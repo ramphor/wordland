@@ -12,8 +12,9 @@ class PropertyQuery extends BaseQuery
     protected $wordpressQuery;
     protected $rawArgs;
     protected $args;
-    protected $taxonomy_queries = array();
     protected $scope;
+    protected $taxonomy_queries = array();
+    protected $get_total = false;
 
     protected static $customHooks = array();
 
@@ -135,6 +136,13 @@ class PropertyQuery extends BaseQuery
         $this->removeCustomHooks();
         do_action('wordland_end_property_query', $this->scope);
 
+        if ($this->get_total) {
+            $this->get_total = false;
+            return $wordpressQuery->post_count && isset($wordpressQuery->post->total_rows)
+                ? $wordpressQuery->post->total_rows
+                : 0;
+        }
+
         return $wordpressQuery;
     }
 
@@ -202,5 +210,15 @@ class PropertyQuery extends BaseQuery
         };
         add_filter('posts_where', $callable, 15, 2);
         $this->logCustomHook('posts_where', $callable, false, 15);
+    }
+
+    public function select_total_rows()
+    {
+        $this->get_total = true;
+        $callable = function ($fields, $query) {
+            $fields = explode(',', $fields);
+            return sprintf('COUNT(%s) as total_rows', $fields[0]);
+        };
+        add_filter('posts_fields', $callable, 15, 2);
     }
 }

@@ -150,17 +150,22 @@ function wordland_get_location_from_term($term_id)
     return $location_query->query_location($term_id);
 }
 
-function wordland_get_same_location_properties_by_property_id($property_id, $listing_types = null) {
-    $args = array(
-        'post__not_in' => array( $property_id ),
-    );
+function wordland_get_same_location_properties_by_property_id($property_id, $listing_types = null, $select_total = false) {
     if (is_null($listing_types)) {
         $listing_types = wp_get_post_terms($property_id, PostTypes::PROPERTY_LISTING_TYPE, array(
             'fields' => 'ids'
         ));
-    } else {
+    } elseif ($listing_types !== false) {
         $listing_types = array_filter((array)$listing_types);
+    } else {
+        $listing_types = array();
     }
+
+    $args = array();
+    if (!$select_total) {
+        $args['post__not_in'] = array( $property_id );
+    }
+
     if (count($listing_types) > 0) {
         $args['tax_query'][] = array(
             'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
@@ -173,9 +178,14 @@ function wordland_get_same_location_properties_by_property_id($property_id, $lis
 
     $propertyQuery = new PropertyQuery($args, 'detail');
     $propertyQuery->get_sample_location_properties($property_id);
+    if ($select_total) {
+        $propertyQuery->select_total_rows();
+    }
 
-    $wp_query = $propertyQuery->getWordPressQuery();
-
+    $wp_query               = $propertyQuery->getWordPressQuery();
+    if ($select_total) {
+        return intval($wp_query);
+    }
     $sameLocationProperties = array();
 
     while($wp_query->have_posts()) {
