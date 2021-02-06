@@ -97,7 +97,8 @@ class WordLand
     public function initFeatures()
     {
         new PostTypes();
-        $this->location = new Locations();
+        $this->location    = new Locations();
+        $this->viewCounter = new PostViewCounter(PostTypes::get());
 
         if ($this->is_request('frontend')) {
             $templateLoader = new TemplateLoader();
@@ -161,7 +162,6 @@ class WordLand
         $cookieHandler = new CookieHandler();
         $cookieHandler->setExpireTime(30 * 24 * 60 * 60); // 30 days
 
-        $this->viewCounter = new PostViewCounter(PostTypes::get());
         $this->viewCounter->addHandle($cookieHandler);
         $this->viewCounter->addHandle($userHandler);
 
