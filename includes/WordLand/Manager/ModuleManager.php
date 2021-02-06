@@ -4,6 +4,7 @@ namespace WordLand\Manager;
 use WordLand\Constracts\Module;
 use WordLand\Modules\FavoriteProperty;
 use WordLand\Modules\Ajax\QueryLocation;
+use WordLand\Modules\Ajax\SameLocationProperties;
 
 class ModuleManager
 {
@@ -20,6 +21,7 @@ class ModuleManager
         $modules = array(
             FavoriteProperty::class,
             QueryLocation::class,
+            SameLocationProperties::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
