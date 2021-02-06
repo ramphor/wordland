@@ -5,6 +5,7 @@ use WordLand\Cache;
 use WordLand\Property;
 use WordLand\Query\LocationQuery;
 use WordLand\Query\PropertyQuery;
+use WordLand\Query\SearchHistoryQuery;
 
 function wordland_template($templates, $data = array(), $context = null, $echo = true)
 {
@@ -209,4 +210,16 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
     }
 
     return $sameLocationProperties;
+}
+
+
+function wordland_get_user_search_histories($user_id)
+{
+    $historyQuery = new SearchHistoryQuery();
+    $rows         = $historyQuery->get_search_histories($user_id);
+
+    if (is_null($rows)) {
+        return [];
+    }
+    return $rows;
 }
