@@ -67,7 +67,11 @@ class QueryManager extends ManagerAbstract
         if (strpos($groupby, 'wp_posts.ID,') !== false) {
             $groupby = preg_replace('/wp_posts\.ID\,\n?/', '', $groupby);
         }
-        $groupby .= ", {$wpdb->term_taxonomy}.taxonomy";
+
+        if (count($query->query_vars['tax_query'])) {
+            $groupby .= ", {$wpdb->term_taxonomy}.taxonomy";
+        }
+
         return $groupby;
     }
 
