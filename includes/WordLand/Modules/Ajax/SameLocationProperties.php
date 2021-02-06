@@ -44,8 +44,9 @@ class SameLocationProperties extends ModuleAbstract
         if (!array_get($request, 'property_id', false)) {
             return wp_send_json_error(__('Property ID is invalid', 'wordland'));
         }
+
         $listing_types = array_get($request, 'listing_type', false);
-        $properties = wordland_get_same_location_properties_by_property_id(
+        $properties    = wordland_get_same_location_properties_by_property_id(
             array_get($request, 'property_id'),
             array(
                 'listing_types' => $listing_types

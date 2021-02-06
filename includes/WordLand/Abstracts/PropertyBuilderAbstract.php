@@ -59,7 +59,6 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             'number' => 1
         ));
 
-
         if (count($listing_type)) {
             $this->property->listingType = array(
                 'id' => $listing_type[0]->term_id,

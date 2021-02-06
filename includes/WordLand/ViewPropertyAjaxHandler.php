@@ -3,5 +3,6 @@ namespace WordLand;
 
 use Ramphor\PostViews\Abstracts\HandlerAbstract;
 
-class ViewPropertyAjaxHandler extends HandlerAbstract {
+class ViewPropertyAjaxHandler extends HandlerAbstract
+{
 }

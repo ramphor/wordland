@@ -3,6 +3,7 @@ namespace WordLand\Manager;
 
 use WordLand\Constracts\Module;
 use WordLand\Modules\FavoriteProperty;
+use WordLand\Modules\SearchHistory;
 use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
 
@@ -22,6 +23,7 @@ class ModuleManager
             FavoriteProperty::class,
             QueryLocation::class,
             SameLocationProperties::class,
+            SearchHistory::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }

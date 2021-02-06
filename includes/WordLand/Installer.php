@@ -58,7 +58,7 @@ class Installer
             PRIMARY KEY (`ID`)',
             'wordland_search_histories' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `keyword_text` VARCHAR(255),
-                `type_type` VARCHAR(255) DEFAULT \'general\',
+                `history_type` VARCHAR(255) DEFAULT \'general\',
                 `reference_object` BIGINT NOT NULL DEFAULT 0,
                 `reference_type` VARCHAR(255) NULL,
                 `user_id`  BIGINT NOT NULL DEFAULT 0,
