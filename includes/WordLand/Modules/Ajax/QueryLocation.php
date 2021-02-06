@@ -123,11 +123,11 @@ class QueryLocation extends ModuleAbstract
         if ($location !== false) {
             $result = array(
                 'name' => $location->location_name,
-                'term_id' => $term_id
+                'term_id' => $location->term_id
             );
 
-            if (!empty($location->location)) {
-                $geom = geoPHP::load($location->location, 'ewkb');
+            if (!empty($location->kml)) {
+                $geom = geoPHP::load($location->kml, 'ewkb');
 
                 if ($geom) {
                     $result['geojson_border'] = array(
@@ -136,8 +136,8 @@ class QueryLocation extends ModuleAbstract
                     );
                     $centroid = $geom->getCentroid();
                     $result['center_location'] = array(
-                        'lng' => $centroid->getX(),
                         'lat' => $centroid->getY(),
+                        'lng' => $centroid->getX(),
                     );
                 }
             }
