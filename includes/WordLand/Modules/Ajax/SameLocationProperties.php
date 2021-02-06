@@ -12,6 +12,11 @@ use WordLand\Query\LocationQuery;
  */
 class SameLocationProperties extends ModuleAbstract
 {
+    const MODULE_NAME = 'same_location_properties';
+
+    public function get_name() {
+        return static::MODULE_NAME;
+    }
 
     public function init() {
         add_action('wp_ajax_wordland_get_same_location_properties', array($this, 'getSameLocationProperties'));
