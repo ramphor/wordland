@@ -138,9 +138,6 @@ class PropertyQuery extends BaseQuery
 
         if ($this->get_total) {
             $this->get_total = false;
-            return $wordpressQuery->post_count && isset($wordpressQuery->post->total_rows)
-                ? $wordpressQuery->post->total_rows
-                : 0;
         }
 
         return $wordpressQuery;

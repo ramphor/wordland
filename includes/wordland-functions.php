@@ -192,12 +192,15 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
         $propertyQuery->select_total_rows();
     }
 
-    $wp_query               = $propertyQuery->getWordPressQuery();
+    $wp_query = $propertyQuery->getWordPressQuery();
     if ($select_total) {
-        return intval($wp_query);
+        if ($wordpressQuery->post_count && isset($wordpressQuery->post->total_rows)) {
+            return intval(intval($wordpressQuery->post->total_rows));
+        }
+        return 0;
     }
-    $sameLocationProperties = array();
 
+    $sameLocationProperties = array();
     while ($wp_query->have_posts()) {
         $wp_query->the_post();
         global $property;
