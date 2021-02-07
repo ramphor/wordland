@@ -43,6 +43,7 @@ class Installer
                 `size` BIGINT NOT NULL DEFAULT 0,
                 `bedrooms` BIGINT NOT NULL DEFAULT 0,
                 `bathrooms` BIGINT NOT NULL DEFAULT 0,
+                `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
