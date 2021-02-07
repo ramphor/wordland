@@ -78,7 +78,7 @@ class FilterHelper
     public static function filterPrice($price, $is_unit_price = false, $prefix = 'wlp')
     {
         global $wpdb;
-        $field_name = $is_unit_price ? "{$prefix}.unit_price" : "{$prefix}.price";
+        $field_name = $is_unit_price ? " {$prefix}.unit_price" : " {$prefix}.price";
 
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
