@@ -223,3 +223,22 @@ function wordland_get_user_search_histories($user_id)
     }
     return $rows;
 }
+
+
+function wordland_get_map_zoom_from_location_taxonomy($taxonomy)
+{
+    if (preg_match('/\d{1,}$/', $taxonomy, $matches)) {
+        $level = intval($matches[0]);
+        if ($level > 3) {
+            return wordland_get_map_zoom(20, 'location_level_4');
+        } elseif ($level === 3) {
+            return wordland_get_map_zoom(15, 'location_level_3');
+        } elseif ($level === 2) {
+            return wordland_get_map_zoom(12, 'location_level_3');
+        } else {
+            return wordland_get_map_zoom(10);
+        }
+    }
+    return wordland_get_map_zoom(true);
+    ;
+}
