@@ -314,7 +314,7 @@ class AjaxRequestManager
 
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
         $wp_query = $this->buildQuery($this->filterQueries(array(
-            'posts_per_page' => 5,
+            'posts_per_page' => 500,
         )), $request);
 
         $markers  = array();
