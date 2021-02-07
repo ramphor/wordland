@@ -143,19 +143,19 @@ class PropertyQuery extends BaseQuery
         return $wordpressQuery;
     }
 
-    public static function get_property_metas_from_ID($property_id, $prefix = 'wlp')
+    public static function get_property_metas_from_ID($property_id)
     {
         global $wpdb;
         $fields = sprintf('ST_X(%1$s.location) as latitude, ST_Y(%1$s.location) as longitude', $prefix);
-        $fields .= ', wlp.property_id';
-        $fields .= ', wlp.price';
-        $fields .= ', wlp.bedrooms';
-        $fields .= ', wlp.bathrooms';
-        $fields .= ', wlp.unit_price';
-        $fields .= ', wlp.size';
+        $fields .= ", {$wpdb->prefix}wordland_properties.property_id";
+        $fields .= ", {$wpdb->prefix}wordland_properties.price";
+        $fields .= ", {$wpdb->prefix}wordland_properties.bedrooms";
+        $fields .= ", {$wpdb->prefix}wordland_properties.bathrooms";
+        $fields .= ", {$wpdb->prefix}wordland_properties.unit_price";
+        $fields .= ", {$wpdb->prefix}wordland_properties.size";
 
         return $wpdb->get_row(
-            $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties wlp WHERE property_id=%d LIMIT 1", $property_id)
+            $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d LIMIT 1", $property_id)
         );
     }
 
@@ -199,7 +199,7 @@ class PropertyQuery extends BaseQuery
             global $wpdb;
             if (array_element_in_array(array_get($query->query_vars, 'post_type'), PostTypes::get())) {
                 $where .= $wpdb->prepare(
-                    " AND wlp.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
+                    " AND {$wpdb->prefix}wordland_properties.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
                     $property_id
                 );
             }

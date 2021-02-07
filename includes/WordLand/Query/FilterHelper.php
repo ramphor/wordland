@@ -75,10 +75,12 @@ class FilterHelper
         return $ret;
     }
 
-    public static function filterPrice($price, $is_unit_price = false, $prefix = 'wlp')
+    public static function filterPrice($price, $is_unit_price = false)
     {
         global $wpdb;
-        $field_name = $is_unit_price ? " {$prefix}.unit_price" : " {$prefix}.price";
+        $field_name = $is_unit_price
+            ? " {$wpdb->prefix}wordland_properties.unit_price"
+            : " {$wpdb->prefix}wordland_properties.price";
 
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
@@ -90,16 +92,16 @@ class FilterHelper
         }
     }
 
-    public static function filterSize($price, $prefix = 'wlp')
+    public static function filterSize($price)
     {
         global $wpdb;
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
-            return $wpdb->prepare(" {$prefix}.size BETWEEN %f AND %f", $price['from'], $price['to']);
+            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.size BETWEEN %f AND %f", $price['from'], $price['to']);
         } elseif (empty($price['to'])) {
-            return $wpdb->prepare(" {$prefix}.size >= %f", $price['from']);
+            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.size >= %f", $price['from']);
         } else {
-            return$wpdb->prepare(" {$prefix}.size <= %f", $price['to']);
+            return$wpdb->prepare(" {$wpdb->prefix}wordland_properties.size <= %f", $price['to']);
         }
     }
 
@@ -115,7 +117,7 @@ class FilterHelper
         return false;
     }
 
-    public static function parseBedsroom($bedsroom, $prefix = 'wlp')
+    public static function parseBedsroom($bedsroom)
     {
         if (empty($bedsroom['room'])) {
             return false;
@@ -124,21 +126,21 @@ class FilterHelper
 
         $exactly = isset($bedsroom['exactly']) ? boolval($bedsroom['exactly']): false;
         if ($exactly) {
-            return $wpdb->prepare(" AND {$prefix}.bedrooms = %d", $bedsroom['room']);
+            return $wpdb->prepare(" AND {$wpdb->prefix}wordland_properties.bedrooms = %d", $bedsroom['room']);
         }
-        return $wpdb->prepare(" AND {$prefix}.bedrooms >= %d", $bedsroom['room']);
+        return $wpdb->prepare(" AND {$wpdb->prefix}wordland_properties.bedrooms >= %d", $bedsroom['room']);
     }
 
-    public static function parseBathsroom($bathroom, $prefix = 'wlp')
+    public static function parseBathsroom($bathroom)
     {
         if (empty($bathroom['room'])) {
             return false;
         }
         global $wpdb;
-        return $wpdb->prepare(" AND {$prefix}.bathrooms >= %d", $bathroom['room']);
+        return $wpdb->prepare(" AND {$wpdb->prefix}wordland_properties.bathrooms >= %d", $bathroom['room']);
     }
 
-    public static function parseMapBounds($map_bounds, $prefix = 'wlp')
+    public static function parseMapBounds($map_bounds)
     {
         if (empty($map_bounds['bounds']) || empty($map_bounds['bounds']['north_east']) || empty($map_bounds['bounds']['south_west'])) {
             return false;
@@ -157,7 +159,7 @@ class FilterHelper
             ST_PolygonFromText('POLYGON(
                 ({$north} {$west}, {$north} {$east}, {$south} {$east}, {$south} {$west}, {$north} {$west})
             )'),
-            {$prefix}.location
+            {$wpdb->prefix}wordland_properties.location
         )";
     }
 

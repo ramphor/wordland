@@ -55,14 +55,14 @@ class QueryManager extends ManagerAbstract
         return $join;
     }
 
-    public function groupByPropertyLocation($groupby, $query, $prefix = 'wlp')
+    public function groupByPropertyLocation($groupby, $query)
     {
         global $wpdb;
 
         if ($groupby != '') {
-            $groupby .= ", {$prefix}.location";
+            $groupby .= ", {$wpdb->prefix}wordland_properties.location";
         } else {
-            $groupby = "{$prefix}.location";
+            $groupby = "{$wpdb->prefix}wordland_properties.location";
         }
         if (strpos($groupby, 'wp_posts.ID,') !== false) {
             $groupby = preg_replace('/wp_posts\.ID\,\n?/', '', $groupby);

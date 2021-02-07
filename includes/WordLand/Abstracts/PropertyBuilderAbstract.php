@@ -69,7 +69,8 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         $this->createCodeID();
     }
 
-    protected function createCodeID() {
+    protected function createCodeID()
+    {
         $prefix = get_option('wordland_property_code_id_prefix');
         $this->property->codeID = sprintf(
             '%s%010s',

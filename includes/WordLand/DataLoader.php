@@ -46,7 +46,7 @@ class DataLoader
             return $join;
         }
         global $wpdb;
-        $join .= " INNER JOIN {$wpdb->prefix}wordland_properties wlp ON {$wpdb->posts}.ID=wlp.property_id";
+        $join .= " INNER JOIN {$wpdb->prefix}wordland_properties ON {$wpdb->posts}.ID = {$wpdb->prefix}wordland_properties.property_id";
 
         return $join;
     }
@@ -59,7 +59,7 @@ class DataLoader
         global $wpdb;
 
         $post_fields     = static::get_posts_fields($wpdb->posts);
-        $property_fields = Property::get_meta_fields('wlp');
+        $property_fields = Property::get_meta_fields(sprintf('%swordland_properties', $wpdb->prefix));
 
         return trim(sprintf('%s, %s', $post_fields, $property_fields), ', ');
     }
@@ -95,14 +95,16 @@ class DataLoader
         );
     }
 
-    public function setMainProperty($property) {
+    public function setMainProperty($property)
+    {
         if (!is_a($property, Property::class) || $this->mainProperty) {
             return;
         }
         $this->mainProperty = $property;
     }
 
-    public function loadMainPropertyFromGlobalPost() {
+    public function loadMainPropertyFromGlobalPost()
+    {
         if ($this->mainProperty) {
             return $this->mainProperty;
         }
