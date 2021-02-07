@@ -9,6 +9,7 @@ use WordLand\PostTypes;
 class DataLoader
 {
     private static $instance;
+    protected $mainProperty;
 
     public static function getInstance()
     {
@@ -22,7 +23,7 @@ class DataLoader
     {
         add_filter('posts_join', array($this, 'joinPropertiesTable'), 10, 2);
         add_filter('posts_fields', array($this, 'chooseFields'), 10, 2);
-        add_action('the_post', array($this, 'buildPropertyFromPost'));
+        add_action('the_post', array($this, 'buildPropertyFromPost'), 10, 2);
     }
 
     protected function checkPostType($postTypes)
@@ -63,15 +64,18 @@ class DataLoader
         return trim(sprintf('%s, %s', $post_fields, $property_fields), ', ');
     }
 
-    public function buildPropertyFromPost($post)
+    public function buildPropertyFromPost($post, $query, $is_main_property = null)
     {
+        // Only parse build global property for
         if (!in_array($post->post_type, PostTypes::get())) {
             return;
         }
-        global $property;
-        $queried_object = get_queried_object();
-        if ($queried_object  === $post && (is_a($property, Property::class) && $property->ID === $post->ID)) {
-            return;
+        if (is_null($is_main_property)) {
+            $is_main_property = $query->is_main_query() && $query->is_single();
+        }
+
+        if ($is_main_property && $this->mainProperty) {
+            return $GLOBALS['property'] = $this->mainProperty;
         }
 
         $builder = PropertyBuilderManager::getBuilder();
@@ -82,13 +86,35 @@ class DataLoader
 
         do_action('wordland_dataloader_before_get_property', $builder, $post);
 
-        $property = $builder->getProperty();
+        $property = $builder->getProperty($is_main_property ? 'single' : 'global');
 
         return $GLOBALS['property'] = apply_filters(
             'wordland_build_property_data',
             $property,
             $builder
         );
+    }
+
+    public function setMainProperty($property) {
+        if (!is_a($property, Property::class) || $this->mainProperty) {
+            return;
+        }
+        $this->mainProperty = $property;
+    }
+
+    public function loadMainPropertyFromGlobalPost() {
+        if ($this->mainProperty) {
+            return $this->mainProperty;
+        }
+        global $post, $wp_query;
+
+        if ($wp_query->is_main_query() && $wp_query->is_single()) {
+            $property = $this->buildPropertyFromPost($post, $wp_query, true);
+            $this->setMainProperty($property);
+            return $this->mainProperty;
+        }
+
+        return false;
     }
 
     public function buildPropertyFromId($propertyID)
