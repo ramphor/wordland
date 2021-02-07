@@ -316,7 +316,11 @@ class AjaxRequestManager
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'posts_per_page' => 500,
         )), $request);
-        $markers = array();
+
+        $markers  = array();
+        $response = array(
+            'items' => &$markers
+        );
         if ($wp_query->have_posts()) {
             $index = 0;
             while ($wp_query->have_posts()) {
@@ -340,14 +344,13 @@ class AjaxRequestManager
 
                 $index += 1;
             }
-            // die;
         }
 
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
 
         do_action('wordland_after_request_ajax_get_map_markers', $this);
 
-        wp_send_json_success($markers);
+        wp_send_json_success($response);
     }
 
     protected function set_meta_for_property($post)
