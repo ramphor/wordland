@@ -66,6 +66,16 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             );
             unset($listing_type);
         }
+        $this->createCodeID();
+    }
+
+    protected function createCodeID() {
+        $prefix = get_option('wordland_property_code_id_prefix');
+        $this->property->codeId = sprintf(
+            '%s%010s',
+            $prefix ? strtoupper($prefix . '_') : '#',
+            $this->originalPost->ID
+        );
     }
 
     public function buildWordLandData()

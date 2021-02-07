@@ -12,6 +12,7 @@ use Ramphor\FriendlyNumbers\Locale;
 class Property extends Data implements JsonSerializable
 {
     public $ID;
+    public $codeID;
     public $name;
     public $description;
     public $content;
@@ -190,7 +191,7 @@ class Property extends Data implements JsonSerializable
                 continue;
             }
             $propertyName = $property->name;
-            $key = preg_replace_callback('/([a-z0-9])([A-Z])/', function ($matches) {
+            $key = preg_replace_callback('/([a-z0-9])([A-Z]{1,})/', function ($matches) {
                 return sprintf('%s_%s', $matches[1], $matches[2]);
             }, $propertyName);
             if ($key !== 'ID') {
