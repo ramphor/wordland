@@ -76,7 +76,10 @@ class LocationQuery
     {
         global $wpdb;
         $sql = $wpdb->prepare(
-            "SELECT location_name, AsWKB(location) as location FROM {$wpdb->prefix}wordland_locations WHERE term_id=%d",
+            "SELECT location_name, AsWKB(location) as location, {$wpdb->term_taxonomy}.taxonomy
+            FROM {$wpdb->prefix}wordland_locations
+            INNER JOIN {$wpdb->term_taxonomy} ON {$wpdb->prefix}wordland_locations.term_id = {$wpdb->term_taxonomy}.term_id
+            WHERE {$wpdb->prefix}wordland_locations.term_id=%d",
             $term_id
         );
 

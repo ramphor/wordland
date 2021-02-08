@@ -75,7 +75,8 @@ class QueryLocation extends ModuleAbstract
         if ($location !== false) {
             $result = array(
                 'name' => $location->location_name,
-                'term_id' => $term_id
+                'term_id' => $term_id,
+                'taxonomy' => $location->taxonomy
             );
 
             if (!empty($location->location)) {
