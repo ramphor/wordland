@@ -142,18 +142,18 @@ class FilterHelper
 
     public static function parseMapBounds($map_bounds)
     {
-        if (empty($map_bounds['bounds']) || empty($map_bounds['bounds']['north_east']) || empty($map_bounds['bounds']['south_west'])) {
+        if (empty($map_bounds) || empty($map_bounds['northEast']) || empty($map_bounds['southWest'])) {
             return false;
         }
         global $wpdb;
 
-        $north_east = $map_bounds['bounds']['north_east'];
-        $south_west = $map_bounds['bounds']['south_west'];
+        $northEast = $map_bounds['northEast'];
+        $southWest = $map_bounds['southWest'];
 
-        $north = array_get($north_east, 'lat');
-        $east  = array_get($north_east, 'lng');
-        $south = array_get($south_west, 'lat');
-        $west  = array_get($south_west, 'lng');
+        $north = array_get($northEast, 'lat');
+        $east  = array_get($northEast, 'lng');
+        $south = array_get($southWest, 'lat');
+        $west  = array_get($southWest, 'lng');
 
         return " AND ST_Contains(
             ST_PolygonFromText('POLYGON(

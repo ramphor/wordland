@@ -156,10 +156,10 @@ class AjaxRequestManager
             }
         }
 
-        if (isset(static::$request['map'])) {
-            $map_query = FilterHelper::parseMapBounds(static::$request['map']);
-            if (!empty($map_query)) {
-                $where .= $map_query;
+        if (!empty(static::$request['map_bounds'])) {
+            $map_bounds_query = FilterHelper::parseMapBounds(static::$request['map_bounds']);
+            if (!empty($map_bounds_query)) {
+                $where .= $map_bounds_query;
             }
         }
 
