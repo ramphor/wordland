@@ -69,7 +69,12 @@ function wordland_get_map_zoom($has_coordinates, $option_name = 'default_listing
     $marker_list_zoom = get_option("wordland_{$option_name}_map_zoom", $has_coordinates ? $default_marker_list_zoom : 6);
     $zoom_options = array(
         'single_property' => get_option('wordland_single_property_map_zoom', 14),
-        'marker_list' => $marker_list_zoom
+        'marker_list' => $marker_list_zoom,
+        'country' => 6,
+        'administrative_area_level_1' => 10,
+        'administrative_area_level_2' => 12,
+        'administrative_area_level_3' => 15,
+        'administrative_area_level_4' => 20,
     );
     return apply_filters('wordland_get_map_zoom', $zoom_options);
 }

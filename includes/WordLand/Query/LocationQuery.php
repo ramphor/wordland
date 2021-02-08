@@ -14,7 +14,11 @@ class LocationQuery
         ));
 
 
-        $sql = "SELECT DISTINCT term_id, location_name, zip_code FROM {$wpdb->prefix}wordland_locations WHERE";
+        $sql = "SELECT DISTINCT {$wpdb->prefix}wordland_locations.term_id, location_name, zip_code, {$wpdb->term_taxonomy}.taxonomy
+            FROM {$wpdb->prefix}wordland_locations
+            INNER JOIN {$wpdb->term_taxonomy}
+                ON {$wpdb->term_taxonomy}.term_id={$wpdb->prefix}wordland_locations.term_id
+            WHERE";
         foreach ($columns as $column => $operator) {
             $sql .= sprintf(
                 ' `%s` %s \'%s\' OR ',
@@ -57,7 +61,8 @@ class LocationQuery
             $locations[$query_result->term_id] = array(
                 'term_id' => intval($query_result->term_id),
                 'name' => $query_result->location_name,
-                'zipcode' => $query_result->zip_code
+                'zipcode' => $query_result->zip_code,
+                'taxonomy' => $query_result->taxonomy
             );
         }
 
