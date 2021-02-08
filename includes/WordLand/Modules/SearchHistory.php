@@ -31,7 +31,7 @@ class SearchHistory extends ModuleAbstract
             'keyword_text' => array_get($request, 'name'),
             'history_type' => 'taxonomy',
             'reference_object' => array_get($request, 'term_id'),
-            'reference_type' => 'location',
+            'reference_type' => array_get($request, 'taxonomy', 'location'),
             'user_id' => get_current_user_id(),
             'ip' => wordland_get_real_ip_address(),
             'created_at' => current_time('mysql'),
