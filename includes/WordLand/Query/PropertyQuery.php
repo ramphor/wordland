@@ -146,7 +146,7 @@ class PropertyQuery extends BaseQuery
     public static function get_property_metas_from_ID($property_id)
     {
         global $wpdb;
-        $fields = sprintf('ST_X(%1$s.location) as latitude, ST_Y(%1$s.location) as longitude', $prefix);
+        $fields = sprintf('ST_X(%1$s.location) as latitude, ST_Y(%1$s.location) as longitude', $wpdb->prefix . 'wordland_properties');
         $fields .= ", {$wpdb->prefix}wordland_properties.property_id";
         $fields .= ", {$wpdb->prefix}wordland_properties.price";
         $fields .= ", {$wpdb->prefix}wordland_properties.bedrooms";
