@@ -211,6 +211,9 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
         global $property;
         if (is_a($property, Property::class)) {
             $sameLocationProperties[$wp_query->current_post] = $property;
+            $property->makeCleanPriceHtml();
+			$property->makeCleanUnitPriceHtml();
+			$property->makeCleanSizeHtml();
         }
     }
 

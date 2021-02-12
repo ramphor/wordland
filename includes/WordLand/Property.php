@@ -118,7 +118,7 @@ class Property extends Data implements JsonSerializable
         }
         $parsed = $clean_price->toArray();
 
-        return sprintf(
+        return $this->metas['clean_price'] = sprintf(
             '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
             array_get($parsed, 'prefix', $this->getCurrency())
@@ -141,7 +141,7 @@ class Property extends Data implements JsonSerializable
         }
         $parsed = $clean_unit_price->toArray();
 
-        return sprintf(
+        return $this->metas['clean_unit_price'] = sprintf(
             '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
             array_get($parsed, 'prefix', $this->getCurrency())
@@ -163,7 +163,7 @@ class Property extends Data implements JsonSerializable
         }
         $parsed = $clean_size->toArray();
 
-        return sprintf(
+        return $this->metas['clean_size'] = sprintf(
             '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
             array_get($parsed, 'prefix', $this->getSizeUnit())
