@@ -4,7 +4,7 @@ function wordland_show_login_modal() {
     }
 }
 
-function wordland_parse_price(price, decimals = 2) {
+function wordland_round_number(price, decimals = 2) {
     const str_price = price.toString();
     return str_price.replace(/\.\d{1,}/, function (sub_str) {
         sub_str = sub_str.replace('.', '');
