@@ -67,6 +67,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             unset($listing_type);
         }
         $this->createCodeID();
+        $this->createPropertyThumbnail();
     }
 
     protected function createCodeID()
@@ -77,6 +78,18 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             $prefix ? strtoupper($prefix . '_') : '#',
             $this->originalPost->ID
         );
+    }
+
+    protected function createPropertyThumbnail() {
+        $thumbnail_id = get_post_thumbnail_id($this->property->codeID);
+        if ($thumbnail_id) {
+            $this->property->thumbnail = array(
+                'id' => $thumbnail_id,
+                'url' => wordland_post_thumbnail($thumbnail_id)
+            );
+        } else {
+            $this->property->thumbnail = false;
+        }
     }
 
     public function buildWordLandData()

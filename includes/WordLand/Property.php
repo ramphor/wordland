@@ -23,6 +23,7 @@ class Property extends Data implements JsonSerializable
     public $size = 0;
     public $bathroom = 0;
     public $bedrooms = 0;
+    public $thumbnail = array();
     public $images = array();
 
     public $categories = array();
