@@ -24,7 +24,7 @@ use Ramphor\PostViews\Handlers\CookieHandler;
 
 class WordLand
 {
-    const ICON_VERSION = '0.0.3';
+    const ICON_VERSION = '0.0.6';
 
     protected static $instance;
     public static $version;
