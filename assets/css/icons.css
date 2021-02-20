@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "wordland";
+  src:url("../fonts/wordland.eot");
+  src:url("../fonts/wordland.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/wordland.woff") format("woff"),
+    url("../fonts/wordland.ttf") format("truetype"),
+    url("../fonts/wordland.svg#wordland") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-wl-icon]:before {
+  font-family: "wordland" !important;
+  content: attr(data-wl-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wl:before {
+  font-family: "wordland" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wl-parking:before {
+  content: "\e000";
+}
+.wl-clipboard:before {
+  content: "\e001";
+}
+.wl-lawyer:before {
+  content: "\e002";
+}
+.wl-legal-documents:before {
+  content: "\e003";
+}
+.wl-for-sale-1:before {
+  content: "\e004";
+}
+.wl-tree-1:before {
+  content: "\e012";
+}
+.wl-tree-2:before {
+  content: "\e013";
+}
+.wl-shower:before {
+  content: "\e014";
+}
+.wl-sofa:before {
+  content: "\e015";
+}
+.wl-chair:before {
+  content: "\e016";
+}
+.wl-tree:before {
+  content: "\e018";
+}
+.wl-commission-male:before {
+  content: "\e01b";
+}
+.wl-commission-female:before {
+  content: "\e01c";
+}
+.wl-agent-male:before {
+  content: "\e01d";
+}
+.wl-agent-female:before {
+  content: "\e01e";
+}
+.wl-truck:before {
+  content: "\e022";
+}
+.wl-interest-rate:before {
+  content: "\e01f";
+}
+.wl-bank:before {
+  content: "\e020";
+}
+.wl-lock:before {
+  content: "\e021";
+}
+.wl-shopping-cart:before {
+  content: "\e023";
+}
+.wl-home:before {
+  content: "\e024";
+}
+.wl-real-estate:before {
+  content: "\e025";
+}
+.wl-renovation:before {
+  content: "\e026";
+}
+.wl-for-sale:before {
+  content: "\e027";
+}
+.wl-lighting:before {
+  content: "\e028";
+}
+.wl-finding:before {
+  content: "\e029";
+}
+.wl-scale-weight:before {
+  content: "\e02a";
+}
+.wl-dimensions:before {
+  content: "\e02b";
+}
+.wl-piggy-bank:before {
+  content: "\e02c";
+}
+.wl-like:before {
+  content: "\e005";
+}
+.wl-share:before {
+  content: "\e006";
+}
