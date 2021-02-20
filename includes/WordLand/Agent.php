@@ -1,7 +1,9 @@
 <?php
 namespace WordLand;
 
-class Agent
+use WordLand\Abstracts\Data;
+
+class Agent extends Data
 {
     public $name;
     public $phoneNumber;

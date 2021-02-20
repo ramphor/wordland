@@ -1,15 +1,12 @@
 <?php
 namespace WordLand;
 
-use JsonSerializable;
-use ReflectionObject;
-use ReflectionProperty;
 use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Scale;
 use Ramphor\FriendlyNumbers\Locale;
 
-class Property extends Data implements JsonSerializable
+class Property extends Data
 {
     public $ID;
     public $codeID;
@@ -179,28 +176,6 @@ class Property extends Data implements JsonSerializable
     public function getListStyle()
     {
         return $this->listStyle;
-    }
-
-    public function jsonSerialize()
-    {
-        $data        = array();
-        $propertyRef = new ReflectionObject($this);
-        $properties  = $propertyRef->getProperties(ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED);
-
-        foreach ($properties as $property) {
-            if ($property->isStatic()) {
-                continue;
-            }
-            $propertyName = $property->name;
-            $key = preg_replace_callback('/([a-z0-9])([A-Z]{1,})/', function ($matches) {
-                return sprintf('%s_%s', $matches[1], $matches[2]);
-            }, $propertyName);
-            if ($key !== 'ID') {
-                $key = strtolower($key);
-            }
-            $data[$key] = $this->$propertyName;
-        }
-        return apply_filters('wordland_property_supported_json_fields', $data, $this);
     }
 
     public static function get_meta_fields($prefix = null, $get_location = false, $get_lat_lng = true)
