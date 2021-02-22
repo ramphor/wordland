@@ -2,6 +2,7 @@
 namespace WordLand\Admin;
 
 use WordLand\Admin\Property\MetaBox\PropertyInformation;
+use WordLand\Admin\Menu\Dashboard;
 
 class Admin
 {
@@ -13,6 +14,9 @@ class Admin
     protected function initHooks()
     {
         add_action('admin_init', array($this, 'initProperty'));
+
+        $dashboard = new Dashboard();
+        add_action('admin_menu', array($dashboard, 'registerDashboard'));
     }
 
     public function initProperty()
