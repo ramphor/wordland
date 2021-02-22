@@ -15,5 +15,7 @@ class Dashboard {
     }
 
     public function renderDashboard() {
+        echo __('Currently, WordLand support customize via action hooks and filter hooks only.
+        The options will be develop in the future', 'wordland');
     }
 }
