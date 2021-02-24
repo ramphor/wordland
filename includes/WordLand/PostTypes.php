@@ -32,6 +32,13 @@ class PostTypes
         );
     }
 
+    public static function activePostType() {
+        return apply_filters(
+            'wordland_property_active_post_type',
+            static::PROPERTY_POST_TYPE
+        );
+    }
+
     public function registerPostTypes()
     {
         $labels = array(
