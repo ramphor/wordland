@@ -93,7 +93,7 @@ class PostTypes
             static::PROPERTY_LISTING_TYPE,
             static::get(),
             apply_filters(
-                'wordland_taxonomy_category_args',
+                'wordland_taxonomy_listing_type_args',
                 array(
                     'labels' => $listing_type_labels,
                     'public' => true,
@@ -140,7 +140,7 @@ class PostTypes
             static::PROPERTY_VISIBILITY,
             static::get(),
             apply_filters(
-                'wordland_taxonomy_category_args',
+                'wordland_taxonomy_visibility_args',
                 array(
                     'labels' => $listing_type_labels,
                     'public' => true,
