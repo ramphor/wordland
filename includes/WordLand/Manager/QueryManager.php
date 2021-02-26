@@ -2,6 +2,9 @@
 namespace WordLand\Manager;
 
 use WordLand\Abstracts\ManagerAbstract;
+use WordLand\PostTypes;
+use WordLand\Property;
+use WordLand\Query\PropertyQuery;
 
 class QueryManager extends ManagerAbstract
 {
@@ -38,9 +41,28 @@ class QueryManager extends ManagerAbstract
         }
     }
 
+    protected function checkPostType($postTypes)
+    {
+        $allowedPostTypes = PostTypes::get();
+        if (is_string($postTypes)) {
+            return in_array($postTypes, $allowedPostTypes);
+        }
+        foreach ($postTypes as $postType) {
+            if (in_array($postType, $allowedPostTypes)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function joinTables($join, $query)
     {
+        if (!$this->checkPostType($query->query_vars['post_type'])) {
+            return $join;
+        }
         global $wpdb;
+
+        $join .= " INNER JOIN {$wpdb->prefix}wordland_properties ON {$wpdb->posts}.ID = {$wpdb->prefix}wordland_properties.property_id";
 
         if (count($query->query_vars['tax_query']) > 0) {
             if (strpos($join, "LEFT JOIN {$wpdb->term_relationships}") !== false) {
@@ -77,7 +99,15 @@ class QueryManager extends ManagerAbstract
 
     public function selectCountPropertySameLocation($fields, $query)
     {
+        if (!$this->checkPostType($query->query_vars['post_type'])) {
+            return $fields;
+        }
         global $wpdb;
+
+        $post_fields     = PropertyQuery::get_posts_fields($wpdb->posts);
+        $property_fields = Property::get_meta_fields(sprintf('%swordland_properties', $wpdb->prefix));
+
+        $fields  =  trim(sprintf('%s, %s', $post_fields, $property_fields), ', ');
         $fields .= ", COUNT({$wpdb->posts}.ID) as same_location_items";
 
         return $fields;
@@ -90,5 +120,24 @@ class QueryManager extends ManagerAbstract
             'type' => 'int'
         );
         return $fields;
+    }
+
+    public static function getListingTypes()
+    {
+        $terms = get_terms(array(
+            'hide_empty' => false,
+            'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE
+        ));
+        $listingTypes = array();
+        foreach ($terms as $term) {
+            $listingTypes[] = array(
+                'id' => $term->term_id,
+                'name' => $term->name,
+                'slug' => $term->slug,
+                'taxonomy' => $term->taxonomy
+            );
+        }
+
+        return apply_filters('wordland_dataloader_get_listing_types', $listingTypes);
     }
 }

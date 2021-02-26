@@ -1,8 +1,10 @@
 <?php
 namespace WordLand\Admin\Menu;
 
-class Dashboard {
-    public function registerDashboard() {
+class Dashboard
+{
+    public function registerDashboard()
+    {
         add_menu_page(
             sprintf('WordLand %s', __('Options')),
             'WordLand',
@@ -14,7 +16,8 @@ class Dashboard {
         );
     }
 
-    public function renderDashboard() {
+    public function renderDashboard()
+    {
         echo __('Currently, WordLand support customize via action hooks and filter hooks only.
         The options will be develop in the future', 'wordland');
     }

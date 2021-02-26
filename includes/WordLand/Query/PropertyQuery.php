@@ -225,11 +225,41 @@ class PropertyQuery extends BaseQuery
 
     public function select_total_rows()
     {
-        $this->get_total = true;
-        $callable = function ($fields, $query) {
-            $fields = explode(',', $fields);
-            return sprintf('COUNT(%s) as total_rows', $fields[0]);
+        $get_total = $this->get_total;
+        $callable = function ($fields, $query) use (&$get_total) {
+            if ($get_total) {
+                return $fields;
+            }
+
+            global $wpdb;
+
+            $get_total      = true;
+            $fields         = explode(',', $fields);
+            $selected_field = array_shift($fields);
+            if ($selected_field === sprintf('%s.*', $wpdb->posts)) {
+                $selected_field = "{$wpdb->posts}.ID";
+            }
+            return sprintf('COUNT(%s) as total_rows', $selected_field);
         };
         add_filter('posts_fields', $callable, 15, 2);
+    }
+
+    public static function get_posts_fields($prefix = null)
+    {
+        $post_fields = apply_filters('wordland_get_posts_fields', array(
+            'ID',
+            'post_name',
+            'post_title',
+            'post_type',
+            'post_date',
+            'post_author'
+        ));
+        if ($prefix) {
+            $post_fields = array_map(function ($field) use ($prefix) {
+                return sprintf('%s.%s', $prefix, $field);
+            }, $post_fields);
+        }
+
+        return implode(', ', $post_fields);
     }
 }

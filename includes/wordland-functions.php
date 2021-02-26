@@ -211,8 +211,8 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
         global $property;
         if (is_a($property, Property::class)) {
             $property->makeCleanPriceHtml();
-			$property->makeCleanUnitPriceHtml();
-			$property->makeCleanSizeHtml();
+            $property->makeCleanUnitPriceHtml();
+            $property->makeCleanSizeHtml();
 
             $sameLocationProperties[$wp_query->current_post] = apply_filters(
                 'wordland_setup_same_location_property',

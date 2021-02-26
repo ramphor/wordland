@@ -6,9 +6,12 @@ use WordLand\Modules\FavoriteProperty;
 use WordLand\Modules\SearchHistory;
 use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
+use WordLand\Modules\TheProperty;
 
 class ModuleManager
 {
+    protected static $modules_instances = array();
+
     protected static $hookCallables = array(
         'after_setup_theme' => 'bootstrap',
         'init' => 'init',
@@ -24,6 +27,7 @@ class ModuleManager
             QueryLocation::class,
             SameLocationProperties::class,
             SearchHistory::class,
+            TheProperty::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
@@ -39,6 +43,8 @@ class ModuleManager
             if (!is_a($active_module, Module::class)) {
                 continue;
             }
+
+            static::$modules_instances[$active_module->get_name()] = $active_module;
             do_action_ref_array(
                 'wordland_init_module_' . $active_module->get_name(),
                 array(
@@ -54,5 +60,13 @@ class ModuleManager
                 add_action($hook, $method);
             }
         }
+    }
+
+    public static function get_module($name)
+    {
+        if (isset(static::$modules_instances[$name])) {
+            return static::$modules_instances[$name];
+        }
+        return false;
     }
 }

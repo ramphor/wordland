@@ -80,7 +80,8 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         );
     }
 
-    protected function createPropertyThumbnail() {
+    protected function createPropertyThumbnail()
+    {
         $thumbnail_id = get_post_thumbnail_id($this->property->codeID);
         if ($thumbnail_id) {
             $this->property->thumbnail = array(
