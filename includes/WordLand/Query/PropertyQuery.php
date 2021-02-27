@@ -262,4 +262,14 @@ class PropertyQuery extends BaseQuery
 
         return implode(', ', $post_fields);
     }
+
+    public static function check_wordland_data_is_exists($property_id)
+    {
+        global $wpdb;
+        $sql = $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d",
+            $property_id
+        );
+        return intval($wpdb->get_var($sql));
+    }
 }
