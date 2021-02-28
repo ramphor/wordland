@@ -36,6 +36,16 @@ class GeoLocation implements JsonSerializable
         return $this->jsonSerialize();
     }
 
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    public function getLng()
+    {
+        return $this->long;
+    }
+
     public function jsonSerialize()
     {
         return array(
