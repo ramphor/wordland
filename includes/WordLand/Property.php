@@ -3,7 +3,8 @@ namespace WordLand;
 
 use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
-use Ramphor\FriendlyNumbers\Scale;
+use Ramphor\FriendlyNumbers\Scale\CurrencyScale;
+use Ramphor\FriendlyNumbers\Scale\AcreScale;
 use Ramphor\FriendlyNumbers\Locale;
 
 class Property extends Data
@@ -103,8 +104,7 @@ class Property extends Data
     public function makeCleanPriceHtml()
     {
         if (is_null($this->metas['clean_price'])) {
-            $this->metas['clean_price'] = new Parser($this->price, new Scale(array(
-                'scale' => 'currency',
+            $this->metas['clean_price'] = new Parser($this->price, new CurrencyScale(array(
                 'unit' => $this->getCurrency()
             )), new Locale(get_locale()));
         }
@@ -126,7 +126,7 @@ class Property extends Data
     public function makeCleanUnitPriceHtml()
     {
         if (is_null($this->metas['clean_unit_price'])) {
-            $this->metas['clean_unit_price'] = new Parser($this->unit_price, new Scale(array(
+            $this->metas['clean_unit_price'] = new Parser($this->unit_price, new CurrencyScale(array(
                 'scale' => 'currency',
                 'unit' => $this->getCurrency()
             )), new Locale(get_locale()));
@@ -149,8 +149,7 @@ class Property extends Data
     public function makeCleanSizeHtml()
     {
         if (is_null($this->metas['clean_size'])) {
-            $this->metas['clean_size'] = new Parser($this->size, new Scale(array(
-                'scale' => 'metric',
+            $this->metas['clean_size'] = new Parser($this->size, new AcreScale(array(
                 'unit' => 'm2'
             )), new Locale(get_locale()));
         }

@@ -13,8 +13,6 @@ use WordLand\Manager\CronManager;
 use WordLand\Manager\QueryManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
-use Ramphor\FriendlyNumbers\Parser;
-use Ramphor\FriendlyNumbers\Locale;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
 use Ramphor\PostViews\Counter as PostViewCounter;
