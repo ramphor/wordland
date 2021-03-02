@@ -101,6 +101,7 @@ class Locations
                 'labels' => $labels,
                 'public' => true,
                 'hierarchical' => true,
+                'show_admin_column' => true,
             ))
         );
 
