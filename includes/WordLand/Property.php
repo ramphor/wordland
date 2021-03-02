@@ -28,6 +28,7 @@ class Property extends Data
     public $types = array();
     public $visibilities = array();
     public $listingType = array();
+    public $tags = array();
 
     /**
      * The property location

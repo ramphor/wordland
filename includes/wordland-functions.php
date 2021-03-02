@@ -157,6 +157,24 @@ function wordland_get_location_from_term($term_id)
     return $location_query->query_location($term_id);
 }
 
+function wordland_get_location_from_name($name, $taxonomy, $parent = 0)
+{
+    $clean_name     = wordland_clean_location_name($name, true);
+    $location_query = new LocationQuery();
+    $filter_by_clean_name = function(){
+        return array('clean_name' => 'like');
+    };
+
+    add_filter('wordland_query_location_where_columns', $filter_by_clean_name, 15);
+    $terms = $location_query->query_location_by_keyword($clean_name, $taxonomy, $parent);
+    remove_filter('wordland_query_location_where_columns', $filter_by_clean_name, 15);
+
+    if (count($terms)) {
+        return array_shift($terms);
+    }
+    return false;
+}
+
 function wordland_get_same_location_properties_by_property_id($property_id, $args = array(), $select_total = false)
 {
     $args = wp_parse_args($args, array(
@@ -255,4 +273,13 @@ function wordland_get_map_zoom_from_location_taxonomy($taxonomy)
     }
     return wordland_get_map_zoom(true);
     ;
+}
+
+
+function wordland_clean_location_name($name, $remove_unicode = false) {
+    return apply_filters(
+        'wordland_clean_location_name',
+        $name,
+        $remove_unicode
+    );
 }
