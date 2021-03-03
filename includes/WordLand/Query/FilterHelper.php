@@ -159,7 +159,7 @@ class FilterHelper
             ST_PolygonFromText('POLYGON(
                 ({$north} {$west}, {$north} {$east}, {$south} {$east}, {$south} {$west}, {$north} {$west})
             )'),
-            {$wpdb->prefix}wordland_properties.location
+            {$wpdb->prefix}wordland_properties.coordinate
         )";
     }
 

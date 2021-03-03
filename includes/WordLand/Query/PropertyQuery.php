@@ -146,7 +146,7 @@ class PropertyQuery extends BaseQuery
     public static function get_property_metas_from_ID($property_id)
     {
         global $wpdb;
-        $fields = sprintf('ST_X(%1$s.location) as latitude, ST_Y(%1$s.location) as longitude', $wpdb->prefix . 'wordland_properties');
+        $fields = sprintf('ST_X(%1$s.coordinate) as latitude, ST_Y(%1$s.coordinate) as longitude', $wpdb->prefix . 'wordland_properties');
         $fields .= ", {$wpdb->prefix}wordland_properties.property_id";
         $fields .= ", {$wpdb->prefix}wordland_properties.price";
         $fields .= ", {$wpdb->prefix}wordland_properties.bedrooms";
@@ -198,8 +198,8 @@ class PropertyQuery extends BaseQuery
         $callable = function ($where, $query) use ($property_id, $has_listing_type) {
             global $wpdb;
             if (array_elements_in_array(array_get($query->query_vars, 'post_type'), PostTypes::get())) {
-                $where .= $wpdb->prepare(
-                    " AND {$wpdb->prefix}wordland_properties.location=(SELECT location FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
+                $where .= $STwpdb->prepare(
+                    " AND {$wpdb->prefix}wordland_properties.coordinate=(SELECT coordinate FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
                     $property_id
                 );
             }

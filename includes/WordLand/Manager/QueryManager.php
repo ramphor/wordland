@@ -82,9 +82,9 @@ class QueryManager extends ManagerAbstract
         global $wpdb;
 
         if ($groupby != '') {
-            $groupby .= ", {$wpdb->prefix}wordland_properties.location";
+            $groupby .= ", {$wpdb->prefix}wordland_properties.coordinate";
         } else {
-            $groupby = "{$wpdb->prefix}wordland_properties.location";
+            $groupby = "{$wpdb->prefix}wordland_properties.coordinate";
         }
         if (strpos($groupby, 'wp_posts.ID,') !== false) {
             $groupby = preg_replace('/wp_posts\.ID\,\n?/', '', $groupby);

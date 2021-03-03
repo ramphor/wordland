@@ -185,8 +185,8 @@ class Property extends Data
             array_push($meta_fields, '%slocation');
         }
         if ($get_lat_lng) {
-            array_push($meta_fields, 'ST_X(%slocation) as latitude');
-            array_push($meta_fields, 'ST_Y(%slocation) as longitude');
+            array_push($meta_fields, 'ST_X(%scoordinate) as latitude');
+            array_push($meta_fields, 'ST_Y(%scoordinate) as longitude');
         }
 
         $prefix      = $prefix ? sprintf('%s.', $prefix) : '';

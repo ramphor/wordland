@@ -130,7 +130,7 @@ function wordland_get_term_from_geo_location($point, $location_level = 1)
     $lat = array_get($point, 'lat');
     $lng = array_get($point, 'lng');
     $sql = $wpdb->prepare(
-        "SELECT l.term_id, location_name, AsWKB(l.location) as kml from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
+        "SELECT l.term_id, location_name, AsWKB(l.coordinate) as kml from {$wpdb->prefix}wordland_locations l INNER JOIN {$wpdb->term_taxonomy} tt ON l.term_id=tt.term_id WHERE ST_CONTAINS(location, ST_GEOMFROMTEXT('POINT({$lng} {$lat})')) AND taxonomy=%s",
         apply_filters('wordland_find_geo_administrative_area_level', sprintf('administrative_area_level_%d', $location_level))
     );
     $term_location = $wpdb->get_row($sql);
@@ -141,7 +141,7 @@ function wordland_get_term_from_geo_location($point, $location_level = 1)
 function wordland_get_term_from_geo_name($name)
 {
     global $wpdb;
-    $sql = "SELECT l.term_id, location_name, AsWKB(l.location) as kml
+    $sql = "SELECT l.term_id, location_name, AsWKB(l.coordinate) as kml
         FROM {$wpdb->prefix}wordland_locations l
         WHERE
             `geo_eng_name` LIKE '%" . esc_sql($name) . "'";
