@@ -98,7 +98,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if (isset($this->originalPost->property_id)) {
             $this->property->price      = floatval($this->originalPost->price);
             $this->property->unit_price = floatval($this->originalPost->unit_price);
-            $this->property->size       = intval($this->originalPost->size);
+            $this->property->acreage       = intval($this->originalPost->acreage);
             $this->property->bedrooms   = intval($this->originalPost->bedrooms);
             $this->property->bathrooms  = intval($this->originalPost->bathrooms);
 

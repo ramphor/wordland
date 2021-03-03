@@ -47,7 +47,7 @@ class FilterHelper
      *   between: boolean
      * )
      */
-    public static function parseSize($size)
+    public static function parseAcreage($acreage)
     {
         $ret = array(
             'from' => 0,
@@ -55,14 +55,14 @@ class FilterHelper
             'between' => false
         );
 
-        if (isset($size['from'])) {
-            if (isset($size['from']['value'])) {
-                $ret['from'] = $size['from']['value'];
+        if (isset($acreage['from'])) {
+            if (isset($acreage['from']['value'])) {
+                $ret['from'] = $acreage['from']['value'];
             }
         }
-        if (isset($size['to'])) {
-            if (isset($size['to']['value'])) {
-                $ret['to'] = $size['to']['value'];
+        if (isset($acreage['to'])) {
+            if (isset($acreage['to']['value'])) {
+                $ret['to'] = $acreage['to']['value'];
             }
         }
 
@@ -92,16 +92,16 @@ class FilterHelper
         }
     }
 
-    public static function filterSize($price)
+    public static function filterAcreage($price)
     {
         global $wpdb;
         // column_name BETWEEN value1 AND value2
         if (array_get($price, 'between')) {
-            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.size BETWEEN %f AND %f", $price['from'], $price['to']);
+            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.acreage BETWEEN %f AND %f", $price['from'], $price['to']);
         } elseif (empty($price['to'])) {
-            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.size >= %f", $price['from']);
+            return $wpdb->prepare(" {$wpdb->prefix}wordland_properties.acreage >= %f", $price['from']);
         } else {
-            return$wpdb->prepare(" {$wpdb->prefix}wordland_properties.size <= %f", $price['to']);
+            return$wpdb->prepare(" {$wpdb->prefix}wordland_properties.acreage <= %f", $price['to']);
         }
     }
 

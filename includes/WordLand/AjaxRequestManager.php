@@ -43,8 +43,8 @@ class AjaxRequestManager
             'type' => 'decimal',
             'default' => 0
         ),
-        'size' => array(
-            'source' => 'size',
+        'acreage' => array(
+            'source' => 'acreage',
             'type' => 'float',
             'default' => 0
         )
@@ -105,10 +105,10 @@ class AjaxRequestManager
                     array_push(static::$whereCondition, FilterHelper::filterPrice($price, false));
                 }
             }
-            if (isset($request['size'])) {
-                $size = FilterHelper::parseSize($request['size']);
-                if ($size) {
-                    array_push(static::$whereCondition, FilterHelper::filterSize($size));
+            if (isset($request['acreage'])) {
+                $acreage = FilterHelper::parseAcreage($request['acreage']);
+                if ($acreage) {
+                    array_push(static::$whereCondition, FilterHelper::filterAcreage($acreage));
                 }
             }
         }
