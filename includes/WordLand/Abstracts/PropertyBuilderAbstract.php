@@ -3,7 +3,7 @@ namespace WordLand\Abstracts;
 
 use WordLand\Constracts\PropertyBuilder;
 use WordLand\Property;
-use WordLand\GeoLocation;
+use WordLand\Coordinate;
 use WordLand\PostTypes;
 
 abstract class PropertyBuilderAbstract implements PropertyBuilder
@@ -103,7 +103,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             $this->property->bathrooms  = intval($this->originalPost->bathrooms);
 
             if (isset($this->originalPost->latitude) && $this->originalPost->latitude) {
-                $this->property->geolocation = new GeoLocation(
+                $this->property->geolocation = new Coordinate(
                     floatval($this->originalPost->latitude),
                     floatval($this->originalPost->longitude)
                 );

@@ -29,8 +29,8 @@ class QueryLocation extends ModuleAbstract
         add_action('wp_ajax_wordland_get_location', array($this, 'getLocation'));
         add_action('wp_ajax_nopriv_wordland_get_location', array($this, 'getLocation'));
 
-        add_action('wp_ajax_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
-        add_action('wp_ajax_nopriv_wordland_find_geo_location', array($this, 'getLocationFromGeoLocation'));
+        add_action('wp_ajax_search_location_from_coordinate', array($this, 'getLocationFromCoordinate'));
+        add_action('wp_ajax_nopriv_search_location_from_coordinate', array($this, 'getLocationFromCoordinate'));
 
         add_filter('wordland_reactjs_global_data', array($this, 'registerNewEndpoints'));
     }
@@ -103,7 +103,7 @@ class QueryLocation extends ModuleAbstract
         );
     }
 
-    public function getLocationFromGeoLocation()
+    public function getLocationFromCoordinate()
     {
         $request = json_decode(file_get_contents('php://input'), true); // Read from ajax request
         if (is_array($request)) {

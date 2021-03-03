@@ -33,9 +33,9 @@ class Property extends Data
     /**
      * The property location
      *
-     * @var \WordLand\GeoLocation
+     * @var \WordLand\Coordinate
      */
-    public $geolocation = null;
+    public $coordinate = null;
 
     /**
      * Property agent

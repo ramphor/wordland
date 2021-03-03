@@ -23,7 +23,7 @@ class PropertyBuilder extends PropertyBuilderAbstract
     {
     }
 
-    public function getGeoLocation()
+    public function getCoordinate()
     {
     }
 

@@ -7,7 +7,7 @@ interface PropertyBuilder
 
     public function loadImages();
 
-    public function getGeoLocation();
+    public function getCoordinate();
 
     public function buildTypes();
 

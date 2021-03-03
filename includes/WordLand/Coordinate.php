@@ -3,7 +3,7 @@ namespace WordLand;
 
 use JsonSerializable;
 
-class GeoLocation implements JsonSerializable
+class Coordinate implements JsonSerializable
 {
     protected $lat;
     protected $long;

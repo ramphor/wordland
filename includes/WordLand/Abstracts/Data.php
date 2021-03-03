@@ -7,6 +7,9 @@ use ReflectionProperty;
 
 abstract class Data implements JsonSerializable
 {
+    protected $dbFields = array();
+    protected $dbFieldFormats = array();
+
     public function jsonSerialize()
     {
         $data        = array();
@@ -31,5 +34,8 @@ abstract class Data implements JsonSerializable
 
         // Sample hooks: wordland_property_supported_json_fields, wordland_agent_supported_json_fields
         return apply_filters("{$hook_prefix}_supported_json_fields", $data, $this);
+    }
+
+    public function save() {
     }
 }
