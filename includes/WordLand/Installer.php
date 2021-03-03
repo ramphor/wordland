@@ -40,7 +40,7 @@ class Installer
         $tables = array(
             'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `property_id` BIGINT NOT NULL,
-                `location` POINT NULL,
+                `coordinate` POINT NULL,
                 `address` TEXT NULL,
                 `price` BIGINT NOT NULL DEFAULT 0,
                 `unit_price` BIGINT NOT NULL DEFAULT 0,
