@@ -76,7 +76,7 @@ class Property extends Data
             case 'clean_price':
                 return $this->makeCleanPriceHtml();
             case 'clean_acreage':
-                return $this->makeCleanSizeHtml();
+                return $this->makeCleanAcreageHtml();
             case 'goto_detail':
                 return get_permalink();
             default:
@@ -97,7 +97,7 @@ class Property extends Data
         return 'đ';
     }
 
-    public function getSizeUnit()
+    public function getAcreageUnit()
     {
         return 'm2';
     }
@@ -147,7 +147,7 @@ class Property extends Data
         );
     }
 
-    public function makeCleanSizeHtml()
+    public function makeCleanAcreageHtml()
     {
         if (is_null($this->metas['clean_acreage'])) {
             $this->metas['clean_acreage'] = new Parser($this->acreage, new AcreScale(array(
@@ -164,7 +164,7 @@ class Property extends Data
         return $this->metas['clean_acreage'] = sprintf(
             '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
-            array_get($parsed, 'prefix', $this->getSizeUnit())
+            array_get($parsed, 'prefix', $this->getAcreageUnit())
         );
     }
 
