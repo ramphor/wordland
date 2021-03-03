@@ -46,6 +46,20 @@ class Installer
                 `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)',
+            'wordland_agent_relationships' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `user_id` BIGINT NOT NULL,
+                `property_id` BIGINT NULL,
+                `created_at` TIMESTAMP NOT NULL,
+                PRIMARY KEY (`ID`)',
+            'wordland_agents' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `user_id` BIGINT NOT NULL,
+                `phone_number` VARCHAR(100) NULL,
+                `address` VARCHAR(255) NOT NULL,
+                `area_level_1` BIGINT NOT NULL,
+                `area_level_2` BIGINT NOT NULL,
+                `area_level_3` BIGINT NULL,
+                `area_level_4` BIGINT NULL,
+                PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `term_id` BIGINT NOT NULL,
                 `location_name` VARCHAR(255) DEFAULT \'\' COMMENT \'Location name with prefix is parent location\',
@@ -56,7 +70,7 @@ class Installer
                 `clean_name` VARCHAR(255) NULL COMMENT \'Use to improve query from location name\'
                 `zip_code` VARCHAR(10) NULL,
                 `created_at` TIMESTAMP NOT NULL,
-            PRIMARY KEY (`ID`)',
+                PRIMARY KEY (`ID`)',
             'wordland_search_histories' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `keyword_text` VARCHAR(255),
                 `history_type` VARCHAR(255) DEFAULT \'general\',
@@ -65,7 +79,7 @@ class Installer
                 `user_id`  BIGINT NOT NULL DEFAULT 0,
                 `ip` VARCHAR(255) DEFAULT \'\' COMMENT \'IP of the user searching property\',
                 `created_at` TIMESTAMP NOT NULL,
-            PRIMARY KEY (`ID`)'
+                PRIMARY KEY (`ID`)'
         );
 
         foreach ($tables as $table_name => $sql_syntax) {
