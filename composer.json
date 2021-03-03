@@ -14,8 +14,6 @@
         "jankx/template": "dev-master",
         "ramphor/facades": "dev-master",
         "ramphor/fields": "dev-master",
-        "ramphor/filter-form": "dev-master",
-        "ramphor/google-maps": "dev-master",
         "ramphor/human-friendly-numbers": "dev-master",
         "ramphor/locations": "dev-master",
         "ramphor/user-profile": "dev-master",
