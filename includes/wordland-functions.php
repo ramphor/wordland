@@ -161,7 +161,7 @@ function wordland_get_location_from_name($name, $taxonomy, $parent = 0)
 {
     $clean_name     = wordland_clean_location_name($name, true);
     $location_query = new LocationQuery();
-    $filter_by_clean_name = function(){
+    $filter_by_clean_name = function () {
         return array('clean_name' => 'like');
     };
 
@@ -276,7 +276,8 @@ function wordland_get_map_zoom_from_location_taxonomy($taxonomy)
 }
 
 
-function wordland_clean_location_name($name, $remove_unicode = false) {
+function wordland_clean_location_name($name, $remove_unicode = false)
+{
     return apply_filters(
         'wordland_clean_location_name',
         $name,

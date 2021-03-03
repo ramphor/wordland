@@ -152,7 +152,7 @@ class PropertyQuery extends BaseQuery
         $fields .= ", {$wpdb->prefix}wordland_properties.bedrooms";
         $fields .= ", {$wpdb->prefix}wordland_properties.bathrooms";
         $fields .= ", {$wpdb->prefix}wordland_properties.unit_price";
-        $fields .= ", {$wpdb->prefix}wordland_properties.size";
+        $fields .= ", {$wpdb->prefix}wordland_properties.acreage";
 
         return $wpdb->get_row(
             $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d LIMIT 1", $property_id)

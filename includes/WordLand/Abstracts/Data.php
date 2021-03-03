@@ -36,6 +36,7 @@ abstract class Data implements JsonSerializable
         return apply_filters("{$hook_prefix}_supported_json_fields", $data, $this);
     }
 
-    public function save() {
+    public function save()
+    {
     }
 }

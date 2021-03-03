@@ -13,7 +13,7 @@ class Cache
         if (is_null(static::$propertyMetas)) {
             static::$propertyMetas = apply_filters('wordland_property_cache_supported_metas', array(
                 'clean_price' => __('Price', 'wordland'),
-                'clean_size' => __('Size', 'wordland'),
+                'clean_acreage' => __('Size', 'wordland'),
                 'goto_detail' => __('Details', 'wordland'),
             ));
         }

@@ -44,7 +44,7 @@ class Installer
                 `address` TEXT NULL,
                 `price` BIGINT NOT NULL DEFAULT 0,
                 `unit_price` BIGINT NOT NULL DEFAULT 0,
-                `size` BIGINT NOT NULL DEFAULT 0,
+                `acreage` BIGINT NOT NULL DEFAULT 0,
                 `bedrooms` BIGINT NOT NULL DEFAULT 0,
                 `bathrooms` BIGINT NOT NULL DEFAULT 0,
                 `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

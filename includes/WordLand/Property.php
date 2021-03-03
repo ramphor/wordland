@@ -18,7 +18,7 @@ class Property extends Data
     public $createdAt;
     public $price = 0;
     public $unit_price = 0;
-    public $size = 0;
+    public $acreage = 0;
     public $bathroom = 0;
     public $bedrooms = 0;
     public $thumbnail = array();
@@ -51,7 +51,7 @@ class Property extends Data
     public $metas = array(
         'clean_price' => null,
         'clean_unit_price' => null,
-        'clean_size' => null,
+        'clean_acreage' => null,
         'goto_detail' => null,
     );
 
@@ -62,7 +62,7 @@ class Property extends Data
         '%sbedrooms',
         '%sbathrooms',
         '%sunit_price',
-        '%ssize',
+        '%sacreage',
     );
 
     public function setMeta($key, $value)
@@ -75,7 +75,7 @@ class Property extends Data
         switch ($key) {
             case 'clean_price':
                 return $this->makeCleanPriceHtml();
-            case 'clean_size':
+            case 'clean_acreage':
                 return $this->makeCleanSizeHtml();
             case 'goto_detail':
                 return get_permalink();
@@ -149,19 +149,19 @@ class Property extends Data
 
     public function makeCleanSizeHtml()
     {
-        if (is_null($this->metas['clean_size'])) {
-            $this->metas['clean_size'] = new Parser($this->size, new AcreScale(array(
+        if (is_null($this->metas['clean_acreage'])) {
+            $this->metas['clean_acreage'] = new Parser($this->acreage, new AcreScale(array(
                 'unit' => 'm2'
             )), new Locale(get_locale()));
         }
 
-        $clean_size = array_get($this->metas, 'clean_size', null);
-        if (!$clean_size) {
+        $clean_acreage = array_get($this->metas, 'clean_acreage', null);
+        if (!$clean_acreage) {
             return '';
         }
-        $parsed = $clean_size->toArray();
+        $parsed = $clean_acreage->toArray();
 
-        return $this->metas['clean_size'] = sprintf(
+        return $this->metas['clean_acreage'] = sprintf(
             '<span class="val">%s</span> <span class="unit">%s</span>',
             array_get($parsed, 'value', 0),
             array_get($parsed, 'prefix', $this->getSizeUnit())
