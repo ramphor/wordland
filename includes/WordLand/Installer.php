@@ -8,6 +8,11 @@ class Installer
 {
     protected static $instance;
 
+    protected static $myisamTables = array(
+        'wordland_properties',
+        'wordland_locations'
+    );
+
     public static function getInstance()
     {
         if (is_null(static::$instance)) {
@@ -31,7 +36,6 @@ class Installer
     public function setupDatabase()
     {
         global $wpdb;
-        $engine = 'MyISAM';
 
         $tables = array(
             'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
@@ -54,6 +58,7 @@ class Installer
                 `area_level_2` BIGINT NOT NULL,
                 `area_level_3` BIGINT NULL,
                 `area_level_4` BIGINT NULL,
+                `country_id` BIGINT NULL,
                 PRIMARY KEY (`ID`)',
             'wordland_locations' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `term_id` BIGINT NOT NULL,
@@ -62,7 +67,7 @@ class Installer
                 `location` GEOMETRY NULL,
                 `center_point` POINT NULL,
                 `geo_eng_name` VARCHAR(255) NULL COMMENT \'Use for Brower Location API\',
-                `clean_name` VARCHAR(255) NULL COMMENT \'Use to improve query from location name\'
+                `clean_name` VARCHAR(255) NULL COMMENT \'Use to improve query from location name\',
                 `zip_code` VARCHAR(10) NULL,
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)',
@@ -83,7 +88,7 @@ class Installer
                 $wpdb->prefix,
                 $table_name,
                 $sql_syntax,
-                $engine,
+                in_array($table_name, static::$myisamTables) ? 'MyISAM' : 'InnoDB',
                 $wpdb->charset,
                 $wpdb->collate
             );
