@@ -198,7 +198,7 @@ class PropertyQuery extends BaseQuery
         $callable = function ($where, $query) use ($property_id, $has_listing_type) {
             global $wpdb;
             if (array_elements_in_array(array_get($query->query_vars, 'post_type'), PostTypes::get())) {
-                $where .= $STwpdb->prepare(
+                $where .= $wpdb->prepare(
                     " AND {$wpdb->prefix}wordland_properties.coordinate=(SELECT coordinate FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d)",
                     $property_id
                 );
