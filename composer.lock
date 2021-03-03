@@ -198,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "a7d4da373e7b01e997333b644b6b1dc890f18d28"
+                "reference": "a6278cc556b936225592f7e10c1d25edcf9723de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/a7d4da373e7b01e997333b644b6b1dc890f18d28",
-                "reference": "a7d4da373e7b01e997333b644b6b1dc890f18d28",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/a6278cc556b936225592f7e10c1d25edcf9723de",
+                "reference": "a6278cc556b936225592f7e10c1d25edcf9723de",
                 "shasum": ""
             },
             "type": "library",
@@ -223,7 +223,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2021-02-07T13:35:34+00:00"
+            "time": "2021-03-02T19:28:33+00:00"
         },
         {
             "name": "jankx/template",
@@ -702,12 +702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/human-friendly-numbers.git",
-                "reference": "b355a54b0ffb1053b38801c11feb2d66b7984daa"
+                "reference": "06c28f3abb9757da65ca6080d28fc48830c948ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/b355a54b0ffb1053b38801c11feb2d66b7984daa",
-                "reference": "b355a54b0ffb1053b38801c11feb2d66b7984daa",
+                "url": "https://api.github.com/repos/ramphor/human-friendly-numbers/zipball/06c28f3abb9757da65ca6080d28fc48830c948ba",
+                "reference": "06c28f3abb9757da65ca6080d28fc48830c948ba",
                 "shasum": ""
             },
             "type": "library",
@@ -727,7 +727,7 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
-            "time": "2021-02-10T01:27:06+00:00"
+            "time": "2021-03-02T13:07:58+00:00"
         },
         {
             "name": "ramphor/locations",
