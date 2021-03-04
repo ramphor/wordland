@@ -57,7 +57,7 @@ class AgentQuery
     public function select($fields = "*")
     {
         $selectFilter = function ($pre, $query) use ($fields) {
-            $query->query_fields = $fields;
+            $query->query_fields = sprintf('SQL_CALC_FOUND_ROWS %s', $fields);
             return $pre;
         };
 
