@@ -10,6 +10,7 @@ class AgentQuery
 
     protected $parsed_args = false;
     protected $raw_args = array();
+    protected $args = array();
 
     protected $customFilters = array();
 
@@ -93,11 +94,15 @@ class AgentQuery
             $this->parseArgs();
         }
 
-        $wp_users_args = array(
-            'search' => $this->search,
-            'search_columns' => $this->searchColumns,
+        $wp_users_args = array_merge(
+            $this->args,
+            array(
+                'search' => $this->search,
+                'search_columns' => $this->searchColumns,
+            )
         );
-        $user_query    = new WP_User_Query($wp_users_args);
+        $user_query = new WP_User_Query($wp_users_args);
+
         $this->removeCustomFilters();
 
         do_action('wordland_agent_get_wordpress_user_query', $user_query, $this);
