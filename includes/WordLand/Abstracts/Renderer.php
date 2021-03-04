@@ -1,7 +1,6 @@
 <?php
 namespace WordLand\Abstracts;
 
-use WordLand\Constracts\Query;
 use WordLand\Constracts\Renderer as RendererConstract;
 
 abstract class Renderer implements RendererConstract
@@ -13,9 +12,7 @@ abstract class Renderer implements RendererConstract
 
     public function __construct($query = null)
     {
-        if (is_a($query, Query::class)) {
-            $this->query = $query;
-        }
+        $this->query = $query;
     }
 
     public function __toString()

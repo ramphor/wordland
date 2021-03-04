@@ -4,10 +4,9 @@ namespace WordLand\Query;
 use WP_Query;
 use WP_Term;
 use WordLand\PostTypes;
-use WordLand\Abstracts\BaseQuery;
 use WordLand\Property;
 
-class PropertyQuery extends BaseQuery
+class PropertyQuery
 {
     protected $wordpressQuery;
     protected $rawArgs;
