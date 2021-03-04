@@ -110,7 +110,6 @@ class Property extends Data
             )), new Locale(get_locale()));
         }
 
-
         $clean_price = array_get($this->metas, 'clean_price', null);
         if (!$clean_price) {
             return '';

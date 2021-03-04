@@ -10,6 +10,13 @@ abstract class Data implements JsonSerializable
     protected $dbFields = array();
     protected $dbFieldFormats = array();
 
+    public function __get($name)
+    {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+    }
+
     public function jsonSerialize()
     {
         $data        = array();

@@ -18,7 +18,6 @@ function wordland_template($templates, $data = array(), $context = null, $echo =
     );
 }
 
-
 function is_property()
 {
     return is_singular('property');
@@ -283,4 +282,8 @@ function wordland_clean_location_name($name, $remove_unicode = false)
         $name,
         $remove_unicode
     );
+}
+
+function wordland_fake_agent_email_format()
+{
 }

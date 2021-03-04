@@ -19,6 +19,8 @@ class QueryManager extends ManagerAbstract
         add_action('wordland_end_property_query', array($this, 'removeCustomQueries'));
 
         add_filter('wordland_setup_filter_markers_mapping_fields', array($this, 'add_same_location_fields'));
+
+        add_action('wordland_agent_query_init', array($this, 'customUserQueries'), 10, 2);
     }
 
     public function registerCustomQueries($scope)
@@ -139,5 +141,23 @@ class QueryManager extends ManagerAbstract
         }
 
         return apply_filters('wordland_dataloader_get_listing_types', $listingTypes);
+    }
+
+    public function customUserQueries($args, $agentQuery)
+    {
+        $joinTableCallback = function ($pre, $query) {
+            global $wpdb;
+
+            $query->query_from = sprintf(
+                '%s %s',
+                $query->query_from,
+                $wpdb->_real_escape("LEFT JOIN {$wpdb->prefix}wordland_agents ON {$wpdb->prefix}wordland_agents.user_id={$wpdb->users}.ID")
+            );
+
+            return $pre;
+        };
+
+        add_filter('users_pre_query', $joinTableCallback, 10, 2);
+        $agentQuery->createCustomFilterLog($joinTableCallback, 10);
     }
 }
