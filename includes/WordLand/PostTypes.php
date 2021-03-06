@@ -56,7 +56,7 @@ class PostTypes
                 array(
                     'labels'   => $labels,
                     'public'   => true,
-                    'supports' => array( 'title', 'editor', 'thumbnail' ),
+                    'supports' => array( 'title', 'editor', 'thumbnail', 'author' ),
                     'menu_icon' => 'dashicons-admin-multisite',
                 )
             )
