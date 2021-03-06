@@ -95,7 +95,7 @@ class Agent extends Data
 
         if (is_wp_error($userID)) {
             error_log($userID->get_error_message());
-            return $userID;
+            return false;
         }
         global $wpdb;
 
