@@ -4,8 +4,9 @@ namespace WordLand\Modules;
 use WordLand\Abstracts\ModuleAbstract;
 use WordLand\PostTypes;
 use WordLand\Manager\PropertyBuilderManager;
+use WordLand\Query\PropertyQuery;
 
-class TheProperty extends ModuleAbstract
+class GlobalPost extends ModuleAbstract
 {
     const MODULE_NAME = 'wordland_single_property';
 
@@ -58,18 +59,29 @@ class TheProperty extends ModuleAbstract
         if ($this->mainProperty) {
             return null;
         }
-        $this->mainProperty = &$property;
+        $this->mainProperty = $property;
     }
 
     public function loadMainPropertyFromGlobalPost()
     {
+
         if ($this->mainProperty) {
             return $this->mainProperty;
         }
         global $post, $wp_query;
 
+
         if ($wp_query->is_main_query() && $wp_query->is_single()) {
+            $propertyMetas = PropertyQuery::get_property_metas_from_ID($post->ID);
+            foreach($propertyMetas as $key => $value) {
+                $post->$key = $value;
+            }
+            unset($propertyMetas, $key, $value);
+
             $property = $this->buildPropertyFromPost($post, $wp_query, true);
+
+            $this->setMainProperty($property);
+
             return $this->mainProperty;
         }
 

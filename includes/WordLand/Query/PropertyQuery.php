@@ -152,6 +152,8 @@ class PropertyQuery
         $fields .= ", {$wpdb->prefix}wordland_properties.bathrooms";
         $fields .= ", {$wpdb->prefix}wordland_properties.unit_price";
         $fields .= ", {$wpdb->prefix}wordland_properties.acreage";
+        $fields .= ", {$wpdb->prefix}wordland_properties.front_width";
+        $fields .= ", {$wpdb->prefix}wordland_properties.road_width";
 
         return $wpdb->get_row(
             $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d LIMIT 1", $property_id)
