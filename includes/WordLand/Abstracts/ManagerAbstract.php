@@ -7,14 +7,13 @@ class ManagerAbstract
 
     public static function getInstance()
     {
-        if (is_null(static::$instance)) {
+        if (is_null(self::$instance)) {
             static::$instance = new static();
         }
-
         return static::$instance;
     }
 
-    private function __construct()
+    protected function __construct()
     {
     }
 }

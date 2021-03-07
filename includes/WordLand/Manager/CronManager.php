@@ -10,6 +10,8 @@ class CronManager extends ManagerAbstract
 {
     const CRON_UPDATE_MAXMIND_DATABASE = 'cron_update_maxmind_database';
 
+    protected static $instance;
+
     protected $location;
 
     public function __construct()

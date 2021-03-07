@@ -8,6 +8,8 @@ use WordLand\Query\PropertyQuery;
 
 class QueryManager extends ManagerAbstract
 {
+    protected static $instance;
+
     public function __construct()
     {
         add_action('after_setup_theme', array($this, 'customQueries'));
