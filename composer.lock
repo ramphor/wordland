@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6e1a80ccf1282a9b1cf01839ca2bb2c",
+    "content-hash": "6708c26353c2d5fccde60ab088cf4e06",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -301,12 +301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "ddfeedfff2a52661429437da0702979f708e6ac6"
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/ddfeedfff2a52661429437da0702979f708e6ac6",
-                "reference": "ddfeedfff2a52661429437da0702979f708e6ac6",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/8e7d04f1f6450fef59366c399cfad4b9383aa30d",
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +344,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2020-10-19T16:50:15+00:00"
+            "time": "2021-03-07T09:25:29+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -352,12 +352,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "2f3e4f6cf8fd4aad7624c90a94f0ab38fde25976"
+                "reference": "d7fe0a0eabc266c3dcf2f20aa12121044ff196a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2f3e4f6cf8fd4aad7624c90a94f0ab38fde25976",
-                "reference": "2f3e4f6cf8fd4aad7624c90a94f0ab38fde25976",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/d7fe0a0eabc266c3dcf2f20aa12121044ff196a4",
+                "reference": "d7fe0a0eabc266c3dcf2f20aa12121044ff196a4",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +415,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2021-03-02T18:57:24+00:00"
+            "time": "2021-03-09T14:42:40+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -1504,17 +1504,17 @@
             "time": "2020-09-18T06:44:51+00:00"
         },
         {
-            "name": "puleeno/paypress",
+            "name": "puleeno/pomnipay",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/puleeno/paypress.git",
-                "reference": "b687029f4e84cee7429f96b3c284482534ad6ba6"
+                "url": "https://github.com/puleeno/pomnipay.git",
+                "reference": "fc4f5989751b40e0f66e953e138cef584e417427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/puleeno/paypress/zipball/b687029f4e84cee7429f96b3c284482534ad6ba6",
-                "reference": "b687029f4e84cee7429f96b3c284482534ad6ba6",
+                "url": "https://api.github.com/repos/puleeno/pomnipay/zipball/fc4f5989751b40e0f66e953e138cef584e417427",
+                "reference": "fc4f5989751b40e0f66e953e138cef584e417427",
                 "shasum": ""
             },
             "require": {
@@ -1524,7 +1524,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "PayPress\\": "src/"
+                    "Pomnipay\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1537,8 +1537,8 @@
                     "email": "puleeno@gmail.com"
                 }
             ],
-            "description": "The payment system for WordPress",
-            "time": "2021-03-03T22:01:01+00:00"
+            "description": "Open WordPress payment gateway build on top league/omnipay",
+            "time": "2021-03-09T18:44:14+00:00"
         },
         {
             "name": "puleeno/schema-org",
@@ -2303,12 +2303,12 @@
         "ramphor/locations": 20,
         "ramphor/user-profile": 20,
         "puleeno/schema-org": 20,
-        "puleeno/paypress": 20,
         "ramphor/post-views": 20,
         "ramphor/plugin-core": 20,
         "ramphor/wordpress-posts-collection": 20,
         "phayes/geophp": 20,
-        "ramphor/optimize-database": 20
+        "ramphor/optimize-database": 20,
+        "puleeno/pomnipay": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
