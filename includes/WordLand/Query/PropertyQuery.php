@@ -160,16 +160,6 @@ class PropertyQuery
         );
     }
 
-    protected static function get_property_fields($prefix = null)
-    {
-        $prefix          = $prefix ? sprintf('.%s', $prefix) : '';
-        $property_fields = apply_filters('wordland_get_property_fields', Property::get_meta_fields());
-        $property_fields = array_map(function ($field) use ($prefix) {
-            return sprintf($field, $prefix);
-        }, $property_fields);
-        return implode(', ', $property_fields);
-    }
-
     public function get_property_content_fields()
     {
         $callable = function ($fields) {
