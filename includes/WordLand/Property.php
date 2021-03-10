@@ -181,7 +181,7 @@ class Property extends Data
         return $this->listStyle;
     }
 
-    public static function get_meta_fields($prefix = null, $get_location = false, $get_lat_lng = true)
+    public static function get_meta_fields($prefix = null, $get_lat_lng = true, $get_location = false)
     {
         $meta_fields = static::$meta_fields;
         if ($get_location) {

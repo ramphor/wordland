@@ -6,7 +6,7 @@ use WordLand\Modules\FavoriteProperty;
 use WordLand\Modules\SearchHistory;
 use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
-use WordLand\Modules\GlobalPost;
+use WordLand\Modules\GlobalProperty;
 
 class ModuleManager
 {
@@ -27,7 +27,7 @@ class ModuleManager
             QueryLocation::class,
             SameLocationProperties::class,
             SearchHistory::class,
-            GlobalPost::class,
+            GlobalProperty::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }

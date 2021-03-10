@@ -28,16 +28,27 @@ class QueryManager extends ManagerAbstract
     public function registerCustomQueries($scope)
     {
         add_filter('posts_join', array($this, 'joinTables'), 15, 2);
-
+        add_filter('posts_fields', array($this, 'selectWordLandFields'), 15, 2);
         if ($scope === 'listing') {
             add_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
             add_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
     }
 
+    public function selectWordLandFields($fields, $query)
+    {
+        global $wpdb;
+        return sprintf(
+            '%s, %s',
+            $fields,
+            Property::get_meta_fields($wpdb->prefix . 'wordland_properties')
+        );
+    }
+
     public function removeCustomQueries($scope)
     {
         remove_filter('posts_join', array($this, 'joinTables'), 15, 2);
+        remove_filter('posts_fields', array($this, 'selectWordLandFields'), 15, 2);
 
         if ($scope === 'listing') {
             remove_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);

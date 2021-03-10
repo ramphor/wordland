@@ -6,7 +6,7 @@ use WordLand\PostTypes;
 use WordLand\Manager\PropertyBuilderManager;
 use WordLand\Query\PropertyQuery;
 
-class GlobalPost extends ModuleAbstract
+class GlobalProperty extends ModuleAbstract
 {
     const MODULE_NAME = 'wordland_single_property';
 
