@@ -42,6 +42,7 @@ class Installer
                 `property_id` BIGINT NOT NULL,
                 `coordinate` POINT NULL,
                 `address` VARCHAR(255) NULL,
+                `full_address` VARCHAR(255) NULL,
                 `price` DECIMAL(20, 2) NOT NULL DEFAULT 0,
                 `unit_price` DECIMAL(10, 2) NOT NULL DEFAULT 0,
                 `acreage` FLOAT(4) NOT NULL DEFAULT 0,
