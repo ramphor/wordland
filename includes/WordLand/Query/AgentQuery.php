@@ -55,6 +55,22 @@ class AgentQuery
         $this->createCustomFilterLog($phoneFilter, 10);
     }
 
+    public function searchPhoneNumbers($phoneNumbers)
+    {
+        $phoneFilter = function ($pre, $query) use ($phoneNumbers) {
+            global $wpdb;
+            $query->query_where .= $wpdb->prepare(
+                " AND {$wpdb->prefix}wordland_agents.phone_number IN (%s)",
+                implode(',', $phoneNumbers)
+            );
+
+            return $pre;
+        };
+
+        add_filter('users_pre_query', $phoneFilter, 10, 2);
+        $this->createCustomFilterLog($phoneFilter, 10);
+    }
+
     public function select($fields = "*")
     {
         $selectFilter = function ($pre, $query) use ($fields) {
@@ -70,7 +86,11 @@ class AgentQuery
     {
         $this->parsed_args = true;
         if (!empty($this->raw_args['phone'])) {
-            $this->searchPhoneNumber($this->raw_args['phone']);
+            if (is_array($this->raw_args['phone'])) {
+                $this->searchPhoneNumbers($this->raw_args['phone']);
+            } else {
+                $this->searchPhoneNumber($this->raw_args['phone']);
+            }
         }
     }
 

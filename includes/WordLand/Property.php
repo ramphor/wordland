@@ -15,6 +15,7 @@ class Property extends Data
     public $description;
     public $content;
     public $address;
+    public $full_address;
     public $createdAt;
     public $price = 0;
     public $unit_price = 0;
@@ -58,11 +59,14 @@ class Property extends Data
     protected static $meta_fields = array(
         '%sproperty_id',
         '%saddress',
+        '%sfull_address',
         '%sprice',
         '%sbedrooms',
         '%sbathrooms',
         '%sunit_price',
         '%sacreage',
+        '%sfront_width',
+        '%sroad_width',
     );
 
     public function setMeta($key, $value)

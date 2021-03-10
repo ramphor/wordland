@@ -73,7 +73,7 @@ class GlobalPost extends ModuleAbstract
 
         if ($wp_query->is_main_query() && $wp_query->is_single()) {
             $propertyMetas = PropertyQuery::get_property_metas_from_ID($post->ID);
-            foreach($propertyMetas as $key => $value) {
+            foreach ($propertyMetas as $key => $value) {
                 $post->$key = $value;
             }
             unset($propertyMetas, $key, $value);
