@@ -4,7 +4,7 @@ namespace WordLand;
 use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Scale\CurrencyScale;
-use Ramphor\FriendlyNumbers\Scale\AcreScale;
+use Ramphor\FriendlyNumbers\Scale\MetricScale;
 use Ramphor\FriendlyNumbers\Locale;
 
 class Property extends Data
@@ -153,7 +153,7 @@ class Property extends Data
     public function makeCleanAcreageHtml()
     {
         if (is_null($this->metas['clean_acreage'])) {
-            $this->metas['clean_acreage'] = new Parser($this->acreage, new AcreScale(array(
+            $this->metas['clean_acreage'] = new Parser($this->acreage, new MetricScale(array(
                 'unit' => 'm2'
             )), new Locale(get_locale()));
         }
