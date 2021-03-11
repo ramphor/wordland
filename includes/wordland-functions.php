@@ -284,6 +284,21 @@ function wordland_clean_location_name($name, $remove_unicode = false)
     );
 }
 
-function wordland_fake_agent_email_format()
+function wordland_validate_phone_number($phoneNumber)
 {
+    if (empty($phoneNumber)) {
+        return false;
+    }
+    $phoneNumberRules = get_option('wordland_phone_number_format', false);
+
+    $phoneIsOk = $phoneNumberRules
+        ? preg_match(sprintf('/%s/', trim($phoneNumberRules, '/')), $phoneNumber)
+        : strlen($phoneNumber) > 9 && strlen($phoneNumber) <= 15;
+
+    return apply_filters(
+        'wordland_validate_phone_number',
+        $phoneIsOk,
+        $phoneNumber,
+        $phoneNumberRules
+    );
 }
