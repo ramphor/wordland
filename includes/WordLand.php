@@ -11,6 +11,7 @@ use WordLand\Cache;
 use WordLand\Manager\ModuleManager;
 use WordLand\Manager\CronManager;
 use WordLand\Manager\QueryManager;
+use WordLand\Manager\DataManager;
 use Jankx\Template\Template;
 use Ramphor\User\Profile as UserProfile;
 use Ramphor\Collection\CollectionManager;
@@ -116,6 +117,7 @@ class WordLand
         QueryManager::getInstance();
         CollectionManager::getInstance();
         CronManager::getInstance();
+        DataManager::getInstance();
 
         $installer = Installer::getInstance();
         register_activation_hook(
