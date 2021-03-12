@@ -11,7 +11,7 @@ class DataManager extends ManagerAbstract
 
     protected function __construct()
     {
-        add_action('init', array('manage'));
+        add_action('init', array($this, 'manage'));
     }
 
     public function manage()
