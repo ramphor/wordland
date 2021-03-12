@@ -16,6 +16,7 @@ class Property extends Data
     public $content;
     public $address;
     public $full_address;
+    public $listingTypeId;
     public $createdAt;
     public $price = 0;
     public $unit_price = 0;
@@ -29,6 +30,7 @@ class Property extends Data
     public $types = array();
     public $visibilities = array();
     public $listingType = array();
+
     public $tags = array();
 
     /**
@@ -67,6 +69,7 @@ class Property extends Data
         '%sacreage',
         '%sfront_width',
         '%sroad_width',
+        '%slisting_type',
     );
 
     public function setMeta($key, $value)

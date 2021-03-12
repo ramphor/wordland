@@ -51,6 +51,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             'the_title',
             $this->originalPost->post_title
         );
+        $this->property->listingTypeId = intval($this->originalPost->listing_type);
 
         $this->property->description = get_the_excerpt($this->originalPost);
         $this->property->createdAt = strtotime($this->originalPost->post_date);

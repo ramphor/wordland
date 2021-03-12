@@ -145,15 +145,8 @@ class PropertyQuery
     public static function get_property_metas_from_ID($property_id)
     {
         global $wpdb;
-        $fields = sprintf('ST_X(%1$s.coordinate) as latitude, ST_Y(%1$s.coordinate) as longitude', $wpdb->prefix . 'wordland_properties');
-        $fields .= ", {$wpdb->prefix}wordland_properties.property_id";
-        $fields .= ", {$wpdb->prefix}wordland_properties.price";
-        $fields .= ", {$wpdb->prefix}wordland_properties.bedrooms";
-        $fields .= ", {$wpdb->prefix}wordland_properties.bathrooms";
-        $fields .= ", {$wpdb->prefix}wordland_properties.unit_price";
-        $fields .= ", {$wpdb->prefix}wordland_properties.acreage";
-        $fields .= ", {$wpdb->prefix}wordland_properties.front_width";
-        $fields .= ", {$wpdb->prefix}wordland_properties.road_width";
+
+        $fields = Property::get_meta_fields($wpdb->prefix . 'wordland_properties');
 
         return $wpdb->get_row(
             $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d LIMIT 1", $property_id)

@@ -47,6 +47,11 @@ class AjaxRequestManager
             'source' => 'acreage',
             'type' => 'float',
             'default' => 0
+        ),
+        'listing_type' => array(
+            'source' => 'listing_type',
+            'type' => 'int',
+            'default' => 0
         )
     );
     protected static $markerMappingFields;
