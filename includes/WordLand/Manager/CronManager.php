@@ -14,7 +14,7 @@ class CronManager extends ManagerAbstract
 
     protected $location;
 
-    public function __construct()
+    protected function __construct()
     {
         add_action('init', array($this, 'setup_cron_update_maxmind_database'));
     }
