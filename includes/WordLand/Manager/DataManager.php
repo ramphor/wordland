@@ -27,11 +27,10 @@ class DataManager extends ManagerAbstract
         }
         global $wpdb;
 
-        $firstListingType = array_shift($terms);
-        $listingTypeId    = $firstListingType->term_id;
+        $firstListingType = array_shift($tt_ids);
 
         return $wpdb->update($wpdb->prefix . 'wordland_properties', array(
-            'listing_type' => $listingTypeId
+            'listing_type' => intval($firstListingType)
         ), array(
             'property_id' => $object_id
         ));
