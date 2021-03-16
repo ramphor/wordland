@@ -17,6 +17,9 @@ class DataManager extends ManagerAbstract
     public function manage()
     {
         add_action('set_object_terms', array($this, 'autoSetListingType'), 10, 4);
+        foreach ((array)PostTypes::get() as $post_type) {
+            add_action("publish_{$post_type}", array($this, 'changeUpdatedTime'), 10, 2);
+        }
     }
 
     public function autoSetListingType($object_id, $terms, $tt_ids, $taxonomy)
@@ -33,6 +36,17 @@ class DataManager extends ManagerAbstract
             'listing_type' => intval($firstListingType)
         ), array(
             'property_id' => $object_id
+        ));
+    }
+
+    public function changeUpdatedTime($propertyId, $originalPost)
+    {
+        global $wpdb;
+
+        return $wpdb->update($wpdb->prefix . 'wordland_properties', array(
+            'updated_at' => current_time('mysql')
+        ), array(
+            'property_id' => $propertyId
         ));
     }
 }
