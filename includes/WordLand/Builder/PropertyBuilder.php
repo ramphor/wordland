@@ -64,6 +64,7 @@ class PropertyBuilder extends PropertyBuilderAbstract
             // Create primary agent
             $agent = new Agent($owner->display_name);
             $agent->setUserID($ownerId);
+            $agent->getAvatarUrlFromUser();
             $agent->setPhoneNumber($owner->phone_number);
 
             do_action_ref_array('wordland_primary_agent', array(
