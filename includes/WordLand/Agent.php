@@ -110,6 +110,14 @@ class Agent extends Data
         return intval($wpdb->get_var($rawSql));
     }
 
+    public function getAvatarUrlFromUser()
+    {
+        if (!$this->userID) {
+            return;
+        }
+        $this->avatarUrl = get_avatar_url($this->userID);
+    }
+
     public function setAvatarUrl($avatarUrl)
     {
         if (filter_var($avatarUrl, FILTER_VALIDATE_URL)) {
