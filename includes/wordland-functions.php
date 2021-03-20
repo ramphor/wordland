@@ -18,6 +18,15 @@ function wordland_template($templates, $data = array(), $context = null, $echo =
     );
 }
 
+function wordland_get_option($option_name, $default_value = null)
+{
+    $pre = apply_filters("wordland_pre_get_{$option_name}_option", null, $option_name, $default_value);
+    if (!is_null($pre)) {
+        return $pre;
+    }
+    return get_option(sprintf('wordland_%s', $option_name), $default_value);
+}
+
 function is_property()
 {
     return is_singular('property');
