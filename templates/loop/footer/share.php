@@ -1,3 +1,3 @@
 <a href="">
-	<i class="mdi mdi-share"></i>
+	<i class="wl wl-share"></i>
 </a>
