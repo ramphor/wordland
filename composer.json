@@ -25,7 +25,8 @@
         "geoip2/geoip2": "~2.0",
         "phayes/geophp": "dev-master",
         "ramphor/optimize-database": "dev-master",
-        "puleeno/pomnipay": "dev-master"
+        "puleeno/pomnipay": "dev-master",
+        "jankx/wordpress-specs": "dev-master"
     },
     "autoload": {
         "psr-4": {

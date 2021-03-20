@@ -2,6 +2,7 @@
 namespace WordLand\Query;
 
 use WP_User_Query;
+use Jankx\Specs\WP_User_Query as WP_User_Query_Specs;
 
 class AgentQuery
 {
@@ -71,6 +72,22 @@ class AgentQuery
         $this->createCustomFilterLog($phoneFilter, 10);
     }
 
+    public function searchByUserId($userId)
+    {
+        $userIdFilter = function ($pre, $query) use ($userId) {
+            global $wpdb;
+            $query->query_where .= $wpdb->prepare(
+                " AND {$wpdb->users}.ID = %d",
+                intval($userId)
+            );
+
+            return $pre;
+        };
+
+        add_filter('users_pre_query', $userIdFilter, 10, 2);
+        $this->createCustomFilterLog($userIdFilter, 10);
+    }
+
     public function select($fields = "*")
     {
         $selectFilter = function ($pre, $query) use ($fields) {
@@ -90,6 +107,15 @@ class AgentQuery
                 $this->searchPhoneNumbers($this->raw_args['phone']);
             } else {
                 $this->searchPhoneNumber($this->raw_args['phone']);
+            }
+        }
+        if (!empty($this->raw_args['user_id'])) {
+            $this->searchByUserId($this->raw_args['user_id']);
+        }
+        $parameters = WP_User_Query_Specs::getAllParameters(true);
+        foreach ($this->raw_args as $key => $value) {
+            if (in_array($key, $parameters)) {
+                $this->args[$key] = $value;
             }
         }
     }
@@ -113,6 +139,9 @@ class AgentQuery
         if (!$this->parsed_args) {
             $this->parseArgs();
         }
+        do_action_ref_array('wordland_query_before_agent_query', array(
+            &$this
+        ));
 
         $wp_users_args = array_merge(
             $this->args,

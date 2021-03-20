@@ -45,7 +45,8 @@ class Property extends Data
      *
      * @var \WordLand\Agent;
      */
-    public $primary_agent = null;
+    public $primaryAgent = null;
+    public $agents = array();
 
     public $marker_style = 'circle';
 

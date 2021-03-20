@@ -5,6 +5,7 @@ use WP_Post;
 use WordLand\Abstracts\PropertyBuilderAbstract;
 use WordLand\PostTypes;
 use WordLand\Agent;
+use WordLand\Query\AgentQuery;
 
 class PropertyBuilder extends PropertyBuilderAbstract
 {
@@ -45,22 +46,35 @@ class PropertyBuilder extends PropertyBuilderAbstract
 
     public function getPrimaryAgent()
     {
-        $owner = get_userdata($this->originalPost->post_author);
+        global $wpdb;
 
-        if ($owner) {
+        $agentQuery = new AgentQuery(array(
+            'user_id' => $this->originalPost->post_author
+        ));
+        $agentQuery->select(sprintf('%s.*, %s.*', $wpdb->users, $wpdb->prefix . 'wordland_agents'));
+        $wp_query = $agentQuery->getWordPressQuery();
+        $users = $wp_query->get_results();
+
+        if (count($users) > 0) {
+            $owner = array_shift($users);
             unset($owner->user_pass);
+
+            $ownerId = intval($owner->ID);
+
             // Create primary agent
             $agent = new Agent($owner->display_name);
-        } else {
-            $agent = new Agent(__('Guest'));
-        }
+            $agent->setUserID($ownerId);
+            $agent->setPhoneNumber($owner->phone_number);
 
-        $this->property->primary_agent = apply_filters(
-            'wordland_primary_agent',
-            $agent,
-            $owner,
-            $this->property
-        );
+            do_action_ref_array('wordland_primary_agent', array(
+                &$agent,
+                $owner,
+                $this->property
+            ));
+
+            $this->property->primaryAgent     = $ownerId;
+            $this->property->agents[$ownerId] = $agent;
+        }
     }
 
     public function getPropertyVisibilities()

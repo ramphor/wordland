@@ -27,6 +27,8 @@ class Agent extends Data
     protected $areaLevel4;
     protected $countryId;
 
+    protected $avatarUrl;
+
     public function __construct($name = null, $phoneNumber = null, $email = null)
     {
         if (!is_null($name)) {
@@ -40,8 +42,11 @@ class Agent extends Data
         }
     }
 
-    public static function createFromID($userID)
+    public function __get($name)
     {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
     }
 
     public function setUserID($userID)
@@ -103,6 +108,13 @@ class Agent extends Data
         $rawSql .= " LIMIT 1";
 
         return intval($wpdb->get_var($rawSql));
+    }
+
+    public function setAvatarUrl($avatarUrl)
+    {
+        if (filter_var($avatarUrl, FILTER_VALIDATE_URL)) {
+            $this->avatarUrl = $avatarUrl;
+        }
     }
 
     public function save($create_address_only = false)

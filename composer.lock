@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6708c26353c2d5fccde60ab088cf4e06",
+    "content-hash": "89c7efbf835d67e47aa9e6bc7059d9f0",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -123,11 +123,6 @@
                 "ssl",
                 "tls"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/main"
-            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -199,16 +194,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79"
+                "reference": "01129f635f45659fd4764a533777d069a978bc9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0aa74dfb41ae110835923ef10a9d803a22d50e79",
-                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/01129f635f45659fd4764a533777d069a978bc9d",
+                "reference": "01129f635f45659fd4764a533777d069a978bc9d",
                 "shasum": ""
             },
             "require": {
@@ -235,7 +230,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.1-dev"
+                    "dev-master": "7.3-dev"
                 }
             },
             "autoload": {
@@ -293,7 +288,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T11:47:56+00:00"
+            "time": "2021-03-15T07:56:29+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -352,12 +347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "d7fe0a0eabc266c3dcf2f20aa12121044ff196a4"
+                "reference": "a67cdbf85690e54a7b92fe91c297b20d2607c0b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/d7fe0a0eabc266c3dcf2f20aa12121044ff196a4",
-                "reference": "d7fe0a0eabc266c3dcf2f20aa12121044ff196a4",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/a67cdbf85690e54a7b92fe91c297b20d2607c0b2",
+                "reference": "a67cdbf85690e54a7b92fe91c297b20d2607c0b2",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +410,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2021-03-09T14:42:40+00:00"
+            "time": "2021-03-15T11:15:53+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -480,12 +475,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "a6278cc556b936225592f7e10c1d25edcf9723de"
+                "reference": "546ca41950a3d4a8c1bf20b169158c6a987fd350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/a6278cc556b936225592f7e10c1d25edcf9723de",
-                "reference": "a6278cc556b936225592f7e10c1d25edcf9723de",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/546ca41950a3d4a8c1bf20b169158c6a987fd350",
+                "reference": "546ca41950a3d4a8c1bf20b169158c6a987fd350",
                 "shasum": ""
             },
             "type": "library",
@@ -505,7 +500,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2021-03-02T19:28:33+00:00"
+            "time": "2021-03-13T03:46:24+00:00"
         },
         {
             "name": "jankx/template",
@@ -513,12 +508,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "5147a87ed34617316d15880dbf00035cfad46283"
+                "reference": "5f811b351c75c209d7918d1427398c318b4f490c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/5147a87ed34617316d15880dbf00035cfad46283",
-                "reference": "5147a87ed34617316d15880dbf00035cfad46283",
+                "url": "https://api.github.com/repos/jankx/template/zipball/5f811b351c75c209d7918d1427398c318b4f490c",
+                "reference": "5f811b351c75c209d7918d1427398c318b4f490c",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +536,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2021-01-28T02:33:57+00:00"
+            "time": "2021-03-16T03:50:08+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -580,17 +575,50 @@
             "time": "2020-12-31T15:42:16+00:00"
         },
         {
+            "name": "jankx/wordpress-specs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jankx/wordpress-specs.git",
+                "reference": "38a3d691de1887cbf602f20fe8da052e67a41b3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jankx/wordpress-specs/zipball/38a3d691de1887cbf602f20fe8da052e67a41b3d",
+                "reference": "38a3d691de1887cbf602f20fe8da052e67a41b3d",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jankx\\Specs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": " Define the WordPress specs to reuse in themes or plugins",
+            "time": "2021-03-20T04:12:11+00:00"
+        },
+        {
             "name": "league/omnipay",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay.git",
-                "reference": "84f5b5faef19a924118c8ebdbadd73514c0a2982"
+                "reference": "e9439db0633ba988e6f6cdd029fad38aad73f9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/84f5b5faef19a924118c8ebdbadd73514c0a2982",
-                "reference": "84f5b5faef19a924118c8ebdbadd73514c0a2982",
+                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/e9439db0633ba988e6f6cdd029fad38aad73f9f6",
+                "reference": "e9439db0633ba988e6f6cdd029fad38aad73f9f6",
                 "shasum": ""
             },
             "require": {
@@ -630,7 +658,7 @@
                 "omnipay",
                 "payment"
             ],
-            "time": "2021-01-10T23:47:20+00:00"
+            "time": "2021-03-12T09:17:59+00:00"
         },
         {
             "name": "maxmind-db/reader",
@@ -691,10 +719,6 @@
                 "geolocation",
                 "maxmind"
             ],
-            "support": {
-                "issues": "https://github.com/maxmind/MaxMind-DB-Reader-php/issues",
-                "source": "https://github.com/maxmind/MaxMind-DB-Reader-php/tree/v1.10.0"
-            },
             "time": "2021-02-09T17:52:47+00:00"
         },
         {
@@ -749,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "512333ef834bd77f76e865a30eb5963d480e2ed7"
+                "reference": "a44e2f2bb6bf048596af1649cb7c51dd421a979a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/512333ef834bd77f76e865a30eb5963d480e2ed7",
-                "reference": "512333ef834bd77f76e865a30eb5963d480e2ed7",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/a44e2f2bb6bf048596af1649cb7c51dd421a979a",
+                "reference": "a44e2f2bb6bf048596af1649cb7c51dd421a979a",
                 "shasum": ""
             },
             "require": {
@@ -823,7 +847,7 @@
                 "money",
                 "vo"
             ],
-            "time": "2020-06-22T11:38:08+00:00"
+            "time": "2021-03-16T13:51:45+00:00"
         },
         {
             "name": "omnipay/common",
@@ -1899,12 +1923,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "076bf5e44cd2c91d713f2734ae996ac977dd5a26"
+                "reference": "f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/076bf5e44cd2c91d713f2734ae996ac977dd5a26",
-                "reference": "076bf5e44cd2c91d713f2734ae996ac977dd5a26",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6",
+                "reference": "f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6",
                 "shasum": ""
             },
             "require": {
@@ -1929,7 +1953,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-02-22T01:45:10+00:00"
+            "time": "2021-03-13T04:00:47+00:00"
         },
         {
             "name": "ramphor/wallery",
@@ -2070,12 +2094,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "30841d3da1c20642bc7caac6da8b49c742293588"
+                "reference": "7365c360e3aad973880fdb65e43f1ec4b04252e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/30841d3da1c20642bc7caac6da8b49c742293588",
-                "reference": "30841d3da1c20642bc7caac6da8b49c742293588",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/7365c360e3aad973880fdb65e43f1ec4b04252e9",
+                "reference": "7365c360e3aad973880fdb65e43f1ec4b04252e9",
                 "shasum": ""
             },
             "require": {
@@ -2132,7 +2156,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-10T10:16:25+00:00"
+            "time": "2021-03-12T08:36:26+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2308,7 +2332,8 @@
         "ramphor/wordpress-posts-collection": 20,
         "phayes/geophp": 20,
         "ramphor/optimize-database": 20,
-        "puleeno/pomnipay": 20
+        "puleeno/pomnipay": 20,
+        "jankx/wordpress-specs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
