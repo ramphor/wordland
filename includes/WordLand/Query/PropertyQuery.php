@@ -147,10 +147,14 @@ class PropertyQuery
         global $wpdb;
 
         $fields = Property::get_meta_fields($wpdb->prefix . 'wordland_properties');
-
-        return $wpdb->get_row(
+        $metas  = $wpdb->get_row(
             $wpdb->prepare("SELECT {$fields} FROM {$wpdb->prefix}wordland_properties WHERE property_id=%d LIMIT 1", $property_id)
         );
+
+        if (is_null($metas)) {
+            return array();
+        }
+        return $metas;
     }
 
     public function get_property_content_fields()
