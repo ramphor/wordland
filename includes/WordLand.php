@@ -141,6 +141,7 @@ class WordLand
                 'wordland',
                 $profileTemplateLoader
             );
+            $userProfile->registerProfilePage('agent');
         }
         add_action('init', array($this, 'init'));
     }
