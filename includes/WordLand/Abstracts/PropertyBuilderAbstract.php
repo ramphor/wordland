@@ -130,7 +130,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if ($scope == 'single') {
             $this->loadImages(apply_filters(
                 'wordland_single_property_image_sizes',
-                'full',
+                'large',
                 $this->property,
                 $this
             ));
