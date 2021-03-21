@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7ad47b2d9d4ab33da92b972698a790c",
+    "content-hash": "11f6647751b3b171d722b296afc4814f",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1958,16 +1958,16 @@
         },
         {
             "name": "ramphor/wallery",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wallery.git",
-                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8"
+                "reference": "6dfa9f65d06c4e25afd4e504866404e163d430cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wallery/zipball/c771bde16ad848da8c19adeb669f18eae23376a8",
-                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8",
+                "url": "https://api.github.com/repos/ramphor/wallery/zipball/6dfa9f65d06c4e25afd4e504866404e163d430cb",
+                "reference": "6dfa9f65d06c4e25afd4e504866404e163d430cb",
                 "shasum": ""
             },
             "type": "library",
@@ -1987,7 +1987,7 @@
                 }
             ],
             "description": "WordPress gallery for meta box and frontend post",
-            "time": "2020-09-15T05:14:51+00:00"
+            "time": "2021-03-21T14:14:14+00:00"
         },
         {
             "name": "ramphor/wordpress-posts-collection",
@@ -1995,12 +1995,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54"
+                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/6fccbfd1d8a691d91ddfd991242d699d579cef54",
-                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/96d9e67d5d9283ac25c0b37f1060a8993fb63245",
+                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245",
                 "shasum": ""
             },
             "require": {
@@ -2023,7 +2023,7 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
-            "time": "2021-03-21T13:59:22+00:00"
+            "time": "2021-03-21T14:11:46+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
