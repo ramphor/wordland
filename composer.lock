@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89c7efbf835d67e47aa9e6bc7059d9f0",
+    "content-hash": "c7ad47b2d9d4ab33da92b972698a790c",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -198,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "01129f635f45659fd4764a533777d069a978bc9d"
+                "reference": "f38085e434c6a8affe0d4ba8faa5303a0137566d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/01129f635f45659fd4764a533777d069a978bc9d",
-                "reference": "01129f635f45659fd4764a533777d069a978bc9d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f38085e434c6a8affe0d4ba8faa5303a0137566d",
+                "reference": "f38085e434c6a8affe0d4ba8faa5303a0137566d",
                 "shasum": ""
             },
             "require": {
@@ -217,6 +217,7 @@
                 "psr/http-client-implementation": "1.0"
             },
             "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-curl": "*",
                 "php-http/client-integration-tests": "^3.0",
                 "phpunit/phpunit": "^8.5.5 || ^9.3.5",
@@ -288,7 +289,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-15T07:56:29+00:00"
+            "time": "2021-03-21T12:52:42+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -347,12 +348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "a67cdbf85690e54a7b92fe91c297b20d2607c0b2"
+                "reference": "72dde17f3154ea87cadea0b71e37493058d970ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/a67cdbf85690e54a7b92fe91c297b20d2607c0b2",
-                "reference": "a67cdbf85690e54a7b92fe91c297b20d2607c0b2",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/72dde17f3154ea87cadea0b71e37493058d970ce",
+                "reference": "72dde17f3154ea87cadea0b71e37493058d970ce",
                 "shasum": ""
             },
             "require": {
@@ -410,7 +411,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2021-03-15T11:15:53+00:00"
+            "time": "2021-03-21T13:41:49+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -504,20 +505,20 @@
         },
         {
             "name": "jankx/template",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "5f811b351c75c209d7918d1427398c318b4f490c"
+                "reference": "3cece671191df97ba683ac875ad4450a58b16871"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/5f811b351c75c209d7918d1427398c318b4f490c",
-                "reference": "5f811b351c75c209d7918d1427398c318b4f490c",
+                "url": "https://api.github.com/repos/jankx/template/zipball/3cece671191df97ba683ac875ad4450a58b16871",
+                "reference": "3cece671191df97ba683ac875ad4450a58b16871",
                 "shasum": ""
             },
             "require": {
-                "jankx/template-engine": "dev-master"
+                "jankx/template-engine": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -536,24 +537,24 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2021-03-16T03:50:08+00:00"
+            "time": "2021-03-21T09:00:29+00:00"
         },
         {
             "name": "jankx/template-engine",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "d8a4def1fc18a54aa13ca29734b45519ab8b5eef"
+                "reference": "75f03549cdee16058aaedef5ec18567698b682d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/d8a4def1fc18a54aa13ca29734b45519ab8b5eef",
-                "reference": "d8a4def1fc18a54aa13ca29734b45519ab8b5eef",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/75f03549cdee16058aaedef5ec18567698b682d0",
+                "reference": "75f03549cdee16058aaedef5ec18567698b682d0",
                 "shasum": ""
             },
             "require": {
-                "jankx/helpers": "dev-master"
+                "jankx/helpers": "*"
             },
             "type": "library",
             "autoload": {
@@ -572,7 +573,7 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2020-12-31T15:42:16+00:00"
+            "time": "2021-03-21T04:29:06+00:00"
         },
         {
             "name": "jankx/wordpress-specs",
@@ -993,16 +994,16 @@
         },
         {
             "name": "phayes/geophp",
-            "version": "dev-master",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phayes/geoPHP.git",
-                "reference": "685562416ec6d22b9b3927e02ca0ddacf84ca646"
+                "reference": "015404e85b602e0df1f91441f8db0f9e98f7e567"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phayes/geoPHP/zipball/685562416ec6d22b9b3927e02ca0ddacf84ca646",
-                "reference": "685562416ec6d22b9b3927e02ca0ddacf84ca646",
+                "url": "https://api.github.com/repos/phayes/geoPHP/zipball/015404e85b602e0df1f91441f8db0f9e98f7e567",
+                "reference": "015404e85b602e0df1f91441f8db0f9e98f7e567",
                 "shasum": ""
             },
             "require-dev": {
@@ -1025,7 +1026,7 @@
             ],
             "description": "GeoPHP is a open-source native PHP library for doing geometry operations. It is written entirely in PHP and can therefore run on shared hosts. It can read and write a wide variety of formats: WKT (including EWKT), WKB (including EWKB), GeoJSON, KML, GPX, GeoRSS). It works with all Simple-Feature geometries (Point, LineString, Polygon, GeometryCollection etc.) and can be used to get centroids, bounding-boxes, area, and a wide variety of other useful information.",
             "homepage": "https://github.com/phayes/geoPHP",
-            "time": "2016-03-04T05:42:29+00:00"
+            "time": "2014-12-02T06:11:22+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -1923,17 +1924,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6"
+                "reference": "c00164e1f80f3575476f8164b2dace138fa12d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6",
-                "reference": "f0c302ebfe8e4b51511b404ecfbc3ad8865b72b6",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/c00164e1f80f3575476f8164b2dace138fa12d66",
+                "reference": "c00164e1f80f3575476f8164b2dace138fa12d66",
                 "shasum": ""
             },
             "require": {
                 "hybridauth/hybridauth": "3.1.1",
-                "jankx/template": "dev-master",
+                "jankx/template": "^1.0",
                 "ramphor/plugin-core": "dev-master"
             },
             "type": "library",
@@ -1953,11 +1954,11 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-03-13T04:00:47+00:00"
+            "time": "2021-03-21T14:06:46+00:00"
         },
         {
             "name": "ramphor/wallery",
-            "version": "dev-master",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wallery.git",
@@ -1994,16 +1995,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "5de79d10e91d54bc39965e32c8b83bd35fdd10fb"
+                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/5de79d10e91d54bc39965e32c8b83bd35fdd10fb",
-                "reference": "5de79d10e91d54bc39965e32c8b83bd35fdd10fb",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/6fccbfd1d8a691d91ddfd991242d699d579cef54",
+                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54",
                 "shasum": ""
             },
             "require": {
-                "jankx/template": "dev-master"
+                "jankx/template": "*"
             },
             "type": "library",
             "autoload": {
@@ -2022,7 +2023,7 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
-            "time": "2020-12-30T21:02:31+00:00"
+            "time": "2021-03-21T13:59:22+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2320,7 +2321,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jankx/template": 20,
         "ramphor/facades": 20,
         "ramphor/fields": 20,
         "ramphor/human-friendly-numbers": 20,
@@ -2330,7 +2330,6 @@
         "ramphor/post-views": 20,
         "ramphor/plugin-core": 20,
         "ramphor/wordpress-posts-collection": 20,
-        "phayes/geophp": 20,
         "ramphor/optimize-database": 20,
         "puleeno/pomnipay": 20,
         "jankx/wordpress-specs": 20

@@ -18,5 +18,8 @@ class PropertyInformation
     // Render metabox content
     public function render()
     {
+        ?>
+        <div id="wordland-editting-infos-box"></div>
+        <?php
     }
 }
