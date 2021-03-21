@@ -1,6 +1,7 @@
 <?php
 namespace WordLand\Admin;
 
+use WordLand;
 use Ramphor\Wallery\Wallery;
 use Ramphor\Wallery\Factory\MetaboxFactory;
 use WordLand\Admin\Property\MetaBox\PropertyInformation;
@@ -25,11 +26,11 @@ class Admin
 
         add_action('add_meta_boxes', array($this, 'registerGalleryMetabox'));
 
-        if ( class_exists( Wallery::class ) ) {
+        if (class_exists(Wallery::class)) {
             $walleryFactory  = new MetaboxFactory(__('Property Images', 'wordland'));
-            $this->wallery = new Wallery( $walleryFactory );
+            $this->wallery = new Wallery($walleryFactory);
 
-            $this->wallery->setId( 'wordland_property_gallery_images' );
+            $this->wallery->setId(WordLand::PROPERTY_GALLERY_META_KEY);
         }
     }
 
@@ -39,10 +40,11 @@ class Admin
         add_action('add_meta_boxes', array($propertyMetabox, 'registerMetaboxes'));
     }
 
-    public function registerGalleryMetabox() {
+    public function registerGalleryMetabox()
+    {
         add_meta_box(
             'wordland-property-gallery',
-            __( 'Property Gallery', 'wordland' ),
+            __('Property Gallery', 'wordland'),
             array( $this->wallery, 'render' ),
             PostTypes::get()
         );

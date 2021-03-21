@@ -2,6 +2,7 @@
 namespace WordLand\Builder;
 
 use WP_Post;
+use WordLand;
 use WordLand\Abstracts\PropertyBuilderAbstract;
 use WordLand\PostTypes;
 use WordLand\Agent;
@@ -20,8 +21,22 @@ class PropertyBuilder extends PropertyBuilderAbstract
         );
     }
 
-    public function loadImages()
+    public function loadImages($size = null)
     {
+        if (is_null($size)) {
+            $size = 'full';
+        }
+        $galleryImages = (array)get_post_meta(
+            $this->property->ID,
+            WordLand::PROPERTY_GALLERY_META_KEY,
+            true
+        );
+        foreach ($galleryImages as $galleryImage) {
+            $imageUrl = wp_get_attachment_image_src($galleryImage, $size);
+            if ($imageUrl) {
+                array_push($this->property->images, $imageUrl);
+            }
+        }
     }
 
     public function getCoordinate()
