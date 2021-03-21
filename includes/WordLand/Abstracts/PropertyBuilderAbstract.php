@@ -55,6 +55,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
         $this->property->description = get_the_excerpt($this->originalPost);
         $this->property->createdAt = strtotime($this->originalPost->post_date);
+        $this->property->url = get_permalink($this->originalPost);
 
         $listing_type = wp_get_post_terms($this->originalPost->ID, PostTypes::PROPERTY_LISTING_TYPE, array(
             'number' => 1
