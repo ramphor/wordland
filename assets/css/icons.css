@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "wordland";
-  src:url("../fonts/wordland.eot?ver=0.1.1");
-  src:url("../fonts/wordland.eot?ver=0.1.1#iefix") format("embedded-opentype"),
-    url("../fonts/wordland.woff?ver=0.1.1") format("woff"),
-    url("../fonts/wordland.ttf?ver=0.1.1") format("truetype"),
-    url("../fonts/wordland.svg?ver=0.1.1#wordland") format("svg");
+  src:url("../fonts/wordland.eot?ver=0.1.2");
+  src:url("../fonts/wordland.eot?ver=0.1.2#iefix") format("embedded-opentype"),
+    url("../fonts/wordland.woff?ver=0.1.2") format("woff"),
+    url("../fonts/wordland.ttf?ver=0.1.2") format("truetype"),
+    url("../fonts/wordland.svg?ver=0.1.2#wordland") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -135,4 +135,22 @@
 }
 .wl-heart-outline:before {
   content: "\e008";
+}
+.wl-facebook:before {
+  content: "\e009";
+}
+.wl-facebook-1:before {
+  content: "\e00a";
+}
+.wl-twitter:before {
+  content: "\e00b";
+}
+.wl-mail:before {
+  content: "\e00c";
+}
+.wl-pinterest:before {
+  content: "\e00d";
+}
+.wl-whatsapp:before {
+  content: "\e00e";
 }
