@@ -127,6 +127,15 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             return;
         }
 
+        if ($scope == 'single') {
+            $this->loadImages(apply_filters(
+                'wordland_single_property_image_sizes',
+                'full',
+                $this->property,
+                $this
+            ));
+        }
+
         return apply_filters_ref_array(
             'wordland_builder_get_property',
             array(
