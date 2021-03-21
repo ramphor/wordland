@@ -31,6 +31,10 @@ class Admin
 
             $this->wallery->setId( 'wordland_property_gallery_images' );
         }
+
+
+        $scripts = new Scripts();
+        add_action('admin_enqueue_scripts', array($scripts, 'register'));
     }
 
     public function initProperty()

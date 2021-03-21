@@ -1,0 +1,34 @@
+{
+  "name": "@wordland/admin",
+  "version": "1.0.0",
+  "description": " The real estate plugin for WordPress: Realty, Property management ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramphor/wordland.git"
+  },
+  "keywords": [
+    "real",
+    "estate",
+    "property",
+    "realty",
+    "agent"
+  ],
+  "author": "Puleeno Nguyen",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/ramphor/wordland/issues"
+  },
+  "homepage": "https://github.com/ramphor/wordland#readme",
+  "dependencies": {
+    "marko": "^5.5.2"
+  },
+  "devDependencies": {
+    "@marko/webpack": "^7.1.4",
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0"
+  }
+}
