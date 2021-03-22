@@ -49,6 +49,15 @@ class PropertyBuilder extends PropertyBuilderAbstract
 
     public function buildCategories()
     {
+        $terms = wp_get_post_terms($this->property->ID, PostTypes::PROPERTY_CATEGORY_TAX, array(
+            'fields' => 'id=>name'
+        ));
+
+        $this->property->categories = apply_filters(
+            'wordland_build_property_categories',
+            $terms,
+            $this->property
+        );
     }
 
     public function buildTags()

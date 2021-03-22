@@ -99,10 +99,12 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
     {
         if (isset($this->originalPost->property_id)) {
             $this->property->price      = floatval($this->originalPost->price);
-            $this->property->unit_price = floatval($this->originalPost->unit_price);
+            $this->property->unitPrice = floatval($this->originalPost->unit_price);
             $this->property->acreage       = intval($this->originalPost->acreage);
             $this->property->bedrooms   = intval($this->originalPost->bedrooms);
             $this->property->bathrooms  = intval($this->originalPost->bathrooms);
+            $this->property->frontWidth  = intval($this->originalPost->front_width);
+            $this->property->roadWidth  = intval($this->originalPost->road_width);
 
             if (isset($this->originalPost->latitude) && $this->originalPost->latitude) {
                 $this->property->geolocation = new Coordinate(
@@ -127,6 +129,12 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             return;
         }
 
+        do_action_ref_array('wordland_before_get_property', array(
+            &$this->property,
+            $this->originalPost,
+            $scope
+        ));
+
         if ($scope == 'single') {
             $this->loadImages(apply_filters(
                 'wordland_single_property_image_sizes',
@@ -134,6 +142,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
                 $this->property,
                 $this
             ));
+            $this->buildCategories();
         }
 
         return apply_filters_ref_array(

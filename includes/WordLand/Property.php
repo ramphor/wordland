@@ -20,10 +20,12 @@ class Property extends Data
     public $createdAt;
     public $url;
     public $price = 0;
-    public $unit_price = 0;
+    public $unitPrice = 0;
     public $acreage = 0;
     public $bathroom = 0;
     public $bedrooms = 0;
+    public $frontWidth = 0;
+    public $roadWidth = 0;
     public $thumbnail = array();
     public $images = array();
 
