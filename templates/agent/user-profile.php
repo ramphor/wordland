@@ -1,8 +1,8 @@
 <?php
     $user_data = get_queried_object();
-    if (!$user_data) {
-        $user_data = get_query_var('user_login');
-    }
+if (!$user_data) {
+    $user_data = get_query_var('user_login');
+}
     $agent_data  = wordland_parse_agent_data($user_data);
     $user_type   = array_get($agent_data, 'user_type', 'agent');
 ?>
