@@ -19,7 +19,7 @@
         "ramphor/user-profile": "dev-master",
         "ramphor/wallery": "^1.6.0",
         "puleeno/schema-org": "dev-master",
-        "ramphor/post-views": "dev-master",
+        "ramphor/post-views": "^0.1",
         "ramphor/plugin-core": "dev-master",
         "ramphor/wordpress-posts-collection": "dev-master",
         "geoip2/geoip2": "~2.0",
