@@ -31,6 +31,8 @@ class Installer
 
         $postview = new Setup();
         $postview->createTables();
+
+        $this->flushRewriteRules();
     }
 
     public function setupDatabase()
@@ -101,5 +103,10 @@ class Installer
 
         // Disable ONLY_FULL_GROUP_BY to group property by locations
         $wpdb->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+    }
+
+    public function flushRewriteRules()
+    {
+        flush_rewrite_rules();
     }
 }
