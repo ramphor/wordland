@@ -22,7 +22,7 @@ use Ramphor\PostViews\Handlers\CookieHandler;
 
 class WordLand
 {
-    const ICON_VERSION = '0.1.3';
+    const ICON_VERSION = '0.1.7';
     const PROPERTY_GALLERY_META_KEY = 'wordland_property_gallery_images';
 
     protected static $instance;
