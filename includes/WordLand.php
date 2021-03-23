@@ -24,6 +24,7 @@ use Ramphor\PostViews\Handlers\CookieHandler;
 class WordLand
 {
     const ICON_VERSION = '0.1.7';
+    const TEMPLATE_LOADER_ID = 'wordland';
     const PROPERTY_GALLERY_META_KEY = 'wordland_property_gallery_images';
 
     protected static $instance;
@@ -140,11 +141,11 @@ class WordLand
             );
             $profileManager = ProfileManager::getInstance();
             $profileManager->registerTemplate(
-                'wordland',
+                static::TEMPLATE_LOADER_ID,
                 $profileTemplateLoader
             );
             $profileManager->registerUserProfile( Agent::DEFAULT_AGENT_TYPE );
-            $profileManager->registerMyProfile( 'wordland' );
+            $profileManager->registerMyProfile();
         }
         add_action('init', array($this, 'init'));
     }
