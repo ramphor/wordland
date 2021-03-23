@@ -7,6 +7,7 @@ use WordLand\Modules\SearchHistory;
 use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
 use WordLand\Modules\GlobalProperty;
+use WordLand\Modules\UserProfile;
 
 class ModuleManager
 {
@@ -28,6 +29,7 @@ class ModuleManager
             SameLocationProperties::class,
             SearchHistory::class,
             GlobalProperty::class,
+            UserProfile::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
