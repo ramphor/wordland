@@ -154,7 +154,10 @@ class AgentQuery
 
         $this->removeCustomFilters();
 
-        do_action('wordland_agent_get_wordpress_user_query', $user_query, $this);
+        do_action_ref_array('wordland_agent_get_wordpress_user_query', array(
+            &$user_query,
+            $this
+        ));
 
         return $user_query;
     }

@@ -2,19 +2,19 @@
 
 @font-face {
   font-family: "wordland";
-  src:url("../fonts/wordland.eot?ver=0.1.3");
-  src:url("../fonts/wordland.eot?ver=0.1.3#iefix") format("embedded-opentype"),
-    url("../fonts/wordland.woff?ver=0.1.3") format("woff"),
-    url("../fonts/wordland.ttf?ver=0.1.3") format("truetype"),
-    url("../fonts/wordland.svg?ver=0.1.3#wordland") format("svg");
+  src:url("../fonts/wordland.eot?ver=0.1.7");
+  src:url("../fonts/wordland.eot?ver=0.1.7#iefix") format("embedded-opentype"),
+    url("../fonts/wordland.woff?ver=0.1.7") format("woff"),
+    url("../fonts/wordland.ttf?ver=0.1.7") format("truetype"),
+    url("../fonts/wordland.svg?ver=0.1.7#wordland") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
-[data-wl-icon]:before {
+[data-icon]:before {
   font-family: "wordland" !important;
-  content: attr(data-wl-icon);
+  content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -25,7 +25,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.wl:before {
+[class^="wl wl-"]:before,
+[class*=" wl wl-"]:before {
   font-family: "wordland" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -145,9 +146,6 @@
 .wl-twitter:before {
   content: "\e00b";
 }
-.wl-mail:before {
-  content: "\e00c";
-}
 .wl-pinterest:before {
   content: "\e00d";
 }
@@ -171,4 +169,34 @@
 }
 .wl-direction-sign:before {
   content: "\e01a";
+}
+.wl-globe:before {
+  content: "\e02d";
+}
+.wl-link:before {
+  content: "\e02f";
+}
+.wl-anchor:before {
+  content: "\e02e";
+}
+.wl-telephone:before {
+  content: "\e030";
+}
+.wl-cellphone:before {
+  content: "\e031";
+}
+.wl-skype:before {
+  content: "\e032";
+}
+.wl-instagram:before {
+  content: "\e033";
+}
+.wl-linkedin:before {
+  content: "\e034";
+}
+.wl-org:before {
+  content: "\e035";
+}
+.wl-mail:before {
+  content: "\e036";
 }

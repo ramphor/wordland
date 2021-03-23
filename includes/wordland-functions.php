@@ -311,3 +311,21 @@ function wordland_validate_phone_number($phoneNumber)
         $phoneNumberRules
     );
 }
+
+function wordland_get_agent_type($user) {
+    return 'agent';
+}
+
+function wordland_parse_agent_data($username) {
+    $userType = 'agent';
+    $user     = is_a($username, WP_User::class) ? $username : get_user_by('login', $username);
+
+    return array(
+        'user_type' => $userType,
+        'agent_id' => $user->ID,
+        'agent_name' => $user->display_name,
+        'agent_email' => $user->user_email,
+        'agent_description' => get_user_meta($user->ID, 'description', true),
+        'agent' => &$user,
+    );
+}

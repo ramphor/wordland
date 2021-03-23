@@ -100,6 +100,50 @@
     padding: 20px;
 }
 
+.wordland-agent-wraper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.wordland-agent-wraper .agent-section + .agent-section {
+    margin-top: 20px;
+}
+
+.wl-agent-main-section {
+    display: flex;
+}
+
+.wordland-agent-content {
+    background-color: #fff;
+}
+
+.wl-agent-main-section .agent-avatar, .wl-agent-main-section .agent-contact-info {
+    width: 50%;
+}
+
+.agent-metas-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+
+.agent-metas-wrapper .agent-meta {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    width: 33.333333%;
+}
+
+.agent-meta .meta-label, .agent-meta .meta-value {
+    display: block;
+}
+
+.agent-meta .meta-label {
+    font-weight: 700;
+}
+
 @media(min-width: 768px) {
     .wordland-list {
         display: flex;
