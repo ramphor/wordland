@@ -131,10 +131,10 @@ class WordLand
         );
 
         if (class_exists(UserProfile::class)) {
-            $userTemplatesDir = sprintf('%s/templates/user', WORDLAND_ABSPATH);
+            $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
             $profileTemplateLoader = Template::getLoader(
                 $userTemplatesDir,
-                apply_filters('wordland_user_profile_template_directory', 'wordland/user'),
+                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
                 'wordpress'
             );
             $userProfile = UserProfile::getInstance();
@@ -142,7 +142,7 @@ class WordLand
                 'wordland',
                 $profileTemplateLoader
             );
-            $userProfile->registerProfilePage('agent');
+            $userProfile->registerUserProfile('agent');
         }
         add_action('init', array($this, 'init'));
     }
