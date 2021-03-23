@@ -1,6 +1,11 @@
 <section class="agent-section wl-agent-main-section">
     <div class="agent-avatar">
-        <?php echo get_avatar($agent_id, 480); ?>
+        <div class="image-wrap">
+            <?php echo get_avatar($agent_id, 480); ?>
+            <div class="overlay">
+                <div class="agent-name"><?php echo $agent_name ?></div>
+            </div>
+        </div>
 
         <div class="agent-linked-socials">
             <div class="socials-wrapper">
@@ -16,7 +21,11 @@
     <div class="agent-contact-info">
         <div class="contact-heading"><?php __('My details', 'wordland'); ?></div>
 
-        <div class="agent-name"><?php echo $agent_name; ?></div>
+        <div class="agent-name">
+            <h2><?php echo $agent_name; ?></h2>
+
+            <div class="agent-position">sales executive</div>
+        </div>
         <ul class="contacts">
             <li class="contact contact-phone">
                 <i class="wl wl-cellphone"></i> 899 9877 8877

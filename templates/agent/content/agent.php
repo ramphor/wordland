@@ -4,6 +4,7 @@
 
         <div class="agent-heading-info">
             <div class="heading-infos">
+                <div class="agent-position">sales executive</div>
                 <div class="agent-email"><?php echo $agent_email; ?></div>
             </div>
         </div>

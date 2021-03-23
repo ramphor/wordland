@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7ad47b2d9d4ab33da92b972698a790c",
+    "content-hash": "11f6647751b3b171d722b296afc4814f",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -198,18 +198,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f38085e434c6a8affe0d4ba8faa5303a0137566d"
+                "reference": "98eeb955cbbe0e5d6f3f818e940c84f66aba427b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f38085e434c6a8affe0d4ba8faa5303a0137566d",
-                "reference": "f38085e434c6a8affe0d4ba8faa5303a0137566d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/98eeb955cbbe0e5d6f3f818e940c84f66aba427b",
+                "reference": "98eeb955cbbe0e5d6f3f818e940c84f66aba427b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.4",
-                "guzzlehttp/psr7": "^1.7",
+                "guzzlehttp/psr7": "^1.7 || ^2.0",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0"
             },
@@ -289,7 +289,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-21T12:52:42+00:00"
+            "time": "2021-03-21T18:42:29+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -348,12 +348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "72dde17f3154ea87cadea0b71e37493058d970ce"
+                "reference": "359b1f4a6fc1f3b97f8ea8ffd5a576f4f5151cff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/72dde17f3154ea87cadea0b71e37493058d970ce",
-                "reference": "72dde17f3154ea87cadea0b71e37493058d970ce",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/359b1f4a6fc1f3b97f8ea8ffd5a576f4f5151cff",
+                "reference": "359b1f4a6fc1f3b97f8ea8ffd5a576f4f5151cff",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2021-03-21T13:41:49+00:00"
+            "time": "2021-03-21T17:21:22+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -505,16 +505,16 @@
         },
         {
             "name": "jankx/template",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "3cece671191df97ba683ac875ad4450a58b16871"
+                "reference": "de9d8f6ebc5ed1bd3a63d2fc60a1f5bea2c1d729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/3cece671191df97ba683ac875ad4450a58b16871",
-                "reference": "3cece671191df97ba683ac875ad4450a58b16871",
+                "url": "https://api.github.com/repos/jankx/template/zipball/de9d8f6ebc5ed1bd3a63d2fc60a1f5bea2c1d729",
+                "reference": "de9d8f6ebc5ed1bd3a63d2fc60a1f5bea2c1d729",
                 "shasum": ""
             },
             "require": {
@@ -537,7 +537,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2021-03-21T09:00:29+00:00"
+            "time": "2021-03-22T15:57:44+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -1924,12 +1924,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "c00164e1f80f3575476f8164b2dace138fa12d66"
+                "reference": "41dbefdf66b0fc9fe132b6db457c6124d48e0506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/c00164e1f80f3575476f8164b2dace138fa12d66",
-                "reference": "c00164e1f80f3575476f8164b2dace138fa12d66",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/41dbefdf66b0fc9fe132b6db457c6124d48e0506",
+                "reference": "41dbefdf66b0fc9fe132b6db457c6124d48e0506",
                 "shasum": ""
             },
             "require": {
@@ -1954,20 +1954,20 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-03-21T14:06:46+00:00"
+            "time": "2021-03-23T04:49:51+00:00"
         },
         {
             "name": "ramphor/wallery",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wallery.git",
-                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8"
+                "reference": "6dfa9f65d06c4e25afd4e504866404e163d430cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wallery/zipball/c771bde16ad848da8c19adeb669f18eae23376a8",
-                "reference": "c771bde16ad848da8c19adeb669f18eae23376a8",
+                "url": "https://api.github.com/repos/ramphor/wallery/zipball/6dfa9f65d06c4e25afd4e504866404e163d430cb",
+                "reference": "6dfa9f65d06c4e25afd4e504866404e163d430cb",
                 "shasum": ""
             },
             "type": "library",
@@ -1987,7 +1987,7 @@
                 }
             ],
             "description": "WordPress gallery for meta box and frontend post",
-            "time": "2020-09-15T05:14:51+00:00"
+            "time": "2021-03-21T14:14:14+00:00"
         },
         {
             "name": "ramphor/wordpress-posts-collection",
@@ -1995,12 +1995,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54"
+                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/6fccbfd1d8a691d91ddfd991242d699d579cef54",
-                "reference": "6fccbfd1d8a691d91ddfd991242d699d579cef54",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/96d9e67d5d9283ac25c0b37f1060a8993fb63245",
+                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245",
                 "shasum": ""
             },
             "require": {
@@ -2023,7 +2023,7 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
-            "time": "2021-03-21T13:59:22+00:00"
+            "time": "2021-03-21T14:11:46+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2095,12 +2095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "7365c360e3aad973880fdb65e43f1ec4b04252e9"
+                "reference": "75446ebe3694a4ec8b8c541121ab8515bbfe07e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/7365c360e3aad973880fdb65e43f1ec4b04252e9",
-                "reference": "7365c360e3aad973880fdb65e43f1ec4b04252e9",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/75446ebe3694a4ec8b8c541121ab8515bbfe07e9",
+                "reference": "75446ebe3694a4ec8b8c541121ab8515bbfe07e9",
                 "shasum": ""
             },
             "require": {
@@ -2157,7 +2157,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-12T08:36:26+00:00"
+            "time": "2021-03-22T13:14:48+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
