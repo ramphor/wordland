@@ -8,12 +8,13 @@ use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
 use WordLand\Cache;
+use WordLand\Agent;
 use WordLand\Manager\ModuleManager;
 use WordLand\Manager\CronManager;
 use WordLand\Manager\QueryManager;
 use WordLand\Manager\DataManager;
 use Jankx\Template\Template;
-use Ramphor\User\Profile as UserProfile;
+use Ramphor\User\ProfileManager;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
 use Ramphor\PostViews\Counter as PostViewCounter;
@@ -130,19 +131,20 @@ class WordLand
             array(DB::class, 'setup')
         );
 
-        if (class_exists(UserProfile::class)) {
+        if (class_exists(ProfileManager::class)) {
             $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
             $profileTemplateLoader = Template::getLoader(
                 $userTemplatesDir,
                 apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
                 'wordpress'
             );
-            $userProfile = UserProfile::getInstance();
-            $userProfile->registerTemplate(
+            $profileManager = ProfileManager::getInstance();
+            $profileManager->registerTemplate(
                 'wordland',
                 $profileTemplateLoader
             );
-            $userProfile->registerUserProfile('agent');
+            $profileManager->registerUserProfile( Agent::DEFAULT_AGENT_TYPE );
+            $profileManager->registerMyProfile( 'wordland' );
         }
         add_action('init', array($this, 'init'));
     }
