@@ -17,6 +17,7 @@ class DataManager extends ManagerAbstract
     public function manage()
     {
         add_action('set_object_terms', array($this, 'autoSetListingType'), 10, 4);
+        add_filter('the_author_posts_link', array($this, 'changeAgentAuthorLink'));
         foreach ((array)PostTypes::get() as $post_type) {
             add_action("publish_{$post_type}", array($this, 'changeUpdatedTime'), 10, 2);
         }
@@ -48,5 +49,15 @@ class DataManager extends ManagerAbstract
         ), array(
             'property_id' => $propertyId
         ));
+    }
+
+    public function changeAgentAuthorLink($link)
+    {
+        global $authordata, $post;
+
+        if (in_array($post->post_type, PostTypes::get())) {
+            $link = str_replace('author', wordland_get_agent_type($authordata), $link);
+        }
+        return $link;
     }
 }
