@@ -17,7 +17,7 @@ class SavedSearches extends MyProfileAbstract
     public function getMenuItem()
     {
         return array(
-            'label' => __('Saved Searches', 'wordland'),
+            'label' => __('Saved searches', 'wordland'),
             'url' => '#',
         );
     }

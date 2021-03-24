@@ -15,7 +15,7 @@ class CreateNewProperty extends MyProfileAbstract
     public function getMenuItem()
     {
         return array(
-            'label' => __('Create New Property', 'wordland'),
+            'label' => __('Create new property', 'wordland'),
             'url' => '#',
         );
     }

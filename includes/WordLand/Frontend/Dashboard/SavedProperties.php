@@ -17,7 +17,7 @@ class SavedProperties extends MyProfileAbstract
     public function getMenuItem()
     {
         return array(
-            'label' => __('Favorite Properties', 'wordland'),
+            'label' => __('Favorite properties', 'wordland'),
             'url' => '#',
         );
     }
