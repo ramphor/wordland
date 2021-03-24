@@ -3,9 +3,9 @@ namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
 
-class MyPropertiesList extends MyProfileAbstract
+class SavedProperties extends MyProfileAbstract
 {
-    const FEATURE_NAME = 'my_properties';
+    const FEATURE_NAME = 'saved_properties';
 
     protected $priority = 15;
 
@@ -17,7 +17,7 @@ class MyPropertiesList extends MyProfileAbstract
     public function getMenuItem()
     {
         return array(
-            'label' => __('My properties list', 'wordland'),
+            'label' => __('Favorite Properties', 'wordland'),
             'url' => '#',
         );
     }

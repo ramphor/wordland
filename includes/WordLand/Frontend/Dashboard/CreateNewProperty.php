@@ -3,11 +3,9 @@ namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
 
-class MyPropertiesList extends MyProfileAbstract
+class CreateNewProperty extends MyProfileAbstract
 {
-    const FEATURE_NAME = 'my_properties';
-
-    protected $priority = 15;
+    const FEATURE_NAME = 'new_property';
 
     public function getName()
     {
@@ -17,7 +15,7 @@ class MyPropertiesList extends MyProfileAbstract
     public function getMenuItem()
     {
         return array(
-            'label' => __('My properties list', 'wordland'),
+            'label' => __('Create New Property', 'wordland'),
             'url' => '#',
         );
     }
