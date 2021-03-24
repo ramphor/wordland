@@ -22,6 +22,15 @@ class Template
         return static::$loader;
     }
 
+    public static function search()
+    {
+        $args = func_get_args();
+        return call_user_func_array(
+            array(static::getLoader(), 'searchTemplate'),
+            $args
+        );
+    }
+
     public static function render()
     {
         $args = func_get_args();

@@ -2,6 +2,7 @@
 namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
+use WordLand\Template;
 
 class SavedProperties extends MyProfileAbstract
 {
@@ -24,5 +25,11 @@ class SavedProperties extends MyProfileAbstract
 
     public function render()
     {
+        return Template::render(
+            'agent/my-profile/feature/saved-properties',
+            array(),
+            null,
+            false
+        );
     }
 }

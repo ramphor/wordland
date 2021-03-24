@@ -2,6 +2,7 @@
 namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
+use WordLand\Template;
 
 class SavedSearches extends MyProfileAbstract
 {
@@ -24,5 +25,11 @@ class SavedSearches extends MyProfileAbstract
 
     public function render()
     {
+        return Template::render(
+            'agent/my-profile/feature/saved-searches',
+            array(),
+            null,
+            false
+        );
     }
 }

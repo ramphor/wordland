@@ -2,6 +2,7 @@
 namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
+use WordLand\Template;
 
 class CreateNewProperty extends MyProfileAbstract
 {
@@ -22,5 +23,11 @@ class CreateNewProperty extends MyProfileAbstract
 
     public function render()
     {
+        return Template::render(
+            'agent/my-profile/feature/edit-property',
+            array(),
+            null,
+            false
+        );
     }
 }

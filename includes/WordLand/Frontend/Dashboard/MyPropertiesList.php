@@ -2,6 +2,7 @@
 namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
+use WordLand\Template;
 
 class MyPropertiesList extends MyProfileAbstract
 {
@@ -24,5 +25,11 @@ class MyPropertiesList extends MyProfileAbstract
 
     public function render()
     {
+        return Template::render(
+            'agent/my-profile/feature/my-property-listing',
+            array(),
+            null,
+            false
+        );
     }
 }

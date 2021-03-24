@@ -2,6 +2,7 @@
 namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
+use WordLand\Template;
 
 class Messages extends MyProfileAbstract
 {
@@ -24,5 +25,11 @@ class Messages extends MyProfileAbstract
 
     public function render()
     {
+        return Template::render(
+            'agent/my-profile/feature/messages',
+            array(),
+            null,
+            false
+        );
     }
 }
