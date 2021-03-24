@@ -2,6 +2,7 @@
 namespace WordLand\Modules;
 
 use WordLand\Abstracts\ModuleAbstract;
+use WordLand\Frontend\UserDashboardHeader;
 use WordLand\Frontend\Dashboard\CreateNewProperty;
 use WordLand\Frontend\Dashboard\Messages;
 use WordLand\Frontend\Dashboard\MyPropertiesList;
@@ -12,9 +13,17 @@ class UserProfile extends ModuleAbstract
 {
     const MODULE_NAME = 'user_profile';
 
+    protected $userDashboardHeader;
+
     public function get_name()
     {
         return static::MODULE_NAME;
+    }
+
+    public function bootstrap()
+    {
+        $this->userDashboardHeader = new UserDashboardHeader();
+        add_action('init', array($this->userDashboardHeader, 'init'));
     }
 
     public function init()
