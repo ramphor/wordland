@@ -5,7 +5,7 @@ use Ramphor\User\Abstracts\MyProfileAbstract;
 
 class CreateNewProperty extends MyProfileAbstract
 {
-    const FEATURE_NAME = 'new_property';
+    const FEATURE_NAME = 'create-property';
 
     public function getName()
     {

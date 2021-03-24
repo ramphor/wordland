@@ -5,7 +5,7 @@ use Ramphor\User\Abstracts\MyProfileAbstract;
 
 class MyPropertiesList extends MyProfileAbstract
 {
-    const FEATURE_NAME = 'my_properties';
+    const FEATURE_NAME = 'my-properties';
 
     protected $priority = 15;
 

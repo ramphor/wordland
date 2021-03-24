@@ -5,7 +5,7 @@ use Ramphor\User\Abstracts\MyProfileAbstract;
 
 class SavedSearches extends MyProfileAbstract
 {
-    const FEATURE_NAME = 'saved_searches';
+    const FEATURE_NAME = 'saved-searches';
 
     protected $priority = 15;
 
