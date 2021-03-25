@@ -17,7 +17,7 @@
                         id="wordland-agent-position"
                         type="text"
                         class="field-editing"
-                        name="display_name"
+                        name="agent_postion"
                         value=""
                     />
                 </div>
