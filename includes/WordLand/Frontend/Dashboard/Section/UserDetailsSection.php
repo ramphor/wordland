@@ -20,7 +20,8 @@ class UserDetailsSection extends SectionAbstract
         ), null, false);
     }
 
-    public function save() {
+    public function save()
+    {
         if (!is_user_logged_in()) {
             return false;
         }
