@@ -24,7 +24,7 @@ class CreateNewProperty extends MyProfileAbstract
     public function render()
     {
         return Template::render(
-            'agent/my-profile/feature/edit-property',
+            'agent/my-profile/features/edit-property',
             array(),
             null,
             false

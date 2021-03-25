@@ -26,7 +26,7 @@ class MyPropertiesList extends MyProfileAbstract
     public function render()
     {
         return Template::render(
-            'agent/my-profile/feature/my-property-listing',
+            'agent/my-profile/features/my-property-listing',
             array(),
             null,
             false

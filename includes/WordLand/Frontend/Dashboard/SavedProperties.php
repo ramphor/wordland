@@ -26,7 +26,7 @@ class SavedProperties extends MyProfileAbstract
     public function render()
     {
         return Template::render(
-            'agent/my-profile/feature/saved-properties',
+            'agent/my-profile/features/saved-properties',
             array(),
             null,
             false

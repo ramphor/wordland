@@ -26,7 +26,7 @@ class SavedSearches extends MyProfileAbstract
     public function render()
     {
         return Template::render(
-            'agent/my-profile/feature/saved-searches',
+            'agent/my-profile/features/saved-searches',
             array(),
             null,
             false

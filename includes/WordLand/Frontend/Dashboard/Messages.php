@@ -26,7 +26,7 @@ class Messages extends MyProfileAbstract
     public function render()
     {
         return Template::render(
-            'agent/my-profile/feature/messages',
+            'agent/my-profile/features/messages',
             array(),
             null,
             false
