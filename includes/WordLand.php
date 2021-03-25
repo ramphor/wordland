@@ -171,6 +171,10 @@ class WordLand
         $this->viewCounter->addHandle($userHandler);
 
         $this->viewCounter->count();
+
+        if ( ! current_user_can( 'manage_options' ) || apply_filters('wordland_force_hide_admin_bar', true) ) {
+            show_admin_bar( false );
+        }
     }
 
     public function create_cache_view_post($post_id, $post_types)
