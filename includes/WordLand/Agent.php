@@ -5,6 +5,8 @@ use WordLand\Abstracts\Data;
 
 class Agent extends Data
 {
+    const DEFAULT_AGENT_TYPE = 'agent';
+
     protected $userID = 0;
     /**
      * @var string This is userLogin or user name can use to login in WordPress

@@ -8,12 +8,13 @@ use WordLand\Scripts;
 use WordLand\Compatibles;
 use WordLand\Installer;
 use WordLand\Cache;
+use WordLand\Agent;
 use WordLand\Manager\ModuleManager;
 use WordLand\Manager\CronManager;
 use WordLand\Manager\QueryManager;
 use WordLand\Manager\DataManager;
 use Jankx\Template\Template;
-use Ramphor\User\Profile as UserProfile;
+use Ramphor\User\ProfileManager;
 use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
 use Ramphor\PostViews\Counter as PostViewCounter;
@@ -23,6 +24,7 @@ use Ramphor\PostViews\Handlers\CookieHandler;
 class WordLand
 {
     const ICON_VERSION = '0.1.7';
+    const TEMPLATE_LOADER_ID = 'wordland';
     const PROPERTY_GALLERY_META_KEY = 'wordland_property_gallery_images';
 
     protected static $instance;
@@ -130,19 +132,20 @@ class WordLand
             array(DB::class, 'setup')
         );
 
-        if (class_exists(UserProfile::class)) {
+        if (class_exists(ProfileManager::class)) {
             $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
             $profileTemplateLoader = Template::getLoader(
                 $userTemplatesDir,
                 apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
                 'wordpress'
             );
-            $userProfile = UserProfile::getInstance();
-            $userProfile->registerTemplate(
-                'wordland',
+            $profileManager = ProfileManager::getInstance();
+            $profileManager->registerTemplate(
+                static::TEMPLATE_LOADER_ID,
                 $profileTemplateLoader
             );
-            $userProfile->registerUserProfile('agent');
+            $profileManager->registerUserProfile( Agent::DEFAULT_AGENT_TYPE );
+            $profileManager->registerMyProfile();
         }
         add_action('init', array($this, 'init'));
     }
@@ -168,6 +171,10 @@ class WordLand
         $this->viewCounter->addHandle($userHandler);
 
         $this->viewCounter->count();
+
+        if ( ! current_user_can( 'manage_options' ) || apply_filters('wordland_force_hide_admin_bar', true) ) {
+            show_admin_bar( false );
+        }
     }
 
     public function create_cache_view_post($post_id, $post_types)
