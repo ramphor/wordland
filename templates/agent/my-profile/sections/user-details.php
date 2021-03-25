@@ -18,7 +18,7 @@
                         type="text"
                         class="field-editing"
                         name="agent_postion"
-                        value=""
+                        value="<?php echo $value; ?>"
                     />
                 </div>
             </div>
