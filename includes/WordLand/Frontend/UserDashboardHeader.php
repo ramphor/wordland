@@ -45,7 +45,6 @@ class UserDashboardHeader
             return $blockA['priority'] - $blockB['priority'];
         });
         ?>
-        <div>User dashboard header</div>
         <?php
         foreach ($headerBlocks as $index => $headerBlock) {
             $headerBlocks[$index] = wp_parse_args($headerBlock, array(
