@@ -1,7 +1,7 @@
 <?php
 namespace WordLand;
 
-use Ramphor\User\Profile as UserProfile;
+use Ramphor\User\ProfileManager;
 use Ramphor\PostViews\Setup;
 
 class Installer
@@ -26,7 +26,7 @@ class Installer
         $this->setupDatabase();
 
         // Create user profile data table
-        $userProfile = UserProfile::getInstance();
+        $userProfile = ProfileManager::getInstance();
         $userProfile->db->create_table();
 
         $postview = new Setup();
@@ -88,10 +88,11 @@ class Installer
                 PRIMARY KEY (`ID`)',
             'wordland_message_references' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `message_id` BIGINT NOT NULL DEFAULT 0,
-                `from_email` VARCHAR(255) NOT NULL DEFAULT 0,
-                `from_name` VARCHAR(255) NOT NULL DEFAULT 0,
-                `from_phone` VARCHAR(255) NULL DEFAULT 0,
+                `from_email` VARCHAR(255) NOT NULL,
+                `from_name` VARCHAR(255) NOT NULL,
+                `from_phone` VARCHAR(255) NULL,
                 `to_user` BIGINT NOT NULL DEFAULT 0,
+                `user_type` VARCHAR(255) NULL DEFAULT \'agent\',
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)'
         );
