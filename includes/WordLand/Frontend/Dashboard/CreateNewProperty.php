@@ -15,9 +15,10 @@ class CreateNewProperty extends MyProfileAbstract
 
     public function getMenuItem()
     {
+        $createPropertyPage = wordland_get_option('create_property_page');
         return array(
             'label' => __('Create new property', 'wordland'),
-            'url' => '#',
+            'url' => $createPropertyPage ? get_permalink($createPropertyPage) : '#',
         );
     }
 

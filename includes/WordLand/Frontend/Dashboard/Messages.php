@@ -17,9 +17,10 @@ class Messages extends MyProfileAbstract
 
     public function getMenuItem()
     {
+        $messagePage = wordland_get_option('messages_page');
         return array(
             'label' => __('Inbox', 'wordland'),
-            'url' => '#',
+            'url' => $messagePage ? get_permalink($messagePage) : '#',
         );
     }
 

@@ -17,9 +17,10 @@ class SavedProperties extends MyProfileAbstract
 
     public function getMenuItem()
     {
+        $savedPropertiesPage = wordland_get_option('saved_properties_page');
         return array(
             'label' => __('Favorite properties', 'wordland'),
-            'url' => '#',
+            'url' => $savedPropertiesPage ? get_permalink($savedPropertiesPage) : '#',
         );
     }
 
