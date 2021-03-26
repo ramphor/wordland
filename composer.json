@@ -26,7 +26,8 @@
         "phayes/geophp": "1.2",
         "ramphor/optimize-database": "dev-master",
         "puleeno/pomnipay": "dev-master",
-        "jankx/wordpress-specs": "dev-master"
+        "jankx/wordpress-specs": "dev-master",
+        "woocommerce/action-scheduler": "3.1.6"
     },
     "autoload": {
         "psr-4": {

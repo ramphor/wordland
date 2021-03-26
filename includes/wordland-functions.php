@@ -329,3 +329,11 @@ function wordland_parse_agent_data($username) {
         'agent' => &$user,
     );
 }
+
+function wordland_get_asset_url($path = '') {
+    return sprintf(
+        '%sassets/%s',
+        plugin_dir_url(WORDLAND_PLUGIN_FILE),
+        $path
+    );
+}

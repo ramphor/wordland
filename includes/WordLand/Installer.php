@@ -1,7 +1,7 @@
 <?php
 namespace WordLand;
 
-use Ramphor\User\Profile as UserProfile;
+use Ramphor\User\ProfileManager;
 use Ramphor\PostViews\Setup;
 
 class Installer
@@ -26,7 +26,7 @@ class Installer
         $this->setupDatabase();
 
         // Create user profile data table
-        $userProfile = UserProfile::getInstance();
+        $userProfile = ProfileManager::getInstance();
         $userProfile->db->create_table();
 
         $postview = new Setup();
@@ -50,7 +50,7 @@ class Installer
                 `acreage` FLOAT(4) NOT NULL DEFAULT 0,
                 `front_width` FLOAT(5) NOT NULL DEFAULT 0,
                 `road_width` FLOAT(5) NOT NULL DEFAULT 0,
-                `bedrooms`  TINYINT(5) NOT NULL DEFAULT 0,
+                `bedrooms` TINYINT(5) NOT NULL DEFAULT 0,
                 `bathrooms` TINYINT(5) NOT NULL DEFAULT 0,
                 `listing_type` BIGINT NULL,
                 `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -82,8 +82,17 @@ class Installer
                 `history_type` VARCHAR(255) DEFAULT \'general\',
                 `reference_object` BIGINT NOT NULL DEFAULT 0,
                 `reference_type` VARCHAR(255) NULL,
-                `user_id`  BIGINT NOT NULL DEFAULT 0,
+                `user_id` BIGINT NOT NULL DEFAULT 0,
                 `ip` VARCHAR(255) DEFAULT \'\' COMMENT \'IP of the user searching property\',
+                `created_at` TIMESTAMP NOT NULL,
+                PRIMARY KEY (`ID`)',
+            'wordland_message_references' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `message_id` BIGINT NOT NULL DEFAULT 0,
+                `from_email` VARCHAR(255) NOT NULL,
+                `from_name` VARCHAR(255) NOT NULL,
+                `from_phone` VARCHAR(255) NULL,
+                `to_user` BIGINT NOT NULL DEFAULT 0,
+                `user_type` VARCHAR(255) NULL DEFAULT \'agent\',
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)'
         );

@@ -9,6 +9,7 @@ class PostTypes
     const PROPERTY_LOCATION_COUNTY_TAX = 'wordland_county';
     const PROPERTY_VISIBILITY          = 'property_visibility';
     const PROPERTY_LISTING_TYPE        = 'listing_type';
+    const AGENT_MESSAGE_POST_TYPE      = 'wordland_message';
 
     public function __construct()
     {
@@ -77,6 +78,23 @@ class PostTypes
                 '_builtin' => true, // This post type use to manage amenity for property only
             ))
         );
+
+        $labels = array(
+            'name' => __('Messages', 'wordland'),
+            'singular_name' => __('Message', 'wordland'),
+            'plural_name' => __('Messages', 'wordland'),
+            'menu_name' => __('Agent Messages', 'wordland'),
+        );
+
+        register_post_type(static::AGENT_MESSAGE_POST_TYPE, apply_filters('wordland_post_type_messages_args', array(
+            'labels' => $labels,
+            'public' => true,
+            'menu_position' => 50,
+            'menu_icon' => 'dashicons-buddicons-pm',
+            'supports' => array('title', 'editor', 'comments'),
+            'publicly_queryable' => false,
+            'query_var' => false,
+        )));
     }
 
     public function registerTaxonomies()
