@@ -8,6 +8,7 @@ use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
 use WordLand\Modules\GlobalProperty;
 use WordLand\Modules\UserProfile;
+use WordLand\Modules\SendAgentMessage;
 
 class ModuleManager
 {
@@ -16,6 +17,7 @@ class ModuleManager
     protected static $hookCallables = array(
         'after_setup_theme' => 'bootstrap',
         'init' => 'init',
+        'wp' => 'inited',
         'admin_init' => 'admin_init',
         'template_redirect' => 'load_template',
         'wp_enqueue_scripts' => 'load_scripts',
@@ -30,6 +32,7 @@ class ModuleManager
             SearchHistory::class,
             GlobalProperty::class,
             UserProfile::class,
+            SendAgentMessage::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }

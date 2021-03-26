@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ac86756d0c2c9497a3770448b25770b",
+    "content-hash": "4baed79af6fbce68dc4aabea01e18d03",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -481,16 +481,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "546ca41950a3d4a8c1bf20b169158c6a987fd350"
+                "reference": "d5a40cd405c3bedb467aef0c0c00cab14041f9d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/546ca41950a3d4a8c1bf20b169158c6a987fd350",
-                "reference": "546ca41950a3d4a8c1bf20b169158c6a987fd350",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/d5a40cd405c3bedb467aef0c0c00cab14041f9d2",
+                "reference": "d5a40cd405c3bedb467aef0c0c00cab14041f9d2",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
+                "psr-4": {
+                    "Jankx\\Helpers\\": "src/Helpers"
+                },
                 "files": [
                     "./loader.php"
                 ]
@@ -506,20 +509,20 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2021-03-13T03:46:24+00:00"
+            "time": "2021-03-26T13:31:45+00:00"
         },
         {
             "name": "jankx/template",
-            "version": "1.0.3",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "8b9a7e764cb54e5e8abe514c3e86692e6748258f"
+                "reference": "923b5c59fd3626cc2b0f9b28cc0e90147cdaabca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/8b9a7e764cb54e5e8abe514c3e86692e6748258f",
-                "reference": "8b9a7e764cb54e5e8abe514c3e86692e6748258f",
+                "url": "https://api.github.com/repos/jankx/template/zipball/923b5c59fd3626cc2b0f9b28cc0e90147cdaabca",
+                "reference": "923b5c59fd3626cc2b0f9b28cc0e90147cdaabca",
                 "shasum": ""
             },
             "require": {
@@ -542,7 +545,7 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2021-03-24T07:42:31+00:00"
+            "time": "2021-03-26T10:39:25+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -1981,12 +1984,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "15c0ed27861e0b9753c380e1fa59886b2b90b94e"
+                "reference": "2415c01494c81de6eaf6506e2b671a3dc7537ddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/15c0ed27861e0b9753c380e1fa59886b2b90b94e",
-                "reference": "15c0ed27861e0b9753c380e1fa59886b2b90b94e",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/2415c01494c81de6eaf6506e2b671a3dc7537ddd",
+                "reference": "2415c01494c81de6eaf6506e2b671a3dc7537ddd",
                 "shasum": ""
             },
             "require": {
@@ -2011,7 +2014,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-03-25T19:19:47+00:00"
+            "time": "2021-03-26T05:42:11+00:00"
         },
         {
             "name": "ramphor/wallery",
@@ -2372,6 +2375,41 @@
                 }
             ],
             "time": "2021-01-07T16:49:33+00:00"
+        },
+        {
+            "name": "woocommerce/action-scheduler",
+            "version": "3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/woocommerce/action-scheduler.git",
+                "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/woocommerce/action-scheduler/zipball/275d0ba54b1c263dfc62688de2fa9a25a373edf8",
+                "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.6",
+                "woocommerce/woocommerce-sniffs": "0.0.8",
+                "wp-cli/wp-cli": "~1.5.1"
+            },
+            "type": "wordpress-plugin",
+            "extra": {
+                "scripts-description": {
+                    "test": "Run unit tests",
+                    "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
+                    "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Action Scheduler for WordPress and WooCommerce",
+            "homepage": "https://actionscheduler.org/",
+            "time": "2020-05-12T16:22:33+00:00"
         }
     ],
     "packages-dev": [],

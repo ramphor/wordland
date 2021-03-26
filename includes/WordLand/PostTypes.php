@@ -91,10 +91,9 @@ class PostTypes
             'public' => true,
             'menu_position' => 50,
             'menu_icon' => 'dashicons-buddicons-pm',
-            'supports' => array('title', 'editor'),
-            'capabilities' => array(
-                'create_posts' => false,
-            ),
+            'supports' => array('title', 'editor', 'comments'),
+            'publicly_queryable' => false,
+            'query_var' => false,
         )));
     }
 
