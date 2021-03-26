@@ -17,7 +17,7 @@ class DataManager extends ManagerAbstract
     public function manage()
     {
         add_action('set_object_terms', array($this, 'autoSetListingType'), 10, 4);
-        add_filter('the_author_posts_link', array($this, 'changeAgentAuthorLink'));
+        add_filter('author_link', array($this, 'changeAgentAuthorLink'), 10, 2);
         foreach ((array)PostTypes::get() as $post_type) {
             add_action("publish_{$post_type}", array($this, 'changeUpdatedTime'), 10, 2);
         }
@@ -51,12 +51,14 @@ class DataManager extends ManagerAbstract
         ));
     }
 
-    public function changeAgentAuthorLink($link)
+    public function changeAgentAuthorLink($link, $author_id)
     {
         global $authordata, $post;
 
         if (in_array($post->post_type, PostTypes::get())) {
             $link = str_replace('author', wordland_get_agent_type($authordata), $link);
+        } elseif (is_my_profile()) {
+            $link = str_replace('author', wordland_get_agent_type(wp_get_current_user()), $link);
         }
         return $link;
     }
