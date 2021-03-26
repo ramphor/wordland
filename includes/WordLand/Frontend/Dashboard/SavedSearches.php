@@ -17,9 +17,10 @@ class SavedSearches extends MyProfileAbstract
 
     public function getMenuItem()
     {
+        $savedSearchesPage = wordland_get_option('saved_searches_page');
         return array(
             'label' => __('Saved searches', 'wordland'),
-            'url' => '#',
+            'url' => $savedSearchesPage ? get_permalink($savedSearchesPage) : '#',
         );
     }
 

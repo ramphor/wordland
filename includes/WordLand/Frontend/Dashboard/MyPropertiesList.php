@@ -17,9 +17,10 @@ class MyPropertiesList extends MyProfileAbstract
 
     public function getMenuItem()
     {
+        $myProfileUrl = wordland_get_option('my_properties_page');
         return array(
             'label' => __('My properties list', 'wordland'),
-            'url' => '#',
+            'url' => $myProfileUrl ? get_permalink($myProfileUrl) : '#',
         );
     }
 

@@ -145,7 +145,7 @@ class WordLand
                 $profileTemplateLoader
             );
             $profileManager->registerUserProfile( Agent::DEFAULT_AGENT_TYPE );
-            $profileManager->registerMyProfile();
+            $profileManager->registerMyProfile('wordland_get_option');
         }
         add_action('init', array($this, 'init'));
     }
