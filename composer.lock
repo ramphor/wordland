@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4baed79af6fbce68dc4aabea01e18d03",
+    "content-hash": "dc5cb01bf7bfec1dd72adef480809f1e",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -481,12 +481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "d5a40cd405c3bedb467aef0c0c00cab14041f9d2"
+                "reference": "a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/d5a40cd405c3bedb467aef0c0c00cab14041f9d2",
-                "reference": "d5a40cd405c3bedb467aef0c0c00cab14041f9d2",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3",
+                "reference": "a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3",
                 "shasum": ""
             },
             "type": "library",
@@ -509,7 +509,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2021-03-26T13:31:45+00:00"
+            "time": "2021-03-27T07:39:48+00:00"
         },
         {
             "name": "jankx/template",
@@ -1692,6 +1692,39 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "ramphor/embrati",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramphor/embrati.git",
+                "reference": "bdb94fce158d15c3152740f4e2a2356ffbb37ee8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramphor/embrati/zipball/bdb94fce158d15c3152740f4e2a2356ffbb37ee8",
+                "reference": "bdb94fce158d15c3152740f4e2a2356ffbb37ee8",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Embrati\\": "./src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Ramphor Premium",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "Embed rating",
+            "time": "2021-03-27T04:22:56+00:00"
         },
         {
             "name": "ramphor/facades",
