@@ -9,6 +9,7 @@ use WordLand\Modules\Ajax\SameLocationProperties;
 use WordLand\Modules\GlobalProperty;
 use WordLand\Modules\UserProfile;
 use WordLand\Modules\SendAgentMessage;
+use WordLand\Modules\AgentReviews;
 
 class ModuleManager
 {
@@ -33,6 +34,7 @@ class ModuleManager
             GlobalProperty::class,
             UserProfile::class,
             SendAgentMessage::class,
+            AgentReviews::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
