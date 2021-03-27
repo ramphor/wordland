@@ -160,6 +160,7 @@
 
 .wordland-message-sender textarea, .agent-reviews textarea {
     height: 150px;
+    resize: none;
 }
 
 .wordland-message-sender .message-body,
