@@ -21,6 +21,9 @@ class DataManager extends ManagerAbstract
         foreach ((array)PostTypes::get() as $post_type) {
             add_action("publish_{$post_type}", array($this, 'changeUpdatedTime'), 10, 2);
         }
+
+        add_action('user_register', array($this, 'createAgentReferenceWithPostType'));
+        add_action('profile_update', array($this, 'createAgentReferenceWithPostType'));
     }
 
     public function autoSetListingType($object_id, $terms, $tt_ids, $taxonomy)
@@ -59,7 +62,47 @@ class DataManager extends ManagerAbstract
             $link = str_replace('author', wordland_get_agent_type($authordata), $link);
         } elseif (is_my_profile()) {
             $link = str_replace('author', wordland_get_agent_type(wp_get_current_user()), $link);
+        } elseif (is_user_profile()) {
+            $link = str_replace('author', wordland_get_agent_type(get_queried_object()), $link);
         }
         return $link;
+    }
+
+    public function checkAgentReferenceExists($userId)
+    {
+        global $wpdb;
+
+        $sql = $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->prefix}wordland_agent_references WHERE agent_id=%d LIMIT 1",
+            $userId
+        );
+
+        return intval($wpdb->get_var($sql)) > 0;
+    }
+
+    public function createAgentReferenceWithPostType($userId)
+    {
+        if ($this->checkAgentReferenceExists($userId)) {
+            return;
+        }
+        global $wpdb;
+
+        $user = get_user_by('ID', $userId);
+
+        $postId = wp_insert_post(array(
+            'post_type' => PostTypes::AGENT_POST_TYPE,
+            'post_title' => sprintf(__('Agent %s', 'wordland'), $user->display_name),
+            'post_status' => 'publish',
+            'post_author' => $userId,
+            'post_content' => sprintf(__('The reference post of agent @%s', 'wordland'), $user->user_login),
+        ));
+
+        if (!is_wp_error($postId) && $postId > 0) {
+            return $wpdb->insert("{$wpdb->prefix}wordland_agent_references", array(
+                'agent_id' => $userId,
+                'post_id' => $postId,
+                'created_at' => current_time('mysql'),
+            ));
+        }
     }
 }
