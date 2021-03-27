@@ -32,7 +32,7 @@ class Installer
         $postview = new Setup();
         $postview->createTables();
 
-        $this->flushRewriteRules();
+        flush_rewrite_rules(true);
     }
 
     public function setupDatabase()
@@ -94,6 +94,11 @@ class Installer
                 `to_user` BIGINT NOT NULL DEFAULT 0,
                 `user_type` VARCHAR(255) NULL DEFAULT \'agent\',
                 `created_at` TIMESTAMP NOT NULL,
+                PRIMARY KEY (`ID`)',
+            'wordland_agent_references' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `agent_id` BIGINT NOT NULL DEFAULT 0,
+                `post_id` BIGINT NOT NULL DEFAULT 0,
+                `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)'
         );
 
@@ -112,10 +117,5 @@ class Installer
 
         // Disable ONLY_FULL_GROUP_BY to group property by locations
         $wpdb->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
-    }
-
-    public function flushRewriteRules()
-    {
-        flush_rewrite_rules();
     }
 }
