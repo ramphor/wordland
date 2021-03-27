@@ -22,6 +22,7 @@
         "ramphor/post-views": "^0.1",
         "ramphor/plugin-core": "dev-master",
         "ramphor/wordpress-posts-collection": "dev-master",
+        "ramphor/embrati": "^0.5",
         "geoip2/geoip2": "~2.0",
         "phayes/geophp": "1.2",
         "ramphor/optimize-database": "dev-master",

@@ -8,6 +8,13 @@
     font-display: swap;
 }
 
+.image-wrap {
+    object-fit: cover;
+}
+.image-wrap img {
+    max-width: 100%;
+}
+
 .wordland-tabs {
     display: flex;
     width: 100%;
@@ -144,15 +151,20 @@
     font-weight: 700;
 }
 
-.wordland-message-sender input, .wordland-message-sender textarea {
+.wordland-message-sender input,
+.wordland-message-sender textarea,
+.agent-reviews input,
+.agent-reviews textarea {
     width: 100%;
 }
 
-.wordland-message-sender textarea {
+.wordland-message-sender textarea, .agent-reviews textarea {
     height: 150px;
 }
 
-.wordland-message-sender .message-body, .wordland-message-sender .submit-actions {
+.wordland-message-sender .message-body,
+.wordland-message-sender .submit-actions,
+.agent-reviews .submit-actions {
     margin-bottom: 20px;
 }
 

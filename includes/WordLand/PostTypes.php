@@ -10,6 +10,7 @@ class PostTypes
     const PROPERTY_VISIBILITY          = 'property_visibility';
     const PROPERTY_LISTING_TYPE        = 'listing_type';
     const AGENT_MESSAGE_POST_TYPE      = 'wordland_message';
+    const AGENT_POST_TYPE              = 'wordland_agent';
 
     public function __construct()
     {
@@ -85,7 +86,6 @@ class PostTypes
             'plural_name' => __('Messages', 'wordland'),
             'menu_name' => __('Agent Messages', 'wordland'),
         );
-
         register_post_type(static::AGENT_MESSAGE_POST_TYPE, apply_filters('wordland_post_type_messages_args', array(
             'labels' => $labels,
             'public' => true,
@@ -94,6 +94,20 @@ class PostTypes
             'supports' => array('title', 'editor', 'comments'),
             'publicly_queryable' => false,
             'query_var' => false,
+        )));
+
+        $labels = array(
+            'name' => __('Agents', 'wordland'),
+            'singular_name' => __('Agent', 'wordland'),
+            'plural_name' => __('Agents', 'wordland'),
+        );
+        register_post_type(static::AGENT_POST_TYPE, apply_filters('wordland_post_type_agent_args', array(
+            'labels' => $labels,
+            'public' => true,
+            'menu_icon' => 'dashicons-buddicons-pm',
+            'publicly_queryable' => false,
+            'query_var' => false,
+            '_builtin' => true,
         )));
     }
 

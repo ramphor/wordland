@@ -30,13 +30,12 @@ class SendAgentMessage extends ModuleAbstract
         if (!get_query_var('ramphor_user_profile')) {
             return;
         }
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action("wordland_after_agent_agent_content", array($this, 'render_send_message_ui'));
 
         add_action('wordland_before_message_sender_content', array($this, 'renderSendMessages'));
     }
 
-    public function enqueue_scripts()
+    public function load_scripts()
     {
         wp_register_script(
             'wordland-message-sender',
