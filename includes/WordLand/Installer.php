@@ -99,7 +99,14 @@ class Installer
                 `agent_id` BIGINT NOT NULL DEFAULT 0,
                 `post_id` BIGINT NOT NULL DEFAULT 0,
                 `created_at` TIMESTAMP NOT NULL,
-                PRIMARY KEY (`ID`)'
+                PRIMARY KEY (`ID`)',
+            'wordland_saved_searches' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
+                `search_name` VARCHAR(255) DEFAULT \'My searched search\',
+                `user_id` BIGINT NOT NULL DEFAULT 0,
+                `guest_ip` VARCHAR(255) NULL,
+                `search_content` LONGTEXT NOT NULL,
+                `created_at` TIMESTAMP NOT NULL,
+                PRIMARY KEY (`ID`)',
         );
 
         foreach ($tables as $table_name => $sql_syntax) {
