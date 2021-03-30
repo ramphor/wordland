@@ -41,11 +41,11 @@
                 <?php echo $close_form; ?>
             <?php else: ?>
                 <div class="agent-review-message">
-                    <?php echo esc_html(__sprintf(
-                        __('You need to <a href="%s" id="%s">login in</a> order to post a review'),
-                        $login_url,
+                    <?php echo sprintf(
+                        __('You need to <a href="%s" id="%s">login in</a> order to post a review', 'wordland'),
+                        esc_attr($login_url),
                         'wordland-login-url'
-                    )); ?>
+                    ); ?>
                 </div>
             <?php endif; ?>
         </div>
