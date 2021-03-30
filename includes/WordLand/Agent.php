@@ -138,6 +138,7 @@ class Agent extends Data
             } else {
                 $userData = array_merge($userData, array(
                     'user_login' => $this->userLogin,
+                    'user_nicename' => str_replace('_', '-', $this->userLogin),
                     'display_name' => $this->name,
                     'user_pass' => null,
                 ));
