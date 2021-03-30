@@ -36,14 +36,14 @@ class SavedSearches extends MyProfileAbstract
 
         if (is_user_logged_in()) {
             $sql = $wpdb->prepare(
-                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d LIMIT %d OFFSET %d",
+                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d ORDER BY created_at DESC LIMIT %d OFFSET %d",
                 get_current_user_id(),
                 $searches_per_page,
                 $offset
             );
         } else {
             $sql = $wpdb->prepare(
-                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d AND guest_ip=%s LIMIT %d OFFSET",
+                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d AND guest_ip=%s ORDER BY created_at DESC LIMIT %d OFFSET %d",
                 0,
                 wordland_get_real_ip_address(),
                 $searches_per_page,
