@@ -24,11 +24,49 @@ class SavedSearches extends MyProfileAbstract
         );
     }
 
+    public static function get_saved_searches()
+    {
+        global $wpdb;
+        $searches_per_page = 10;
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+        $offset = 0;
+        if ($current_page > 1) {
+            $offset = $searches_per_page * ($current_page - 1);
+        }
+
+        if (is_user_logged_in()) {
+            $sql = $wpdb->prepare(
+                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d LIMIT %d OFFSET %d",
+                get_current_user_id(),
+                $searches_per_page,
+                $offset
+            );
+        } else {
+            $sql = $wpdb->prepare(
+                "SELECT * FROM {$wpdb->prefix}wordland_saved_searches WHERE user_id=%d AND guest_ip=%s LIMIT %d OFFSET",
+                0,
+                wordland_get_real_ip_address(),
+                $searches_per_page,
+                $offset
+            );
+        }
+
+        $searches = $wpdb->get_results($sql);
+        if (empty($searches)) {
+            return array();
+        }
+        return $searches;
+    }
+
     public function render()
     {
+        $saved_searches = static::get_saved_searches();
+
         return Template::render(
             'agent/my-profile/features/saved-searches',
-            array(),
+            array(
+                'saved_searches' => $saved_searches,
+            ),
             null,
             false
         );

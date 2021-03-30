@@ -337,3 +337,11 @@ function wordland_get_asset_url($path = '') {
         $path
     );
 }
+
+function wordland_go_to_search_url($saved_search) {
+    $queryString = http_build_query(array(
+        'searchQueryState' => $saved_search->search_content,
+    ));
+
+    return site_url('?' . $queryString);
+}

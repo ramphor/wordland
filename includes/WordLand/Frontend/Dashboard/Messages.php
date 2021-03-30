@@ -36,7 +36,8 @@ class Messages extends MyProfileAbstract
         return $where;
     }
 
-    public static function get_messages($user_id, $page = 1) {
+    public static function get_messages($user_id, $page = 1)
+    {
         add_filter('posts_join', array(__CLASS__, 'joinMesageReferences'));
         add_filter('posts_where', array(__CLASS__, 'filterAgentMessages'));
 

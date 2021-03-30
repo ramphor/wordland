@@ -10,6 +10,7 @@ use WordLand\Modules\GlobalProperty;
 use WordLand\Modules\UserProfile;
 use WordLand\Modules\SendAgentMessage;
 use WordLand\Modules\AgentReviews;
+use WordLand\Modules\SaveSearch;
 
 class ModuleManager
 {
@@ -35,6 +36,7 @@ class ModuleManager
             UserProfile::class,
             SendAgentMessage::class,
             AgentReviews::class,
+            SaveSearch::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
