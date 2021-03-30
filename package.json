@@ -1,0 +1,39 @@
+{
+  "name": "wordland",
+  "version": "1.0.0",
+  "description": " The real estate plugin for WordPress: Realty, Property management ",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramphor/wordland.git"
+  },
+  "author": "Puleeno Nguyen <puleeno@gmail.com>",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/ramphor/wordland/issues"
+  },
+  "homepage": "https://github.com/ramphor/wordland#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.13",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "antd": "^4.14.1",
+    "connected-react-router": "^6.9.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.6.6"
+  }
+}

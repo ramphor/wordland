@@ -481,12 +481,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/helpers.git",
-                "reference": "a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3"
+                "reference": "e2ba7033abc371a3982bd7181cd8ea4a3fa832a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/helpers/zipball/a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3",
-                "reference": "a7860cfcc8fa2a5b583cc3a9f92f3b21e40291c3",
+                "url": "https://api.github.com/repos/jankx/helpers/zipball/e2ba7033abc371a3982bd7181cd8ea4a3fa832a8",
+                "reference": "e2ba7033abc371a3982bd7181cd8ea4a3fa832a8",
                 "shasum": ""
             },
             "type": "library",
@@ -509,7 +509,7 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
-            "time": "2021-03-27T07:39:48+00:00"
+            "time": "2021-03-27T08:09:09+00:00"
         },
         {
             "name": "jankx/template",
@@ -549,16 +549,16 @@
         },
         {
             "name": "jankx/template-engine",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "75f03549cdee16058aaedef5ec18567698b682d0"
+                "reference": "d531d3df820bd2201fd0e6e30aef1ec943a4ca8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/75f03549cdee16058aaedef5ec18567698b682d0",
-                "reference": "75f03549cdee16058aaedef5ec18567698b682d0",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/d531d3df820bd2201fd0e6e30aef1ec943a4ca8f",
+                "reference": "d531d3df820bd2201fd0e6e30aef1ec943a4ca8f",
                 "shasum": ""
             },
             "require": {
@@ -581,7 +581,7 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2021-03-21T04:29:06+00:00"
+            "time": "2021-03-27T08:04:07+00:00"
         },
         {
             "name": "jankx/wordpress-specs",
@@ -2017,12 +2017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "2415c01494c81de6eaf6506e2b671a3dc7537ddd"
+                "reference": "64758700689d07f755a4f77b7878a730922ec9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/2415c01494c81de6eaf6506e2b671a3dc7537ddd",
-                "reference": "2415c01494c81de6eaf6506e2b671a3dc7537ddd",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/64758700689d07f755a4f77b7878a730922ec9f6",
+                "reference": "64758700689d07f755a4f77b7878a730922ec9f6",
                 "shasum": ""
             },
             "require": {
@@ -2047,7 +2047,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-03-26T05:42:11+00:00"
+            "time": "2021-03-27T09:01:31+00:00"
         },
         {
             "name": "ramphor/wallery",
