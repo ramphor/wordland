@@ -93,6 +93,7 @@ class Installer
                 `from_phone` VARCHAR(255) NULL,
                 `to_user` BIGINT NOT NULL DEFAULT 0,
                 `user_type` VARCHAR(255) NULL DEFAULT \'agent\',
+                `attachment_post_id` BIGINT NOT NULL DEFAULT 0,
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`)',
             'wordland_agent_references' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
