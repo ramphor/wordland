@@ -2017,12 +2017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "ad6923cab3e2d62f09cb940be4360158651d6a20"
+                "reference": "7921cdc91429ec4afd864105a7d2daaf63845962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/ad6923cab3e2d62f09cb940be4360158651d6a20",
-                "reference": "ad6923cab3e2d62f09cb940be4360158651d6a20",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/7921cdc91429ec4afd864105a7d2daaf63845962",
+                "reference": "7921cdc91429ec4afd864105a7d2daaf63845962",
                 "shasum": ""
             },
             "require": {
@@ -2047,7 +2047,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-03-31T03:14:41+00:00"
+            "time": "2021-04-01T03:47:43+00:00"
         },
         {
             "name": "ramphor/wallery",
