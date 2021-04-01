@@ -2017,12 +2017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "7921cdc91429ec4afd864105a7d2daaf63845962"
+                "reference": "ba2a5b111fd22c49577eb7eebfff65b9d065f1fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/7921cdc91429ec4afd864105a7d2daaf63845962",
-                "reference": "7921cdc91429ec4afd864105a7d2daaf63845962",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/ba2a5b111fd22c49577eb7eebfff65b9d065f1fc",
+                "reference": "ba2a5b111fd22c49577eb7eebfff65b9d065f1fc",
                 "shasum": ""
             },
             "require": {
@@ -2047,7 +2047,7 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-04-01T03:47:43+00:00"
+            "time": "2021-04-01T11:07:40+00:00"
         },
         {
             "name": "ramphor/wallery",
@@ -2188,12 +2188,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "950dd4578bd3ee943de97f8fc5495f6fcb5bddfa"
+                "reference": "579ddf0239c4454be77727bd8a6f9e4fd84118d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/950dd4578bd3ee943de97f8fc5495f6fcb5bddfa",
-                "reference": "950dd4578bd3ee943de97f8fc5495f6fcb5bddfa",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/579ddf0239c4454be77727bd8a6f9e4fd84118d1",
+                "reference": "579ddf0239c4454be77727bd8a6f9e4fd84118d1",
                 "shasum": ""
             },
             "require": {
@@ -2250,7 +2250,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-23T21:32:01+00:00"
+            "time": "2021-04-01T10:43:52+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
