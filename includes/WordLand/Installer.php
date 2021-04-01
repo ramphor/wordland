@@ -55,7 +55,7 @@ class Installer
                 `listing_type` BIGINT NULL,
                 `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 `created_at` TIMESTAMP NOT NULL,
-                PRIMARY KEY (`ID`)',
+                PRIMARY KEY (`ID`) UNIQUE(`property_id`)',
             'wordland_agents' => '`wordland_agent_id` BIGINT NOT NULL AUTO_INCREMENT,
                 `user_id` BIGINT NOT NULL,
                 `phone_number` VARCHAR(100) NULL,
