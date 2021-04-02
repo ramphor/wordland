@@ -275,6 +275,7 @@ class AjaxRequestManager
                     $wp_query->post
                 ));
             }
+            wp_reset_postdata();
         }
 
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
@@ -346,6 +347,7 @@ class AjaxRequestManager
 
                 $index += 1;
             }
+            wp_reset_postdata();
         }
 
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);

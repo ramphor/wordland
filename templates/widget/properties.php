@@ -23,6 +23,7 @@
             );
             ?>
         <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
 
         <?php do_action('wordland_end_loop'); ?>
 
