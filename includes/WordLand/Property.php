@@ -29,6 +29,12 @@ class Property extends Data
     public $thumbnail = array();
     public $images = array();
 
+    protected $areaLevel1;
+    protected $areaLevel2;
+    protected $areaLevel3;
+    protected $areaLevel4;
+    protected $countryId;
+
     public $categories = array();
     public $types = array();
     public $visibilities = array();

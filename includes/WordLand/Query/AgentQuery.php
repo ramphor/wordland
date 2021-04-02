@@ -88,6 +88,36 @@ class AgentQuery
         $this->createCustomFilterLog($userIdFilter, 10);
     }
 
+    public function getSameLocationAgents($location_args = array())
+    {
+        global $wpdb;
+
+        $filterLocationSql = '';
+        $location_args = wp_parse_args($location_args, array(
+            'country_id'   => 0,
+            'area_level_1' => 0,
+            'area_level_2' => 0,
+            'area_level_3' => 0,
+            'area_level_4' => 0,
+        ));
+        foreach ($location_args as $location_type => $location_id) {
+            if ($location_id <= 0) {
+                continue;
+            }
+            $filterLocationSql .= $wpdb->prepare(" AND {$wpdb->prefix}wordland_agents.{$location_type}=%d", $location_id);
+        }
+        if (empty($filterLocationSql)) {
+            return;
+        }
+
+        $sameLocationFilter = function ($pre, $query) use ($filterLocationSql) {
+            $query->query_where .= $filterLocationSql;
+            return $pre;
+        };
+        add_filter('users_pre_query', $sameLocationFilter, 10, 2);
+        $this->createCustomFilterLog($sameLocationFilter, 10);
+    }
+
     public function select($fields = "*")
     {
         $selectFilter = function ($pre, $query) use ($fields) {
@@ -140,7 +170,8 @@ class AgentQuery
             $this->parseArgs();
         }
         do_action_ref_array('wordland_query_before_agent_query', array(
-            &$this
+            &$this,
+            $this->raw_args
         ));
 
         $wp_users_args = array_merge(
