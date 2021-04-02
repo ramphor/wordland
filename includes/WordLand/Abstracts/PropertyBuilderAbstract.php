@@ -98,13 +98,17 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
     public function buildWordLandData()
     {
         if (isset($this->originalPost->property_id)) {
-            $this->property->price      = floatval($this->originalPost->price);
+            $this->property->price     = floatval($this->originalPost->price);
             $this->property->unitPrice = floatval($this->originalPost->unit_price);
-            $this->property->acreage       = intval($this->originalPost->acreage);
+
+            $this->property->acreage    = intval($this->originalPost->acreage);
             $this->property->bedrooms   = intval($this->originalPost->bedrooms);
             $this->property->bathrooms  = intval($this->originalPost->bathrooms);
-            $this->property->frontWidth  = intval($this->originalPost->front_width);
+            $this->property->frontWidth = intval($this->originalPost->front_width);
             $this->property->roadWidth  = intval($this->originalPost->road_width);
+
+            $this->property->address      = $this->originalPost->address;
+            $this->property->fullAddress  = $this->originalPost->full_address;
 
             if (isset($this->originalPost->latitude) && $this->originalPost->latitude) {
                 $this->property->geolocation = new Coordinate(

@@ -15,7 +15,7 @@ class Property extends Data
     public $description;
     public $content;
     public $address;
-    public $full_address;
+    public $fullAddress;
     public $listingTypeId;
     public $createdAt;
     public $url;
