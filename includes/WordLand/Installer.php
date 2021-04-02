@@ -53,6 +53,7 @@ class Installer
                 `bedrooms` TINYINT(5) NOT NULL DEFAULT 0,
                 `bathrooms` TINYINT(5) NOT NULL DEFAULT 0,
                 `listing_type` BIGINT NULL,
+                `listing_type_label` VARCHAR(255) NULL,
                 `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 `created_at` TIMESTAMP NOT NULL,
                 PRIMARY KEY (`ID`) UNIQUE(`property_id`)',

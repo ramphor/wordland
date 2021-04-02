@@ -48,10 +48,13 @@ class AjaxRequestManager
             'type' => 'float',
             'default' => 0
         ),
-        'listing_type' => array(
+        'listing_type_id' => array(
             'source' => 'listing_type',
             'type' => 'int',
-            'default' => 0
+        ),
+        'listing_type_label' => array(
+            'source' => 'listing_type_label',
+            'type' => 'text',
         )
     );
     protected static $markerMappingFields;
@@ -338,6 +341,10 @@ class AjaxRequestManager
                 $markers[$index]['is_visited'] = wordland_check_property_is_viewed($property->ID);
                 $markers[$index]['url'] = get_permalink($property);
                 $markers[$index]['marker_style'] = 'circle';
+                $markers[$index]['listing_type'] = array(
+                    'id'   => $markers[$index]->listing_type_id,
+                    'name' => $markers[$index]->listing_type_label,
+                );
 
                 // Added hook to custom property
                 do_action_ref_array('wordland_build_map_marker_property', array(

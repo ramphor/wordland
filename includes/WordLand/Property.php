@@ -80,6 +80,7 @@ class Property extends Data
         '%sfront_width',
         '%sroad_width',
         '%slisting_type',
+        '%slisting_type_label',
     );
 
     public function setMeta($key, $value)

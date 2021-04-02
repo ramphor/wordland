@@ -29,18 +29,22 @@ class DataManager extends ManagerAbstract
     public function autoSetListingType($object_id, $terms, $tt_ids, $taxonomy)
     {
         // Only allow taxonomy listing type
-        if (PostTypes::PROPERTY_LISTING_TYPE !== $taxonomy && !PropertyQuery::check_wordland_data_is_exists($object_id)) {
+        if (PostTypes::PROPERTY_LISTING_TYPE !== $taxonomy || ! PropertyQuery::check_wordland_data_is_exists($object_id)) {
             return;
         }
         global $wpdb;
 
         $firstListingType = array_shift($tt_ids);
+        $listingType      = get_term($firstListingType, PostTypes::PROPERTY_LISTING_TYPE);
 
-        return $wpdb->update($wpdb->prefix . 'wordland_properties', array(
-            'listing_type' => intval($firstListingType)
-        ), array(
-            'property_id' => $object_id
-        ));
+        if (!is_wp_error($listingType)) {
+            return $wpdb->update($wpdb->prefix . 'wordland_properties', array(
+                'listing_type' => intval($firstListingType),
+                'listing_type_label' => $listingType->name,
+            ), array(
+                'property_id' => $object_id
+            ));
+        }
     }
 
     public function changeUpdatedTime($propertyId, $originalPost)
@@ -58,7 +62,7 @@ class DataManager extends ManagerAbstract
     {
         global $authordata, $post;
 
-        if (in_array($post->post_type, PostTypes::get())) {
+        if (isset($post->post_type) && in_array($post->post_type, PostTypes::get())) {
             $link = str_replace('author', wordland_get_agent_type($authordata), $link);
         } elseif (is_my_profile()) {
             $link = str_replace('author', wordland_get_agent_type(wp_get_current_user()), $link);
