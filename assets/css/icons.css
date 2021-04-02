@@ -10,7 +10,7 @@
   font-display: block;
 }
 
-[class^="wl"], [class*=" wl"] {
+.wl {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'Wordand' !important;
   speak: never;
