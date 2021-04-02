@@ -7,6 +7,7 @@ use Ramphor\Wallery\Factory\MetaboxFactory;
 use WordLand\Admin\Property\MetaBox\PropertyInformation;
 use WordLand\Admin\Menu\Dashboard;
 use WordLand\PostTypes;
+use WordLand\Admin\Property\DataSaver;
 
 class Admin
 {
@@ -32,6 +33,9 @@ class Admin
 
             $this->wallery->setId(WordLand::PROPERTY_GALLERY_META_KEY);
         }
+
+        $dataSaver = new DataSaver();
+        add_action('save_post', array($dataSaver, 'save'), 10, 2);
     }
 
     public function initProperty()
