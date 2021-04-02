@@ -75,8 +75,9 @@ add_action('wordland_loop_property_name', 'wordland_render_property_name');
 
 function wordand_render_property_thumbnail_image()
 {
+    global $property;
     wordland_template('loop/property-thumbnail', array(
-        'thumbnail' => wordland_post_thumbnail('medium'),
+        'thumbnail' => get_the_post_thumbnail($property->ID, 'medium'),
     ));
 }
 add_action('wordland_before_loop_property_name', 'wordand_render_property_thumbnail_image');

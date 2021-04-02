@@ -46,14 +46,6 @@ function is_wordland()
     return false;
 }
 
-function wordland_post_thumbnail($size = 'wordland_thumbnail')
-{
-    $callable = apply_filters('wordland_post_thubmnail_callable', null);
-    if (is_callable($callable)) {
-        return call_user_func_array($callable, func_get_args());
-    }
-}
-
 function wordland_get_current_location()
 {
     $location = WordLand::instance()->location;

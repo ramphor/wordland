@@ -88,7 +88,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if ($thumbnail_id) {
             $this->property->thumbnail = array(
                 'id' => $thumbnail_id,
-                'url' => wordland_post_thumbnail($thumbnail_id)
+                'url' => get_the_post_thumbnail($thumbnail_id, 'medium')
             );
         } else {
             $this->property->thumbnail = false;

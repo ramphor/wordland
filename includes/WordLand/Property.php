@@ -26,7 +26,6 @@ class Property extends Data
     public $bedrooms = 0;
     public $frontWidth = 0;
     public $roadWidth = 0;
-    public $thumbnail = array();
     public $images = array();
 
     protected $areaLevel1;
