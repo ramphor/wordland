@@ -7,6 +7,7 @@ use WordLand\Abstracts\PropertyBuilderAbstract;
 use WordLand\PostTypes;
 use WordLand\Agent;
 use WordLand\Query\AgentQuery;
+use WordLand\Admin\Property\MetaBox\PropertyInformation;
 
 class PropertyBuilder extends PropertyBuilderAbstract
 {
@@ -66,6 +67,14 @@ class PropertyBuilder extends PropertyBuilderAbstract
 
     public function buildLocations()
     {
+    }
+
+    public function getVideo()
+    {
+        $video_url = get_post_meta($this->property->ID, PropertyInformation::VIDEO_META_KEY, true);
+        if ($video_url) {
+            $this->property->videoUrl = $video_url;
+        }
     }
 
     public function getPrimaryAgent()

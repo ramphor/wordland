@@ -19,6 +19,7 @@ class Property extends Data
     public $listingTypeId;
     public $createdAt;
     public $url;
+    public $videoUrl;
     public $price = 0;
     public $unitPrice = 0;
     public $acreage = 0;

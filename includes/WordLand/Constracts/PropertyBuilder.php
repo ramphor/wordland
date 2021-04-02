@@ -18,4 +18,6 @@ interface PropertyBuilder
     public function buildLocations();
 
     public function getPrimaryAgent();
+
+    public function getVideo();
 }

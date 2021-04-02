@@ -143,6 +143,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
                 $this
             ));
             $this->buildCategories();
+            $this->getVideo();
         }
 
         return apply_filters_ref_array(
