@@ -106,7 +106,7 @@ class SendAgentMessage extends ModuleAbstract
         unset($_SESSION['agent_messages']);
     }
 
-    protected function create_message_reference($reference_data = array())
+    public static function create_message_reference($reference_data = array())
     {
         global $wpdb;
         return $wpdb->insert(
@@ -222,7 +222,7 @@ class SendAgentMessage extends ModuleAbstract
         $message_id = wp_insert_post($post_data);
 
         if (!is_wp_error($message_id) && $message_id > 0) {
-            $referenceOk = $this->create_message_reference(array(
+            $referenceOk = static::create_message_reference(array(
                 'message_id' => $message_id,
                 'from_email' => array_get($_POST, 'from_email'),
                 'from_name' => array_get($_POST, 'from_name'),

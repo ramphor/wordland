@@ -312,11 +312,13 @@ function wordland_validate_phone_number($phoneNumber)
     );
 }
 
-function wordland_get_agent_type($user) {
+function wordland_get_agent_type($user)
+{
     return 'agent';
 }
 
-function wordland_parse_agent_data($username) {
+function wordland_parse_agent_data($username)
+{
     $userType = 'agent';
     $user     = is_a($username, WP_User::class) ? $username : get_user_by('login', $username);
 
@@ -330,7 +332,8 @@ function wordland_parse_agent_data($username) {
     );
 }
 
-function wordland_get_asset_url($path = '') {
+function wordland_get_asset_url($path = '')
+{
     return sprintf(
         '%sassets/%s',
         plugin_dir_url(WORDLAND_PLUGIN_FILE),
@@ -338,7 +341,8 @@ function wordland_get_asset_url($path = '') {
     );
 }
 
-function wordland_go_to_search_url($saved_search) {
+function wordland_go_to_search_url($saved_search)
+{
     $queryString = http_build_query(array(
         'searchQueryState' => $saved_search->search_content,
     ));

@@ -23,6 +23,7 @@ class ModuleManager
         'admin_init' => 'admin_init',
         'template_redirect' => 'load_template',
         'wp_enqueue_scripts' => 'load_scripts',
+        'wp_footer' => 'wp_footer'
     );
 
     protected function get_active_modules()

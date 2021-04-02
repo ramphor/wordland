@@ -144,7 +144,7 @@ class WordLand
                 static::TEMPLATE_LOADER_ID,
                 $profileTemplateLoader
             );
-            $profileManager->registerUserProfile( Agent::DEFAULT_AGENT_TYPE );
+            $profileManager->registerUserProfile(Agent::DEFAULT_AGENT_TYPE);
             $profileManager->registerMyProfile('wordland_get_option');
         }
         add_action('init', array($this, 'init'));
@@ -172,8 +172,8 @@ class WordLand
 
         $this->viewCounter->count();
 
-        if ( ! current_user_can( 'manage_options' ) || apply_filters('wordland_force_hide_admin_bar', true) ) {
-            show_admin_bar( false );
+        if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', true)) {
+            show_admin_bar(false);
         }
     }
 
@@ -204,6 +204,6 @@ class WordLand
         $moduleManager = new ModuleManager();
 
         // Load module via action hook `plugins_loaded`
-        add_action('plugins_loaded', array($moduleManager, 'load_modules' ));
+        add_action('plugins_loaded', array($moduleManager, 'load_modules' ), 20);
     }
 }
