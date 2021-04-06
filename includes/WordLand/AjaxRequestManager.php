@@ -328,11 +328,7 @@ class AjaxRequestManager
 
         $markers  = array();
         if ($wp_query->have_posts()) {
-            $index = 0;
-            while ($wp_query->have_posts()) {
-                $wp_query->the_post();
-                $property = $wp_query->post;
-
+            foreach($wp_query->posts as $index => $property) {
                 $markers[$index] = $this->filterData($property, static::$markerMappingFields);
                 $markers[$index]['thumbnail_url'] = wp_get_attachment_image_url(
                     get_post_thumbnail_id($property),
@@ -351,10 +347,7 @@ class AjaxRequestManager
                     &$markers[$index],
                     $property
                 ));
-
-                $index += 1;
             }
-            wp_reset_postdata();
         }
 
         remove_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
