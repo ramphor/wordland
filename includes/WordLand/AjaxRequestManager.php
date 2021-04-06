@@ -135,6 +135,20 @@ class AjaxRequestManager
             }
         }
 
+        if (isset($request['days'])) {
+            $days = FilterHelper::parseDays($request['days']);
+            if ($days) {
+                if (!isset($args['date_query'])) {
+                    $args['date_query'] = array();
+                }
+                $args['date_query'][] = array(
+                    'after' => sprintf('-%d day%s', $days, $days > 1 ? 's' : ''),
+                );
+                $args['orderby'] = 'date';
+                $args['order'] = 'ASC';
+            }
+        }
+
         $query = new PropertyQuery(apply_filters(
             'wordland_ajax_build_query_args',
             $args,

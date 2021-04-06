@@ -175,4 +175,12 @@ class FilterHelper
             );
         }
     }
+
+    public static function parseDays($days)
+    {
+        if (is_numeric($days)) {
+            return intval($days);
+        }
+        return 0;
+    }
 }
