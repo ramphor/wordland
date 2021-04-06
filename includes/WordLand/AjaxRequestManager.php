@@ -135,7 +135,12 @@ class AjaxRequestManager
             }
         }
 
-        $query = new PropertyQuery($args);
+        $query = new PropertyQuery(apply_filters(
+            'wordland_ajax_build_query_args',
+            $args,
+            $request,
+            $this
+        ));
 
         return $query->getWordPressQuery();
     }
@@ -328,7 +333,7 @@ class AjaxRequestManager
 
         $markers  = array();
         if ($wp_query->have_posts()) {
-            foreach($wp_query->posts as $index => $property) {
+            foreach ($wp_query->posts as $index => $property) {
                 $markers[$index] = $this->filterData($property, static::$markerMappingFields);
                 $markers[$index]['thumbnail_url'] = wp_get_attachment_image_url(
                     get_post_thumbnail_id($property),
