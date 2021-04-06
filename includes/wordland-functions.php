@@ -109,16 +109,11 @@ function wordland_get_maxmind_license_key()
 
 function wordland_check_property_is_viewed($property_id)
 {
-    if (Cache::checkViewed($property_id)) {
-        return Cache::getViewed($property_id);
+    $visitedProperties = Cache::getVisitedProperties();
+    if (isset($visitedProperties[$property_id])) {
+        return true;
     }
-
-    $counter   = WordLand::instance()->viewCounter;
-    $is_viewed = $counter->isViewed($property_id);
-
-    Cache::addViewed($property_id, $is_viewed);
-
-    return $is_viewed;
+    return false;
 }
 
 function wordland_get_term_from_geo_location($point, $location_level = 1)
