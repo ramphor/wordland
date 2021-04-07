@@ -166,7 +166,14 @@ class WordLand
 
         $this->viewCounter->addHandle($userHandler);
 
-        add_action('wordland_before_get_single_property', array($this->viewCounter, 'count'));
+        add_action('wordland_before_get_single_property', function ($property) {
+            if (did_action('wp')) {
+                $this->viewCounter->count($property->ID);
+            } else {
+                $callback = array($this->viewCounter, 'count');
+                call_user_func($callback, $property->ID);
+            }
+        });
 
         if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', true)) {
             show_admin_bar(false);
