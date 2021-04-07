@@ -346,6 +346,8 @@ class AjaxRequestManager
         )), $request);
 
         $markers  = array();
+        $history_tracking_type = wordland_get_option('guest_history_tracking', 'property_location');
+
         if ($wp_query->have_posts()) {
             foreach ($wp_query->posts as $index => $property) {
                 $markers[$index] = $this->filterData($property, static::$markerMappingFields);
@@ -353,7 +355,9 @@ class AjaxRequestManager
                     get_post_thumbnail_id($property),
                     'thumbnail',
                 );
-                $markers[$index]['is_visited'] = wordland_check_property_is_viewed($property->ID);
+                $markers[$index]['is_visited'] = $history_tracking_type === 'property_id'
+                    ? wordland_check_property_is_visited($property->ID)
+                    : wordland_check_property_is_visited_by_location($property->latitude, $property->longitude);
                 $markers[$index]['url'] = get_permalink($property);
                 $markers[$index]['marker_style'] = 'circle';
                 $markers[$index]['listing_type'] = array(

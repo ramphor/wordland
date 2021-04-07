@@ -64,12 +64,10 @@ class GlobalProperty extends ModuleAbstract
 
     public function loadMainPropertyFromGlobalPost()
     {
-
         if ($this->mainProperty) {
             return $this->mainProperty;
         }
         global $post, $wp_query;
-
 
         if ($wp_query->is_main_query() && $wp_query->is_single()) {
             $propertyMetas = PropertyQuery::get_property_metas_from_ID($post->ID);

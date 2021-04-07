@@ -130,7 +130,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
             return;
         }
 
-        do_action_ref_array('wordland_before_get_property', array(
+        do_action_ref_array("wordland_before_get_{$scope}_property", array(
             &$this->property,
             $this->originalPost,
             $scope
