@@ -107,10 +107,20 @@ function wordland_get_maxmind_license_key()
     return get_option('maxmind_api_key');
 }
 
-function wordland_check_property_is_viewed($property_id)
+function wordland_check_property_is_visited($property_id)
 {
     $visitedProperties = Cache::getVisitedProperties();
     if (isset($visitedProperties[$property_id])) {
+        return true;
+    }
+    return false;
+}
+
+function wordland_check_property_is_visited_by_location($latt, $long)
+{
+    $visitedProperties = Cache::getVisitedProperties();
+    $locatioKey = sprintf('POINT(%s %s)', $latt, $long);
+    if (isset($visitedProperties[$locatioKey])) {
         return true;
     }
     return false;
