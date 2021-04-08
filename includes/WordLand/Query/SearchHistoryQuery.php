@@ -10,7 +10,7 @@ class SearchHistoryQuery
             "SELECT DISTINCT  keyword_text, history_type, reference_object, reference_type
             FROM {$wpdb->prefix}wordland_search_histories
             WHERE user_id=%d
-                OR ip=%s
+                OR (user_id = 0 AND ip=%s)
             ORDER BY
                 created_at DESC,
                 user_id DESC
@@ -18,6 +18,7 @@ class SearchHistoryQuery
             $user_id,
             wordland_get_real_ip_address()
         );
+
         return $wpdb->get_results($sql);
     }
 }
