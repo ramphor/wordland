@@ -1,9 +1,9 @@
 <?php
 namespace WordLand;
 
-use WordLand\Query\PropertyQuery;
 use WordLand\Manager\PropertyBuilderManager;
 use WordLand\Query\FilterHelper;
+use WordLand\Query\PropertyQuery;
 
 class AjaxRequestManager
 {
@@ -184,12 +184,22 @@ class AjaxRequestManager
         }
 
         if (!empty(static::$request['map_bounds'])) {
-            $map_bounds_query = FilterHelper::parseMapBounds(static::$request['map_bounds']);
-            if (!empty($map_bounds_query)) {
-                $where .= $map_bounds_query;
+            if (!empty(static::$request['map_radius'])) {
+                $map_radius_query = FilterHelper::parseMapRadius(
+                    static::$request['map_radius'],
+                    static::$request['map_bounds']
+                );
+
+                if (false !== $map_radius_query) {
+                    $where .= ' AND ' . $map_radius_query;
+                }
+            } else {
+                $map_bounds_query = FilterHelper::parseMapBounds(static::$request['map_bounds']);
+                if (!empty($map_bounds_query)) {
+                    $where .= $map_bounds_query;
+                }
             }
         }
-
         return $where;
     }
 
@@ -359,10 +369,11 @@ class AjaxRequestManager
                     ? wordland_check_property_is_visited($property->ID)
                     : wordland_check_property_is_visited_by_location($property->latitude, $property->longitude);
                 $markers[$index]['url'] = get_permalink($property);
+
                 $markers[$index]['marker_style'] = 'circle';
                 $markers[$index]['listing_type'] = array(
-                    'id'   => $markers[$index]->listing_type_id,
-                    'name' => $markers[$index]->listing_type_label,
+                    'id'   => $markers[$index]['listing_type_id'],
+                    'name' => $markers[$index]['listing_type_label'],
                 );
 
                 // Added hook to custom property
