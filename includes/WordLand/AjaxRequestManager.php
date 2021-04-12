@@ -64,6 +64,8 @@ class AjaxRequestManager
 
     protected static $request;
 
+    protected $customSortCallback;
+
     public static function getInstance()
     {
         if (is_null(static::$instance)) {
@@ -82,6 +84,57 @@ class AjaxRequestManager
 
         add_action('wp_ajax_wordland_get_property', array($this, 'getProperty'));
         add_action('wp_ajax_nopriv_wordland_get_property', array($this, 'getProperty'));
+
+        add_action('wordland_before_get_query', array($this, 'createCustomSort'), 10, 2);
+        add_action('wordland_after_get_query', array($this, 'cleanCustomSort'), 10, 2);
+    }
+
+    protected function parseOrderBy($matches)
+    {
+        global $wpdb;
+
+        switch ($matches[1]) {
+            case 'total_price':
+                return array(
+                    'orderby' => sprintf('`%swordland_properties`.`%s`', $wpdb->prefix, $wpdb->_real_escape('price')),
+                    'order' => strtoupper($matches[2]),
+                );
+            case 'unit_price':
+                return array(
+                    'orderby' => sprintf('`%swordland_properties`.`%s`', $wpdb->prefix, $wpdb->_real_escape('unit_price')),
+                    'order' => strtoupper($matches[2]),
+                );
+            case 'acreage':
+                return array(
+                    'orderby' => sprintf('`%swordland_properties`.`%s`', $wpdb->prefix, $wpdb->_real_escape('acreage')),
+                    'order' => strtoupper($matches[2]),
+                );
+            default:
+                return apply_filters("wordland_ajax_custom_sort_{$matches[1]}", null, $matches);
+        }
+    }
+
+    public function createCustomSort(&$args, $rawArgs)
+    {
+        if (!empty($rawArgs['custom_order']) && preg_match('/(.+)_(asc|desc)/', $rawArgs['custom_order'], $matches)) {
+            $parsedOrderBy = $this->parseOrderBy($matches);
+            $this->customSortCallback = function ($orderby, $query) use ($parsedOrderBy) {
+                if ($parsedOrderBy) {
+                    return sprintf('%s %s', $parsedOrderBy['orderby'], $parsedOrderBy['order']);
+                }
+                return $orderby;
+            };
+            add_filter('posts_orderby', $this->customSortCallback, 10, 2);
+        } else {
+            $this->customSortCallback = null;
+        }
+    }
+
+    public function cleanCustomSort($args, $rawArgs)
+    {
+        if (is_null($this->customSortCallback)) {
+            remove_filter('posts_orderby', $this->customSortCallback, 10, 2);
+        }
     }
 
     public function filterQueriesFromGetVariable()
@@ -146,6 +199,15 @@ class AjaxRequestManager
                 );
                 $args['orderby'] = 'date';
                 $args['order'] = 'ASC';
+            }
+        }
+
+        if (isset($request['sort_by'])) {
+            if (preg_match('/^publish_date_(.+)/', $request['sort_by'], $matches)) {
+                $args['orderby'] = 'date';
+                $args['order']   = strtoupper($matches[1]);
+            } else {
+                $args['custom_order'] = $request['sort_by'];
             }
         }
 
@@ -272,7 +334,7 @@ class AjaxRequestManager
 
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
 
-        $current_page = isset($request['page']) && $request['page'] > 0 ? (int) $request['page'] : 1;
+        $current_page   = isset($request['page']) && $request['page'] > 0 ? (int) $request['page'] : 1;
         $items_per_page = 40;
         $wp_query = $this->buildQuery($this->filterQueries(array(
             'page' => $current_page,
@@ -304,10 +366,10 @@ class AjaxRequestManager
 
         do_action('wordland_after_request_ajax_get_map_properties', $this);
 
-        $total_items = $wp_query->found_posts;
+        $total_items    = $wp_query->found_posts;
         $items_per_page = array_get($wp_query->query_vars, 'posts_per_page', 5);
-        $current_page = array_get($wp_query->query_vars, 'paged', 1);
-        $current_page = $current_page > 0 ? $current_page : 1;
+        $current_page   = array_get($wp_query->query_vars, 'paged', 1);
+        $current_page   = $current_page > 0 ? $current_page : 1;
 
         wp_send_json_success(array(
             'properties' => $properties,
