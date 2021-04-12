@@ -120,6 +120,9 @@ class AjaxRequestManager
             $parsedOrderBy = $this->parseOrderBy($matches);
             $this->customSortCallback = function ($orderby, $query) use ($parsedOrderBy) {
                 if ($parsedOrderBy) {
+                    if ($orderby) {
+                        return sprintf('%s %s, %s', $parsedOrderBy['orderby'], $parsedOrderBy['order'], $orderby);
+                    }
                     return sprintf('%s %s', $parsedOrderBy['orderby'], $parsedOrderBy['order']);
                 }
                 return $orderby;
