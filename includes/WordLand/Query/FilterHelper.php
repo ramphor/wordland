@@ -1,6 +1,7 @@
 <?php
 namespace WordLand\Query;
 
+use geoPHP;
 use WordLand\PostTypes;
 
 class FilterHelper
@@ -182,5 +183,41 @@ class FilterHelper
             return intval($days);
         }
         return 0;
+    }
+
+
+    public static function parseMapRadius($radius, $map_bounds)
+    {
+        global $wpdb;
+
+        $northEast = $map_bounds['northEast'];
+        $southWest = $map_bounds['southWest'];
+
+        $json = sprintf(
+            '{
+                "type": "MultiPoint",
+                "coordinates": [
+                    [%s, %s], [%s, %s]
+                ]
+            }',
+            array_get($northEast, 'lat'),
+            array_get($northEast, 'lng'),
+            array_get($southWest, 'lat'),
+            array_get($southWest, 'lng')
+        );
+
+        $multipoint = geoPHP::load($json, 'json');
+        $centroid = $multipoint->getCentroid();
+
+        if ($centroid->isEmpty()) {
+            return false;
+        }
+
+        return sprintf(
+            "SQRT(POW(X({$wpdb->prefix}wordland_properties.coordinate) - %s , 2) + POW(Y({$wpdb->prefix}wordland_properties.coordinate) - %s, 2)) * 100 < %d",
+            $centroid->getX(),
+            $centroid->getY(),
+            $radius
+        );
     }
 }

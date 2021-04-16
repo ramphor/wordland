@@ -86,7 +86,7 @@ class Cache
                 " WHERE {$wpdb->posts}.post_type IN (%s)
                     AND {$wpdb->prefix}ramphor_view_histories.user_id=%d
                     AND {$wpdb->prefix}ramphor_view_histories.client_ip=%s
-                    AND {$wpdb->prefix}ramphor_view_histories.last_views >= DATE(NOW()) - INTERVAL 7 DAY",
+                    AND {$wpdb->prefix}ramphor_view_histories.last_views >= DATE(NOW()) - INTERVAL %d DAY",
                 implode(', ', PostTypes::get()),
                 0,
                 wordland_get_real_ip_address(),
