@@ -69,18 +69,18 @@ class Property extends Data
     );
 
     protected static $meta_fields = array(
-        '%sproperty_id',
-        '%saddress',
-        '%sfull_address',
-        '%sprice',
-        '%sbedrooms',
-        '%sbathrooms',
-        '%sunit_price',
-        '%sacreage',
-        '%sfront_width',
-        '%sroad_width',
-        '%slisting_type',
-        '%slisting_type_label',
+        'property_id',
+        'address',
+        'full_address',
+        'price',
+        'bedrooms',
+        'bathrooms',
+        'unit_price',
+        'acreage',
+        'front_width',
+        'road_width',
+        'listing_type',
+        'listing_type_label',
     );
 
     public function setMeta($key, $value)
@@ -195,21 +195,26 @@ class Property extends Data
         return $this->listStyle;
     }
 
-    public static function get_meta_fields($prefix = null, $get_lat_lng = true, $get_location = false)
+    public static function get_meta_fields($prefix = null, $array_results = false, $get_lat_lng = true, $get_location = false)
     {
         $meta_fields = static::$meta_fields;
         if ($get_location) {
-            array_push($meta_fields, '%slocation');
-        }
-        if ($get_lat_lng) {
-            array_push($meta_fields, 'ST_X(%scoordinate) as latitude');
-            array_push($meta_fields, 'ST_Y(%scoordinate) as longitude');
+            array_push($meta_fields, 'location');
         }
 
         $prefix      = $prefix ? sprintf('%s.', $prefix) : '';
         $meta_fields = array_map(function ($field) use ($prefix) {
-            return sprintf($field, $prefix);
+            return $prefix . $field;
         }, $meta_fields);
+
+        if ($get_lat_lng) {
+            array_push($meta_fields, sprintf('ST_X(%scoordinate) as latitude', $prefix));
+            array_push($meta_fields, sprintf('ST_Y(%scoordinate) as longitude', $prefix));
+        }
+
+        if ($array_results) {
+            return $meta_fields;
+        }
 
         return implode(', ', $meta_fields);
     }
