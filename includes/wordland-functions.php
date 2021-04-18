@@ -346,3 +346,11 @@ function wordland_go_to_search_url($saved_search)
 
     return site_url('?' . $queryString);
 }
+
+function wordland_get_total_views($property_id) {
+    $wordland_instance = WordLand::instance();
+
+    return $wordland_instance
+        ->viewCounter
+        ->getTotalPostViews( $property_id );
+}
