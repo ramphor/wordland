@@ -433,7 +433,6 @@ class AjaxRequestManager
                 $markers[$index]['is_visited'] = $history_tracking_type === 'property_id'
                     ? wordland_check_property_is_visited($property->ID)
                     : wordland_check_property_is_visited_by_location($property->latitude, $property->longitude);
-                $markers[$index]['url'] = get_permalink($property);
 
                 $markers[$index]['marker_style'] = 'circle';
                 $markers[$index]['listing_type'] = array(
