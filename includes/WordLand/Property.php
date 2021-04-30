@@ -120,10 +120,13 @@ class Property extends Data
         return 'm2';
     }
 
-    public function makeCleanPriceHtml()
+    public function makeCleanPriceHtml($price = null)
     {
         if (is_null($this->metas['clean_price'])) {
-            $this->metas['clean_price'] = new Parser($this->price, new CurrencyScale(array(
+            if (is_null($price)) {
+                $price = $this->price;
+            }
+            $this->metas['clean_price'] = new Parser($price, new CurrencyScale(array(
                 'unit' => $this->getCurrency()
             )), new Locale(get_locale()));
         }
@@ -141,10 +144,13 @@ class Property extends Data
         );
     }
 
-    public function makeCleanUnitPriceHtml()
+    public function makeCleanUnitPriceHtml($price = null)
     {
         if (is_null($this->metas['clean_unit_price'])) {
-            $this->metas['clean_unit_price'] = new Parser($this->unit_price, new CurrencyScale(array(
+            if (is_null($price)) {
+                $price = $this->unit_price;
+            }
+            $this->metas['clean_unit_price'] = new Parser($price, new CurrencyScale(array(
                 'scale' => 'currency',
                 'unit' => $this->getCurrency()
             )), new Locale(get_locale()));
@@ -164,10 +170,13 @@ class Property extends Data
         );
     }
 
-    public function makeCleanAcreageHtml()
+    public function makeCleanAcreageHtml($acreage = null)
     {
         if (is_null($this->metas['clean_acreage'])) {
-            $this->metas['clean_acreage'] = new Parser($this->acreage, new MetricScale(array(
+            if (is_null($acreage)) {
+                $acreage = $this->acreage;
+            }
+            $this->metas['clean_acreage'] = new Parser($acreage, new MetricScale(array(
                 'unit' => 'm2'
             )), new Locale(get_locale()));
         }
