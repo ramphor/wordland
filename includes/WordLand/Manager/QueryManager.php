@@ -145,7 +145,7 @@ class QueryManager extends ManagerAbstract
         ));
         $listingTypes = array();
         foreach ($terms as $term) {
-            $listingTypes[] = array(
+            $listingTypes[$term->term_id] = array(
                 'id' => $term->term_id,
                 'name' => $term->name,
                 'slug' => $term->slug,
