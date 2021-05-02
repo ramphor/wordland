@@ -108,11 +108,11 @@ class FilterHelper
 
     public static function parseListingType($listingType)
     {
-        if (isset($listingType['id'])) {
+        if ($listingType > 0) {
             return array(
-                'taxonomy' => isset($listingType['taxonomy']) ? $listingType['taxonomy'] : PostTypes::PROPERTY_LISTING_TYPE,
+                'taxonomy' => PostTypes::PROPERTY_LISTING_TYPE,
                 'field' => 'term_id',
-                'terms' => intval($listingType['id'])
+                'terms' => intval($listingType)
             );
         }
         return false;

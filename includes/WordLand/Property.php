@@ -79,8 +79,7 @@ class Property extends Data
         'acreage',
         'front_width',
         'road_width',
-        'listing_type',
-        'listing_type_label',
+        'listing_type'
     );
 
     public function setMeta($key, $value)
