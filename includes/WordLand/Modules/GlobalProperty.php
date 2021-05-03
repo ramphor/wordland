@@ -36,6 +36,10 @@ class GlobalProperty extends ModuleAbstract
             return $GLOBALS['property'] = $this->mainProperty;
         }
 
+        if (!$query->is_main_query()) {
+            return;
+        }
+
         $builder = PropertyBuilderManager::getBuilder();
         $builder->setPost($post);
         $builder->buildContent();
