@@ -54,8 +54,12 @@ class Cache
         static::$visitedProperties[$post_id] = $viewed;
     }
 
-    public static function getVisitedProperties()
+    public static function getVisitedProperties($forceUpdate = false)
     {
+        if (static::$visitedProperties && !$forceUpdate) {
+            return static::$visitedProperties;
+        }
+
         global $wpdb;
         $history_tracking_type = wordland_get_option('guest_history_tracking', 'property_location');
 
