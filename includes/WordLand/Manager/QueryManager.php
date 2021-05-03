@@ -164,7 +164,7 @@ class QueryManager extends ManagerAbstract
             $query->query_from = sprintf(
                 '%s %s',
                 $query->query_from,
-                $wpdb->_real_escape("LEFT JOIN {$wpdb->prefix}wordland_agents ON {$wpdb->prefix}wordland_agents.user_id={$wpdb->users}.ID")
+                $wpdb->_real_escape("INNER JOIN {$wpdb->prefix}wordland_agents ON {$wpdb->prefix}wordland_agents.user_id={$wpdb->users}.ID")
             );
 
             return $pre;
