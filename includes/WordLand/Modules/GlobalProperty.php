@@ -36,22 +36,23 @@ class GlobalProperty extends ModuleAbstract
             return $GLOBALS['property'] = $this->mainProperty;
         }
 
-        $builder = PropertyBuilderManager::getBuilder();
-        $builder->setPost($post);
-        $builder->buildContent();
-        $builder->build();
-        $builder->getPropertyVisibilities();
+        if (!is_null($is_main_property)) {
+            $builder = PropertyBuilderManager::getBuilder();
+            $builder->setPost($post);
+            $builder->buildContent();
+            $builder->build();
+            $builder->getPropertyVisibilities();
 
-        do_action('wordland_dataloader_before_get_property', $builder, $post);
+            do_action('wordland_dataloader_before_get_property', $builder, $post);
 
-        $property = $builder->getProperty($is_main_property ? 'single' : 'global');
+            $property = $builder->getProperty($is_main_property ? 'single' : 'global');
 
-
-        return $GLOBALS['property'] = apply_filters(
-            'wordland_build_property_data',
-            $property,
-            $builder
-        );
+            return $GLOBALS['property'] = apply_filters(
+                'wordland_build_property_data',
+                $property,
+                $builder
+            );
+        }
     }
 
     public function setMainProperty(&$property)
