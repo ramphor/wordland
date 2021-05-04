@@ -24,6 +24,9 @@ class DataManager extends ManagerAbstract
 
         add_action('user_register', array($this, 'createAgentReferenceWithPostType'));
         add_action('profile_update', array($this, 'createAgentReferenceWithPostType'));
+
+        $listingType = PostTypes::PROPERTY_LISTING_TYPE;
+        do_action("delete_{$listingType}", array($this, 'update_listing_types_after_delete'), 10, 4);
     }
 
     public function autoSetListingType($object_id, $terms, $tt_ids, $taxonomy)
@@ -107,6 +110,45 @@ class DataManager extends ManagerAbstract
                 'post_id' => $postId,
                 'created_at' => current_time('mysql'),
             ));
+        }
+    }
+
+    public function update_listing_types_after_delete($term, $tt_id, $deleted_term, $object_ids)
+    {
+        // If listing type doesn't any properties the process is stopped.
+        if (empty($object_ids)) {
+            return;
+        }
+
+        foreach ($object_ids as $object_id) {
+            $metas = PropertyQuery::get_property_metas_from_ID($object_id);
+            if ($metas->listing_type == $term->term_id) {
+                global $wpdb;
+
+                $listingTypes = wp_get_post_terms($object_id, PostTypes::PROPERTY_LISTING_TYPE, array(
+                    'fields' => 'id=>name',
+                ));
+                if (count($listingTypes) > 0) {
+                    $term_id = array_key_first($listingTypes);
+                    $listingType = array(
+                        'listing_type' => intval($term_id),
+                        'listing_type_label' => $listingTypes[$term_id],
+                    );
+                } else {
+                    $listingType = array(
+                        'listing_type' => null,
+                        'listing_type_label' => null,
+                    );
+                }
+
+                return $wpdb->update(
+                    $wpdb->prefix . 'wordland_properties',
+                    $listingType,
+                    array(
+                        'property_id' => $object_id
+                    )
+                );
+            }
         }
     }
 }
