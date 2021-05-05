@@ -11,6 +11,7 @@ use WordLand\Modules\UserProfile;
 use WordLand\Modules\SendAgentMessage;
 use WordLand\Modules\AgentReviews;
 use WordLand\Modules\SaveSearch;
+use WordLand\Modules\ViewsCounter;
 
 class ModuleManager
 {
@@ -38,6 +39,7 @@ class ModuleManager
             SendAgentMessage::class,
             AgentReviews::class,
             SaveSearch::class,
+            ViewsCounter::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }

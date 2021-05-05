@@ -349,9 +349,9 @@ function wordland_go_to_search_url($saved_search)
 
 function wordland_get_total_views($property_id)
 {
-    $wordland_instance = WordLand::instance();
+    $property_metas = PropertyQuery::get_property_metas_from_ID($property_id);
 
-    return $wordland_instance
-        ->viewCounter
-        ->getTotalPostViews($property_id);
+    return isset($property_metas->total_views)
+        ? intval($property_metas->total_views)
+        : 0;
 }

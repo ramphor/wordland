@@ -51,6 +51,10 @@ class AjaxRequestManager
         'listing_type' => array(
             'source' => 'listing_type',
             'type' => 'int',
+        ),
+        'total_views' => array(
+            'source' => 'total_views',
+            'type' => 'int',
         )
     );
     protected static $markerMappingFields;
