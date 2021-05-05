@@ -26,7 +26,6 @@ class ViewsCounter extends ModuleAbstract
     {
         global $wpdb;
 
-
         $property_metas = array(
             'property_id' => $post_id,
             'total_views' => $totalViews,
