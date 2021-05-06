@@ -19,7 +19,7 @@
         "ramphor/user-profile": "dev-master",
         "ramphor/wallery": "^1.6.0",
         "puleeno/schema-org": "dev-master",
-        "ramphor/post-views": "^0.1",
+        "ramphor/post-views": "^0.5",
         "ramphor/plugin-core": "dev-master",
         "ramphor/wordpress-posts-collection": "dev-master",
         "ramphor/embrati": "^0.5",
@@ -27,8 +27,7 @@
         "phayes/geophp": "1.2",
         "ramphor/optimize-database": "dev-master",
         "puleeno/pomnipay": "dev-master",
-        "jankx/wordpress-specs": "dev-master",
-        "woocommerce/action-scheduler": "3.1.6"
+        "jankx/wordpress-specs": "dev-master"
     },
     "autoload": {
         "psr-4": {

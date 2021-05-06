@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc5cb01bf7bfec1dd72adef480809f1e",
+    "content-hash": "2cd09bd133020448755fabe3f5b5218f",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -622,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay.git",
-                "reference": "e9439db0633ba988e6f6cdd029fad38aad73f9f6"
+                "reference": "d090c000030fc759e32f6f747873b5d630103030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/e9439db0633ba988e6f6cdd029fad38aad73f9f6",
-                "reference": "e9439db0633ba988e6f6cdd029fad38aad73f9f6",
+                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/d090c000030fc759e32f6f747873b5d630103030",
+                "reference": "d090c000030fc759e32f6f747873b5d630103030",
                 "shasum": ""
             },
             "require": {
@@ -667,7 +667,7 @@
                 "omnipay",
                 "payment"
             ],
-            "time": "2021-03-12T09:17:59+00:00"
+            "time": "2021-05-02T15:02:18+00:00"
         },
         {
             "name": "maxmind-db/reader",
@@ -775,6 +775,88 @@
             "description": "Internal MaxMind Web Service API",
             "homepage": "https://github.com/maxmind/web-service-common-php",
             "time": "2020-11-02T17:00:53+00:00"
+        },
+        {
+            "name": "moneyphp/money",
+            "version": "3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moneyphp/money.git",
+                "reference": "59837e34d7476c0f416b84f42e5f790a544de942"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/59837e34d7476c0f416b84f42e5f790a544de942",
+                "reference": "59837e34d7476c0f416b84f42e5f790a544de942",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "cache/taggable-cache": "^0.4.0",
+                "doctrine/instantiator": "^1.0.5",
+                "ext-bcmath": "*",
+                "ext-gmp": "*",
+                "ext-intl": "*",
+                "florianv/exchanger": "^1.0",
+                "florianv/swap": "^3.0",
+                "friends-of-phpspec/phpspec-code-coverage": "^3.1.1 || ^4.3",
+                "moneyphp/iso-currencies": "^3.2.1",
+                "php-http/message": "^1.4",
+                "php-http/mock-client": "^1.0.0",
+                "phpspec/phpspec": "^3.4.3",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.18 || ^8.5",
+                "psr/cache": "^1.0",
+                "symfony/phpunit-bridge": "^4"
+            },
+            "suggest": {
+                "ext-bcmath": "Calculate without integer limits",
+                "ext-gmp": "Calculate without integer limits",
+                "ext-intl": "Format Money objects with intl",
+                "florianv/exchanger": "Exchange rates library for PHP",
+                "florianv/swap": "Exchange rates library for PHP",
+                "psr/cache-implementation": "Used for Currency caching"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Money\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathias Verraes",
+                    "email": "mathias@verraes.net",
+                    "homepage": "http://verraes.net"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                },
+                {
+                    "name": "Frederik Bosch",
+                    "email": "f.bosch@genkgo.nl"
+                }
+            ],
+            "description": "PHP implementation of Fowler's Money pattern",
+            "homepage": "http://moneyphp.org",
+            "keywords": [
+                "Value Object",
+                "money",
+                "vo"
+            ],
+            "time": "2021-03-16T13:51:45+00:00"
         },
         {
             "name": "omnipay/common",
@@ -1465,12 +1547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "a18c1e692e02b84abbafe4856c3cd7cc6903908c"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/a18c1e692e02b84abbafe4856c3cd7cc6903908c",
-                "reference": "a18c1e692e02b84abbafe4856c3cd7cc6903908c",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -1504,7 +1586,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2021-03-02T15:02:34+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "puleeno/pomnipay",
@@ -1895,16 +1977,16 @@
         },
         {
             "name": "ramphor/post-views",
-            "version": "0.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/post-views.git",
-                "reference": "3f8e228e5a4f686ba12c5d76774a0a9455c99a4d"
+                "reference": "cfb26f1100b367bf585f690b140cf8b565be3c64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/post-views/zipball/3f8e228e5a4f686ba12c5d76774a0a9455c99a4d",
-                "reference": "3f8e228e5a4f686ba12c5d76774a0a9455c99a4d",
+                "url": "https://api.github.com/repos/ramphor/post-views/zipball/cfb26f1100b367bf585f690b140cf8b565be3c64",
+                "reference": "cfb26f1100b367bf585f690b140cf8b565be3c64",
                 "shasum": ""
             },
             "type": "library",
@@ -1927,7 +2009,7 @@
                 }
             ],
             "description": "Track visited posts and user view posts",
-            "time": "2020-12-31T05:55:26+00:00"
+            "time": "2021-05-04T16:54:29+00:00"
         },
         {
             "name": "ramphor/user-profile",
@@ -2326,41 +2408,6 @@
                 }
             ],
             "time": "2021-02-19T12:13:01+00:00"
-        },
-        {
-            "name": "woocommerce/action-scheduler",
-            "version": "3.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/woocommerce/action-scheduler.git",
-                "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/woocommerce/action-scheduler/zipball/275d0ba54b1c263dfc62688de2fa9a25a373edf8",
-                "reference": "275d0ba54b1c263dfc62688de2fa9a25a373edf8",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.6",
-                "woocommerce/woocommerce-sniffs": "0.0.8",
-                "wp-cli/wp-cli": "~1.5.1"
-            },
-            "type": "wordpress-plugin",
-            "extra": {
-                "scripts-description": {
-                    "test": "Run unit tests",
-                    "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
-                    "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "description": "Action Scheduler for WordPress and WooCommerce",
-            "homepage": "https://actionscheduler.org/",
-            "time": "2020-05-12T16:22:33+00:00"
         }
     ],
     "packages-dev": [],
@@ -2373,6 +2420,7 @@
         "ramphor/locations": 20,
         "ramphor/user-profile": 20,
         "puleeno/schema-org": 20,
+        "ramphor/post-views": 20,
         "ramphor/plugin-core": 20,
         "ramphor/wordpress-posts-collection": 20,
         "ramphor/optimize-database": 20,
