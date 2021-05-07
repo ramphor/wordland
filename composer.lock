@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cd09bd133020448755fabe3f5b5218f",
+    "content-hash": "2f6d9e4a02eef04946d9b1aa00954e12",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1977,7 +1977,7 @@
         },
         {
             "name": "ramphor/post-views",
-            "version": "dev-master",
+            "version": "0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/post-views.git",
@@ -2009,7 +2009,7 @@
                 }
             ],
             "description": "Track visited posts and user view posts",
-            "time": "2021-05-04T16:54:29+00:00"
+            "time": "2021-05-06T12:04:10+00:00"
         },
         {
             "name": "ramphor/user-profile",
@@ -2420,7 +2420,6 @@
         "ramphor/locations": 20,
         "ramphor/user-profile": 20,
         "puleeno/schema-org": 20,
-        "ramphor/post-views": 20,
         "ramphor/plugin-core": 20,
         "ramphor/wordpress-posts-collection": 20,
         "ramphor/optimize-database": 20,
