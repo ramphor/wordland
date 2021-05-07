@@ -71,6 +71,9 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
     protected function createCodeID()
     {
+        if (wordland_get_option('use_sku_as_code_id', true)) {
+            return $this->property->codeID = $this->sku;
+        }
         $prefix = get_option('wordland_property_code_id_prefix');
         $this->property->codeID = sprintf(
             '%s%010s',
