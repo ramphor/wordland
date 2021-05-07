@@ -42,6 +42,7 @@ class Installer
         $tables = array(
             'wordland_properties' => '`ID` BIGINT NOT NULL AUTO_INCREMENT,
                 `property_id` BIGINT NOT NULL,
+                `sku` VARCHAR(255) NULL,
                 `coordinate` POINT NULL,
                 `address` VARCHAR(255) NULL,
                 `full_address` VARCHAR(255) NULL,
