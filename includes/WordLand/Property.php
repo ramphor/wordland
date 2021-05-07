@@ -11,6 +11,7 @@ class Property extends Data
 {
     public $ID;
     public $codeID;
+    public $sku;
     public $name;
     public $description;
     public $content;
@@ -70,6 +71,7 @@ class Property extends Data
 
     protected static $meta_fields = array(
         'property_id',
+        'sku',
         'address',
         'full_address',
         'price',
