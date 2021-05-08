@@ -213,13 +213,13 @@ class AjaxRequestManager
                 $args['custom_order'] = $request['sort_by'];
             }
         }
-
-        $query = new PropertyQuery(apply_filters(
+        $args = apply_filters(
             'wordland_ajax_build_query_args',
             $args,
             $request,
             $this
-        ));
+        );
+        $query = new PropertyQuery($args);
 
         return $query->getWordPressQuery();
     }
@@ -348,12 +348,18 @@ class AjaxRequestManager
         add_filter('posts_where', array(__CLASS__, 'postsWhere'), 10, 2);
 
         $current_page   = isset($request['page']) && $request['page'] > 0 ? (int) $request['page'] : 1;
-        $items_per_page = 40;
-        $wp_query = $this->buildQuery($this->filterQueries(array(
+        $items_per_page = 50;
+        $args = array(
             'page' => $current_page,
-            'posts_per_page' => 40,
-        )), $request);
+            'posts_per_page' => $items_per_page,
+        );
+        if (($max_pages = wordland_get_option('max_properties_pages', 0)) > 0) {
+            $args['max_num_pages'] = $max_pages;
+        }
+        $args       = $this->filterQueries($args);
+        $wp_query   = $this->buildQuery($args, $request);
         $properties = array();
+
         if ($wp_query->have_posts()) {
             while ($wp_query->have_posts()) {
                 $wp_query->the_post();
@@ -384,13 +390,21 @@ class AjaxRequestManager
         $current_page   = array_get($wp_query->query_vars, 'paged', 1);
         $current_page   = $current_page > 0 ? $current_page : 1;
 
+        $real_total_page = ceil($total_items/$items_per_page);
+        $total_pages = $real_total_page;
+        $max_pages = array_get($wp_query->query_vars, 'max_num_pages', 0);
+
+        if ($max_pages > 0 && $max_pages < $real_total_page) {
+            $total_pages = $max_pages;
+        }
+
         wp_send_json_success(array(
             'properties' => $properties,
             'current_page' => $current_page,
             'items_per_page' => $items_per_page,
             'total_items' => $total_items,
             'found_items' => $wp_query->post_count,
-            'total_page' => ceil($total_items/$items_per_page),
+            'total_page' => $total_pages,
         ));
     }
 
