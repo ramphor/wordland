@@ -262,6 +262,10 @@ class Property extends Data
             Locations::BOUNDARY_LEVEL_3 => 'areaLevel3',
             Locations::BOUNDARY_LEVEL_4 => 'areaLevel4',
         );
+        if (!isset($mapTos[$level])) {
+            return;
+        }
+
         $mapKey = $mapTos[$level];
         $this->$mapKey = $value;
     }
