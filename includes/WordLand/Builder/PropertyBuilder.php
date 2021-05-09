@@ -8,6 +8,7 @@ use WordLand\PostTypes;
 use WordLand\Agent;
 use WordLand\Query\AgentQuery;
 use WordLand\Admin\Property\MetaBox\PropertyInformation;
+use WordLand\Locations;
 
 class PropertyBuilder extends PropertyBuilderAbstract
 {
@@ -67,6 +68,30 @@ class PropertyBuilder extends PropertyBuilderAbstract
 
     public function buildLocations()
     {
+        $location_taxs = array(
+            Locations::BOUNDARY_LEVEL_1,
+            Locations::BOUNDARY_LEVEL_2,
+            Locations::BOUNDARY_LEVEL_3,
+        );
+
+        if (apply_filters('wordland_enable_country_taxonomy', false)) {
+            array_unshift($location_taxs, Locations::COUNTRY_LEVEL);
+        }
+        if (apply_filters('wordland_enable_area_level_4', false)) {
+            array_push($location_taxs, Locations::BOUNDARY_LEVEL_4);
+        }
+
+        $terms = wp_get_post_terms($this->property->ID, $location_taxs);
+        foreach ($terms as $term) {
+            $this->property->setLocationByLevel(apply_filters(
+                "wordland_set_location_{$term->taxonomy}",
+                array(
+                    'name' => $term->name,
+                    'term_id'=> $term->term_id,
+                    'url'=> get_term_link($term, $tax),
+                )
+            ), $term->taxonomy);
+        }
     }
 
     public function getVideo()
