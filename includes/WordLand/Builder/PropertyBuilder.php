@@ -88,7 +88,7 @@ class PropertyBuilder extends PropertyBuilderAbstract
                 array(
                     'name' => $term->name,
                     'term_id'=> $term->term_id,
-                    'url'=> get_term_link($term, $tax),
+                    'url'=> get_term_link($term, $term->taxonomy),
                 )
             ), $term->taxonomy);
         }
