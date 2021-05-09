@@ -1,11 +1,13 @@
 <?php
 namespace WordLand;
 
-use WordLand\Abstracts\Data;
 use Ramphor\FriendlyNumbers\Parser;
 use Ramphor\FriendlyNumbers\Scale\CurrencyScale;
 use Ramphor\FriendlyNumbers\Scale\MetricScale;
 use Ramphor\FriendlyNumbers\Locale;
+
+use WordLand\Abstracts\Data;
+use WordLand\Locations;
 
 class Property extends Data
 {
@@ -30,11 +32,18 @@ class Property extends Data
     public $roadWidth = 0;
     public $images = array();
 
+    protected $areaLevelId1;
+    protected $areaLevelId2;
+    protected $areaLevelId3;
+    protected $areaLevelId4;
+    protected $countryId;
+
+    // Location objects
     protected $areaLevel1;
     protected $areaLevel2;
     protected $areaLevel3;
     protected $areaLevel4;
-    protected $countryId;
+    protected $country;
 
     public $categories = array();
     public $types = array();
@@ -242,5 +251,18 @@ class Property extends Data
     public function setSameLocationItems($numberOfItems)
     {
         $this->sameLocationItems = intval($numberOfItems);
+    }
+
+    public function setLocationByLevel($value, $level = 'country')
+    {
+        $mapTos = array(
+            Locations::COUNTRY_LEVEL => 'country',
+            Locations::BOUNDARY_LEVEL_1 => 'areaLevel1',
+            Locations::BOUNDARY_LEVEL_2 => 'areaLevel2',
+            Locations::BOUNDARY_LEVEL_3 => 'areaLevel3',
+            Locations::BOUNDARY_LEVEL_4 => 'areaLevel4',
+        );
+        $mapKey = $mapTos[$level];
+        $this->$mapKey = $value;
     }
 }

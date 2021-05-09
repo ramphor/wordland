@@ -23,10 +23,10 @@ class Agent extends Data
 
     protected $phoneNumber;
     protected $address;
-    protected $areaLevel1;
-    protected $areaLevel2;
-    protected $areaLevel3;
-    protected $areaLevel4;
+    protected $areaLevelId1;
+    protected $areaLevelId2;
+    protected $areaLevelId3;
+    protected $areaLevelId4;
     protected $countryId;
 
     protected $avatarUrl;
@@ -169,10 +169,10 @@ class Agent extends Data
             'user_id' => $this->userID,
             'phone_number' => (string)$this->phoneNumber,
             'address' => (string)$this->address,
-            'area_level_1' => intval($this->areaLevel1),
-            'area_level_2' => intval($this->areaLevel2),
-            'area_level_3' => intval($this->areaLevel3),
-            'area_level_4' => intval($this->areaLevel4),
+            'area_level_1' => intval($this->areaLevelId1),
+            'area_level_2' => intval($this->areaLevelId2),
+            'area_level_3' => intval($this->areaLevelId3),
+            'area_level_4' => intval($this->areaLevelId4),
             'country_id' => intval($this->countryId),
         );
         $agent_table_name = sprintf('%swordland_agents', $wpdb->prefix);
