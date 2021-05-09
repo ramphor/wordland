@@ -10,6 +10,12 @@ use WordLand\Integrations\MaxMind\GeoLocation;
 
 class Locations
 {
+    const COUNTRY_LEVEL = 'country';
+    const BOUNDARY_LEVEL_1 = 'administrative_area_level_1';
+    const BOUNDARY_LEVEL_2 = 'administrative_area_level_2';
+    const BOUNDARY_LEVEL_3 = 'administrative_area_level_3';
+    const BOUNDARY_LEVEL_4 = 'administrative_area_level_4';
+
     private $levels = array();
     public $current_location;
     protected $source_name;
@@ -79,7 +85,7 @@ class Locations
                 'plural_name' => __('Country', 'wordland'),
             );
             register_taxonomy(
-                'country',
+                static::COUNTRY_LEVEL,
                 PostTypes::get(),
                 apply_filters('wordland_taxonomy_country_args', array(
                     'labels' => $labels,
@@ -95,7 +101,7 @@ class Locations
         );
 
         register_taxonomy(
-            'administrative_area_level_1',
+            static::BOUNDARY_LEVEL_1,
             PostTypes::get(),
             apply_filters('wordland_taxonomy_administrative_area_level_1_args', array(
                 'labels' => $labels,
@@ -110,7 +116,7 @@ class Locations
             'plural_name' => __('Area Level 2', 'wordland'),
         );
         register_taxonomy(
-            'administrative_area_level_2',
+            static::BOUNDARY_LEVEL_2,
             PostTypes::get(),
             apply_filters('wordland_taxonomy_administrative_area_level_2_args', array(
                 'labels' => $labels,
@@ -124,7 +130,7 @@ class Locations
             'plural_name' => __('Area Level 3', 'wordland'),
         );
         register_taxonomy(
-            'administrative_area_level_3',
+            static::BOUNDARY_LEVEL_3,
             PostTypes::get(),
             apply_filters('wordland_taxonomy_administrative_area_level_3_args', array(
                 'labels' => $labels,
@@ -139,7 +145,7 @@ class Locations
                 'plural_name' => __('Area Level 4', 'wordland'),
             );
             register_taxonomy(
-                'administrative_area_level_4',
+                static::BOUNDARY_LEVEL_4,
                 PostTypes::get(),
                 apply_filters('wordland_taxonomy_administrative_area_level_4_args', array(
                     'labels' => $labels,

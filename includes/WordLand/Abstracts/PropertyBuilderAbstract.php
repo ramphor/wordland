@@ -150,6 +150,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
                 $this
             ));
             $this->buildCategories();
+            $this->buildLocations();
             $this->getVideo();
         }
 
