@@ -344,6 +344,11 @@ function wordland_go_to_search_url($saved_search)
         'searchQueryState' => $saved_search->search_content,
     ));
 
+    $advanced_search = wordland_get_option('advanced_search_page');
+    if ($advanced_search && ($advanced_search = get_permalink($advanced_search))) {
+        return sprintf('%s/?%s', rtrim($advanced_search, '/'), $queryString);
+    }
+
     return site_url('?' . $queryString);
 }
 
