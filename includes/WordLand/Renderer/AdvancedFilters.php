@@ -30,6 +30,6 @@ class AdvancedFilters extends Renderer
             return $pre;
         }
 
-        echo 'advanced search';
+        return 'advanced search';
     }
 }
