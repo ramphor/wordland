@@ -2,16 +2,17 @@
 namespace WordLand\Manager;
 
 use WordLand\Constracts\Module;
-use WordLand\Modules\FavoriteProperty;
-use WordLand\Modules\SearchHistory;
 use WordLand\Modules\Ajax\QueryLocation;
 use WordLand\Modules\Ajax\SameLocationProperties;
+use WordLand\Modules\FavoriteProperty;
+use WordLand\Modules\SearchHistory;
 use WordLand\Modules\GlobalProperty;
 use WordLand\Modules\UserProfile;
 use WordLand\Modules\SendAgentMessage;
 use WordLand\Modules\AgentReviews;
 use WordLand\Modules\SaveSearch;
 use WordLand\Modules\ViewsCounter;
+use WordLand\Modules\AdvancedSearch;
 
 class ModuleManager
 {
@@ -40,6 +41,7 @@ class ModuleManager
             AgentReviews::class,
             SaveSearch::class,
             ViewsCounter::class,
+            AdvancedSearch::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
