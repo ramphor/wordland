@@ -6,6 +6,13 @@ use WordLand\Template;
 
 class TermPropertyCounter extends Renderer
 {
+    const RENDERER_NAME = 'term_counter';
+
+    public function get_name()
+    {
+        return static::RENDERER_NAME;
+    }
+
     public function get_content()
     {
         $termId = array_get($this->props, 'term_id', false);
