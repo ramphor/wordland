@@ -56,6 +56,14 @@ abstract class Renderer implements RendererConstract
         }
     }
 
+    public function getProp($name, $defaultValue = null)
+    {
+        if (isset($this->props[$name])) {
+            return $this->props[$name];
+        }
+        return $defaultValue;
+    }
+
     protected function getHeaderContent()
     {
         if (!$this->title) {
