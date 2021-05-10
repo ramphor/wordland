@@ -41,6 +41,14 @@ abstract class Renderer implements RendererConstract
         }
     }
 
+    public function addProp($prop_name, $prop_value)
+    {
+        $this->props[$prop_name] = apply_filters(
+            "wordland_renderer_set_{$this->get_name()}_{$prop_name}_prop",
+            $prop_value
+        );
+    }
+
     public function setProps($props)
     {
         if (is_array($props)) {

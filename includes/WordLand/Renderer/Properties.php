@@ -7,6 +7,13 @@ use WordLand\Template;
 
 class Properties extends Renderer
 {
+    const RENDERER_NAME = 'properties';
+
+    public function get_name()
+    {
+        return static::RENDERER_NAME;
+    }
+
     public function get_content()
     {
         $wp_query = $this->query->getWordPressQuery();
