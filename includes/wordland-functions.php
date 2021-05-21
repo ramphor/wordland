@@ -13,7 +13,6 @@ function wordland_template($templates, $data = array(), $context = null, $echo =
     return Template::render(
         $templates,
         $data,
-        $context,
         $echo
     );
 }

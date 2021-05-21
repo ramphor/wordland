@@ -132,21 +132,6 @@ class WordLand
             array(DB::class, 'setup')
         );
 
-        if (class_exists(ProfileManager::class)) {
-            $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
-            $profileTemplateLoader = Template::getLoader(
-                $userTemplatesDir,
-                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
-                'wordpress'
-            );
-            $profileManager = ProfileManager::getInstance();
-            $profileManager->registerTemplate(
-                static::TEMPLATE_LOADER_ID,
-                $profileTemplateLoader
-            );
-            $profileManager->registerUserProfile(Agent::DEFAULT_AGENT_TYPE);
-            $profileManager->registerMyProfile('wordland_get_option');
-        }
         add_action('init', array($this, 'init'));
     }
 
@@ -177,6 +162,23 @@ class WordLand
 
         if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', true)) {
             show_admin_bar(false);
+        }
+
+        if (class_exists(ProfileManager::class)) {
+            $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
+            $profileTemplateLoader = Template::createEngine(
+                'wordland_agent',
+                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
+                $userTemplatesDir,
+                'plates'
+            );
+            $profileManager = ProfileManager::getInstance();
+            $profileManager->registerTemplate(
+                static::TEMPLATE_LOADER_ID,
+                $profileTemplateLoader
+            );
+            $profileManager->registerUserProfile(Agent::DEFAULT_AGENT_TYPE);
+            $profileManager->registerMyProfile('wordland_get_option');
         }
     }
 
