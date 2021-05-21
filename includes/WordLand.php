@@ -132,7 +132,29 @@ class WordLand
             array(DB::class, 'setup')
         );
 
+        add_action('init', array($this, 'setupUserProfile'), 5);
         add_action('init', array($this, 'init'));
+    }
+
+    public function setupUserProfile()
+    {
+        if (class_exists(ProfileManager::class)) {
+            $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
+            $profileTemplateEngine = Template::createEngine(
+                'wordland_agent',
+                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
+                $userTemplatesDir,
+                'plates'
+            );
+
+            $profileManager = ProfileManager::getInstance();
+            $profileManager->registerTemplate(
+                static::TEMPLATE_LOADER_ID,
+                $profileTemplateEngine
+            );
+            $profileManager->registerUserProfile(Agent::DEFAULT_AGENT_TYPE);
+            $profileManager->registerMyProfile('wordland_get_option');
+        }
     }
 
     public function init()
@@ -162,23 +184,6 @@ class WordLand
 
         if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', true)) {
             show_admin_bar(false);
-        }
-
-        if (class_exists(ProfileManager::class)) {
-            $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
-            $profileTemplateLoader = Template::createEngine(
-                'wordland_agent',
-                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
-                $userTemplatesDir,
-                'plates'
-            );
-            $profileManager = ProfileManager::getInstance();
-            $profileManager->registerTemplate(
-                static::TEMPLATE_LOADER_ID,
-                $profileTemplateLoader
-            );
-            $profileManager->registerUserProfile(Agent::DEFAULT_AGENT_TYPE);
-            $profileManager->registerMyProfile('wordland_get_option');
         }
     }
 
