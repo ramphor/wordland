@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f6d9e4a02eef04946d9b1aa00954e12",
+    "content-hash": "0ad77b7934315b5acc0d70143f5f9f13",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -56,6 +56,10 @@
                 "stream_filter_append",
                 "stream_filter_register"
             ],
+            "support": {
+                "issues": "https://github.com/clue/stream-filter/issues",
+                "source": "https://github.com/clue/stream-filter/tree/v1.5.0"
+            },
             "funding": [
                 {
                     "url": "https://clue.engineering/support",
@@ -93,6 +97,7 @@
                 "symfony/phpunit-bridge": "^4.2 || ^5",
                 "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -123,6 +128,11 @@
                 "ssl",
                 "tls"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/ca-bundle/issues",
+                "source": "https://github.com/composer/ca-bundle/tree/main"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -190,6 +200,10 @@
                 "geolocation",
                 "maxmind"
             ],
+            "support": {
+                "issues": "https://github.com/maxmind/GeoIP2-php/issues",
+                "source": "https://github.com/maxmind/GeoIP2-php/tree/v2.11.0"
+            },
             "time": "2020-10-01T18:48:34+00:00"
         },
         {
@@ -228,6 +242,7 @@
                 "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -271,6 +286,10 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/master"
+            },
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -311,6 +330,7 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4 || ^5.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -340,6 +360,10 @@
             "keywords": [
                 "promise"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/1.4.1"
+            },
             "time": "2021-03-07T09:25:29+00:00"
         },
         {
@@ -374,6 +398,7 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -416,6 +441,10 @@
                 "uri",
                 "url"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/2.0.0-rc1"
+            },
             "time": "2021-04-29T07:35:29+00:00"
         },
         {
@@ -473,6 +502,11 @@
                 "social",
                 "twitter"
             ],
+            "support": {
+                "gitter": "https://gitter.im/hybridauth/hybridauth",
+                "issues": "https://github.com/hybridauth/hybridauth/issues",
+                "source": "https://github.com/hybridauth/hybridauth/tree/master"
+            },
             "time": "2019-12-27T09:26:40+00:00"
         },
         {
@@ -489,6 +523,7 @@
                 "reference": "e2ba7033abc371a3982bd7181cd8ea4a3fa832a8",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -509,25 +544,94 @@
                 }
             ],
             "description": "The helpers for Jankx Framework",
+            "support": {
+                "issues": "https://github.com/jankx/helpers/issues",
+                "source": "https://github.com/jankx/helpers/tree/master"
+            },
             "time": "2021-03-27T08:09:09+00:00"
         },
         {
-            "name": "jankx/template",
-            "version": "1.0.5",
+            "name": "jankx/plates",
+            "version": "v3.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jankx/template.git",
-                "reference": "923b5c59fd3626cc2b0f9b28cc0e90147cdaabca"
+                "url": "https://github.com/jankx/plates.git",
+                "reference": "3732d552284792a596d6d0386dc80ac56e67bde1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/923b5c59fd3626cc2b0f9b28cc0e90147cdaabca",
-                "reference": "923b5c59fd3626cc2b0f9b28cc0e90147cdaabca",
+                "url": "https://api.github.com/repos/jankx/plates/zipball/3732d552284792a596d6d0386dc80ac56e67bde1",
+                "reference": "3732d552284792a596d6d0386dc80ac56e67bde1",
                 "shasum": ""
             },
             "require": {
-                "jankx/template-engine": "^1.0"
+                "php": "^7.0|^8.0"
             },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Plates\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "role": "Developer"
+                },
+                {
+                    "name": "RJ Garcia",
+                    "email": "ragboyjr@icloud.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plates, the native PHP template system that's fast, easy to use and easy to extend.",
+            "homepage": "https://platesphp.com",
+            "keywords": [
+                "league",
+                "package",
+                "templates",
+                "templating",
+                "views"
+            ],
+            "support": {
+                "source": "https://github.com/jankx/plates/tree/v3"
+            },
+            "time": "2021-05-18T16:17:03+00:00"
+        },
+        {
+            "name": "jankx/template",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jankx/template.git",
+                "reference": "0cd3ab1772730aa16086c404e5c58e74294d8ca4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jankx/template/zipball/0cd3ab1772730aa16086c404e5c58e74294d8ca4",
+                "reference": "0cd3ab1772730aa16086c404e5c58e74294d8ca4",
+                "shasum": ""
+            },
+            "require": {
+                "jankx/template-engine": "*"
+            },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -545,29 +649,36 @@
                 }
             ],
             "description": "Jankx Template is used to load the template support override, caching.",
-            "time": "2021-03-26T10:39:25+00:00"
+            "support": {
+                "issues": "https://github.com/jankx/template/issues",
+                "source": "https://github.com/jankx/template/tree/master"
+            },
+            "time": "2021-05-18T17:08:41+00:00"
         },
         {
             "name": "jankx/template-engine",
-            "version": "1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "d531d3df820bd2201fd0e6e30aef1ec943a4ca8f"
+                "reference": "a8d2f31b71ba3dfe0c6b67c29b10f4d0e5a79d8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/d531d3df820bd2201fd0e6e30aef1ec943a4ca8f",
-                "reference": "d531d3df820bd2201fd0e6e30aef1ec943a4ca8f",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/a8d2f31b71ba3dfe0c6b67c29b10f4d0e5a79d8d",
+                "reference": "a8d2f31b71ba3dfe0c6b67c29b10f4d0e5a79d8d",
                 "shasum": ""
             },
             "require": {
-                "jankx/helpers": "*"
+                "jankx/helpers": "*",
+                "jankx/plates": "*",
+                "php": "^5.6|^7.3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Jankx\\Template\\Engine\\": "src/"
+                    "Jankx\\TemplateEngine\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -581,7 +692,11 @@
                 }
             ],
             "description": "The template engine for Jankx Framework",
-            "time": "2021-03-27T08:04:07+00:00"
+            "support": {
+                "issues": "https://github.com/jankx/template-engine/issues",
+                "source": "https://github.com/jankx/template-engine/tree/master"
+            },
+            "time": "2021-05-21T05:03:55+00:00"
         },
         {
             "name": "jankx/wordpress-specs",
@@ -597,6 +712,7 @@
                 "reference": "38a3d691de1887cbf602f20fe8da052e67a41b3d",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -614,6 +730,10 @@
                 }
             ],
             "description": " Define the WordPress specs to reuse in themes or plugins",
+            "support": {
+                "issues": "https://github.com/jankx/wordpress-specs/issues",
+                "source": "https://github.com/jankx/wordpress-specs/tree/master"
+            },
             "time": "2021-03-20T04:12:11+00:00"
         },
         {
@@ -639,6 +759,7 @@
             "require-dev": {
                 "omnipay/tests": "^3"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -667,6 +788,10 @@
                 "omnipay",
                 "payment"
             ],
+            "support": {
+                "issues": "https://github.com/thephpleague/omnipay/issues",
+                "source": "https://github.com/thephpleague/omnipay/tree/master"
+            },
             "time": "2021-05-02T15:02:18+00:00"
         },
         {
@@ -728,6 +853,10 @@
                 "geolocation",
                 "maxmind"
             ],
+            "support": {
+                "issues": "https://github.com/maxmind/MaxMind-DB-Reader-php/issues",
+                "source": "https://github.com/maxmind/MaxMind-DB-Reader-php/tree/v1.10.1"
+            },
             "time": "2021-04-14T17:49:35+00:00"
         },
         {
@@ -774,6 +903,10 @@
             ],
             "description": "Internal MaxMind Web Service API",
             "homepage": "https://github.com/maxmind/web-service-common-php",
+            "support": {
+                "issues": "https://github.com/maxmind/web-service-common-php/issues",
+                "source": "https://github.com/maxmind/web-service-common-php/tree/v0.8.1"
+            },
             "time": "2020-11-02T17:00:53+00:00"
         },
         {
@@ -782,12 +915,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "59837e34d7476c0f416b84f42e5f790a544de942"
+                "reference": "a44e2f2bb6bf048596af1649cb7c51dd421a979a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/59837e34d7476c0f416b84f42e5f790a544de942",
-                "reference": "59837e34d7476c0f416b84f42e5f790a544de942",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/a44e2f2bb6bf048596af1649cb7c51dd421a979a",
+                "reference": "a44e2f2bb6bf048596af1649cb7c51dd421a979a",
                 "shasum": ""
             },
             "require": {
@@ -856,6 +989,10 @@
                 "money",
                 "vo"
             ],
+            "support": {
+                "issues": "https://github.com/moneyphp/money/issues",
+                "source": "https://github.com/moneyphp/money/tree/master"
+            },
             "time": "2021-03-16T13:51:45+00:00"
         },
         {
@@ -889,6 +1026,7 @@
             "suggest": {
                 "league/omnipay": "The default Omnipay package provides a default HTTP Adapter."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -938,6 +1076,10 @@
                 "payment",
                 "purchase"
             ],
+            "support": {
+                "issues": "https://github.com/thephpleague/omnipay-common/issues",
+                "source": "https://github.com/thephpleague/omnipay-common/tree/master"
+            },
             "time": "2020-12-13T12:53:48+00:00"
         },
         {
@@ -962,6 +1104,7 @@
                 "phpro/grumphp": "^0.14",
                 "squizlabs/php_codesniffer": "^3"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -998,6 +1141,10 @@
                 "paypal",
                 "purchase"
             ],
+            "support": {
+                "issues": "https://github.com/thephpleague/omnipay-paypal/issues",
+                "source": "https://github.com/thephpleague/omnipay-paypal/tree/master"
+            },
             "time": "2020-01-15T10:33:47+00:00"
         },
         {
@@ -1034,6 +1181,10 @@
             ],
             "description": "GeoPHP is a open-source native PHP library for doing geometry operations. It is written entirely in PHP and can therefore run on shared hosts. It can read and write a wide variety of formats: WKT (including EWKT), WKB (including EWKB), GeoJSON, KML, GPX, GeoRSS). It works with all Simple-Feature geometries (Point, LineString, Polygon, GeometryCollection etc.) and can be used to get centroids, bounding-boxes, area, and a wide variety of other useful information.",
             "homepage": "https://github.com/phayes/geoPHP",
+            "support": {
+                "issues": "https://github.com/phayes/geoPHP/issues",
+                "source": "https://github.com/phayes/geoPHP/tree/master"
+            },
             "time": "2014-12-02T06:11:22+00:00"
         },
         {
@@ -1099,6 +1250,10 @@
                 "message",
                 "psr7"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/discovery/issues",
+                "source": "https://github.com/php-http/discovery/tree/1.13.0"
+            },
             "time": "2020-11-27T14:49:42+00:00"
         },
         {
@@ -1157,6 +1312,10 @@
                 "Guzzle",
                 "http"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/guzzle7-adapter/issues",
+                "source": "https://github.com/php-http/guzzle7-adapter/tree/0.1.1"
+            },
             "time": "2020-10-21T17:30:51+00:00"
         },
         {
@@ -1183,6 +1342,7 @@
                 "friends-of-phpspec/phpspec-code-coverage": "^4.1",
                 "phpspec/phpspec": "^5.1 || ^6.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1215,6 +1375,10 @@
                 "client",
                 "http"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/httplug/issues",
+                "source": "https://github.com/php-http/httplug/tree/2.2.0"
+            },
             "time": "2020-07-13T15:43:23+00:00"
         },
         {
@@ -1285,6 +1449,10 @@
                 "message",
                 "psr-7"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/message/issues",
+                "source": "https://github.com/php-http/message/tree/1.11.0"
+            },
             "time": "2021-02-01T08:54:58+00:00"
         },
         {
@@ -1305,6 +1473,7 @@
                 "php": ">=5.4",
                 "psr/http-message": "^1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1335,6 +1504,10 @@
                 "stream",
                 "uri"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/message-factory/issues",
+                "source": "https://github.com/php-http/message-factory/tree/master"
+            },
             "time": "2018-12-06T18:41:41+00:00"
         },
         {
@@ -1358,6 +1531,7 @@
                 "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
                 "phpspec/phpspec": "^5.1.2 || ^6.2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1388,6 +1562,10 @@
             "keywords": [
                 "promise"
             ],
+            "support": {
+                "issues": "https://github.com/php-http/promise/issues",
+                "source": "https://github.com/php-http/promise/tree/1.1.0"
+            },
             "time": "2020-07-07T09:29:14+00:00"
         },
         {
@@ -1408,6 +1586,7 @@
                 "php": "^7.0 || ^8.0",
                 "psr/http-message": "^1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1437,6 +1616,9 @@
                 "psr",
                 "psr-18"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client/tree/master"
+            },
             "time": "2020-09-19T09:12:31+00:00"
         },
         {
@@ -1457,6 +1639,7 @@
                 "php": ">=7.0.0",
                 "psr/http-message": "^1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1489,6 +1672,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-factory/tree/master"
+            },
             "time": "2020-09-17T16:52:55+00:00"
         },
         {
@@ -1508,6 +1694,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1539,6 +1726,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
             "time": "2019-08-29T13:16:46+00:00"
         },
         {
@@ -1558,6 +1748,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1586,6 +1777,9 @@
                 "psr",
                 "psr-3"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
             "time": "2021-05-03T11:20:27+00:00"
         },
         {
@@ -1606,6 +1800,7 @@
                 "league/omnipay": "^3",
                 "omnipay/paypal": "^3.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1623,6 +1818,10 @@
                 }
             ],
             "description": "Open WordPress payment gateway build on top league/omnipay",
+            "support": {
+                "issues": "https://github.com/puleeno/pomnipay/issues",
+                "source": "https://github.com/puleeno/pomnipay/tree/master"
+            },
             "time": "2021-03-09T18:44:14+00:00"
         },
         {
@@ -1639,6 +1838,7 @@
                 "reference": "3f0b9fa46aa5a3c989383a21e2c136d47d4cd2d6",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1651,6 +1851,10 @@
                 }
             ],
             "description": "Abstracts and Interfaces to implement  Structured Data on https://schema.org/",
+            "support": {
+                "issues": "https://github.com/puleeno/schema-org-php/issues",
+                "source": "https://github.com/puleeno/schema-org-php/tree/master"
+            },
             "time": "2020-01-17T01:12:43+00:00"
         },
         {
@@ -1691,6 +1895,10 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -1724,6 +1932,10 @@
                 }
             ],
             "description": "Embed rating",
+            "support": {
+                "issues": "https://github.com/ramphor/embrati/issues",
+                "source": "https://github.com/ramphor/embrati/tree/0.5.0"
+            },
             "time": "2021-03-27T04:22:56+00:00"
         },
         {
@@ -1743,6 +1955,7 @@
             "require": {
                 "ramphor/logger": "~1.0.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1763,6 +1976,10 @@
                 }
             ],
             "description": "Make the Facades for Laravel lovers",
+            "support": {
+                "issues": "https://github.com/ramphor/facades/issues",
+                "source": "https://github.com/ramphor/facades/tree/master"
+            },
             "time": "2020-08-23T03:20:38+00:00"
         },
         {
@@ -1779,6 +1996,7 @@
                 "reference": "5b886d4d0e5338fb3f21948233ebaf5c62c511a4",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1796,6 +2014,10 @@
                 }
             ],
             "description": "Jankx Fields is a simple framework used to create meta box, settings, form, etc",
+            "support": {
+                "issues": "https://github.com/ramphor/fields/issues",
+                "source": "https://github.com/ramphor/fields/tree/master"
+            },
             "time": "2020-09-15T02:16:23+00:00"
         },
         {
@@ -1812,6 +2034,7 @@
                 "reference": "cfc6ce19bdc0b10e6d82f298ce3aa305f499d036",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1829,6 +2052,10 @@
                 }
             ],
             "description": "Friendly number for human can read easiler.",
+            "support": {
+                "issues": "https://github.com/ramphor/human-friendly-numbers/issues",
+                "source": "https://github.com/ramphor/human-friendly-numbers/tree/master"
+            },
             "time": "2021-03-11T11:01:38+00:00"
         },
         {
@@ -1848,6 +2075,7 @@
             "require": {
                 "ramphor/logger": "1.0.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1868,6 +2096,10 @@
                 }
             ],
             "description": "Register locations such as country, state, city, etc for WordPress",
+            "support": {
+                "issues": "https://github.com/ramphor/locations/issues",
+                "source": "https://github.com/ramphor/locations/tree/master"
+            },
             "time": "2020-08-24T01:23:33+00:00"
         },
         {
@@ -1907,6 +2139,10 @@
                 }
             ],
             "description": "Wrap the Monolog library for WordPress themes and plugins",
+            "support": {
+                "issues": "https://github.com/ramphor/logger/issues",
+                "source": "https://github.com/ramphor/logger/tree/1.0.0"
+            },
             "time": "2020-08-23T03:17:05+00:00"
         },
         {
@@ -1923,6 +2159,7 @@
                 "reference": "7f426ae8ca8f4bb40ab8f9009d5e295b9c2fefe7",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1940,6 +2177,10 @@
                 }
             ],
             "description": "Optimize database for WordPress",
+            "support": {
+                "issues": "https://github.com/ramphor/optimize-database/issues",
+                "source": "https://github.com/ramphor/optimize-database/tree/master"
+            },
             "time": "2021-02-04T02:57:27+00:00"
         },
         {
@@ -1956,6 +2197,7 @@
                 "reference": "1ccc9d026c2c90eb9488f7759eda73530d2d7057",
                 "shasum": ""
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1973,6 +2215,10 @@
                 }
             ],
             "description": "The core of plugins are developed by The Ramphor Premium",
+            "support": {
+                "issues": "https://github.com/ramphor/plugin-core/issues",
+                "source": "https://github.com/ramphor/plugin-core/tree/master"
+            },
             "time": "2021-03-25T05:12:19+00:00"
         },
         {
@@ -2009,6 +2255,10 @@
                 }
             ],
             "description": "Track visited posts and user view posts",
+            "support": {
+                "issues": "https://github.com/ramphor/post-views/issues",
+                "source": "https://github.com/ramphor/post-views/tree/0.5"
+            },
             "time": "2021-05-06T12:04:10+00:00"
         },
         {
@@ -2017,19 +2267,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/user-profile.git",
-                "reference": "5d988141624dff8987b7a992a46b0650dcd44d49"
+                "reference": "eb13a1b6969d4c1f3df4dd2d3c781a6d3466d971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/5d988141624dff8987b7a992a46b0650dcd44d49",
-                "reference": "5d988141624dff8987b7a992a46b0650dcd44d49",
+                "url": "https://api.github.com/repos/ramphor/user-profile/zipball/eb13a1b6969d4c1f3df4dd2d3c781a6d3466d971",
+                "reference": "eb13a1b6969d4c1f3df4dd2d3c781a6d3466d971",
                 "shasum": ""
             },
             "require": {
                 "hybridauth/hybridauth": "3.1.1",
-                "jankx/template": "^1.0",
+                "jankx/template": "*",
                 "ramphor/plugin-core": "dev-master"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2047,7 +2298,11 @@
                 }
             ],
             "description": "User profile core for embed to other plugins or themes",
-            "time": "2021-04-18T13:51:38+00:00"
+            "support": {
+                "issues": "https://github.com/ramphor/user-profile/issues",
+                "source": "https://github.com/ramphor/user-profile/tree/master"
+            },
+            "time": "2021-05-20T08:09:48+00:00"
         },
         {
             "name": "ramphor/wallery",
@@ -2080,6 +2335,10 @@
                 }
             ],
             "description": "WordPress gallery for meta box and frontend post",
+            "support": {
+                "issues": "https://github.com/ramphor/wallery/issues",
+                "source": "https://github.com/ramphor/wallery/tree/1.6.0"
+            },
             "time": "2021-03-21T14:14:14+00:00"
         },
         {
@@ -2099,6 +2358,7 @@
             "require": {
                 "jankx/template": "*"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2116,6 +2376,10 @@
                 }
             ],
             "description": "Create posts and post types collection for WordPress",
+            "support": {
+                "issues": "https://github.com/ramphor/wordpress-posts-collection/issues",
+                "source": "https://github.com/ramphor/wordpress-posts-collection/tree/master"
+            },
             "time": "2021-03-21T14:11:46+00:00"
         },
         {
@@ -2135,6 +2399,7 @@
             "require": {
                 "php": ">=7.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2166,6 +2431,9 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.4.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2188,12 +2456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "694c0f7bbe2d5f5c752c37156013a276795b1849"
+                "reference": "aa02fc063bc72f2505d90623665c866691acb70f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/694c0f7bbe2d5f5c752c37156013a276795b1849",
-                "reference": "694c0f7bbe2d5f5c752c37156013a276795b1849",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/aa02fc063bc72f2505d90623665c866691acb70f",
+                "reference": "aa02fc063bc72f2505d90623665c866691acb70f",
                 "shasum": ""
             },
             "require": {
@@ -2211,6 +2479,7 @@
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2236,6 +2505,9 @@
             ],
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/http-foundation/tree/v5.3.0-BETA3"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2250,7 +2522,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-01T14:00:17+00:00"
+            "time": "2021-05-07T14:34:05+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2272,6 +2544,7 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2313,6 +2586,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/main"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2346,6 +2622,7 @@
             "require": {
                 "php": ">=7.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2393,6 +2670,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/main"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -2430,5 +2710,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

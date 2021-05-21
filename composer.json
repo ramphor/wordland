@@ -11,7 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "jankx/template": "^1.0",
+        "jankx/template": "*",
         "ramphor/facades": "dev-master",
         "ramphor/fields": "dev-master",
         "ramphor/human-friendly-numbers": "dev-master",
