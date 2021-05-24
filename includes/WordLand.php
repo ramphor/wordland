@@ -127,6 +127,11 @@ class WordLand
             WORDLAND_PLUGIN_FILE,
             array($installer, 'install')
         );
+        register_deactivation_hook(
+            WORDLAND_PLUGIN_FILE,
+            array($installer, 'deactivate')
+        );
+
         register_activation_hook(
             WORDLAND_PLUGIN_FILE,
             array(DB::class, 'setup')

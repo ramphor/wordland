@@ -3,6 +3,7 @@ namespace WordLand;
 
 use Ramphor\User\ProfileManager;
 use Ramphor\PostViews\Setup;
+use WordLand\Manager\CronManager;
 
 class Installer
 {
@@ -31,6 +32,10 @@ class Installer
 
         $postview = new Setup();
         $postview->createTables();
+
+        if (! wp_next_scheduled(CronManager::CRON_UPDATE_MAXMIND_DATABASE)) {
+            wp_schedule_event(time(), 'weekly', CronManager::CRON_UPDATE_MAXMIND_DATABASE);
+        }
 
         flush_rewrite_rules(true);
     }
@@ -128,5 +133,10 @@ class Installer
 
         // Disable ONLY_FULL_GROUP_BY to group property by locations
         $wpdb->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+    }
+
+    public function deactive()
+    {
+        wp_clear_scheduled_hook(CronManager::CRON_UPDATE_MAXMIND_DATABASE);
     }
 }

@@ -30,10 +30,6 @@ class CronManager extends ManagerAbstract
             add_action(static::CRON_UPDATE_MAXMIND_DATABASE, array($this, 'execute_update_maxmind_database'));
             if (isset($_SERVER['argv']) && in_array('--download-maxmind-database', $_SERVER['argv'])) {
                 do_action(static::CRON_UPDATE_MAXMIND_DATABASE);
-            } else {
-                if (! wp_next_scheduled(static::CRON_UPDATE_MAXMIND_DATABASE)) {
-                    wp_schedule_event(time(), 'weekly', static::CRON_UPDATE_MAXMIND_DATABASE);
-                }
             }
         }
     }
