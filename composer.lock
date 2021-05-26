@@ -2347,12 +2347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramphor/wordpress-posts-collection.git",
-                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245"
+                "reference": "672b7774453db6ff3a193f9d11bfe29cffd997b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/96d9e67d5d9283ac25c0b37f1060a8993fb63245",
-                "reference": "96d9e67d5d9283ac25c0b37f1060a8993fb63245",
+                "url": "https://api.github.com/repos/ramphor/wordpress-posts-collection/zipball/672b7774453db6ff3a193f9d11bfe29cffd997b5",
+                "reference": "672b7774453db6ff3a193f9d11bfe29cffd997b5",
                 "shasum": ""
             },
             "require": {
@@ -2380,7 +2380,7 @@
                 "issues": "https://github.com/ramphor/wordpress-posts-collection/issues",
                 "source": "https://github.com/ramphor/wordpress-posts-collection/tree/master"
             },
-            "time": "2021-03-21T14:11:46+00:00"
+            "time": "2021-05-26T03:23:38+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
