@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ad77b7934315b5acc0d70143f5f9f13",
+    "content-hash": "61099bbbea1c8e90202e7a6e741ad46c",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -613,6 +613,47 @@
                 "source": "https://github.com/jankx/plates/tree/v3"
             },
             "time": "2021-05-18T16:17:03+00:00"
+        },
+        {
+            "name": "jankx/post-layout",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jankx/post-layout.git",
+                "reference": "cc833961fabf66b8c743f35cb1017a889ce99c9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jankx/post-layout/zipball/cc833961fabf66b8c743f35cb1017a889ce99c9c",
+                "reference": "cc833961fabf66b8c743f35cb1017a889ce99c9c",
+                "shasum": ""
+            },
+            "require": {
+                "jankx/template": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jankx\\PostLayout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Puleeno Nguyen",
+                    "email": "puleeno@gmail.com"
+                }
+            ],
+            "description": "WordPress post and custom post type layout generator",
+            "support": {
+                "issues": "https://github.com/jankx/post-layout/issues",
+                "source": "https://github.com/jankx/post-layout/tree/master"
+            },
+            "time": "2021-06-05T07:02:14+00:00"
         },
         {
             "name": "jankx/template",
@@ -2704,7 +2745,8 @@
         "ramphor/wordpress-posts-collection": 20,
         "ramphor/optimize-database": 20,
         "puleeno/pomnipay": 20,
-        "jankx/wordpress-specs": 20
+        "jankx/wordpress-specs": 20,
+        "jankx/post-layout": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

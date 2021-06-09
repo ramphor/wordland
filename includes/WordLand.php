@@ -187,7 +187,7 @@ class WordLand
             }
         });
 
-        if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', true)) {
+        if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', false)) {
             show_admin_bar(false);
         }
     }
