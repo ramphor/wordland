@@ -1,5 +1,5 @@
 <?php
-namespace WordLand\Renderer;
+namespace WordLand\Frontend\Renderer;
 
 use WordLand\Abstracts\Renderer;
 use WordLand\Template;
@@ -7,7 +7,14 @@ use WordLand\Query\PropertyQuery;
 
 class PropertyListingCategoryTabs extends Renderer
 {
+    const RENDERDER_NAME = 'property_with_category_tabs';
+
     protected $categoryTerms = array();
+
+    public function get_name()
+    {
+        return static::RENDERER_NAME;
+    }
 
     public function renderHeader()
     {

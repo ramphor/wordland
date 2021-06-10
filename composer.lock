@@ -78,12 +78,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "9dea32b6bb602918b0144d4784b166cb95d45099"
+                "reference": "9fdb22c2e97a614657716178093cd1da90a64aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/9dea32b6bb602918b0144d4784b166cb95d45099",
-                "reference": "9dea32b6bb602918b0144d4784b166cb95d45099",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/9fdb22c2e97a614657716178093cd1da90a64aa8",
+                "reference": "9fdb22c2e97a614657716178093cd1da90a64aa8",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/main"
+                "source": "https://github.com/composer/ca-bundle/tree/1.2.10"
             },
             "funding": [
                 {
@@ -147,7 +147,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-01T12:43:46+00:00"
+            "time": "2021-06-07T13:58:28+00:00"
         },
         {
             "name": "geoip2/geoip2",
@@ -661,12 +661,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template.git",
-                "reference": "0cd3ab1772730aa16086c404e5c58e74294d8ca4"
+                "reference": "c70d81d8d79e11f1fdca11454fe0b5202b5de444"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template/zipball/0cd3ab1772730aa16086c404e5c58e74294d8ca4",
-                "reference": "0cd3ab1772730aa16086c404e5c58e74294d8ca4",
+                "url": "https://api.github.com/repos/jankx/template/zipball/c70d81d8d79e11f1fdca11454fe0b5202b5de444",
+                "reference": "c70d81d8d79e11f1fdca11454fe0b5202b5de444",
                 "shasum": ""
             },
             "require": {
@@ -694,7 +694,7 @@
                 "issues": "https://github.com/jankx/template/issues",
                 "source": "https://github.com/jankx/template/tree/master"
             },
-            "time": "2021-05-18T17:08:41+00:00"
+            "time": "2021-06-02T08:07:49+00:00"
         },
         {
             "name": "jankx/template-engine",
@@ -702,12 +702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/template-engine.git",
-                "reference": "d73abb4563d92d333f565b91f2ad63c861b099cd"
+                "reference": "19d9e4c8174de320c0443aa36fd6a0488ec22b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/template-engine/zipball/d73abb4563d92d333f565b91f2ad63c861b099cd",
-                "reference": "d73abb4563d92d333f565b91f2ad63c861b099cd",
+                "url": "https://api.github.com/repos/jankx/template-engine/zipball/19d9e4c8174de320c0443aa36fd6a0488ec22b01",
+                "reference": "19d9e4c8174de320c0443aa36fd6a0488ec22b01",
                 "shasum": ""
             },
             "require": {
@@ -737,7 +737,7 @@
                 "issues": "https://github.com/jankx/template-engine/issues",
                 "source": "https://github.com/jankx/template-engine/tree/master"
             },
-            "time": "2021-05-29T16:41:04+00:00"
+            "time": "2021-06-05T07:02:38+00:00"
         },
         {
             "name": "jankx/wordpress-specs",
@@ -783,28 +783,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay.git",
-                "reference": "d090c000030fc759e32f6f747873b5d630103030"
+                "reference": "73b6a169073bdb01054dd199e69f3ce3f1823e5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/d090c000030fc759e32f6f747873b5d630103030",
-                "reference": "d090c000030fc759e32f6f747873b5d630103030",
+                "url": "https://api.github.com/repos/thephpleague/omnipay/zipball/73b6a169073bdb01054dd199e69f3ce3f1823e5f",
+                "reference": "73b6a169073bdb01054dd199e69f3ce3f1823e5f",
                 "shasum": ""
             },
             "require": {
-                "omnipay/common": "^3",
+                "omnipay/common": "^3.1",
                 "php": "^7.2|^8.0",
-                "php-http/discovery": "^1.12",
-                "php-http/guzzle7-adapter": "^0.1"
+                "php-http/discovery": "^1.14",
+                "php-http/guzzle7-adapter": "^1"
             },
             "require-dev": {
-                "omnipay/tests": "^3"
+                "omnipay/tests": "^3|^4"
             },
             "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1.x-dev"
+                    "dev-master": "3.2.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -833,7 +833,13 @@
                 "issues": "https://github.com/thephpleague/omnipay/issues",
                 "source": "https://github.com/thephpleague/omnipay/tree/master"
             },
-            "time": "2021-05-02T15:02:18+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-05T13:25:02+00:00"
         },
         {
             "name": "maxmind-db/reader",
@@ -1042,26 +1048,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay-common.git",
-                "reference": "e1ebc22615f14219d31cefdf62d7036feb228b1c"
+                "reference": "30c6db3e9c2df34c2c9ad854b8bca53b597b456a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/e1ebc22615f14219d31cefdf62d7036feb228b1c",
-                "reference": "e1ebc22615f14219d31cefdf62d7036feb228b1c",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/30c6db3e9c2df34c2c9ad854b8bca53b597b456a",
+                "reference": "30c6db3e9c2df34c2c9ad854b8bca53b597b456a",
                 "shasum": ""
             },
             "require": {
                 "moneyphp/money": "^3.1",
-                "php": "^5.6|^7|^8",
+                "php": "^7.2|^8",
                 "php-http/client-implementation": "^1",
-                "php-http/discovery": "^1.2.1",
+                "php-http/discovery": "^1.14",
                 "php-http/message": "^1.5",
                 "symfony/http-foundation": "^2.1|^3|^4|^5"
             },
             "require-dev": {
-                "omnipay/tests": "^3",
+                "omnipay/tests": "^4.1",
+                "php-http/guzzle7-adapter": "^1",
                 "php-http/mock-client": "^1",
-                "phpro/grumphp": "^0.14",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
@@ -1071,7 +1077,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -1121,7 +1127,13 @@
                 "issues": "https://github.com/thephpleague/omnipay-common/issues",
                 "source": "https://github.com/thephpleague/omnipay-common/tree/master"
             },
-            "time": "2020-12-13T12:53:48+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-07T12:10:42+00:00"
         },
         {
             "name": "omnipay/paypal",
@@ -1230,16 +1242,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "788f72d64c43dc361e7fcc7464c3d947c64984a7"
+                "reference": "778f722e29250c1fac0bbdef2c122fa5d038c9eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/788f72d64c43dc361e7fcc7464c3d947c64984a7",
-                "reference": "788f72d64c43dc361e7fcc7464c3d947c64984a7",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/778f722e29250c1fac0bbdef2c122fa5d038c9eb",
+                "reference": "778f722e29250c1fac0bbdef2c122fa5d038c9eb",
                 "shasum": ""
             },
             "require": {
@@ -1256,8 +1268,7 @@
                 "puli/composer-plugin": "1.0.0-beta10"
             },
             "suggest": {
-                "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories",
-                "puli/composer-plugin": "Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details."
+                "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories"
             },
             "type": "library",
             "extra": {
@@ -1293,22 +1304,22 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.13.0"
+                "source": "https://github.com/php-http/discovery/tree/1.14.0"
             },
-            "time": "2020-11-27T14:49:42+00:00"
+            "time": "2021-06-01T14:30:21+00:00"
         },
         {
             "name": "php-http/guzzle7-adapter",
-            "version": "0.1.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/guzzle7-adapter.git",
-                "reference": "1967de656b9679a2a6a66d0e4e16fa99bbed1ad1"
+                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/guzzle7-adapter/zipball/1967de656b9679a2a6a66d0e4e16fa99bbed1ad1",
-                "reference": "1967de656b9679a2a6a66d0e4e16fa99bbed1ad1",
+                "url": "https://api.github.com/repos/php-http/guzzle7-adapter/zipball/fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
+                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
                 "shasum": ""
             },
             "require": {
@@ -1355,9 +1366,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/guzzle7-adapter/issues",
-                "source": "https://github.com/php-http/guzzle7-adapter/tree/0.1.1"
+                "source": "https://github.com/php-http/guzzle7-adapter/tree/1.0.0"
             },
-            "time": "2020-10-21T17:30:51+00:00"
+            "time": "2021-03-09T07:35:15+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -2497,12 +2508,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "6058b19318aa27773cfb3014e9b11be54ac30aa2"
+                "reference": "418a6ab782b8bd9d8eb164fd9b3c4c0806a8873f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6058b19318aa27773cfb3014e9b11be54ac30aa2",
-                "reference": "6058b19318aa27773cfb3014e9b11be54ac30aa2",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/418a6ab782b8bd9d8eb164fd9b3c4c0806a8873f",
+                "reference": "418a6ab782b8bd9d8eb164fd9b3c4c0806a8873f",
                 "shasum": ""
             },
             "require": {
@@ -2520,7 +2531,6 @@
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2563,7 +2573,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T17:43:50+00:00"
+            "time": "2021-06-06T09:52:30+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
