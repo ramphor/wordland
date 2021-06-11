@@ -2,6 +2,7 @@
 namespace WordLand\Abstracts;
 
 use WordLand\Constracts\Renderer as RendererConstract;
+use WordLand\Template;
 
 abstract class Renderer implements RendererConstract
 {
@@ -12,7 +13,7 @@ abstract class Renderer implements RendererConstract
 
     public function __construct($query = null)
     {
-        $this->query = $query;
+        $this->query = &$query;
     }
 
     public function __toString()
@@ -62,6 +63,11 @@ abstract class Renderer implements RendererConstract
         if (!$this->title) {
             return;
         }
-        return Template::render('common/header_text', array('text' => $this->title), null, false);
+
+        return Template::render(
+            'common/header_text',
+            array('text' => $this->title),
+            false
+        );
     }
 }

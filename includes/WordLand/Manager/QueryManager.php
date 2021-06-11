@@ -33,6 +33,10 @@ class QueryManager extends ManagerAbstract
             add_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
             add_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
+
+        // Caching database query
+        add_filter('posts_pre_query', array($this, 'loadOrInitCachePropertiesQuery'), 15, 2);
+        add_filter('posts_results', array($this, 'createCacheProperties'), 15, 2);
     }
 
     public function selectWordLandFields($fields, $query)
@@ -54,6 +58,10 @@ class QueryManager extends ManagerAbstract
             remove_filter('posts_fields', array($this, 'selectCountPropertySameLocation'), 15, 2);
             remove_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
+
+        // Caching database query
+        remove_filter('posts_pre_query', array($this, 'loadOrInitCachePropertiesQuery'), 15);
+        remove_filter('posts_results', array($this, 'createCacheProperties'), 15);
     }
 
     protected function checkPostType($postTypes)
@@ -172,5 +180,45 @@ class QueryManager extends ManagerAbstract
 
         add_filter('users_pre_query', $joinTableCallback, 10, 2);
         $agentQuery->createCustomFilterLog($joinTableCallback, 10);
+    }
+
+    protected function getCacheTimes()
+    {
+        if (defined('WORDLAND_PROPERTIES_CACHE_TIMES')) {
+            return intval(constant('WORDLAND_PROPERTIES_CACHE_TIMES'));
+        }
+        return apply_filters('wordland_property_cache_times', 1 * 24 * 60 * 60);
+    }
+
+    public function loadOrInitCachePropertiesQuery($posts, $query)
+    {
+        $query->wordland_cache_key = sprintf('wl_cached_properties_%s', md5($query->request));
+        $cached_properties = get_transient($query->wordland_cache_key);
+        if ($cached_properties) {
+            $query->load_from_transient = true;
+            $query->found_posts = intval(get_transient($query->wordland_cache_key . '_found_posts'));
+
+            return $cached_properties;
+        }
+        return $posts;
+    }
+
+    public function createCacheProperties($posts, $query)
+    {
+        if (!isset($query->load_from_transient) && isset($query->wordland_cache_key)) {
+            set_transient(
+                $query->wordland_cache_key,
+                $posts,
+                $this->getCacheTimes()
+            );
+
+            // Caching found_posts
+            set_transient(
+                $query->wordland_cache_key . '_found_posts',
+                $query->found_posts,
+                $this->getCacheTimes()
+            );
+        }
+        return $posts;
     }
 }
