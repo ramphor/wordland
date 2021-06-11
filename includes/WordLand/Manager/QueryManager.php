@@ -196,6 +196,7 @@ class QueryManager extends ManagerAbstract
         $cached_properties = get_transient($query->wordland_cache_key);
         if ($cached_properties) {
             $query->load_from_transient = true;
+            $query->found_posts = intval(get_transient($query->wordland_cache_key . '_found_posts'));
 
             return $cached_properties;
         }
@@ -208,6 +209,13 @@ class QueryManager extends ManagerAbstract
             set_transient(
                 $query->wordland_cache_key,
                 $posts,
+                $this->getCacheTimes()
+            );
+
+            // Caching found_posts
+            set_transient(
+                $query->wordland_cache_key . '_found_posts',
+                $query->found_posts,
                 $this->getCacheTimes()
             );
         }
