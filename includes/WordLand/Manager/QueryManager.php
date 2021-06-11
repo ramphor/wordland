@@ -34,6 +34,7 @@ class QueryManager extends ManagerAbstract
             add_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
 
+        // Caching database query
         add_filter('posts_pre_query', array($this, 'loadOrInitCachePropertiesQuery'), 15, 2);
         add_filter('posts_results', array($this, 'createCacheProperties'), 15, 2);
     }
@@ -58,6 +59,7 @@ class QueryManager extends ManagerAbstract
             remove_filter('posts_groupby', array($this, 'groupByPropertyLocation'), 10, 2);
         }
 
+        // Caching database query
         remove_filter('posts_pre_query', array($this, 'loadOrInitCachePropertiesQuery'), 15);
         remove_filter('posts_results', array($this, 'createCacheProperties'), 15);
     }
