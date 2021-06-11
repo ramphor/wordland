@@ -2,7 +2,7 @@
 namespace WordLand\Modules;
 
 use WordLand\Abstracts\ModuleAbstract;
-use WordLand\Renderer\AdvancedFilters;
+use WordLand\Frontend\Renderer\AdvancedFilters;
 
 class AdvancedSearch extends ModuleAbstract
 {

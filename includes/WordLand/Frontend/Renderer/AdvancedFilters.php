@@ -1,5 +1,5 @@
 <?php
-namespace WordLand\Renderer;
+namespace WordLand\Frontend\Renderer;
 
 use WordLand\Abstracts\Renderer;
 

@@ -1,7 +1,7 @@
 <?php
 namespace WordLand;
 
-use WordLand\Renderer\PropertyPage;
+use WordLand\Frontend\Renderer\PropertyPage;
 use WordLand\Builder\RendererBuilder;
 
 class TemplateLoader

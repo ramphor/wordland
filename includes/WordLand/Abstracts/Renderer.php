@@ -34,13 +34,6 @@ abstract class Renderer implements RendererConstract
         $this->title = $title;
     }
 
-    public function setProp($prop, $value)
-    {
-        if (is_string($prop)) {
-            $this->props[$prop] = $value;
-        }
-    }
-
     public function addProp($prop_name, $prop_value)
     {
         $this->props[$prop_name] = apply_filters(
