@@ -139,6 +139,7 @@ class WordLand
 
         add_action('init', array($this, 'setupUserProfile'), 5);
         add_action('init', array($this, 'init'));
+        add_action('widgets_init', array($this, 'loadWidgets'));
     }
 
     public function setupUserProfile()
@@ -219,6 +220,23 @@ class WordLand
         $moduleManager = new ModuleManager();
 
         // Load module via action hook `plugins_loaded`
-        add_action('plugins_loaded', array($moduleManager, 'load_modules' ), 20);
+        add_action(
+            'plugins_loaded',
+            array($moduleManager, 'load_modules' ),
+            20
+        );
+    }
+
+    public function loadWidgets()
+    {
+        $widgets = array( 'PropertyCategories', 'Properties' );
+        foreach ($widgets as $widget) {
+            $fullClass = sprintf('\WordLand\Frontend\Widget\%s', $widget);
+            if (!class_exists($fullClass)) {
+                error_log(sprintf('The widget %s is not exists', $fullClass));
+                continue;
+            }
+            register_widget($fullClass);
+        }
     }
 }
