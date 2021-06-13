@@ -90,9 +90,9 @@ window.ajax = function(url, body, successCallback, options = {}) {
  * @returns { HTMLElement }
  */
 HTMLElement.prototype.parents = function(selector) {
-    const parent = this.querySelector(selector);
+    const parent = this.matches(selector);
     if (parent) {
-        return parent;
+        return this;
     }
 
     if (this.parentElement) {
@@ -102,11 +102,39 @@ HTMLElement.prototype.parents = function(selector) {
 
 /**
  *
- * @param { MouseEvent } e
+ * @param {HTMLElement} el
+ * @param {string} clsName
+ * @returns
  */
-function wordland_loadmore_btn_clicked(e) {
-    const listing_wrap = e.target.parents('.wordland-property-listing');
+function wordland_toogle_class(el, clsName, showed = null) {
+    if (el.classList) {
+        if (showed === null) {
+            el.classList.toggle(clsName);
+        }
+        showed ? el.classList.add(clsName) : el.classList.remove(clsName);
+    } else {
+        // For IE9
+        var classes = el.className.split(" ");
+        var i = classes.indexOf(clsName);
 
+        if (showed === null) {
+            return toogleWordLandIEClass(el, clsName, i, classes);
+        }
+
+        if (showed) {
+            if (i < 0) {
+                classes.push(clsName);
+            }
+        } else {
+            if (i >= 0) {
+                classes.splice(i, 1);
+            }
+        }
+        el.className = classes.join(" ");
+    }
+}
+
+function wordland_load_more(listing_wrap, append = true, page = undefined) {
     if (listing_wrap) {
         const active_tab = listing_wrap.querySelector('.wordland-tabs .tab.active');
         if (!active_tab) {
@@ -114,13 +142,13 @@ function wordland_loadmore_btn_clicked(e) {
         }
 
         const posts_per_page = listing_wrap.dataset.posts_per_page;
-        const current_page = listing_wrap.dataset.current_page;
+        const current_page = (page === undefined) ? listing_wrap.dataset.current_page : 0;
         const item_style = listing_wrap.dataset.item_style;
         const tab_type = active_tab.dataset.tab_type;
         const tab_id = active_tab.dataset.tab_id;
         const tab_data = active_tab.dataset.tab_data;
 
-        if (!posts_per_page || !current_page || !tab_type || !tab_id) {
+        if (!posts_per_page || !tab_type || !tab_id) {
             return alert(wordland.languages.listing_by_cat_error);
         }
 
@@ -141,16 +169,58 @@ function wordland_loadmore_btn_clicked(e) {
                 }
 
                 wordland_list = listing_wrap.querySelector('.tab-content .wordland-list');
-                wordland_list.innerHTML += xhr.responseJSON.data.list_items_html;
-
+                if (append) {
+                    wordland_list.innerHTML += xhr.responseJSON.data.list_items_html;
+                } else {
+                    wordland_list.innerHTML = xhr.responseJSON.data.list_items_html;
+                }
                 listing_wrap.dataset.current_page = xhr.responseJSON.data.current_page || 1;
             }
         });
     }
 }
 
+/**
+ *
+ * @param { MouseEvent } e
+ */
+function wordland_loadmore_btn_clicked_event(e) {
+    const listing_wrap = e.target.parents('.wordland-property-listing');
+
+    wordland_load_more(listing_wrap);
+}
+
+function wordland_category_tab_clicked_event(e) {
+    e.preventDefault();
+
+    current_tab = e.target.parents('.tab');
+    if (!current_tab.classList) {
+        Array.prototype.contains = function(index) {
+            return this.includes(index);
+        }
+        current_tab.classList = current_tab.className.split(' ');
+    }
+    if (current_tab.classList.contains('active')) {
+        return;
+    }
+
+    allTabs = current_tab.parentElement.querySelectorAll('.tab.active');
+    for(i = 0; i < allTabs.length; i++) {
+        wordland_toogle_class(allTabs[i], 'active', false);
+    }
+    wordland_toogle_class(current_tab, 'active', true);
+
+    wordland_load_more(current_tab.parents('.wordland-property-listing'), false, -1);
+}
+
 // Document is ready
 window.addEventListener('DOMContentLoaded', function(){
-    var loadMoreBtn = document.querySelector('.wordland-button.load-more');
-    loadMoreBtn.addEventListener('click', wordland_loadmore_btn_clicked);
+    var loadMoreBtns = document.querySelectorAll('.wordland-button.load-more');
+    for (i = 0; i < loadMoreBtns.length; i++) {
+        loadMoreBtns[i].addEventListener('click', wordland_loadmore_btn_clicked_event);
+    }
+    var loadMoreTabs = document.querySelectorAll('.wordland-tabs .tab a');
+    for (i = 0; i < loadMoreTabs.length; i++) {
+        loadMoreTabs[i].addEventListener('click', wordland_category_tab_clicked_event);
+    }
 });
