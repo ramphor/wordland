@@ -1,4 +1,8 @@
-<div class="wordland-property-listing category-tabs">
+<div
+    class="wordland-property-listing category-tabs"
+    data-posts_per_page="<?php echo get_query_var('posts_per_page'); ?>"
+    data-current_page="<?php echo ($paged = get_query_var('paged')) > 0 ? $paged : 1; ?>"
+>
     <?php echo $header; ?>
     <?php echo $tabs; ?>
 

@@ -47,6 +47,15 @@ class Scripts
         );
     }
 
+    protected function localizeScriptL10n() {
+        return array(
+            'languages' => array(
+                'listing_by_cat_error' => __('Load more properties listing occurs error', 'wordland')
+            ),
+            'ajax_url' => admin_url('admin-ajax.php'),
+        );
+    }
+
     public function registerScripts()
     {
         $deps = array(
@@ -57,6 +66,8 @@ class Scripts
             array_push($deps, 'blueimp-tmpl');
         }
         wp_register_script(static::HANDLER_NAME, $this->asset_url('js/wordland.js'), $deps, WordLand::$version);
+        wp_localize_script(static::HANDLER_NAME, 'wordland', $this->localizeScriptL10n());
+
         wp_enqueue_script(static::HANDLER_NAME);
     }
 

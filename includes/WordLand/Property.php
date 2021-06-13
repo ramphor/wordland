@@ -11,6 +11,8 @@ use WordLand\Locations;
 
 class Property extends Data
 {
+    protected $_originalPost;
+
     public $ID;
     public $codeID;
     public $sku;
@@ -93,6 +95,11 @@ class Property extends Data
         'listing_type',
         'total_views'
     );
+
+    public function __construct($post = null)
+    {
+        $this->_originalPost = &$post;
+    }
 
     public function setMeta($key, $value)
     {
@@ -268,5 +275,10 @@ class Property extends Data
 
         $mapKey = $mapTos[$level];
         $this->$mapKey = $value;
+    }
+
+    public function permalink()
+    {
+        return get_permalink($this->_originalPost);
     }
 }
