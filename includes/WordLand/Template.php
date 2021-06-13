@@ -2,6 +2,7 @@
 namespace WordLand;
 
 use Jankx\Template\Template as TemplateLib;
+use Jankx\TemplateEngine\Engines\WordPress;
 
 class Template
 {
@@ -16,7 +17,7 @@ class Template
                 'wordland',
                 apply_filters('wordland_template_directory_name', 'wordland'),
                 $templateDir,
-                apply_filters('wordland_template_engine', 'wordpress')
+                apply_filters('wordland_template_engine', WordPress::ENGINE_NAME)
             );
         }
 
