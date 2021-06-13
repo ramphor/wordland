@@ -175,6 +175,12 @@ function wordland_load_more(listing_wrap, append = true, page = undefined) {
                     wordland_list.innerHTML = xhr.responseJSON.data.list_items_html;
                 }
                 listing_wrap.dataset.current_page = xhr.responseJSON.data.current_page || 1;
+
+                if (window.ramphor_wordpress_post_collection_trigger) {
+                    ramphor_wordpress_post_collection_trigger(
+                        listing_wrap.querySelectorAll('[data-collection-action]')
+                    );
+                }
             }
         });
     }
