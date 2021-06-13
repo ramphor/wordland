@@ -76,6 +76,10 @@ add_action('wordland_loop_property_name', 'wordland_render_property_name');
 function wordand_render_property_thumbnail_image()
 {
     global $property;
+    if (!has_post_thumbnail($property->ID)) {
+        return;
+    }
+
     wordland_template('loop/property-thumbnail', array(
         'thumbnail' => get_the_post_thumbnail($property->ID, 'medium'),
     ));
