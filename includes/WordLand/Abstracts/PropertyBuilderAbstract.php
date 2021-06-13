@@ -13,10 +13,10 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
     public function __construct($post = null)
     {
-        $this->reset();
         if ($post) {
             $this->setPost($post);
         }
+        $this->reset();
     }
 
     public function __get($name)
@@ -28,7 +28,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
 
     public function reset()
     {
-        $this->property = new Property();
+        $this->property = new Property($this->originalPost);
     }
 
     public function setPost($post)
@@ -36,8 +36,7 @@ abstract class PropertyBuilderAbstract implements PropertyBuilder
         if (!is_a($post, \WP_Post::class)) {
             return;
         }
-
-        $this->originalPost = $post;
+        $this->originalPost = &$post;
     }
 
 

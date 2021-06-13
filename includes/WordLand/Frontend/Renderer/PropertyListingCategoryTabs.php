@@ -58,6 +58,9 @@ class PropertyListingCategoryTabs extends Renderer
             $tabs[$index] = array(
                 'url' => get_term_link($term),
                 'text' => $term->name,
+                'type' => 'term',
+                'object_type' => $term->taxonomy,
+                'object_id' => $term->term_id,
             );
             if ($index === 0) {
                 $tabs[$index]['class'] = 'active';

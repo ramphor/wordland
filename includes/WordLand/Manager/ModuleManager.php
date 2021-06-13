@@ -13,6 +13,7 @@ use WordLand\Modules\AgentReviews;
 use WordLand\Modules\SaveSearch;
 use WordLand\Modules\ViewsCounter;
 use WordLand\Modules\AdvancedSearch;
+use WordLand\Modules\Ajax\LoadMoreProperties;
 
 class ModuleManager
 {
@@ -42,6 +43,8 @@ class ModuleManager
             SaveSearch::class,
             ViewsCounter::class,
             AdvancedSearch::class,
+            ViewsCounter::class,
+            LoadMoreProperties::class,
         );
         return apply_filters('wordland_active_modules', $modules);
     }
