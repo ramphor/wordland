@@ -20,13 +20,42 @@ class LoadMoreProperties extends ModuleAbstract
         add_action('wp_ajax_nopriv_wordland_load_more_listing', array($this, 'ajaxRequest'));
     }
 
+
+    protected function generateDataRules($tab_type, $tab_id, $tab_data_type) {
+        switch($tab_type) {
+            case 'term':
+                return array(
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => $tab_data_type,
+                            'terms' => array(intval($tab_id)),
+                            'field' => 'term_id',
+                        )
+                    )
+                );
+        }
+        return array();
+    }
+
     protected function buildQuery($request)
     {
-        $propertyQuery = new PropertyQuery(array(
-            'paged' => $request['current_page'] + 1,
-            'posts_per_page' => array_get($request, 'posts_per_page', 4),
-        ));
+        $tab_type = array_get($request, 'tab_type', false);
+        $tab_id = array_get($request, 'tab_id', false);
+        $tab_data_type = array_get($request, 'tab_data_type', false);
 
+        $args = array();
+
+        if ($tab_type && $tab_id && $tab_data_type) {
+            $args = $this->generateDataRules($tab_type, $tab_id, $tab_data_type);
+        }
+
+        $propertyQuery = new PropertyQuery(array_merge(
+            $args,
+            array(
+                'paged' => $request['current_page'] + 1,
+                'posts_per_page' => array_get($request, 'posts_per_page', 4),
+            )
+        ));
         $this->wp_query = $propertyQuery->getWordPressQuery();
     }
 
