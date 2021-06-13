@@ -47,7 +47,8 @@ class Scripts
         );
     }
 
-    protected function localizeScriptL10n() {
+    protected function localizeScriptL10n()
+    {
         return array(
             'languages' => array(
                 'listing_by_cat_error' => __('Load more properties listing occurs error', 'wordland')

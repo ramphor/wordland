@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ramphor
  * Author: Ramphor Premium
  * Author URI: https://puleeno.com
- * Version: 1.0.0.87
+ * Version: 1.0.0.88
  * Description: The real estate plugin for WordPress: Realty, Property management
  * Tag: realty, real estate, property
  */

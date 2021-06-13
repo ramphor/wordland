@@ -5,27 +5,33 @@ use WordLand\Abstracts\ModuleAbstract;
 use WordLand\Template;
 use WordLand\Query\PropertyQuery;
 
-class LoadMoreProperties extends ModuleAbstract {
+class LoadMoreProperties extends ModuleAbstract
+{
     const MODULE_NAME = 'load_more_properties';
 
-    public function get_name() {
+    public function get_name()
+    {
         return static::MODULE_NAME;
     }
 
-    public function init() {
+    public function init()
+    {
         add_action('wp_ajax_wordland_load_more_listing', array($this, 'ajaxRequest'));
         add_action('wp_ajax_nopriv_wordland_load_more_listing', array($this, 'ajaxRequest'));
     }
 
-    protected function buildQuery($request) {
+    protected function buildQuery($request)
+    {
         $propertyQuery = new PropertyQuery(array(
             'paged' => $request['current_page'] + 1,
+            'posts_per_page' => array_get($request, 'posts_per_page', 4),
         ));
 
         $this->wp_query = $propertyQuery->getWordPressQuery();
     }
 
-    public function renderMoreItems() {
+    public function renderMoreItems($request)
+    {
         if (!$this->wp_query) {
             return false;
         }
@@ -39,13 +45,14 @@ class LoadMoreProperties extends ModuleAbstract {
                     'content/property',
                     array(
                         'property' => $GLOBALS['property'],
-                        'style' => $style,
-                    ), false
+                        'style' => array_get($request, 'item_style', 'card'),
+                    ),
+                    false
                 );
                 ?>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
-        <?php
+            <?php
         endif;
 
         return $content;
@@ -61,7 +68,7 @@ class LoadMoreProperties extends ModuleAbstract {
         }
 
         $data = array(
-            'list_items_html' => $this->renderMoreItems(),
+            'list_items_html' => $this->renderMoreItems($_REQUEST),
             'current_page' => array_get($this->wp_query->query_vars, 'paged', 1),
         );
         wp_send_json_success($data);

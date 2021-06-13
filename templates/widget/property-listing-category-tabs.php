@@ -1,7 +1,7 @@
 <div
     class="wordland-property-listing category-tabs"
-    data-posts_per_page="<?php echo get_query_var('posts_per_page'); ?>"
-    data-current_page="<?php echo ($paged = get_query_var('paged')) > 0 ? $paged : 1; ?>"
+    data-posts_per_page="<?php echo array_get($wp_query->query_vars, 'posts_per_page', 10); ?>"
+    data-current_page="<?php echo array_get($wp_query->query_vars, 'wp_query', 1); ?>"
     data-item_style="<?php echo $style; ?>"
 >
     <?php echo $header; ?>

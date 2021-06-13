@@ -115,6 +115,7 @@ function wordland_loadmore_btn_clicked(e) {
 
         const posts_per_page = listing_wrap.dataset.posts_per_page;
         const current_page = listing_wrap.dataset.current_page;
+        const item_style = listing_wrap.dataset.item_style;
         const tab_type = active_tab.dataset.tab_type;
         const tab_id = active_tab.dataset.tab_id;
         const tab_data = active_tab.dataset.tab_data;
@@ -126,6 +127,7 @@ function wordland_loadmore_btn_clicked(e) {
         ajax(wordland.ajax_url, {
             action: 'wordland_load_more_listing',
             posts_per_page: posts_per_page,
+            item_style: item_style,
             current_page: current_page,
             tab_type: tab_type,
             tab_id: tab_id,
