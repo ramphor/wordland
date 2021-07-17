@@ -27,6 +27,5 @@ class Compatibles
 
     public function compatibleWithLandPress()
     {
-        add_theme_support('render_js_template');
     }
 }

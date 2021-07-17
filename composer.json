@@ -11,7 +11,10 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "jankx/asset": "*",
         "jankx/template": "*",
+        "jankx/wordpress-specs": "*",
+        "jankx/post-layout": "*",
         "ramphor/facades": "dev-master",
         "ramphor/fields": "dev-master",
         "ramphor/human-friendly-numbers": "dev-master",
@@ -27,8 +30,6 @@
         "phayes/geophp": "1.2",
         "ramphor/optimize-database": "dev-master",
         "puleeno/pomnipay": "dev-master",
-        "jankx/wordpress-specs": "dev-master",
-        "jankx/post-layout": "dev-master"
     },
     "autoload": {
         "psr-4": {
