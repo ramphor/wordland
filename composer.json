@@ -29,7 +29,7 @@
         "geoip2/geoip2": "~2.0",
         "phayes/geophp": "1.2",
         "ramphor/optimize-database": "dev-master",
-        "puleeno/pomnipay": "dev-master",
+        "puleeno/pomnipay": "dev-master"
     },
     "autoload": {
         "psr-4": {
