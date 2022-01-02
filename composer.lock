@@ -213,12 +213,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "868b3571a039f0ebc11ac8f344f4080babe2cb94"
+                "reference": "c1fd316f0a0f3325ed1e7cdbe61030418b868f9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/868b3571a039f0ebc11ac8f344f4080babe2cb94",
-                "reference": "868b3571a039f0ebc11ac8f344f4080babe2cb94",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/c1fd316f0a0f3325ed1e7cdbe61030418b868f9f",
+                "reference": "c1fd316f0a0f3325ed1e7cdbe61030418b868f9f",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +227,7 @@
                 "guzzlehttp/psr7": "^1.8.3 || ^2.1",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
-                "symfony/deprecation-contracts": "^2.2"
+                "symfony/deprecation-contracts": "^2.2 || ^3.0"
             },
             "provide": {
                 "psr/http-client-implementation": "1.0"
@@ -314,7 +314,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.4.0"
+                "source": "https://github.com/guzzle/guzzle/tree/master"
             },
             "funding": [
                 {
@@ -330,7 +330,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-18T09:52:00+00:00"
+            "time": "2021-12-13T16:13:08+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c55d23ab371b472342bee943a8bdb9c3cf963a18"
+                "reference": "085fb093e038ab0c4f11da732e89cdd47d7586b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c55d23ab371b472342bee943a8bdb9c3cf963a18",
-                "reference": "c55d23ab371b472342bee943a8bdb9c3cf963a18",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/085fb093e038ab0c4f11da732e89cdd47d7586b0",
+                "reference": "085fb093e038ab0c4f11da732e89cdd47d7586b0",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-11T15:47:52+00:00"
+            "time": "2021-12-13T16:16:06+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -788,12 +788,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jankx/post-layout.git",
-                "reference": "f49d4539b64f678aad4a15a4db4e3cd04e616b95"
+                "reference": "c7ef9a4bb0bad5062217bf7bf9ee2682da6e46fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jankx/post-layout/zipball/f49d4539b64f678aad4a15a4db4e3cd04e616b95",
-                "reference": "f49d4539b64f678aad4a15a4db4e3cd04e616b95",
+                "url": "https://api.github.com/repos/jankx/post-layout/zipball/c7ef9a4bb0bad5062217bf7bf9ee2682da6e46fd",
+                "reference": "c7ef9a4bb0bad5062217bf7bf9ee2682da6e46fd",
                 "shasum": ""
             },
             "require": {
@@ -823,7 +823,7 @@
                 "issues": "https://github.com/jankx/post-layout/issues",
                 "source": "https://github.com/jankx/post-layout/tree/master"
             },
-            "time": "2021-10-27T03:39:23+00:00"
+            "time": "2021-12-30T08:44:37+00:00"
         },
         {
             "name": "jankx/template",
@@ -1217,21 +1217,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay-common.git",
-                "reference": "006a45b5bfc2f6461e35dedce51dc1aa120df260"
+                "reference": "e278ff00676c05cd0f4aaaf6189a226f26ae056e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/006a45b5bfc2f6461e35dedce51dc1aa120df260",
-                "reference": "006a45b5bfc2f6461e35dedce51dc1aa120df260",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/e278ff00676c05cd0f4aaaf6189a226f26ae056e",
+                "reference": "e278ff00676c05cd0f4aaaf6189a226f26ae056e",
                 "shasum": ""
             },
             "require": {
-                "moneyphp/money": "^3.1",
+                "moneyphp/money": "^3.1|^4.0.3",
                 "php": "^7.2|^8",
                 "php-http/client-implementation": "^1",
                 "php-http/discovery": "^1.14",
                 "php-http/message": "^1.5",
-                "symfony/http-foundation": "^2.1|^3|^4|^5"
+                "symfony/http-foundation": "^2.1|^3|^4|^5|^6"
             },
             "require-dev": {
                 "omnipay/tests": "^4.1",
@@ -1302,7 +1302,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-08T11:12:50+00:00"
+            "time": "2021-12-30T11:32:00+00:00"
         },
         {
             "name": "omnipay/paypal",
@@ -2676,12 +2676,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "f07daa12f04468131070bcbc594abc8b95e6b3ae"
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/f07daa12f04468131070bcbc594abc8b95e6b3ae",
-                "reference": "f07daa12f04468131070bcbc594abc8b95e6b3ae",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ce952af52877eaf3eab5d0c08cc0ea865ed37313",
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313",
                 "shasum": ""
             },
             "require": {
@@ -2726,7 +2726,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/5.4"
+                "source": "https://github.com/symfony/http-foundation/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -2742,7 +2742,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-01T14:53:46+00:00"
+            "time": "2021-12-28T17:15:56+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
