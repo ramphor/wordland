@@ -75,7 +75,7 @@ class TemplateLoader
         $searchFiles = $this->getSearchTemplateFiles($defaultTemplate);
         $template    = locate_template($searchFiles);
 
-        if (! $template || WORDLAND_TEMPLATE_DEBUG_MODE) {
+        if (! $template || (defined('WORDLAND_TEMPLATE_DEBUG_MODE') && constant('WORDLAND_TEMPLATE_DEBUG_MODE'))) {
             $template = wordland()->plugin_path() . '/templates/' . $defaultTemplate;
         }
 

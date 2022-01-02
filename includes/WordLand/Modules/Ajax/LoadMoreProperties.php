@@ -21,8 +21,9 @@ class LoadMoreProperties extends ModuleAbstract
     }
 
 
-    protected function generateDataRules($tab_type, $tab_id, $tab_data_type) {
-        switch($tab_type) {
+    protected function generateDataRules($tab_type, $tab_id, $tab_data_type)
+    {
+        switch ($tab_type) {
             case 'term':
                 return array(
                     'tax_query' => array(
