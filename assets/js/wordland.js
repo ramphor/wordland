@@ -219,6 +219,20 @@ function wordland_category_tab_clicked_event(e) {
     wordland_load_more(current_tab.parents('.wordland-property-listing'), false, -1);
 }
 
+function landpressHeaderOffset() {
+    var wpadminbar = document.getElementById('wpadminbar');
+    var jankx_site_header = document.getElementById('jankx-site-header');
+    var reactjs_filter = document.querySelector('#wordland-reactjs-app .wordland-advanced-filtersjs');
+
+    var wpadminbar_height = wpadminbar ? wpadminbar.clientHeight : 0;
+
+    if (!reactjs_filter) {
+        return jankx_site_header.offsetHeight + wpadminbar_height;
+    }
+
+    return jankx_site_header.offsetHeight + reactjs_filter.offsetHeight + wpadminbar_height;
+}
+
 // Document is ready
 window.addEventListener('DOMContentLoaded', function(){
     var loadMoreBtns = document.querySelectorAll('.wordland-button.load-more');
