@@ -62,14 +62,17 @@ function wordland_default_coordinates()
     );
 }
 
-function wordland_get_map_zoom($has_coordinates, $option_name = 'default_listing_properties')
+function wordland_get_map_zoom()
 {
-    $default_marker_list_zoom = is_numeric($has_coordinates) ? $has_coordinates : 10;
-    $marker_list_zoom = get_option("wordland_{$option_name}_map_zoom", $has_coordinates ? $default_marker_list_zoom : 6);
     $zoom_options = array(
         'single_property' => get_option('wordland_single_property_map_zoom', 14),
-        'marker_list' => $marker_list_zoom,
         'country' => 6,
+        'listing_type' => 6,
+        'property_cat' => 6,
+        'property_visibility' => 6,
+        'door_direction' => 6,
+        'legal_status' => 6,
+        'property_tag' => 6,
         'administrative_area_level_1' => 10,
         'administrative_area_level_2' => 12,
         'administrative_area_level_3' => 15,
@@ -248,7 +251,6 @@ function wordland_get_same_location_properties_by_property_id($property_id, $arg
     return $sameLocationProperties;
 }
 
-
 function wordland_get_user_search_histories($user_id)
 {
     $historyQuery = new SearchHistoryQuery();
@@ -261,22 +263,32 @@ function wordland_get_user_search_histories($user_id)
 }
 
 
+function wordland_get_map_zoom_from_option($coordinates, $option_name = 'default_listing_properties')
+{
+    $default_marker_list_zoom = is_numeric($coordinates) ? $coordinates : 10;
+
+    return get_option(
+        "wordland_{$option_name}_map_zoom",
+        $coordinates ? $default_marker_list_zoom : 6
+    );
+}
+
 function wordland_get_map_zoom_from_location_taxonomy($taxonomy)
 {
     if (preg_match('/\d{1,}$/', $taxonomy, $matches)) {
         $level = intval($matches[0]);
         if ($level > 3) {
-            return wordland_get_map_zoom(20, 'location_level_4');
+            return wordland_get_map_zoom_from_option(20, 'location_level_4');
         } elseif ($level === 3) {
-            return wordland_get_map_zoom(15, 'location_level_3');
+            return wordland_get_map_zoom_from_option(15, 'location_level_3');
         } elseif ($level === 2) {
-            return wordland_get_map_zoom(12, 'location_level_3');
+            return wordland_get_map_zoom_from_option(12, 'location_level_3');
         } else {
-            return wordland_get_map_zoom(10);
+            return wordland_get_map_zoom_from_option(10);
         }
     }
-    return wordland_get_map_zoom(true);
-    ;
+
+    return false;
 }
 
 
