@@ -49,21 +49,13 @@ class WordLand
         $this->loadModules();
     }
 
-    private function define($name, $value)
-    {
-        if (defined($name)) {
-            return;
-        }
-        return define($name, $value);
-    }
-
     private function defineConstants()
     {
         $data = get_file_data(WORDLAND_PLUGIN_FILE, array('version' => 'Version'));
         static::$version = isset($data['version']) ? $data['version'] : null;
 
-        $this->define('WORDLAND_ABSPATH', dirname(WORDLAND_PLUGIN_FILE));
-        $this->define('WORDLAND_TEMPLATE_DEBUG_MODE', false);
+        define('WORDLAND_ABSPATH', dirname(WORDLAND_PLUGIN_FILE));
+        define('WORDLAND_TEMPLATE_DEBUG_MODE', false);
     }
 
     private function is_request($request)
