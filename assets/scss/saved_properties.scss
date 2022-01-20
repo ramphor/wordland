@@ -1,0 +1,80 @@
+.jankx-base .jankx-container {
+  max-width: 100%;
+  padding: 0;
+}
+#saved-properties-heading{
+  margin-bottom: 50px;
+}
+.wordland-saved-properties {
+
+  .saved-properties-list {
+    .save-properties {
+      background: #faf9f9;
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 45px;
+      width: 100%;
+      > li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &.properties-head {
+          border-bottom: 1px solid #ccc;
+          padding: 0 15px 20px;
+        }
+        &.properties-item {
+          padding: 20px 15px;
+          &:hover {
+            background-color: #dbdbdb;
+          }
+        }
+      }
+
+      .properties-property {
+        width: calc(50% - 15px);
+        display: flex;
+        align-items: center;
+        figure {
+          width: 115px;
+          margin-right: 20px;
+          a {
+            position: relative;
+            padding-top: 220 / 250 * 100%;
+            overflow: hidden;
+            display:block;
+          }
+          img {
+            object-fit: cover;
+            object-position: 50% 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+          }
+        }
+        p {
+          font-weight: bold;
+        }
+      }
+      .properties-category {
+        width: calc(10% - 15px);
+      }
+      .properties-status {
+        width: calc(10% - 15px);
+      }
+      .properties-price {
+        width: calc(10% - 15px);
+      }
+      .properties-action {
+        width: calc(20% - 15px);
+      }
+    }
+  }
+}
+
+.ramphor-user-profile .feature-content {
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+}
