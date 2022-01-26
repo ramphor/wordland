@@ -19,7 +19,6 @@ use Ramphor\Collection\CollectionManager;
 use Ramphor\Collection\DB;
 use Ramphor\PostViews\Counter as PostViewCounter;
 use Ramphor\PostViews\Handlers\UserHandler;
-use Ramphor\PostViews\Handlers\CookieHandler;
 
 class WordLand
 {
@@ -140,7 +139,7 @@ class WordLand
             $userTemplatesDir = sprintf('%s/templates/agent', WORDLAND_ABSPATH);
             $profileTemplateEngine = Template::createEngine(
                 'wordland_agent',
-                apply_filters('wordland_user_profile_template_directory', 'wordland/agent'),
+                apply_filters('wordland/directory/templates/user/profile', 'wordland/agent'),
                 $userTemplatesDir,
                 'plates'
             );
@@ -171,7 +170,7 @@ class WordLand
 
         $this->viewCounter->addHandle($userHandler);
 
-        add_action('wordland_before_get_single_property', function ($property) {
+        add_action('wordland/single/property/get/before', function ($property) {
             if (did_action('wp')) {
                 $this->viewCounter->count($property->ID);
             } else {
@@ -180,7 +179,7 @@ class WordLand
             }
         });
 
-        if (! current_user_can('manage_options') || apply_filters('wordland_force_hide_admin_bar', false)) {
+        if (! current_user_can('manage_options') || apply_filters('wordland/adminbar/hide', false)) {
             show_admin_bar(false);
         }
     }
