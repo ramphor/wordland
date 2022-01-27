@@ -37,7 +37,10 @@ class Installer
             wp_schedule_event(time(), 'weekly', CronManager::CRON_UPDATE_MAXMIND_DATABASE);
         }
 
-        flush_rewrite_rules(true);
+        // Flush rewrite rules
+        add_action('init', function () {
+            flush_rewrite_rules(true);
+        }, 33);
     }
 
     public function setupDatabase()
