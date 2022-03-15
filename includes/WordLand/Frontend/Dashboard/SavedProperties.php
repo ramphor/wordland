@@ -4,6 +4,7 @@ namespace WordLand\Frontend\Dashboard;
 
 use Ramphor\User\Abstracts\MyProfileAbstract;
 use WordLand\Template;
+use WP_Query;
 
 class SavedProperties extends MyProfileAbstract
 {
@@ -25,41 +26,76 @@ class SavedProperties extends MyProfileAbstract
         );
     }
 
-    public static function get_saved_properties()
-    {
+    public function filterSavedProperties($where, $query) {
         global $wpdb;
-        $searches_per_page = 10;
-        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
-        $offset = 0;
-        if ($current_page > 1) {
-            $offset = $searches_per_page * ($current_page - 1);
-        }
 
-        $sql = $wpdb->prepare(
-            "SELECT post_id FROM {$wpdb->prefix}ramphor_collection_global g WHERE g.user_id=%d AND collection=%s  ORDER BY added_at DESC LIMIT %d OFFSET %d",
-            get_current_user_id(),
-            "favorite_property",
-            $searches_per_page,
-            $offset
+        $where .= $wpdb->prepare(" AND (rcg.user_id=%d AND rcg.collection=%s)", get_current_user_id(), 'favorite_property');
+
+        return $where;
+    }
+
+    public function sortSavedProperties($orderby, $query) {
+        global $wpdb;
+
+        $orderby = 'rcg.added_at DESC,' . $orderby;
+
+        return $orderby;
+    }
+
+    public function joinCollectionGlobalTable($join, $query) {
+        global $wpdb;
+        if (!empty($join)) {
+            $join .= " ";
+        }
+        $join .= "INNER JOIN {$wpdb->prefix}ramphor_collection_global rcg ON {$wpdb->posts}.ID=rcg.post_id";
+
+        return $join;
+    }
+
+
+    /**
+     * @return WP_Query
+     */
+    public function getSavedProperties()
+    {
+        $args = array(
+            'post_type' => 'property',
+            'posts_per_page' => 10, // 10
+            'paged' => get_query_var('paged', 1),
         );
 
-        $properties = $wpdb->get_results($sql);
-        if (empty($properties)) {
-            return array();
-        }
-        return $properties;
+        // Join với bảng `ramphor_collection_global` để get các favorited properties
+        add_filter('posts_join', array($this, 'joinCollectionGlobalTable'), 10, 2);
+
+        // Chỗ này custom lại điều kiện get_posts
+        add_filter('posts_where', array($this, 'filterSavedProperties'), 10, 2);
+
+        // Custom sort lại kết quả của query
+        add_filter('posts_orderby', array($this, 'sortSavedProperties'), 10, 2);
+
+
+        // Get posts như flow bình thường của WordPress
+        $savedProperties = new WP_Query($args);
+
+
+        // Gỡ bỏ phần custom ra để tránh ảnh hưởng đến xử lý ở chỗ khác
+        remove_filter('posts_orderby', array($this, 'sortSavedProperties'), 10, 2);
+        remove_filter('posts_where', array($this, 'filterSavedProperties'), 10, 2);
+        remove_filter('posts_join', array($this, 'joinCollectionGlobalTable'), 10, 2);
+
+        return $savedProperties;
     }
 
     public function render()
     {
-        $saved_properties = static::get_saved_properties();
-        return Template::render(
-            'agent/my-profile/features/saved-properties',
-            array(
-                'saved_properties' => $saved_properties,
-            ),
-            null,
-            false
-        );
+        $savedProperties = $this->getSavedProperties();
+
+        $postLayout = Template::createPostLayout('card', $savedProperties);
+        $postLayout->setOptions(array(
+            'columns' => 4,
+            'show_paginate' => true,
+        ));
+
+        return $postLayout->render(false);
     }
 }
